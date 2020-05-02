@@ -208,7 +208,10 @@
                         </select>
                     </td>
                     <td class="weapon-notes">
-                        <input type="text" name="data.items.weapons.{{weapon.name}}.notes" value="{{weapon.data.notes}}" />
+                        <div class="tooltip">
+                            <span class="tooltiptext">{{weapon.data.notes}}</span>
+                            <input type="text" name="data.items.weapons.{{weapon.name}}.notes" value="{{weapon.data.notes}}" />
+                        </div>
                     </td>
                     <td>
                         <a class="weapon-delete" data-action="delete"><i class="fas fa-trash"></i></a>
