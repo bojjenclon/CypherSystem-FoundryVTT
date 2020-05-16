@@ -1,21 +1,29 @@
 export class CypherItemAbility extends Item {
   get type() {
-      return "ability";
+    return "ability";
   }
 
   prepareData() {
-      super.prepareData();
+    super.prepareData();
 
-      const itemData = this.data.data;
+    const { data } = this;
+    const itemData = data.data || {};
 
-      itemData.name = this.data.name || "New Ability";
-      itemData.category = itemData.category || "";
-      itemData.categoryValue = itemData.categoryValue || "";
-      itemData.isAction = itemData.isAction || false;
-      itemData.cost = itemData.cost || {};
-      itemData.tier = itemData.tier || 1;
-      itemData.range = itemData.range || "";
-      itemData.stat = itemData.stat || "";
-      itemData.notes = itemData.notes || "";
+    const stat = itemData.stat || "Might";
+
+    itemData.name = itemData.name || "New Ability";
+    itemData.category = itemData.category || "";
+    itemData.categoryValue = itemData.categoryValue || "";
+    itemData.isAction = itemData.isAction || false;
+    itemData.cost = itemData.cost || {
+      amount: 0,
+      pool: stat
+    };
+    itemData.tier = itemData.tier || 1;
+    itemData.range = itemData.range || "";
+    itemData.stat = stat;
+    itemData.notes = itemData.notes || "";
+
+    data.data = itemData;
   }
 }
