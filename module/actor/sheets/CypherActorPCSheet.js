@@ -36,42 +36,8 @@ function onItemEditGenerator(editClass) {
     event.preventDefault();
 
     const elem = event.currentTarget.closest(editClass);
-
-    if (!elem)
-      throw new Error(`Missing ${editClass} class element`);
-    else if (!elem.dataset.itemId)
-      throw new Error(`No itemID on ${editClass} element`);
-      
-    const updated = {_id: elem.dataset.itemId};
-    
-    const splitName = event.currentTarget.name.split(".");
-    const idIndex = splitName.indexOf(updated._id);
-    const parts = splitName.splice(idIndex + 1);
-
-    //Add the newly added property to the object
-    //This next block is necessary to support properties at various depths
-    //e.g support actor.name as well as actor.data.cost.pool
-
-    let previous = updated;
-    for (let i = 0; i < parts.length; i++) {
-      const name = parts[i];
-
-      if (i === parts.length - 1) {
-        //Last part, the actual property
-        if (event.target.type === "checkbox") {
-          previous[name] = event.currentTarget.checked;
-        } else if (event.target.dataset.dtype === "Boolean") {
-          previous[name] = (event.currentTarget.value === "true");
-        } else {
-          previous[name] = event.currentTarget.value;
-        }
-      } else {
-        previous[name] = {};
-        previous = previous[name];
-      }
-    }
-
-    await this.actor.updateEmbeddedEntity("OwnedItem", updated);
+    const item = this.actor.getOwnedItem(elem.dataset.itemId);
+    item.sheet.render(true);
   }
 }
 
@@ -309,11 +275,10 @@ export class CypherActorPCSheet extends ActorSheet {
     super.activateListeners(html);
 
     const abilitiesTable = html.find("table.abilities");
-    abilitiesTable.find("*").off("change"); //TODO remove this brutal thing when transition to 0.5.6+ is done
     abilitiesTable.on("click", ".ability-create", this.onAbilityCreate.bind(this));
-    abilitiesTable.on("click", ".ability-use", this.onAbilityUse.bind(this));
-    abilitiesTable.on("click", ".ability-delete", this.onAbilityDelete.bind(this));
-    abilitiesTable.on("change", "input,select,textarea", this.onAbilityEdit.bind(this));
+    abilitiesTable.on("click", ".ability-edit-btn", this.onAbilityEdit.bind(this));
+    abilitiesTable.on("click", ".ability-use-btn", this.onAbilityUse.bind(this));
+    abilitiesTable.on("click", ".ability-delete-btn", this.onAbilityDelete.bind(this));
 
     const skillsTable = html.find("table.skills");
     skillsTable.on("click", ".skill-create", this.onSkillCreate.bind(this));

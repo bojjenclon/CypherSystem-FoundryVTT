@@ -1,6 +1,17 @@
 $border-color: #325d6d;
 $font-stack: Ogirema;
 
+.tabs {
+    .item {
+        &.active,
+        &:hover {
+            color: #9c0b0b;
+
+            text-shadow: none; // Override the default behavior
+        }
+    }
+}
+
 span.csr-message-special {
     font-weight: bold;
     font-size: large;
@@ -208,6 +219,7 @@ form.csr {
                 border: 1px solid #7a7971;
                 border-radius: 3px;
                 user-select: text;
+                text-align: center;
 
                 &::-webkit-outer-spin-button,
                 &::-webkit-inner-spin-button {
@@ -268,16 +280,21 @@ form.csr {
                 text-align: center;
                 vertical-align: center;
 
-                .skill-name-wrapper,
-                .ability-name-wrapper {
-                    display: flex;
-                    align-items: center;
+                &.ability-drag {
+                    width: 1px; // hack to shrink cells to the width of their contents
+                    padding: 0;
+                    margin: 0;
 
-                    .skill-name-input,
-                    .ability-name-input {
-                        flex: 1;
-                        margin-left: 4px;
+                    .handle {
+                        margin-left: 5px;
                     }
+                }
+
+                &.ability-edit,
+                &.ability-use,
+                &.ability-delete {
+                    width: 1px; // hack to shrink cells to the width of their contents
+                    padding: 5px 10px;
                 }
             }
 

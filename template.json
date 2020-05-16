@@ -108,7 +108,7 @@
             "categoryValue": "",
             "cost": {
                 "amount": 0,
-                "pool": ""
+                "pool": "Might"
             },
             "isAction": false,
             "tier": ""
