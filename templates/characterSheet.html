@@ -2,9 +2,9 @@
     <h1 class="character">
         <input type="text" name="name" value="{{actor.name}}" class="charname" />
         is a
-        <input type="text" name="data.descriptor" value="{{data.descriptor}}" class="descriptor" placeholder="Descriptor" />
-        <input type="text" name="data.characterType" value="{{data.characterType}}" class="characterType" data-type="String">
-        who <input type="text" name="data.focus" value="{{data.focus}}" class="focus" placeholder="Focus" />
+        <input type="text" name="data.descriptor" value="{{data.descriptor}}" class="descriptor" placeholder="Descriptor" data-type="String" />
+        <input type="text" name="data.characterType" value="{{data.characterType}}" class="characterType" placeholder="Type" data-type="String" />
+        who <input type="text" name="data.focus" value="{{data.focus}}" class="focus" placeholder="Focus" data-type="String" />
     </h1>
     <div class="flexcol">
         <div class="flexrow header">
@@ -106,8 +106,10 @@
                 {{#each data.items.skills as |skill| }}
                     <tr class="skill" data-item-id="{{skill._id}}" data-order="{{skill.data.order}}">
                         <td class="skill-name">
-                            <a><i class="fas fa-grip-vertical handle"></i></a>
-                            <input type="text" name="data.items.skills.{{skill._id}}.name" placeholder="Skill Name" value="{{skill.name}}" class="skill-name-input" />
+                            <div class="skill-name-wrapper">
+                                <a><i class="fas fa-grip-vertical handle"></i></a>
+                                <input type="text" name="data.items.skills.{{skill._id}}.name" placeholder="Skill Name" value="{{skill.name}}" class="skill-name-input" />
+                            </div>
                         </td>
                         <td class="skill-stat">
                             <select name="data.items.skills.{{skill._id}}.data.stat">
@@ -147,6 +149,7 @@
                         <td class="ability-cost">Cost</td>
                         <td class="ability-range">Range</td>
                         <td class="ability-description">Description</td>
+                        <td class="ability-use">Use</td>
                         <td><a class="ability-create" data-action="create" title="Create"><i class="fas fa-plus"></i></a></td>
                     </tr>
                 </thead>
@@ -154,8 +157,10 @@
                 {{#each data.items.abilities as |ability| }}
                     <tr class="ability" data-item-id="{{ability._id}}" data-prder="{{ability.data.order}}">
                         <td class="ability-name">
-                            <a><i class="fas fa-grip-vertical handle"></i></a>
-                            <input type="text" name="data.items.abilities.{{ability._id}}.name" placeholder="Ability Name" value="{{ability.name}}" class="ability-name-input" />
+                            <div class="ability-name-wrapper">
+                                <a><i class="fas fa-grip-vertical handle"></i></a>
+                                <input type="text" name="data.items.abilities.{{ability._id}}.name" placeholder="Ability Name" value="{{ability.name}}" class="ability-name-input" />
+                            </div>
                         </td>
                         <td class="ability-cost">
                             <select name="data.items.abilities.{{ability._id}}.data.isAction" data-dtype="Boolean">
@@ -190,6 +195,9 @@
                         </td>
                         <td class="ability-description">
                             <textarea name="data.items.abilities.{{ability._id}}.data.notes">{{ability.data.notes}}</textarea>
+                        </td>
+                        <td>
+                            <a class="ability-use" data-action="use" title="Use"><i class="fas fa-dice-d20"></i></a>
                         </td>
                         <td>
                             <a class="ability-delete" data-action="delete" title="Delete"><i class="fas fa-trash"></i></a>

@@ -249,15 +249,27 @@ form.numenera {
                 font-size: 16px;
                 text-align: center;
                 vertical-align: center;
+
+                .skill-name-wrapper,
+                .ability-name-wrapper {
+                    display: flex;
+                    align-items: center;
+
+                    .skill-name-input,
+                    .ability-name-input {
+                        flex: 1;
+                        margin-left: 4px;
+                    }
+                }
             }
 
             tbody td input[type="text"] {
                 text-align: left;
                 width: 100%;
 
-                &.skill-name-input, &.ability-name-input {
-                    width: 95%; //HACK! find a better way plz
-                }
+                // &.skill-name-input, &.ability-name-input {
+                //     width: 95%; //HACK! find a better way plz
+                // }
             }
         }
     }

@@ -125,18 +125,15 @@ export class NumeneraPCActor extends Actor {
     return this.data.data.skills.filter(id => id == statId);
   }
 
-  getEffortCostFromStat(event) {
+  getEffortCostFromStat(statId, effortLevel) {
     //Return value, copy from template object
     const value = {...effortObject};
 
-    const effortLevel = event.target.value;
     if (effortLevel === 0) {
       return value;
     }
         
     const actorData = this.data.data;
-
-    const statId = event.target.dataset.statId;
     const stat = actorData.stats[statId];
 
     //The first effort level costs 3 pts from the pool, extra levels cost 2
@@ -145,7 +142,7 @@ export class NumeneraPCActor extends Actor {
 
     //A PC can use as much as their Effort score, but not more
     //They're also limited by their current pool value
-    const finalEffort = Math.max(effortLevel, actorData.effort, availableEffortFromPool);
+    const finalEffort = Math.min(effortLevel, actorData.effort, availableEffortFromPool);
     const cost = 1 + 2 * finalEffort - stat.edge;
 
     //TODO take free levels of Effort into account here
@@ -160,6 +157,28 @@ export class NumeneraPCActor extends Actor {
     value.warning = warning;
 
     return value;
+  }
+
+  canSpendFromPool(statId, amount) {
+    const actorData = this.data.data;
+    const stat = actorData.stats[statId];
+
+    return amount <= stat.pool.current;
+  }
+
+  spendFromPool(statId, amount) {
+    if (!this.canSpendFromPool(statId, amount)) {
+      return false;
+    }
+
+    const actorData = this.data.data;
+    const stat = actorData.stats[statId];
+
+    const data = {};
+    data[`data.stats.${statId}.pool.current`] = Math.max(0, stat.pool.current - amount);
+    this.update(data);
+
+    return true;
   }
 
   /**

@@ -3,6 +3,8 @@ import { NumeneraAbilityItem } from "../../item/NumeneraAbilityItem.js";
 import { NumeneraSkillItem } from "../../item/NumeneraSkillItem.js";
 import { NumeneraWeaponItem } from "../../item/NumeneraWeaponItem.js";
 
+import { CypherRolls } from '../../roll.js';
+
 import  "../../../lib/dragula/dragula.js";
 
 //Common Dragula options
@@ -83,6 +85,52 @@ function onItemDeleteGenerator(deleteClass) {
   }
 }
 
+function onAbilityUse(useClass) {
+  return function (event) {
+    event.preventDefault();
+  
+    const elem = event.currentTarget.closest(useClass);
+    const itemId = elem.dataset.itemId;
+
+    const { actor } = this;
+    const item = actor.getOwnedItem(itemId);
+
+    const { isAction, cost, name } = item.data.data;
+
+    if (isAction) {
+      const statId = cost.pool.toLowerCase();
+
+      // const targetNumber = 0; // TODO
+      // const amountOfEffort = 0; // TODO
+      // const effortCost = actor.getEffortCostFromStat(statId, amountOfEffort);
+      // const totalCost = parseInt(cost.amount, 10) + parseInt(effortCost.cost, 10);
+
+      if (actor.canSpendFromPool(statId, parseInt(cost.amount, 10))) {
+        CypherRolls.Roll({
+          event,
+          parts: ['1d20'],
+          data: {
+            statId,
+            abilityCost: cost.amount,
+            maxEffort: actor.data.data.effort
+          },
+          speaker: ChatMessage.getSpeaker({ actor }),
+          flavor: `${actor.name} used ${name}`,
+          title: 'Use Ability',
+          actor
+        });
+      } else {
+        const poolName = statId[0].toUpperCase() + statId.substr(1);
+        ChatMessage.create([{
+          speaker: ChatMessage.getSpeaker({ actor }),
+          flavor: 'Ability Failed',
+          content: `Not enough points in ${poolName} pool.`
+        }])
+      }
+    }
+  }
+}
+
 /**
  * Extend the basic ActorSheet class to do all the Numenera things!
  *
@@ -133,6 +181,9 @@ export class NumeneraPCActorSheet extends ActorSheet {
     this.onCypherEdit = onItemEditGenerator(".cypher");
     this.onSkillEdit = onItemEditGenerator(".skill");
     this.onWeaponEdit = onItemEditGenerator(".weapon");
+
+    //Use event handlers
+    this.onAbilityUse = onAbilityUse(".ability");
 
     //Delete event handlers
     this.onAbilityDelete = onItemDeleteGenerator(".ability");
@@ -260,6 +311,7 @@ export class NumeneraPCActorSheet extends ActorSheet {
     const abilitiesTable = html.find("table.abilities");
     abilitiesTable.find("*").off("change"); //TODO remove this brutal thing when transition to 0.5.6+ is done
     abilitiesTable.on("click", ".ability-create", this.onAbilityCreate.bind(this));
+    abilitiesTable.on("click", ".ability-use", this.onAbilityUse.bind(this));
     abilitiesTable.on("click", ".ability-delete", this.onAbilityDelete.bind(this));
     abilitiesTable.on("change", "input,select,textarea", this.onAbilityEdit.bind(this));
 
