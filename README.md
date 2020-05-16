@@ -1,14 +1,14 @@
-# Numenera-FoundryVTT
+# CypherSystem-FoundryVTT
 
 ## What is this?
 
-This repository is the beginning of support for the [Numenera role playing game](http://numenera.com/) for the [Foundry virtual tabletop](http://foundryvtt.com/#about-foundry-virtual-tabletop). Check them out!
+This repository is the beginning of support for the [Cypher System role playing game](http://cypher-system.com/) for the [Foundry virtual tabletop](http://foundryvtt.com/#about-foundry-virtual-tabletop). Check them out!
 
 ## How do I use it?
 
 First, a word of warning: this system is in active development so basic features are in place and the system is absolutely usable but you might experience some missing features and hiccups.
 
-To install, simply go to the _Game Systems_ tab of the _Configuration and Setup_ screen, click the _Install System_ button on the lower left; scroll down to _Numenera_ and click Install.
+To install, simply go to the _Game Systems_ tab of the _Configuration and Setup_ screen, click the _Install System_ button on the lower left; scroll down to _Cypher System_ and click Install.
 
 Foundry will download the current bundle and afterwards you only need to create a new world using that system. Easy as pie!
 

@@ -1,4 +1,4 @@
-export class NumeneraNPCActor extends Actor {
+export class CypherActorNPC extends Actor {
   getInitiativeFormula() {   
     /* TODO: improve this
     The init system expects a formula for initiative: fixed values don't seem to work.

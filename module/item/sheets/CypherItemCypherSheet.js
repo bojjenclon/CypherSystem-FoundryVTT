@@ -1,4 +1,4 @@
-export class NumeneraEquipmentItemSheet extends ItemSheet {
+export class CypherItemCypherSheet extends ItemSheet {
     /**
      * Define default rendering options for the weapon sheet
      * @return {Object}
@@ -19,10 +19,10 @@ export class NumeneraEquipmentItemSheet extends ItemSheet {
      * @type {String}
      */
     get template() {
-        return "systems/numenera/templates/item/equipmentSheet.html";
+        return "systems/cypher-system/templates/item/cypherSheet.html";
     }
 
     get type() {
-        return "equipment";
+        return "cypher";
     }
 }

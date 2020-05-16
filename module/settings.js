@@ -1,11 +1,11 @@
 export const registerSystemSettings = function() {
 
   /**
-   * Configure the Numenera version being used
+   * Configure the CSR version being used
    */
-  game.settings.register("numenera", "systemMigrationVersion", {
-    name: "Numenera Version",
-    hint: "Select the Numenera version you're using. Version 1 is the original 2013 edition with the orange cover; version 2 is the 2018 split into two books, Discovery and Destiny",
+  game.settings.register("cypher-system", "systemMigrationVersion", {
+    name: "CSR Version",
+    hint: "Select the Cypher System version you're using. Version 1 is the original 2015 edition with the four panel diamond cover; version 2 is the 2019 edition with the single red motif image cover",
     scope: "world",
     config: true,
     type: Number,

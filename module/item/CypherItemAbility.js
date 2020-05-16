@@ -1,4 +1,4 @@
-export class NumeneraAbilityItem extends Item {
+export class CypherItemAbility extends Item {
   get type() {
       return "ability";
   }

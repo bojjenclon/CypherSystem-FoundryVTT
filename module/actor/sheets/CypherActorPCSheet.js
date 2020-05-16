@@ -1,7 +1,7 @@
-import { NUMENERA } from "../../config.js";
-import { NumeneraAbilityItem } from "../../item/NumeneraAbilityItem.js";
-import { NumeneraSkillItem } from "../../item/NumeneraSkillItem.js";
-import { NumeneraWeaponItem } from "../../item/NumeneraWeaponItem.js";
+import { CYPHER_SYSTEM } from "../../config.js";
+import { CypherItemAbility } from "../../item/CypherItemAbility.js";
+import { CypherItemSkill } from "../../item/CypherItemSkill.js";
+import { CypherItemWeapon } from "../../item/CypherItemWeapon.js";
 
 import { CypherRolls } from '../../roll.js';
 
@@ -132,11 +132,11 @@ function onAbilityUse(useClass) {
 }
 
 /**
- * Extend the basic ActorSheet class to do all the Numenera things!
+ * Extend the basic ActorSheet class to do all the Cypher System things!
  *
  * @type {ActorSheet}
  */
-export class NumeneraPCActorSheet extends ActorSheet {
+export class CypherActorPCSheet extends ActorSheet {
   /**
    * Define default rendering options for the NPC sheet
    * @return {Object}
@@ -144,12 +144,12 @@ export class NumeneraPCActorSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       scrollY: [
-        "form.numenera table.weapons",
-        "form.numenera table.skills",
-        "form.numenera table.abilities",
-        "form.numenera ul.artifacts",
-        "form.numenera ul.cyphers",
-        "form.numenera ul.oddities",
+        "form.csr table.weapons",
+        "form.csr table.skills",
+        "form.csr table.abilities",
+        "form.csr ul.artifacts",
+        "form.csr ul.cyphers",
+        "form.csr ul.oddities",
       ],
       width: 900,
       height: 1000,
@@ -164,16 +164,16 @@ export class NumeneraPCActorSheet extends ActorSheet {
   }
 
   static get advances() {
-    return NUMENERA.advances;
+    return CYPHER_SYSTEM.advances;
   }
 
   constructor(...args) {
     super(...args);
 
     //Creation event handlers
-    this.onAbilityCreate = onItemCreate("ability", NumeneraAbilityItem);
-    this.onSkillCreate = onItemCreate("skill", NumeneraSkillItem);
-    this.onWeaponCreate = onItemCreate("weapon", NumeneraWeaponItem);
+    this.onAbilityCreate = onItemCreate("ability", CypherItemAbility);
+    this.onSkillCreate = onItemCreate("skill", CypherItemSkill);
+    this.onWeaponCreate = onItemCreate("weapon", CypherItemWeapon);
 
     //Edit event handlers
     this.onAbilityEdit = onItemEditGenerator(".ability");
@@ -203,7 +203,7 @@ export class NumeneraPCActorSheet extends ActorSheet {
    * @type {String}
    */
   get template() {
-    return "systems/numenera/templates/characterSheet.html";
+    return "systems/cypher-system/templates/characterSheet.html";
   }
 
   /**
@@ -214,30 +214,30 @@ export class NumeneraPCActorSheet extends ActorSheet {
     const sheetData = super.getData();
 
     //Copy labels to be used as is
-    sheetData.ranges = NUMENERA.ranges;
-    sheetData.stats = NUMENERA.stats;
-    sheetData.weaponTypes = NUMENERA.weaponTypes;
-    sheetData.weights = NUMENERA.weightClasses;
+    sheetData.ranges = CYPHER_SYSTEM.ranges;
+    sheetData.stats = CYPHER_SYSTEM.stats;
+    sheetData.weaponTypes = CYPHER_SYSTEM.weaponTypes;
+    sheetData.weights = CYPHER_SYSTEM.weightClasses;
 
     sheetData.advances = Object.entries(sheetData.actor.data.advances).map(
       ([key, value]) => {
         return {
           name: key,
-          label: NUMENERA.advances[key],
+          label: CYPHER_SYSTEM.advances[key],
           isChecked: value,
         };
       }
     );
 
-    sheetData.damageTrackData = NUMENERA.damageTrack;
-    sheetData.damageTrackDescription = NUMENERA.damageTrack[sheetData.data.damageTrack].description;
+    sheetData.damageTrackData = CYPHER_SYSTEM.damageTrack;
+    sheetData.damageTrackDescription = CYPHER_SYSTEM.damageTrack[sheetData.data.damageTrack].description;
 
     sheetData.recoveriesData = Object.entries(
       sheetData.actor.data.recoveries
     ).map(([key, value]) => {
       return {
         key,
-        label: NUMENERA.recoveries[key],
+        label: CYPHER_SYSTEM.recoveries[key],
         checked: value,
       };
     });
@@ -286,13 +286,13 @@ export class NumeneraPCActorSheet extends ActorSheet {
 
     sheetData.data.items.abilities = sheetData.data.items.abilities.map(ability => {
       ability.nocost = (ability.data.cost.amount <= 0);
-      ability.ranges = NUMENERA.optionalRanges;
-      ability.stats = NUMENERA.stats;
+      ability.ranges = CYPHER_SYSTEM.optionalRanges;
+      ability.stats = CYPHER_SYSTEM.stats;
       return ability;
     });
 
     sheetData.data.items.skills = sheetData.data.items.skills.map(skill => {
-      skill.stats = NUMENERA.stats;
+      skill.stats = CYPHER_SYSTEM.stats;
       return skill;
     });
 
@@ -303,7 +303,7 @@ export class NumeneraPCActorSheet extends ActorSheet {
    * Add character sheet-specific event listeners.
    *
    * @param {*} html
-   * @memberof ActorSheetNumeneraPC
+   * @memberof CypherActorPCSheet
    */
   activateListeners(html) {
     super.activateListeners(html);

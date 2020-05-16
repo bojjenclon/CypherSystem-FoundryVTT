@@ -1,4 +1,4 @@
-export class NumeneraOddityItemSheet extends ItemSheet {
+export class CypherItemArtifactSheet extends ItemSheet {
     /**
      * Define default rendering options for the weapon sheet
      * @return {Object}
@@ -6,7 +6,7 @@ export class NumeneraOddityItemSheet extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             width: 500,
-            height: 400
+            height: 450
         });
     }
 
@@ -19,6 +19,6 @@ export class NumeneraOddityItemSheet extends ItemSheet {
      * @type {String}
      */
     get template() {
-        return "systems/numenera/templates/item/odditySheet.html";
+        return "systems/cypher-system/templates/item/artifactSheet.html";
     }
 }

@@ -1,14 +1,14 @@
-import { NUMENERA } from "../../config.js";
+import { CYPHER_SYSTEM } from "../../config.js";
 
-export class NumeneraWeaponItemSheet extends ItemSheet {
+export class CypherItemArmorSheet extends ItemSheet {
     /**
      * Define default rendering options for the weapon sheet
      * @return {Object}
      */
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            width: 500,
-            height: 400
+            width: 600,
+            height: 450
         });
     }
 
@@ -21,16 +21,14 @@ export class NumeneraWeaponItemSheet extends ItemSheet {
      * @type {String}
      */
     get template() {
-        return "systems/numenera/templates/item/weaponSheet.html";
+        return "systems/cypher-system/templates/item/armorSheet.html";
     }
 
     getData() {
-        const sheetData = super.getData();
+        const data = super.getData();
 
-        sheetData.ranges = NUMENERA.ranges;
-        sheetData.weaponTypes = NUMENERA.weaponTypes;
-        sheetData.weights = NUMENERA.weightClasses;
-
-        return sheetData;
+        data.weightClasses = CYPHER_SYSTEM.weightClasses;
+        
+        return data;
     }
 }

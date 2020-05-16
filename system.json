@@ -1,17 +1,17 @@
 {
-    "name": "numenera",
-    "title": "Numenera",
-    "description": "Simple support for Numenera for the Fountry Virtual TableTop.",
-    "version": "0.6.1",
-    "author": "SolarBear",
+    "name": "cypher-system",
+    "title": "Cypher System",
+    "description": "Simple support for the Cypher System for the Fountry Virtual TableTop.",
+    "version": "0.0.1",
+    "author": "bojjenclon",
     "scripts": ["lib/dragula/dragula.min.js"],
-    "esmodules": ["numenera.js"],
-    "styles": ["numenera.css", "lib/dragula/dragula.min.css"],
+    "esmodules": ["cypher-system.js"],
+    "styles": ["cypher-system.css", "lib/dragula/dragula.min.css"],
     "packs": [],
     "languages": ["en"],
     "compatibleCoreVersion": "0.5.5",
     "minimumCoreVersion" : "0.5.5",
-    "url": "https://github.com/SolarBear/Numenera-FoundryVTT",
-    "manifest": "https://raw.githubusercontent.com/SolarBear/Numenera-FoundryVTT/master/system.json",
-    "download": "https://github.com/SolarBear/Numenera-FoundryVTT/releases/download/0.6.1/numenera-foundryvtt-0.6.1.zip"
+    "url": "https://github.com/bojjenclon/CypherSystem-FoundryVTT",
+    "manifest": "https://raw.githubusercontent.com/bojjenclon/CypherSystem-FoundryVTT/master/system.json",
+    "download": "https://github.com/bojjenclon/CypherSystem-FoundryVTT/releases/download/0.0.1/CypherSystem-foundryvtt-0.0.1.zip"
 }

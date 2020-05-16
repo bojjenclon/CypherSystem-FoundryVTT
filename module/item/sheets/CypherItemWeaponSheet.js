@@ -1,6 +1,6 @@
-import { NUMENERA } from "../../config.js";
+import { CYPHER_SYSTEM } from "../../config.js";
 
-export class NumeneraSkillItemSheet extends ItemSheet {
+export class CypherItemWeaponSheet extends ItemSheet {
     /**
      * Define default rendering options for the weapon sheet
      * @return {Object}
@@ -21,13 +21,15 @@ export class NumeneraSkillItemSheet extends ItemSheet {
      * @type {String}
      */
     get template() {
-        return "systems/numenera/templates/item/skillSheet.html";
+        return "systems/cypher-system/templates/item/weaponSheet.html";
     }
 
     getData() {
         const sheetData = super.getData();
 
-        sheetData.stats = [""].concat(NUMENERA.stats);
+        sheetData.ranges = CYPHER_SYSTEM.ranges;
+        sheetData.weaponTypes = CYPHER_SYSTEM.weaponTypes;
+        sheetData.weights = CYPHER_SYSTEM.weightClasses;
 
         return sheetData;
     }

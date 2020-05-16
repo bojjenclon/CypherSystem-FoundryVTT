@@ -1,12 +1,12 @@
 $border-color: #325d6d;
 $font-stack: Ogirema;
 
-span.numenera-message-special {
+span.csr-message-special {
     font-weight: bold;
     font-size: large;
 }
 
-form.numenera {
+form.csr {
     overflow: scroll;
     font-family: $font-stack;
 
@@ -149,7 +149,7 @@ form.numenera {
             border: 0;
         }
 
-        &.numenera {
+        &.csr {
             h2 {
                 margin: 0;
                 flex: 0;

@@ -1,11 +1,11 @@
-import { NUMENERA } from "../../config.js";
+import { CYPHER_SYSTEM } from "../../config.js";
 
 /**
- * Extend the basic ActorSheet class to do all the Numenera things!
+ * Extend the basic ActorSheet class to do all the Cypher System things!
  *
  * @type {ActorSheet}
  */
-export class NumeneraNPCActorSheet extends ActorSheet {
+export class CypherActorNPCSheet extends ActorSheet {
   /**
    * Define default rendering options for the NPC sheet
    * @return {Object}
@@ -22,7 +22,7 @@ export class NumeneraNPCActorSheet extends ActorSheet {
    * @type {String}
    */
   get template() {
-    return "systems/numenera/templates/npcSheet.html";
+    return "systems/cypher-system/templates/npcSheet.html";
   }
 
   /**
@@ -31,7 +31,7 @@ export class NumeneraNPCActorSheet extends ActorSheet {
   getData() {
     const sheetData = super.getData();
 
-    sheetData.ranges = NUMENERA.ranges;
+    sheetData.ranges = CYPHER_SYSTEM.ranges;
 
     return sheetData;
   }
@@ -40,7 +40,7 @@ export class NumeneraNPCActorSheet extends ActorSheet {
    * Add character sheet-specific event listeners.
    *
    * @param {*} html
-   * @memberof ActorSheetNumeneraNPC
+   * @memberof CypherActorNPCSheet
    */
   activateListeners(html) {
     super.activateListeners(html);
@@ -54,7 +54,7 @@ export class NumeneraNPCActorSheet extends ActorSheet {
    * Handles the click event on add/delete attack controls.
    *
    * @param {*} event
-   * @memberof NumeneraNPCActorSheet
+   * @memberof CypherActorNPCSheet
    */
   async onAttackControl(event) {
     event.preventDefault();
@@ -110,7 +110,7 @@ export class NumeneraNPCActorSheet extends ActorSheet {
    * @private
    */
   async _updateObject(event, formData) {
-    //TODO this is repeated in NumeneraPCActorSheet, try to abstract all of this a bit plz
+    //TODO this is repeated in CypherActorPCSheet, try to abstract all of this a bit plz
     const fd = expandObject(formData);
 
     const formAttacks = fd.data.attacks || {};

@@ -1,4 +1,4 @@
-import { NUMENERA } from '../config.js';
+import { CYPHER_SYSTEM } from '../config.js';
 
 const effortObject = {
   cost: 0,
@@ -7,9 +7,9 @@ const effortObject = {
 };
 
 /**
- * Extend the base Actor class to implement additional logic specialized for Numenera.
+ * Extend the base Actor class to implement additional logic specialized for the Cypher System.
  */
-export class NumeneraPCActor extends Actor {
+export class CypherActorPC extends Actor {
 
   getInitiativeFormula() {
     //Check for an initiative skill
@@ -49,7 +49,7 @@ export class NumeneraPCActor extends Actor {
    *
    * @param {string} skillId
    * @returns {Number}
-   * @memberof ActorNumeneraPC
+   * @memberof CypherActorPC
    */
   getSkillLevel(skillId) {
     const skill = this.data.data.skills[skillId];
@@ -74,7 +74,7 @@ export class NumeneraPCActor extends Actor {
    * @param {number} [level=1] Skill level (0 = untrained, 1 = trained, 2 = specialized)
    * @param {boolean} [inability=false] Inability
    * @returns The new skill object
-   * @memberof ActorNumeneraPC
+   * @memberof CypherActorPC
    */
   addSkill(name, stat, level=1, inability=false) {
     if (this.getSkillLevel(name)) {
@@ -99,7 +99,7 @@ export class NumeneraPCActor extends Actor {
    *
    * @param {string} skillId String ID of the skill to delete
    * @returns The remaining skills
-   * @memberof ActorNumeneraPC
+   * @memberof CypherActorPC
    */
   deleteSkill(skillId) {
     if (!this.data.data.skills.hasOwnProperty(skillId)) {
@@ -115,7 +115,7 @@ export class NumeneraPCActor extends Actor {
    *
    * @param {string} statId
    * @returns {Array}
-   * @memberof ActorNumeneraPC
+   * @memberof CypherActorPC
    */
   filterSkillsByStat(statId) {
     if (!statId) {
@@ -191,7 +191,7 @@ export class NumeneraPCActor extends Actor {
   async createEmbeddedEntity(...args) {
     const [_, data] = args;
 
-    //Prepare numenera items by rolling their level, if they don't have one already
+    //Prepare cypher items by rolling their level, if they don't have one already
     if (data.data && ['artifact', 'cypher'].indexOf(data.type) !== -1) {
       const itemData = data.data;
 

@@ -1,6 +1,6 @@
 /**
  * Roll initiative for one or multiple Combatants within the Combat entity
- * An override of the stock function inside Foundry with Numenera-specific features, some decision-making is
+ * An override of the stock function inside Foundry with Cypher System-specific features, some decision-making is
  * done by the individual actors now
  *
  * @param {Array|string} ids        A Combatant id or Array of ids for which to roll
@@ -33,7 +33,7 @@ export const rollInitiative = async function (
       const roll = new Roll(cf, rollData).roll();
       updates.push({ _id: id, initiative: roll.total });
 
-      // In Numenera, initiative is fixed for NPCs so don't spam the chat with constant values!
+      // In Cypher System, initiative is fixed for NPCs so don't spam the chat with constant values!
       if (c.actor.data.type === "pc") {
         // Determine the roll mode
         let rollMode =  messageOptions.rollMode || game.settings.get("core", "rollMode");
@@ -90,7 +90,7 @@ export const rollInitiative = async function (
 
 /**
  * Acquire the default dice formula which should be used to roll initiative for a particular combatant.
- * In the case of Numenera, the Actor provides its own formula, which changes from PCs to NPCs.
+ * In the case of Cypher System, the Actor provides its own formula, which changes from PCs to NPCs.
  * @private
  *
  * @param {Object} combatant      Data for the specific combatant for whom to acquire an initiative formula. This

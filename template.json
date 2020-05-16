@@ -85,7 +85,7 @@
                 "order": -1,
                 "version": 3
             },
-            "numenera": {
+            "cypher": {
                 "identified": false,
                 "level": null,
                 "levelDie": "",
@@ -119,7 +119,7 @@
             "additionalSpeedEffortCost": 1
         },
         "artifact": {
-            "templates": ["carriable", "common", "numenera"],
+            "templates": ["carriable", "common", "cypher"],
             "depletion": {
                 "isDepleting": true,
                 "die": "d6",
@@ -127,7 +127,7 @@
             }
         },
         "cypher": {
-            "templates": ["carriable", "common", "numenera"]
+            "templates": ["carriable", "common", "cypher"]
         },
         "equipment": {
             "templates": ["common", "sellable"]

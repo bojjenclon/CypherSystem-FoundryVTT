@@ -1,6 +1,6 @@
-import { NUMENERA } from '../config.js';
+import { CYPHER_SYSTEM } from '../config.js';
 
-export class NumeneraWeaponItem extends Item {
+export class CypherItemWeapon extends Item {
 
     get type() {
         return "weapon";
@@ -19,21 +19,21 @@ export class NumeneraWeaponItem extends Item {
             itemData.name = this.data.name || "New Weapon";
 
         itemData.damage = itemData.damage || 1;
-        itemData.range = itemData.range || NUMENERA.ranges[0];
-        itemData.weaponType = itemData.weaponType || NUMENERA.weaponTypes[0];
-        itemData.weight = itemData.weight || NUMENERA.weightClasses[0];
+        itemData.range = itemData.range || CYPHER_SYSTEM.ranges[0];
+        itemData.weaponType = itemData.weaponType || CYPHER_SYSTEM.weaponTypes[0];
+        itemData.weight = itemData.weight || CYPHER_SYSTEM.weightClasses[0];
         itemData.notes = itemData.notes || "";
 
-        itemData.ranges = NUMENERA.ranges;
+        itemData.ranges = CYPHER_SYSTEM.ranges;
 
-        itemData.weightClasses = NUMENERA.weightClasses.map(weightClass => {
+        itemData.weightClasses = CYPHER_SYSTEM.weightClasses.map(weightClass => {
             return {
                 label: weightClass,
                 checked: weightClass === itemData.weight,
             }
         });
 
-        itemData.weaponTypes = NUMENERA.weaponTypes.map(weaponType => {
+        itemData.weaponTypes = CYPHER_SYSTEM.weaponTypes.map(weaponType => {
             return {
                 label: weaponType,
                 checked: weaponType === itemData.type,

@@ -1,31 +1,31 @@
-export const NUMENERA = {};
+export const CYPHER_SYSTEM = {};
 
-NUMENERA.weightClasses = [
+CYPHER_SYSTEM.weightClasses = [
   'Light',
   'Medium',
   'Heavy'
 ];
 
-NUMENERA.weaponTypes = [
+CYPHER_SYSTEM.weaponTypes = [
   'Bashing',
   'Bladed',
   'Ranged',
 ]
 
-NUMENERA.stats = [
+CYPHER_SYSTEM.stats = [
   'Might',
   'Speed',
   'Intellect',
 ];
 
-NUMENERA.skillLevels = {
+CYPHER_SYSTEM.skillLevels = {
   'i': 'Inability',
   'u': 'Untrained',
   't': 'Trained',
   's': 'Specialized'
 };
 
-NUMENERA.types = [
+CYPHER_SYSTEM.types = [
   {
     abbrev: 'a',
     name: 'Arkus',
@@ -52,7 +52,7 @@ NUMENERA.types = [
   },
 ];
 
-NUMENERA.typePowers = {
+CYPHER_SYSTEM.typePowers = {
   'g': 'Combat Maneuvers',
   'j': 'Tricks of the Trade',
   'n': 'Esoteries',
@@ -61,7 +61,7 @@ NUMENERA.typePowers = {
   'w': 'Inspired Techniques',
 };
 
-NUMENERA.damageTrack = [
+CYPHER_SYSTEM.damageTrack = [
   {
     label: 'Hale',
     description: 'Normal state for a character.'
@@ -80,14 +80,14 @@ NUMENERA.damageTrack = [
   }
 ];
 
-NUMENERA.recoveries = {
+CYPHER_SYSTEM.recoveries = {
   'action': '1 Action',
   'tenMin': '10 min',
   'oneHour': '1 hour',
   'tenHours': '10 hours'
 };
 
-NUMENERA.advances = {
+CYPHER_SYSTEM.advances = {
   'statPools': '+4 to stat pools',
   'effort': '+1 to Effort',
   'edge': '+1 to Edge',
@@ -95,16 +95,16 @@ NUMENERA.advances = {
   'other': 'Other',
 };
 
-NUMENERA.ranges = [
+CYPHER_SYSTEM.ranges = [
   'Immediate',
   'Short',
   'Long',
   'Very Long'
 ];
 
-NUMENERA.optionalRanges = ["N/A"].concat(NUMENERA.ranges);
+CYPHER_SYSTEM.optionalRanges = ["N/A"].concat(CYPHER_SYSTEM.ranges);
 
-NUMENERA.abilityTypes = [
+CYPHER_SYSTEM.abilityTypes = [
   'Action',
   'Enabler',
 ];

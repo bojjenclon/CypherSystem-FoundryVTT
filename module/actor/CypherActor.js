@@ -1,8 +1,8 @@
-import { NumeneraNPCActor } from "./NumeneraNPCActor.js";
-import { NumeneraPCActor } from "./NumeneraPCActor.js";
+import { CypherActorNPC } from "./CypherActorNPC.js";
+import { CypherActorPC } from "./CypherActorPC.js";
 
 /**
- * Numenera Actor base class
+ * Cypher System Actor base class
  *
  * Acts as a mix of factory and proxy: depending on its "type" argument,
  * creates an object of the right class (also extending Actor) and simply
@@ -13,16 +13,16 @@ import { NumeneraPCActor } from "./NumeneraPCActor.js";
  *
  * @export
  */
-export const NumeneraActor = new Proxy(function () {}, {
+export const CypherActor = new Proxy(function () {}, {
   //Calling a constructor from this proxy object
   construct: function (target, args) {
     const [data] = args;
     switch (data.type) {
       case "pc":
-        return new NumeneraPCActor(...args);
+        return new CypherActorPC(...args);
 
       case "npc":
-        return new NumeneraNPCActor(...args);
+        return new CypherActorNPC(...args);
 
       default:
         throw new Error("Unsupported Entity type for create(): " + data.type);
@@ -36,9 +36,9 @@ export const NumeneraActor = new Proxy(function () {}, {
         return function (data, options) {
           switch (data.type) {
             case "pc":
-              return NumeneraPCActor.create(data, options);
+              return CypherActorPC.create(data, options);
             case "npc":
-              return NumeneraNPCActor.create(data, options);
+              return CypherActorNPC.create(data, options);
             default:
               throw new Error(
                 "Unsupported Entity type for create(): " + data.type
@@ -50,8 +50,8 @@ export const NumeneraActor = new Proxy(function () {}, {
         //Applying the "instanceof" operator on the instance object
         return function (instance) {
           return (
-            instance instanceof NumeneraPCActor ||
-            instance instanceof NumeneraNPCActor
+            instance instanceof CypherActorPC ||
+            instance instanceof CypherActorNPC
           );
         };
       default:

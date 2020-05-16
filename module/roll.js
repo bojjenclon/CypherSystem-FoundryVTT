@@ -1,8 +1,8 @@
-/* Dice roll for Numenera
+/* Dice roll for CypherSystem
 
 Rolls a d20 and then determines your success level. Handles 1s, 19s and 20s too.
 */
-export function numeneraRoll(levelModifier = 0) {
+export function cypherRoll(levelModifier = 0) {
   const d20 = new Roll("d20").roll();
 
   d20.level = Math.floor(d20.total / 3) + levelModifier;
@@ -66,7 +66,7 @@ export class CypherRolls {
       return roll;
     }
 
-    const template = 'systems/numenera/templates/dialogs/roll-dialog.html';
+    const template = 'systems/cypher-system/templates/dialogs/roll-dialog.html';
     let dialogData = {
       formula: filtered.join(' '),
       maxEffort: maxEffort,
