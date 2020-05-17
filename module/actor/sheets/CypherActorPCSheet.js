@@ -274,7 +274,7 @@ export class CypherActorPCSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    const abilitiesTable = html.find("table.abilities");
+    const abilitiesTable = html.find("div.grid.abilities");
     abilitiesTable.on("click", ".ability-create", this.onAbilityCreate.bind(this));
     abilitiesTable.on("click", ".ability-info-btn", this.onAbilityEdit.bind(this));
     abilitiesTable.on("click", ".ability-use-btn", this.onAbilityUse.bind(this));
@@ -308,7 +308,7 @@ export class CypherActorPCSheet extends ActorSheet {
     //Make sure to make a copy of the options object, otherwise only the first call
     //to Dragula seems to work
     const drakes = [];
-    drakes.push(dragula([document.querySelector("table.abilities > tbody")], Object.assign({}, dragulaOptions)));
+    drakes.push(dragula([document.querySelector("div.grid.abilities > tbody")], Object.assign({}, dragulaOptions)));
     drakes.push(dragula([document.querySelector("table.skills > tbody")], Object.assign({}, dragulaOptions)));
     drakes.push(dragula([document.querySelector("div.grid.weapons > .body")], Object.assign({}, dragulaOptions)));
 

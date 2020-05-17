@@ -273,10 +273,6 @@ form.csr {
                     align-items: center;
                     padding    : 5px 10px;
 
-                    &[class$="-name"] {
-                        padding-left: 3%;
-                    }
-
                     &[class$="-info"],
                     &[class$="-use"],
                     &[class$="-delete"] {
@@ -294,7 +290,9 @@ form.csr {
                             border: none;
 
                             div[class^="col-"] {
+                                justify-content: flex-end;
                                 padding: 0;
+                                padding-right: 6px;
                             }
                         }
                     }
@@ -349,6 +347,16 @@ form.csr {
                                 &[class$="-drag"] {
                                     padding-left: 4px;
                                 }
+                            }
+                        }
+                    }
+
+                    &[class$="-actions"] {
+                        .row {
+                            div[class^="col-"] {
+                                display: flex;
+                                justify-content: flex-end;
+                                padding-right: 4px;
                             }
                         }
                     }

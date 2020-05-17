@@ -167,60 +167,96 @@
         </div>
 
         <div class="tab abilities" data-group="primary" data-tab="abilities">
-            <table class="abilities">
-                <thead>
-                    <tr>
-                        <td class="ability-drag"></td>
-                        <td class="ability-name">Name</td>
-                        <td class="ability-type">Type</td>
-                        <td class="ability-stat">Stat</td>
-                        <td class="ability-cost">Cost</td>
-                        <td class="ability-range">Range</td>
-                        <td class="ability-info">Info</td>
-                        <td class="ability-use">Use</td>
-                        <td><a class="ability-create" data-action="create" title="Create"><i
-                                    class="fas fa-plus"></i></a></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each data.items.abilities as |ability| }}
-                    <tr class="ability" data-item-id="{{ability._id}}" data-prder="{{ability.data.order}}">
-                        <td class="ability-drag">
-                            <a><i class="fas fa-grip-vertical handle"></i></a>
-                        </td>
-                        <td class="ability-name">
-                            <p class="ability-name">{{ability.name}}</p>
-                        </td>
-                        <td class="ability-type">
+            <div class="grid abilities">
+                <div class="head">
+                    <div class="row">
+                        <div class="col-xs-3 ability-name">
+                            <p>Name</p>
+                        </div>
+                        <div class="col-xs-1 ability-type">
+                            <p>Type</p>
+                        </div>
+                        <div class="col-xs-1 ability-stat">
+                            <p>Stat</p>
+                        </div>
+                        <div class="col-xs-1 ability-cost">
+                            <p>Cost</p>
+                        </div>
+                        <div class="col-xs-2 ability-range">
+                            <p>Range</p>
+                        </div>
+                        <div class="col-xs-3 ability-notes">
+                            <p>Notes</p>
+                        </div>
+                        <div class="col-xs-1 ability-actions">
+                            <div class="row">
+                                <div class="col-xs-offset-6 col-xs-6">
+                                    <p><a class="ability-create" title="Create"><i class="fas fa-plus"></i></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="body">
+                    {{#each data.items.abilities as |ability|}}
+                    <div class="row middle-xs ability" data-item-id="{{ability._id}}" data-prder="{{ability.data.order}}">
+                        <div class="col-xs-3 ability-drag-name">
+                            <div class="row">
+                                <div class="col-xs-1 ability-drag">
+                                    <a><i class="fas fa-grip-vertical handle"></i></a>
+                                </div>
+                                <div class="col-xs-11 ability-name">
+                                    <p>{{ability.name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-1 ability-type">
                             {{#if ability.data.isAction}}
-                            <p class="ability-name">Action</p>
+                            <p class="ability-type">Action</p>
                             {{else}}
-                            <p class="ability-name">Enabler</p>
+                            <p class="ability-type">Enabler</p>
                             {{/if}}
-                        </td>
-                        <td class="ability-stat">
+                        </div>
+                        <div class="col-xs-1 ability-stat">
                             <p>{{ability.data.cost.pool}}</p>
-                        </td>
-                        <td class="ability-cost">
+                        </div>
+                        <div class="col-xs-1 ability-cost">
                             <p>{{ability.data.cost.amount}}</p>
-                        </td>
-                        <td class="ability-range">
+                        </div>
+                        <div class="col-xs-2 ability-range">
                             <p>{{ability.data.range}}</p>
-                        </td>
-                        <td class="ability-info">
-                            <a class="ability-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
-                        </td>
-                        <td class="ability-use">
-                            <a class="ability-use-btn" data-action="use" title="Use"><i class="fas fa-dice-d20"></i></a>
-                        </td>
-                        <td class="ability-delete">
-                            <a class="ability-delete-btn" data-action="delete" title="Delete"><i
-                                    class="fas fa-trash"></i></a>
-                        </td>
-                    </tr>
+                        </div>
+                        <div class="col-xs-3 ability-notes">
+                            <p>{{ability.data.notes}}</p>
+                        </div>
+                        <div class="col-xs-1 ability-actions">
+                            <div class="row">
+                                <div class="col-xs-4 ability-info">
+                                    <a class="ability-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
+                                </div>
+                                <div class="col-xs-4 ability-use">
+                                    <a class="ability-use-btn" data-action="use" title="Use"><i class="fas fa-dice-d20"></i></a>
+                                </div>
+                                <div class="col-xs-4 ability-delete">
+                                    <a class="ability-delete" data-action="delete" title="Delete"><i
+                                        class="fas fa-trash"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>
+                                No abilities yet. Create one by clicking the <a><i class="fas fa-plus"></i></a> icon on
+                                the top right of the table or pick one from the Items Directory or a Compendium and drag
+                                it here.
+                            </p>
+                        </div>
+                    </div>
                     {{/each}}
-                </tbody>
-            </table>
+                </div>
+            </div>
         </div>
 
         <div class="tab csr" data-group="primary" data-tab="csr">
