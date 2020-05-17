@@ -2,6 +2,7 @@ import { CYPHER_SYSTEM } from "../../config.js";
 import { CypherItemAbility } from "../../item/CypherItemAbility.js";
 import { CypherItemSkill } from "../../item/CypherItemSkill.js";
 import { CypherItemWeapon } from "../../item/CypherItemWeapon.js";
+import { CypherItemArmor } from "../../item/CypherItemArmor.js";
 import { CypherItemGear } from "../../item/CypherItemGear.js";
 
 import { CypherRolls } from '../../roll.js';
@@ -147,6 +148,8 @@ export class CypherActorPCSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       scrollY: [
         "form.csr div.grid.weapons",
+        "form.csr div.grid.armor",
+        "form.csr div.grid.gear",
         "form.csr div.grid.skills",
         "form.csr div.grid.abilities",
         "form.csr ul.artifacts",
@@ -176,6 +179,7 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onAbilityCreate = onItemCreate("ability", CypherItemAbility);
     this.onSkillCreate = onItemCreate("skill", CypherItemSkill);
     this.onWeaponCreate = onItemCreate("weapon", CypherItemWeapon);
+    this.onArmorCreate = onItemCreate("armor", CypherItemArmor);
     this.onGearCreate = onItemCreate("gear", CypherItemGear);
 
     //Edit event handlers
@@ -184,6 +188,7 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onCypherEdit = onItemEditGenerator(".cypher");
     this.onSkillEdit = onItemEditGenerator(".skill");
     this.onWeaponEdit = onItemEditGenerator(".weapon");
+    this.onArmorEdit = onItemEditGenerator(".armor");
     this.onGearEdit = onItemEditGenerator(".gear");
 
     //Use event handlers
@@ -197,6 +202,7 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onOddityDelete = onItemDeleteGenerator(".oddity");
     this.onSkillDelete = onItemDeleteGenerator(".skill");
     this.onWeaponDelete = onItemDeleteGenerator(".weapon");
+    this.onArmorDelete = onItemDeleteGenerator(".armor");
     this.onGearDelete = onItemDeleteGenerator(".gear");
   }
 
@@ -248,7 +254,6 @@ export class CypherActorPCSheet extends ActorSheet {
       };
     });
 
-    //Weapons section
     sheetData.data.items = sheetData.actor.items || {};
 
     const items = sheetData.data.items;
@@ -264,6 +269,8 @@ export class CypherActorPCSheet extends ActorSheet {
       sheetData.data.items.skills = items.filter(i => i.type === "skill").sort(sortFunction);
     if (!sheetData.data.items.weapons)
       sheetData.data.items.weapons = items.filter(i => i.type === "weapon").sort(sortFunction);
+    if (!sheetData.data.items.armor)
+      sheetData.data.items.armor = items.filter(i => i.type === "armor").sort(sortFunction);
     if (!sheetData.data.items.gear)
       sheetData.data.items.gear = items.filter(i => i.type === "gear").sort(sortFunction);
 
@@ -332,6 +339,11 @@ export class CypherActorPCSheet extends ActorSheet {
     weaponsTable.on("click", ".weapon-info-btn", this.onWeaponEdit.bind(this));
     weaponsTable.on("click", ".weapon-delete", this.onWeaponDelete.bind(this));
 
+    const armorTable = html.find("div.grid.armor");
+    armorTable.on("click", ".armor-create", this.onArmorCreate.bind(this));
+    armorTable.on("click", ".armor-info-btn", this.onArmorEdit.bind(this));
+    armorTable.on("click", ".armor-delete", this.onArmorDelete.bind(this));
+
     const gearTable = html.find("div.grid.gear");
     gearTable.on("click", ".gear-create", this.onGearCreate.bind(this));
     gearTable.on("click", ".gear-info-btn", this.onGearEdit.bind(this));
@@ -353,6 +365,8 @@ export class CypherActorPCSheet extends ActorSheet {
     drakes.push(dragula([document.querySelector("div.grid.abilities > tbody")], Object.assign({}, dragulaOptions)));
     drakes.push(dragula([document.querySelector("div.grid.skills > tbody")], Object.assign({}, dragulaOptions)));
     drakes.push(dragula([document.querySelector("div.grid.weapons > .body")], Object.assign({}, dragulaOptions)));
+    drakes.push(dragula([document.querySelector("div.grid.armor > .body")], Object.assign({}, dragulaOptions)));
+    drakes.push(dragula([document.querySelector("div.grid.gear > .body")], Object.assign({}, dragulaOptions)));
 
     drakes.push(dragula([document.querySelector("ul.artifacts")], Object.assign({}, dragulaOptions)));
     drakes.push(dragula([document.querySelector("ul.cyphers")], Object.assign({}, dragulaOptions)));

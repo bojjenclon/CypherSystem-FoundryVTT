@@ -454,13 +454,92 @@
                             </div>
                         </div>
                         {{else}}
-                        <tr>
-                            <td colspan="8">
-                                No weapons yet. Create one by clicking the <a><i class="fas fa-plus"></i></a> icon on
-                                the top right of the table or pick one from the Items Directory or a Compendium and drag
-                                it here.
-                            </td>
-                        </tr>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p>
+                                    No weapons yet. Create one by clicking the <a><i class="fas fa-plus"></i></a> icon on
+                                    the top right of the table or pick one from the Items Directory or a Compendium and drag
+                                    it here.
+                                </p>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <h2>Armor</h2>
+                <div class="grid armor">
+                    <div class="head">
+                        <div class="row">
+                            <div class="col-xs-2 armor-name">
+                                <p>Name</p>
+                            </div>
+                            <div class="col-xs-1 armor-weight">
+                                <p>Weight</p>
+                            </div>
+                            <div class="col-xs-1 armor-armor">
+                                <p>Armor</p>
+                            </div>
+                            <div class="col-xs-2 armor-speed">
+                                <p>Speed Effort Cost</p>
+                            </div>
+                            <div class="col-xs-5 armor-notes">
+                                <p>Notes</p>
+                            </div>
+                            <div class="col-xs-1 armor-actions">
+                                <div class="row">
+                                    <div class="col-xs-offset-6 col-xs-6">
+                                        <p><a class="weapon-create" title="Create"><i class="fas fa-plus"></i></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        {{#each data.items.armor as |armor|}}
+                        <div class="row middle-xs armor" data-item-id="{{armor._id}}" data-prder="{{armor.data.order}}">
+                            <div class="col-xs-2 armor-drag-name">
+                                <span class="armor-drag">
+                                    <a><i class="fas fa-grip-vertical handle"></i></a>
+                                </span>
+                                <span class="armor-name">
+                                    <p>{{armor.name}}</p>
+                                </span>
+                            </div>
+                            <div class="col-xs-1 armor-weight">
+                                <p>{{armor.data.armor}}</p>
+                            </div>
+                            <div class="col-xs-1 armor-armor">
+                                <p>{{armor.data.armor}}</p>
+                            </div>
+                            <div class="col-xs-2 armor-speed">
+                                <p>{{weapon.data.additionalSpeedEffortCost}}</p>
+                            </div>
+                            <div class="col-xs-5 armor-notes">
+                                <p>{{weapon.data.notes}}</p>
+                            </div>
+                            <div class="col-xs-1 armor-actions">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <a class="armor-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <a class="armor-delete" data-action="delete" title="Delete"><i
+                                            class="fas fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p>
+                                    No armor yet. Create one by clicking the <a><i class="fas fa-plus"></i></a> icon on
+                                    the top right of the table or pick one from the Items Directory or a Compendium and drag
+                                    it here.
+                                </p>
+                            </div>
+                        </div>
                         {{/each}}
                     </div>
                 </div>
@@ -529,10 +608,10 @@
                         {{/each}}
                     </div>
                 </div>
-            </>
+            </div>
         </div>
 
-        <div class="tab description" data-group="primary" data-tab="bio">
+        <div class="tab bio" data-group="primary" data-tab="bio">
             <textarea name="data.background">{{data.background}}</textarea>
         </div>
     </section>

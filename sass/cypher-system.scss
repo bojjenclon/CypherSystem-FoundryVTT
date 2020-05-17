@@ -33,8 +33,24 @@ span.csr-message-special {
 }
 
 form.csr {
+    display: flex;
+    flex-direction: column;
+
     overflow   : scroll;
     font-family: $font-stack;
+
+    #pc-sheet-body {
+        flex: 1;
+
+        .tab[data-tab].active {
+            height: 100%;
+
+            &.bio > textarea {
+                height: 100%;
+                resize: none;
+            }
+        }
+    }
 
     a i.handle {
         cursor: move;
