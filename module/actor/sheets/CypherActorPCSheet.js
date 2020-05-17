@@ -106,9 +106,9 @@ export class CypherActorPCSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       scrollY: [
-        "form.csr table.weapons",
-        "form.csr table.skills",
-        "form.csr table.abilities",
+        "form.csr div.grid.weapons",
+        "form.csr div.grid.skills",
+        "form.csr div.grid.abilities",
         "form.csr ul.artifacts",
         "form.csr ul.cyphers",
         "form.csr ul.oddities",
@@ -280,10 +280,10 @@ export class CypherActorPCSheet extends ActorSheet {
     abilitiesTable.on("click", ".ability-use-btn", this.onAbilityUse.bind(this));
     abilitiesTable.on("click", ".ability-delete-btn", this.onAbilityDelete.bind(this));
 
-    const skillsTable = html.find("table.skills");
+    const skillsTable = html.find("div.grid.skills");
     skillsTable.on("click", ".skill-create", this.onSkillCreate.bind(this));
+    skillsTable.on("click", ".skill-info-btn", this.onSkillEdit.bind(this));
     skillsTable.on("click", ".skill-delete", this.onSkillDelete.bind(this));
-    skillsTable.on("change", "input,select", this.onSkillEdit.bind(this));
 
     const weaponsTable = html.find("div.grid.weapons");
     weaponsTable.on("click", ".weapon-create", this.onWeaponCreate.bind(this));
@@ -309,7 +309,7 @@ export class CypherActorPCSheet extends ActorSheet {
     //to Dragula seems to work
     const drakes = [];
     drakes.push(dragula([document.querySelector("div.grid.abilities > tbody")], Object.assign({}, dragulaOptions)));
-    drakes.push(dragula([document.querySelector("table.skills > tbody")], Object.assign({}, dragulaOptions)));
+    drakes.push(dragula([document.querySelector("div.grid.skills > tbody")], Object.assign({}, dragulaOptions)));
     drakes.push(dragula([document.querySelector("div.grid.weapons > .body")], Object.assign({}, dragulaOptions)));
 
     drakes.push(dragula([document.querySelector("ul.artifacts")], Object.assign({}, dragulaOptions)));

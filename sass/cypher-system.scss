@@ -258,6 +258,11 @@ form.csr {
 
             .row {
                 border: 1px solid #7a7971;
+
+                div[class^="col-"].center {
+                    text-align: center;
+                    justify-content: center;
+                }
             }
 
             .head {
