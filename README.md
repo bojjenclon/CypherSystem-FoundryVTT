@@ -1,3 +1,13 @@
+Forked from [Numenera-FoundryVTT](https://github.com/SolarBear/Numenera-FoundryVTT) by [SolarBear](https://github.com/SolarBear).
+
+This is a series of modifications to the above's work to:
+1. Convert it from Numenera to the more generic Cypher System
+2. Modify some of the behavior to better suit my personal needs
+
+This is in no way intended to be an insult to SolarBear's work; in fact, I'm quite grateful to him for providing a foundation I can build off of. I simply have my own opinions about how to improve the system, so I decided to implement them myself.
+
+---
+
 # CypherSystem-FoundryVTT
 
 ## What is this?
