@@ -96,9 +96,24 @@ form.csr {
     &.pc {
         input[data-dtype="Number"] {
             width: 2em;
+            height: 24px;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 1px 3px;
+            margin: 0;
+            color: #191813;
+            border: 1px solid #7a7971;
+            border-radius: 3px;
+            user-select: text;
+            text-align: center;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
 
             &.tier {
-                width: 1ch;
+                width: calc(1rem + 1ch);
             }
         }
     }
@@ -208,25 +223,6 @@ form.csr {
         div.stats {
             padding: 0.3em 0 0.3em 0;
             text-align: center;
-
-            input[type="number"] {
-                min-width: 20px;
-                height: 24px;
-                background: rgba(0, 0, 0, 0.05);
-                padding: 1px 3px;
-                margin: 0;
-                color: #191813;
-                border: 1px solid #7a7971;
-                border-radius: 3px;
-                user-select: text;
-                text-align: center;
-
-                &::-webkit-outer-spin-button,
-                &::-webkit-inner-spin-button {
-                    -webkit-appearance: none;
-                    margin: 0;
-                }
-            }
 
             h2 {
                 text-transform: capitalize;

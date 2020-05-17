@@ -25,20 +25,20 @@
                                 max="{{stat.pool.maximum}}" placeholder="0" />
                             /
                             Pool <input name="data.stats.{{id}}.pool.maximum" type="number"
-                                value="{{stat.pool.maximum}}" class="stats" data-dtype="Number" min="0"
+                                value="{{stat.pool.maximum}}" class="stats" data-dtype="Number" min="0" max="99"
                                 placeholder="0" />
                         </h3>
 
                         <h3>Edge <input name="data.stats.{{id}}.edge" type="number" value="{{stat.edge}}" class="stats"
-                                data-dtype="Number" min="0" placeholder="0" /></h3>
+                                data-dtype="Number" min="0" max="99" placeholder="0" /></h3>
                     </div>
                     {{/each}}
                 </div>
                 <div class="flexrow">
                     <div class="stats">
-                        <h2>Tier <input type="text" name="data.tier" value="{{data.tier}}" placeholder="1" min="1"
+                        <h2>Tier <input type="number" name="data.tier" value="{{data.tier}}" placeholder="1" min="1"
                                 max="6" data-dtype="Number" class="tier" />
-                            Effort <input type="text" name="data.effort" value="{{data.effort}}" placeholder="1" min="1"
+                            Effort <input type="number" name="data.effort" value="{{data.effort}}" placeholder="1" min="1" max="99"
                                 data-dtype="Number" class="tier" />
                         </h2>
                         <h2>Damage track</h2>
@@ -56,7 +56,7 @@
                     <div class="stats advances">
                         <h2>Advancement</h2>
                         <h3>
-                            <input type="text" name="data.xp" value="{{data.xp}}" placeholder="0" min="0"
+                            <input type="number" name="data.xp" value="{{data.xp}}" placeholder="0" min="0" max="99"
                                 data-dtype="Number" /> XP
                         </h3>
                         <ul>
@@ -73,7 +73,7 @@
                     <div class="stats recovery">
                         <h2>Recovery</h2>
                         <h3>
-                            1d6 + <input type="text" name="data.recovery" value="{{data.recovery}}"
+                            1d6 + <input type="number" name="data.recovery" value="{{data.recovery}}" min="0" max="99"
                                 data-dtype="Number" />
                         </h3>
 
@@ -86,7 +86,7 @@
                             </li>
                             {{/each}}
                         </ul>
-                        <h2>Armor&nbsp;<input type="text" name="data.armor" value="{{data.armor}}" class="armor" min="0"
+                        <h2>Armor&nbsp;<input type="number" name="data.armor" value="{{data.armor}}" class="armor" min="0" max="99"
                                 data-dtype="Number" />
                         </h2>
                     </div>
@@ -223,7 +223,7 @@
 
         <div class="tab csr" data-group="primary" data-tab="csr">
             <h2>Cyphers</h2>
-            <h3>Cypher Limit <input type="text" name="data.cypherLimit" value="{{data.cypherLimit}}"
+            <h3>Cypher Limit <input type="number" name="data.cypherLimit" value="{{data.cypherLimit}}" min="1" max="99"
                     class="cypher-limit" data-dtype="Number" /></h3>
             <ul class="cyphers">
                 {{#each data.items.cyphers as |cypher|}}
@@ -241,7 +241,7 @@
                         </label>
                         <label>Level
                             <input type="number" name="data.items.cyphers.{{cypher._id}}.data.level"
-                                value="{{cypher.data.level}}" min="1" data-dtype="Number" />
+                                value="{{cypher.data.level}}" min="1" max="99" data-dtype="Number" />
                         </label>
                         {{else}}
                         <span>Level</span> {{cypher.data.level}}
@@ -277,7 +277,7 @@
                                 data-dtype="Boolean" {{checked artifact.data.identified}} />
                         </label>
                         <label>Level
-                            <input type="number" name="data.items.artifacts.{{artifact._id}}.data.level" min="1"
+                            <input type="number" name="data.items.artifacts.{{artifact._id}}.data.level" min="1" max="99"
                                 value="{{artifact.data.level}}" />
                         </label>
                         {{else}}
@@ -361,7 +361,7 @@
                                 </select>
                             </td>
                             <td class="weapon-damage">
-                                <input type="number" name="data.items.weapons.{{weapon.name}}.damage" min="1"
+                                <input type="number" name="data.items.weapons.{{weapon.name}}.damage" min="1" max="99"
                                     value="{{weapon.data.damage}}" class="weapon-damage" />
                             </td>
                             <td class="weapon-range">
