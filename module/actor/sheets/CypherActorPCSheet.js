@@ -77,7 +77,7 @@ function onSkillUse(useClass) {
 
     CypherRolls.Roll({
       event,
-      parts: ['1d20', `+${assets}`],
+      parts: ['1d20', `+${assets * 3}`],
       data: {
         statId,
         abilityCost: 0,

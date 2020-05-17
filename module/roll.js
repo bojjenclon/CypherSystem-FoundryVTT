@@ -10,10 +10,10 @@ export function cypherRoll(levelModifier = 0) {
   return d20;
 }
 
-export function rollText(dieRoll) {
+export function rollText(dieRoll, rollTotal) {
   let parts = [];
 
-  const tnReached = Math.floor(dieRoll / 3);
+  const tnReached = Math.floor(rollTotal / 3);
   let tnColor = '#000000';
   if (tnReached < 3) {
     tnColor = '#0a860a';

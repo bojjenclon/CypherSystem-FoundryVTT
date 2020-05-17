@@ -72,7 +72,8 @@ Hooks.on("renderChatMessage", (chatMessage, html, data) => {
     if (chatMessage.roll && chatMessage.roll.dice[0].faces === 20)
     {
         const dieRoll = chatMessage.roll.dice[0].rolls[0].roll;
-        const messages = rollText(dieRoll);
+        const rollTotal = chatMessage.roll.total;
+        const messages = rollText(dieRoll, rollTotal);
         const numMessages = messages.length;
 
         const messageContainer = $('<div/>');
