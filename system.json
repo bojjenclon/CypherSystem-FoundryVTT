@@ -6,7 +6,7 @@
     "author": "bojjenclon",
     "scripts": ["lib/dragula/dragula.min.js"],
     "esmodules": ["cypher-system.js"],
-    "styles": ["cypher-system.css", "lib/dragula/dragula.min.css"],
+    "styles": ["cypher-system.css", "lib/dragula/dragula.min.css", "lib/flexbox-grid/flexboxgrid.min.css"],
     "packs": [],
     "languages": ["en"],
     "compatibleCoreVersion": "0.5.5",

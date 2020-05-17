@@ -287,6 +287,7 @@ export class CypherActorPCSheet extends ActorSheet {
 
     const weaponsTable = html.find("table.weapons");
     weaponsTable.on("click", ".weapon-create", this.onWeaponCreate.bind(this));
+    weaponsTable.on("click", ".weapon-info-btn", this.onWeaponEdit.bind(this));
     weaponsTable.on("click", ".weapon-delete", this.onWeaponDelete.bind(this));
 
     const gearTable = html.find("table.gear");

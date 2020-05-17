@@ -262,37 +262,10 @@ form.csr {
 
         table.weapons {
             td {
-                padding: 5px;
-                margin: 5px 0;
-            }
-
-            .weapon-name {
-                width: 9rem;
-            }
-
-            weapon-weight {
-                margin-right: 0.5em
-            }
-
-            .weapon-damage {
-                width: 3em;
-            }
-        }
-
-        &.tab.equipment {
-            h2 {
-                margin: 0;
-                flex: 0;
-                font-weight: bold;
-            }
-        }
-        
-        table.gear {
-            td {
                 padding: 5px 10px;
                 margin: 5px 0;
 
-                &.gear-drag {
+                &.weapon-drag {
                     width: 1px; // hack to shrink cells to the width of their contents
                     padding: 0;
                     margin: 0;
@@ -301,23 +274,53 @@ form.csr {
                         margin-left: 5px;
                     }
                 }
-    
-                &.gear-name {
+
+                &.weapon-name {
                     width: 9rem;
+
+                    p {
+                        width: 9rem;
+                    }
                 }
     
-                &.gear-price {
+                &.weapon-weight {
+                    margin-right: 0.5em
+                }
+    
+                &.weapon-weight,
+                &.weapon-type,
+                &.weapon-damage {
                     width: 3em;
+                    
+                    p {
+                        width: 3em;
+                    }
                 }
-    
-                &.gear-notes {
+
+                &.weapon-notes {
                     width: 100%;
+
+                    p {
+                        max-width: 20rem;
+                        width: 100%;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
                 }
     
-                &.gear-info,
-                &.gear-delete {
+                &.weapon-info,
+                &.weapon-delete {
                     width: 1px; // hack to shrink cells to the width of their contents
                 }
+            }
+        }
+
+        &.tab.equipment {
+            h2 {
+                margin: 0;
+                flex: 0;
+                font-weight: bold;
             }
         }
 
