@@ -1,10 +1,10 @@
 $border-color: #325d6d;
-$font-stack: Ogirema;
+$font-stack  : Ogirema;
 
 .special-messages {
-    margin: 4px;
+    margin     : 4px;
     font-weight: bold;
-    text-align: center;
+    text-align : center;
 
     .target-number {
         font-size: 1rem;
@@ -17,6 +17,7 @@ $font-stack: Ogirema;
 
 .tabs {
     .item {
+
         &.active,
         &:hover {
             color: #9c0b0b;
@@ -28,11 +29,11 @@ $font-stack: Ogirema;
 
 span.csr-message-special {
     font-weight: bold;
-    font-size: large;
+    font-size  : large;
 }
 
 form.csr {
-    overflow: scroll;
+    overflow   : scroll;
     font-family: $font-stack;
 
     a i.handle {
@@ -41,13 +42,13 @@ form.csr {
 
     /* flexrow and flexcol (ahem) "borrowed" from the D&D 5e LESS files, many thanks to atropos */
     .flewrow {
-        display: flex;
-        flex-flow: row wrap;
+        display        : flex;
+        flex-flow      : row wrap;
         justify-content: flex-start;
     }
 
     .flexcol {
-        display: flex;
+        display  : flex;
         flex-flow: column nowrap;
     }
 
@@ -56,18 +57,18 @@ form.csr {
     }
 
     h1.character {
-        font-size: 24px;
-        margin: 0;
-        border: 0;
+        font-size     : 24px;
+        margin        : 0;
+        border        : 0;
         padding-bottom: 0.25em;
 
         input {
             margin-top: 0.5em;
-            height: auto;
+            height    : auto;
 
             &.charname {
                 font-weight: bold;
-                width: 18ch;
+                width      : 18ch;
             }
 
             &.descriptor {
@@ -85,13 +86,13 @@ form.csr {
     }
 
     h1 input[type="text"] {
-        height: auto;
-        width: auto;
+        height       : auto;
+        width        : auto;
         margin-bottom: 0.25em;
     }
 
     h2 {
-        border: none;
+        border     : none;
         padding-top: 0.5em;
 
         &:not(.stat) {
@@ -109,21 +110,21 @@ form.csr {
 
     &.pc {
         input[data-dtype="Number"] {
-            width: 2rem;
-            height: 24px;
-            background: rgba(0, 0, 0, 0.05);
-            padding: 1px 3px;
-            margin: 0;
-            color: #191813;
-            border: 1px solid #7a7971;
+            width        : 2rem;
+            height       : 24px;
+            background   : rgba(0, 0, 0, 0.05);
+            padding      : 1px 3px;
+            margin       : 0;
+            color        : #191813;
+            border       : 1px solid #7a7971;
             border-radius: 3px;
-            user-select: text;
-            text-align: center;
+            user-select  : text;
+            text-align   : center;
 
             &::-webkit-outer-spin-button,
             &::-webkit-inner-spin-button {
                 -webkit-appearance: none;
-                margin: 0;
+                margin            : 0;
             }
 
             &.tier {
@@ -135,7 +136,8 @@ form.csr {
     div.header {
         border: 1px solid $border-color;
 
-        h2,h3 {
+        h2,
+        h3 {
             font-weight: bold;
         }
 
@@ -143,34 +145,34 @@ form.csr {
             margin-top: 0.25em;
         }
 
-        div.contents > div > div:not(:last-child) {
+        div.contents>div>div:not(:last-child) {
             border-right: 1px solid $border-color;
         }
 
         div.picture {
             border-right: 1px solid $border-color;
-            padding: 0.25em 0.25em 0.25em 0.25em;
-            flex: 0.4;
+            padding     : 0.25em 0.25em 0.25em 0.25em;
+            flex        : 0.4;
 
             img.profile-img {
-                border: none;
-                width: inherit;
-                max-width: 250px;
-                max-height: 400px;
+                border       : none;
+                width        : inherit;
+                max-width    : 250px;
+                max-height   : 400px;
                 margin-bottom: 1em;
             }
         }
 
-        div > div.npc-info {
+        div>div.npc-info {
             flex: 0.25;
 
             input.levelDie {
-                width: 2ch;
+                width        : 2ch;
                 align-content: center;
             }
         }
 
-        div > div.npc-stats {
+        div>div.npc-stats {
             flex: 0.5;
         }
 
@@ -191,8 +193,8 @@ form.csr {
 
         &.csr {
             h2 {
-                margin: 0;
-                flex: 0;
+                margin     : 0;
+                flex       : 0;
                 font-weight: bold;
             }
 
@@ -203,21 +205,22 @@ form.csr {
             ul {
                 padding: 0 0.75em 0 0.75em;
 
-                & > li {
-                    padding: 0.15em;
-                    border: 1px solid darkslategrey;
+                &>li {
+                    padding      : 0.15em;
+                    border       : 1px solid darkslategrey;
                     border-radius: 0.25em;
 
-                    & > h4 {
-                        font-size: large;
+                    &>h4 {
+                        font-size  : large;
                         font-weight: bold;
                     }
 
-                    & > p > span,label {
+                    &>p>span,
+                    label {
                         font-weight: bold;
                     }
 
-                    & > a {
+                    &>a {
                         float: right;
                     }
 
@@ -228,28 +231,133 @@ form.csr {
             }
         }
 
-        div.advances, div.recovery {
+        div.advances,
+        div.recovery {
             input[type="checkbox"] {
                 display: inline-block;
             }
         }
 
         div.stats {
-            padding: 0.3em 0 0.3em 0;
+            padding   : 0.3em 0 0.3em 0;
             text-align: center;
 
             h2 {
                 text-transform: capitalize;
-                padding-top: 0;
+                padding-top   : 0;
 
                 button.roll {
-                    margin-left: 1em;
+                    margin-left     : 1em;
                     background-image: url("/icons/svg/d20-grey.svg"); //!important
                 }
             }
         }
 
+        .grid {
+            padding       : 0 8px;
+
+            .row {
+                border: 1px solid #7a7971;
+            }
+
+            .head {
+                color      : #f0f0e0;
+                text-shadow: 1px 1px #000;
+
+                .row {
+                    background: rgba(0, 0, 0, 0.5);
+                }
+
+                div[class^="col-"] {
+                    display    : flex;
+                    align-items: center;
+                    padding    : 5px 10px;
+
+                    &[class$="-name"] {
+                        padding-left: 3%;
+                    }
+
+                    &[class$="-info"],
+                    &[class$="-use"],
+                    &[class$="-delete"] {
+                        justify-content: center;
+                    }
+
+                    &[class$="-actions"] {
+                        padding: 0;
+
+                        .row {
+                            margin: 0;
+                            width: 100%;
+
+                            background: none;
+                            border: none;
+
+                            div[class^="col-"] {
+                                padding: 0;
+                            }
+                        }
+                    }
+                }
+
+                p,
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    margin : 0;
+                    padding: 0;
+                }
+            }
+
+            .body {
+                color: #191813;
+
+                .row {
+                    background: rgba(0, 0, 0, 0.05);
+                }
+
+                div[class^="col-"] {
+                    padding: 5px 10px;
+
+                    // https://css-tricks.com/flexbox-truncated-text/
+                    min-width: 0;
+                    p {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    &[class$="-info"],
+                    &[class$="-use"],
+                    &[class$="-delete"] {
+                        text-align: center;
+                    }
+
+                    &[class$="-drag-name"],
+                    &[class$="-actions"] {
+                        .row {
+                            align-items: center;
+                            background: none;
+                            border: none;
+
+                            div[class^="col-"] {
+                                padding: 0;
+
+                                &[class$="-drag"] {
+                                    padding-left: 4px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         table.abilities {
+
             //Gray out ability cost controls when value is 0 or undefined 
             div.nocost {
                 opacity: 0.6;
@@ -260,85 +368,30 @@ form.csr {
             }
         }
 
-        table.weapons {
-            td {
-                padding: 5px 10px;
-                margin: 5px 0;
-
-                &.weapon-drag {
-                    width: 1px; // hack to shrink cells to the width of their contents
-                    padding: 0;
-                    margin: 0;
-    
-                    .handle {
-                        margin-left: 5px;
-                    }
-                }
-
-                &.weapon-name {
-                    width: 9rem;
-
-                    p {
-                        width: 9rem;
-                    }
-                }
-    
-                &.weapon-weight {
-                    margin-right: 0.5em
-                }
-    
-                &.weapon-weight,
-                &.weapon-type,
-                &.weapon-damage {
-                    width: 3em;
-                    
-                    p {
-                        width: 3em;
-                    }
-                }
-
-                &.weapon-notes {
-                    width: 100%;
-
-                    p {
-                        max-width: 20rem;
-                        width: 100%;
-                        overflow: hidden;
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                    }
-                }
-    
-                &.weapon-info,
-                &.weapon-delete {
-                    width: 1px; // hack to shrink cells to the width of their contents
-                }
-            }
-        }
-
         &.tab.equipment {
             h2 {
-                margin: 0;
-                flex: 0;
+                margin     : 0;
+                flex       : 0;
                 font-weight: bold;
             }
         }
 
-        table.skills, table.abilities {
+        table.skills,
+        table.abilities {
             background-color: transparent;
 
             td {
-                padding: 5px;
-                margin: 5px 0;
-                font-weight: bold;
-                font-size: 16px;
-                text-align: center;
+                padding       : 5px;
+                margin        : 5px 0;
+                font-weight   : bold;
+                font-size     : 16px;
+                text-align    : center;
                 vertical-align: center;
 
                 &.ability-drag {
-                    width: 1px; // hack to shrink cells to the width of their contents
+                    width  : 1px; // hack to shrink cells to the width of their contents
                     padding: 0;
-                    margin: 0;
+                    margin : 0;
 
                     .handle {
                         margin-left: 5px;
@@ -348,14 +401,14 @@ form.csr {
                 &.ability-info,
                 &.ability-use,
                 &.ability-delete {
-                    width: 1px; // hack to shrink cells to the width of their contents
+                    width  : 1px; // hack to shrink cells to the width of their contents
                     padding: 5px 10px;
                 }
             }
 
             tbody td input[type="text"] {
                 text-align: left;
-                width: 100%;
+                width     : 100%;
 
                 // &.skill-name-input, &.ability-name-input {
                 //     width: 95%; //HACK! find a better way plz
@@ -368,7 +421,7 @@ form.csr {
         border-bottom: 1px solid $border-color;
     }
 
-    div.description > textarea {
+    div.description>textarea {
         height: 400px;
         resize: none;
     }
@@ -385,96 +438,106 @@ form.csr {
         }
 
         div {
-            display: inline-block;
-            display: flex;
-            flex-direction: column;;
+            display       : inline-block;
+            display       : flex;
+            flex-direction: column;
+            ;
 
             textarea {
                 flex: 1;
             }
 
             &.img {
-                flex: 0.5;
+                flex        : 0.5;
                 margin-right: 0.5em;
             }
 
             &.description {
-                height: 95%;
+                height        : 95%;
                 vertical-align: top;
             }
         }
 
         textarea {
-            width: auto;
-            height: 100%; 
+            width     : auto;
+            height    : 100%;
             box-sizing: border-box;
-            margin: 0 0.5em 0 0.5em;
+            margin    : 0 0.5em 0 0.5em;
         }
 
         label {
-            clear: both;
+            clear  : both;
             display: block;
-            margin: 0.25em 0.5em 0 0.5em;
+            margin : 0.25em 0.5em 0 0.5em;
         }
     }
 
     //Tabs
     nav {
-        margin: 0.5em 0 0.5em 0;
-        border: 1px solid black;
+        margin       : 0.5em 0 0.5em 0;
+        border       : 1px solid black;
         border-radius: 8px;
     }
 
     a.item {
-        font-size: 22px;
+        font-size  : 22px;
         font-weight: bold;
     }
-    
+
     //Separators, borrowed from https://github.com/Roll20/roll20-character-sheets/blob/master/Numenera/Numenera.css
     hr.sheet-one {
-        margin: 0;
-        height: 20px;
-        border-style: solid;
-        border-color: #056da1;
-        border-width: 1px 1px 0 0;
+        margin       : 0;
+        height       : 20px;
+        border-style : solid;
+        border-color : #056da1;
+        border-width : 1px 1px 0 0;
         border-radius: 20px;
     }
 
     hr.sheet-one:before {
-        display: block;
-        content: "";
-        height: 20px;
-        margin-top: -21px;    
-        border-style: solid;
-        border-color: #056da1;
-        border-width: 0 0 1px 1px;
+        display      : block;
+        content      : "";
+        height       : 20px;
+        margin-top   : -21px;
+        border-style : solid;
+        border-color : #056da1;
+        border-width : 0 0 1px 1px;
         border-radius: 20px;
     }
 
     hr.sheet-two {
-        border: 0;
-        height: 1px;
-        background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(5,109,161,1.75), rgba(0,0,0,0)); 
-        background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(5,109,161,1.75), rgba(0,0,0,0)); 
-        background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(5,109,161,1.75), rgba(0,0,0,0)); 
-        background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(5,109,161,1.75), rgba(0,0,0,0)); 
+        border          : 0;
+        height          : 1px;
+        background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(5, 109, 161, 1.75), rgba(0, 0, 0, 0));
+        background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(5, 109, 161, 1.75), rgba(0, 0, 0, 0));
+        background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(5, 109, 161, 1.75), rgba(0, 0, 0, 0));
+        background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(5, 109, 161, 1.75), rgba(0, 0, 0, 0));
     }
-    
+
     hr.sheet-three {
-        height: 20px;
-        border-style: solid;
-        border-color: $border-color;
-        border-width: 1px 0px 0px 1px;
+        height       : 20px;
+        border-style : solid;
+        border-color : $border-color;
+        border-width : 1px 0px 0px 1px;
         border-radius: 20px;
     }
-    hr.sheet-three:before { /* Not really supposed to work, but does */
-        display: block;
-        content: "";
-        height: 20px;
-        margin-top: -21px;    
-        border-style: solid;
-        border-color: $border-color;
-        border-width: 0px 1px 1px 0px;
+
+    hr.sheet-three:before {
+        /* Not really supposed to work, but does */
+        display      : block;
+        content      : "";
+        height       : 20px;
+        margin-top   : -21px;
+        border-style : solid;
+        border-color : $border-color;
+        border-width : 0px 1px 1px 0px;
         border-radius: 20px;
+    }
+}
+
+.gu-mirror {
+    // Makes the DnD operation look smoother
+    div[class$="-drag"] {
+        align-self: center;
     }
 }

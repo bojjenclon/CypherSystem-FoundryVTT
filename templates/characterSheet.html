@@ -327,49 +327,76 @@
         <div class="tab equipment" data-group="primary" data-tab="equipment">
             <div>
                 <h2>Weapons</h2>
-                <table class="weapons">
-                    <thead>
-                        <td></td>
-                        <td>Name</td>
-                        <td>Weight</td>
-                        <td>Type</td>
-                        <td>Damage</td>
-                        <td>Range</td>
-                        <td>Info</td>
-                        <td><a class="weapon-create" title="Create"><i class="fas fa-plus"></i></a></td>
-                    </thead>
-                    <tbody>
+                <div class="grid weapons">
+                    <div class="head">
+                        <div class="row">
+                            <div class="col-xs-2 weapon-name">
+                                <p>Name</p>
+                            </div>
+                            <div class="col-xs-1 weapon-weight">
+                                <p>Weight</p>
+                            </div>
+                            <div class="col-xs-1 weapon-type">
+                                <p>Type</p>
+                            </div>
+                            <div class="col-xs-1 weapon-damage">
+                                <p>Damage</p>
+                            </div>
+                            <div class="col-xs-2 weapon-range">
+                                <p>Range</p>
+                            </div>
+                            <div class="col-xs-4 weapon-notes">
+                                <p>Notes</p>
+                            </div>
+                            <div class="col-xs-1 weapon-actions">
+                                <div class="row">
+                                    <div class="col-xs-offset-6 col-xs-6">
+                                        <p><a class="weapon-create" title="Create"><i class="fas fa-plus"></i></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body">
                         {{#each data.items.weapons as |weapon|}}
-                        <tr class="weapon" data-item-id="{{weapon._id}}" data-prder="{{weapon.data.order}}">
-                            <td class="weapon-drag">
-                                <a><i class="fas fa-grip-vertical handle"></i></a>
-                            </td>
-                            <td class="weapon-name">
-                                <p>{{weapon.name}}</p>
-                            </td>
-                            <td class="weapon-weight">
+                        <div class="row middle-xs weapon" data-item-id="{{weapon._id}}" data-prder="{{weapon.data.order}}">
+                            <div class="col-xs-2 weapon-drag-name">
+                                <div class="row">
+                                    <div class="col-xs-2 weapon-drag">
+                                        <a><i class="fas fa-grip-vertical handle"></i></a>
+                                    </div>
+                                    <div class="col-xs-10 weapon-name">
+                                        <p>{{weapon.name}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-1 weapon-weight">
                                 <p>{{weapon.data.weight}}</p>
-                            </td>
-                            <td class="weapon-type">
+                            </div>
+                            <div class="col-xs-1 weapon-type">
                                 <p>{{weapon.data.weaponType}}</p>
-                            </td>
-                            <td class="weapon-damage">
+                            </div>
+                            <div class="col-xs-1 weapon-damage">
                                 <p>{{weapon.data.damage}}</p>
-                            </td>
-                            <td class="weapon-range">
+                            </div>
+                            <div class="col-xs-2 weapon-range">
                                 <p>{{weapon.data.range}}</p>
-                            </td>
-                            <td class="weapon-notes">
+                            </div>
+                            <div class="col-xs-4 weapon-notes">
                                 <p>{{weapon.data.notes}}</p>
-                            </td>
-                            <td class="weapon-info">
-                                <a class="weapon-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
-                            </td>
-                            <td>
-                                <a class="weapon-delete" data-action="delete" title="Delete"><i
-                                        class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
+                            </div>
+                            <div class="col-xs-1 wepaon-actions">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <a class="weapon-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <a class="weapon-delete" data-action="delete" title="Delete"><i
+                                            class="fas fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         {{else}}
                         <tr>
                             <td colspan="8">
@@ -379,107 +406,76 @@
                             </td>
                         </tr>
                         {{/each}}
-                    </tbody>
-                </table>
+                    </div>
+                </div>
 
                 <h2>Gear</h2>
-                <div class="row">
-                    <div class="col-xs-1">
+                <div class="grid gear">
+                    <div class="head">
+                        <div class="row">
+                            <div class="col-xs-3 gear-name">
+                                <p>Name</p>
+                            </div>
+                            <div class="col-xs-1 gear-price">
+                                <p>Price</p>
+                            </div>
+                            <div class="col-xs-7 gear-notes">
+                                <p>Notes</p>
+                            </div>
+                            <div class="col-xs-1 gear-actions">
+                                <div class="row">
+                                    <div class="col-xs-offset-6 col-xs-6">
+                                        <p><a class="gear-create" title="Create"><i class="fas fa-plus"></i></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-xs-3">
-                        <h3>Name</h3>
-                    </div>
-                    <div class="col-xs-1">
-                        <h3>Price</h3>
-                    </div>
-                    <div class="col-xs-5">
-                        <h3>Notes</h3>
-                    </div>
-                    <div class="col-xs-1">
-                        <h3>Info</h3>
-                    </div>
-                    <div class="col-xs-1">
-                        <h3><a class="gear-create" title="Create"><i class="fas fa-plus"></i></a></h3>
-                    </div>
-                </div>
-                {{#each data.items.gear as |gear|}}
-                <div class="row middle-xs gear">
-                    <div class="gear-drag col-xs-1">
-                        <a><i class="fas fa-grip-vertical handle"></i></a>
-                    </div>
-                    <div class="gear-name col-xs-3">
-                        <p>{{gear.name}}</p>
-                    </div>
-                    <div class="gear-price col-xs-1">
-                        <p>{{gear.data.price}}</p>
-                    </div>
-                    <div class="gear-notes col-xs-5">
-                        <p>{{gear.data.notes}}</p>
-                    </div>
-                    <div class="gear-info col-xs-1">
-                        <a class="gear-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
-                    </div>
-                    <div class="gear-delete col-xs-1">
-                        <a class="gear-delete" data-action="delete" title="Delete"><i
-                                class="fas fa-trash"></i></a>
-                    </div>
-                </div>
-                {{else}}
-                <div class="row">
-                    <div class="col-xs-12">
-                        <p>
-                            No gear yet. Create one by clicking the <a><i class="fas fa-plus"></i></a> icon on
-                            the top right of the table or pick one from the Items Directory or a Compendium and drag
-                            it here.
-                        </p>
-                    </div>
-                </div>
-                {{/each}}
-
-                <!-- <table class="gear">
-                    <thead>
-                        <td></td>
-                        <td>Name</td>
-                        <td>Price</td>
-                        <td>Notes</td>
-                        <td>Info</td>
-                        <td><a class="gear-create" title="Create"><i class="fas fa-plus"></i></a></td>
-                    </thead>
-                    <tbody>
+                    <div class="body">
                         {{#each data.items.gear as |gear|}}
-                        <tr class="gear" data-item-id="{{gear._id}}" data-prder="{{gear.data.order}}">
-                            <td class="gear-drag">
-                                <a><i class="fas fa-grip-vertical handle"></i></a>
-                            </td>
-                            <td class="gear-name">
-                                <p>{{gear.name}}</p>
-                            </td>
-                            <td class="gear-price">
+                        <div class="row middle-xs gear" data-item-id="{{gear._id}}" data-prder="{{gear.data.order}}">
+                            <div class="col-xs-3 gear-drag-name">
+                                <div class="row">
+                                    <div class="col-xs-2 gear-drag">
+                                        <a><i class="fas fa-grip-vertical handle"></i></a>
+                                    </div>
+                                    <div class="col-xs-10 gear-name">
+                                        <p>{{gear.name}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-1 gear-price">
                                 <p>{{gear.data.price}}</p>
-                            </td>
-                            <td class="gear-notes">
+                            </div>
+                            <div class="col-xs-7 gear-notes">
                                 <p>{{gear.data.notes}}</p>
-                            </td>
-                            <td class="gear-info">
-                                <a class="gear-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
-                            </td>
-                            <td class="gear-delete">
-                                <a class="gear-delete" data-action="delete" title="Delete"><i
-                                        class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
+                            </div>
+                            <div class="col-xs-1 gear-actions">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <a class="gear-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <a class="gear-delete" data-action="delete" title="Delete"><i
+                                            class="fas fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         {{else}}
-                        <tr>
-                            <td colspan="4">
-                                No gear yet. Create one by clicking the <a><i class="fas fa-plus"></i></a> icon on
-                                the top right of the table or pick one from the Items Directory or a Compendium and drag
-                                it here.
-                            </td>
-                        </tr>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p>
+                                    No gear yet. Create one by clicking the <a><i class="fas fa-plus"></i></a> icon on
+                                    the top right of the table or pick one from the Items Directory or a Compendium and drag
+                                    it here.
+                                </p>
+                            </div>
+                        </div>
                         {{/each}}
-                    </tbody>
-                </table> -->
-            </div>
+                    </div>
+                </div>
+            </>
         </div>
 
         <div class="tab description" data-group="primary" data-tab="bio">

@@ -285,12 +285,12 @@ export class CypherActorPCSheet extends ActorSheet {
     skillsTable.on("click", ".skill-delete", this.onSkillDelete.bind(this));
     skillsTable.on("change", "input,select", this.onSkillEdit.bind(this));
 
-    const weaponsTable = html.find("table.weapons");
+    const weaponsTable = html.find("div.grid.weapons");
     weaponsTable.on("click", ".weapon-create", this.onWeaponCreate.bind(this));
     weaponsTable.on("click", ".weapon-info-btn", this.onWeaponEdit.bind(this));
     weaponsTable.on("click", ".weapon-delete", this.onWeaponDelete.bind(this));
 
-    const gearTable = html.find("table.gear");
+    const gearTable = html.find("div.grid.gear");
     gearTable.on("click", ".gear-create", this.onGearCreate.bind(this));
     gearTable.on("click", ".gear-info-btn", this.onGearEdit.bind(this));
     gearTable.on("click", ".gear-delete", this.onGearDelete.bind(this));
@@ -310,7 +310,7 @@ export class CypherActorPCSheet extends ActorSheet {
     const drakes = [];
     drakes.push(dragula([document.querySelector("table.abilities > tbody")], Object.assign({}, dragulaOptions)));
     drakes.push(dragula([document.querySelector("table.skills > tbody")], Object.assign({}, dragulaOptions)));
-    drakes.push(dragula([document.querySelector("table.weapons > tbody")], Object.assign({}, dragulaOptions)));
+    drakes.push(dragula([document.querySelector("div.grid.weapons > .body")], Object.assign({}, dragulaOptions)));
 
     drakes.push(dragula([document.querySelector("ul.artifacts")], Object.assign({}, dragulaOptions)));
     drakes.push(dragula([document.querySelector("ul.cyphers")], Object.assign({}, dragulaOptions)));
