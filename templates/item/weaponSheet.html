@@ -1,55 +1,86 @@
-<form class="{{cssClass}} csr" autocomplete="off">
-    <h1><input type="text" name="name" value="{{item.name}}"  placeholder="Item Name" /></h1>
-    <div class="flexrow item">
-        <div class="img">
-            <img class="profile-img" src="{{item.img}}" title="{{item.name}}" data-edit="img" />
-        </div>
+<form class="{{cssClass}} csr sheet-container" autocomplete="off">
+    <h1><input type="text" name="name" value="{{item.name}}" placeholder="Weapon Name" /></h1>
 
-        <div class="weapon">
-            <label>Weight
-                <select name="data.weight">
-                {{#select data.weight}}
-                {{#each weights}}
-                    <option value="{{this}}">{{this}}</option>
-                {{/each}}
-                {{/select}}
-                </select>
-            </label>
+    <div class="sheet-contents">
+        <div class="row">
+            <div class="col-xs-3">
+                <img class="profile-img" src="{{item.img}}" title="{{item.name}}" data-edit="img" />
+            </div>
+            <div class="col-xs-9">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label>Weight</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <select name="data.weight">
+                            {{#select data.weight}}
+                            {{#each weights}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
 
-            <label>Type
-                <select name="data.weaponType">
-                {{#select data.weaponType}}
-                {{#each weaponTypes}}
-                    <option value="{{this}}">
-                        {{this}}
-                    </option>
-                {{/each}}
-                {{/select}}
-                </select>
-            </label>
+                <div class="row vertical-space">
+                    <div class="col-xs-6">
+                        <label>Type</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <select name="data.weaponType">
+                            {{#select data.weaponType}}
+                            {{#each weaponTypes}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
 
-            <label>Damage
-                <input type="number" name="data.damage" value="{{data.damage}}" />
-            </label>
+                <div class="row vertical-space">
+                    <div class="col-xs-6">
+                        <label>Damage</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="number" name="data.damage" value="{{data.damage}}" data-dtype="Number" />
+                    </div>
+                </div>
 
-            <label>Range
-                <select name="data.range">
-                {{#select data.range}}
-                    {{#each ranges}}
-                        <option value="{{this}}">
-                            {{this}}
-                        </option>
-                    {{/each}}
-                {{/select}}
-                </select>
-            </label>
+                <div class="row vertical-space">
+                    <div class="col-xs-6">
+                        <label>Range</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <select name="data.range">
+                            {{#select data.range}}
+                            {{#each ranges}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
 
-            <label>Price
-                <input type="number" name="data.price" value="{{data.price}}" data-dtype="Number" />
-            </label>
+                <div class="row vertical-space">
+                    <div class="col-xs-6">
+                        <label>Price</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="number" name="data.price" value="{{data.price}}" data-dtype="Number" />
+                    </div>
+                </div>
 
-            <label>Notes</label>
-            <textarea name="data.notes">{{data.notes}}</textarea>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Description</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <textarea class="description" name="data.notes">{{data.notes}}</textarea>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </form>
