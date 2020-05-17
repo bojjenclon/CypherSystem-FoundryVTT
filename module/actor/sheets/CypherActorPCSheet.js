@@ -66,11 +66,6 @@ function onAbilityUse(useClass) {
     if (isAction) {
       const statId = cost.pool.toLowerCase();
 
-      // const targetNumber = 0; // TODO
-      // const amountOfEffort = 0; // TODO
-      // const effortCost = actor.getEffortCostFromStat(statId, amountOfEffort);
-      // const totalCost = parseInt(cost.amount, 10) + parseInt(effortCost.cost, 10);
-
       if (actor.canSpendFromPool(statId, parseInt(cost.amount, 10))) {
         CypherRolls.Roll({
           event,
