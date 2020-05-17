@@ -1,6 +1,6 @@
 export class CypherItemSkill extends Item {
   get type() {
-      return "equipment";
+      return "gear";
   }
 
   prepareData() {

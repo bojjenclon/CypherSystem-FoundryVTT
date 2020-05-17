@@ -2,6 +2,7 @@ import { CYPHER_SYSTEM } from "../../config.js";
 import { CypherItemAbility } from "../../item/CypherItemAbility.js";
 import { CypherItemSkill } from "../../item/CypherItemSkill.js";
 import { CypherItemWeapon } from "../../item/CypherItemWeapon.js";
+import { CypherItemGear } from "../../item/CypherItemGear.js";
 
 import { CypherRolls } from '../../roll.js';
 
@@ -135,6 +136,7 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onAbilityCreate = onItemCreate("ability", CypherItemAbility);
     this.onSkillCreate = onItemCreate("skill", CypherItemSkill);
     this.onWeaponCreate = onItemCreate("weapon", CypherItemWeapon);
+    this.onGearCreate = onItemCreate("gear", CypherItemGear);
 
     //Edit event handlers
     this.onAbilityEdit = onItemEditGenerator(".ability");
@@ -142,6 +144,7 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onCypherEdit = onItemEditGenerator(".cypher");
     this.onSkillEdit = onItemEditGenerator(".skill");
     this.onWeaponEdit = onItemEditGenerator(".weapon");
+    this.onGearEdit = onItemEditGenerator(".gear");
 
     //Use event handlers
     this.onAbilityUse = onAbilityUse(".ability");
@@ -153,6 +156,7 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onOddityDelete = onItemDeleteGenerator(".oddity");
     this.onSkillDelete = onItemDeleteGenerator(".skill");
     this.onWeaponDelete = onItemDeleteGenerator(".weapon");
+    this.onGearDelete = onItemDeleteGenerator(".gear");
   }
 
   /* -------------------------------------------- */
@@ -219,6 +223,8 @@ export class CypherActorPCSheet extends ActorSheet {
       sheetData.data.items.skills = items.filter(i => i.type === "skill").sort(sortFunction);
     if (!sheetData.data.items.weapons)
       sheetData.data.items.weapons = items.filter(i => i.type === "weapon").sort(sortFunction);
+    if (!sheetData.data.items.gear)
+      sheetData.data.items.gear = items.filter(i => i.type === "gear").sort(sortFunction);
 
     //Make it so that unidentified artifacts and cyphers appear as blank items
     //TODO extract this in the Item class if possible (perhaps as a static method?)
@@ -282,7 +288,11 @@ export class CypherActorPCSheet extends ActorSheet {
     const weaponsTable = html.find("table.weapons");
     weaponsTable.on("click", ".weapon-create", this.onWeaponCreate.bind(this));
     weaponsTable.on("click", ".weapon-delete", this.onWeaponDelete.bind(this));
-    weaponsTable.on("blur", "input,select", this.onWeaponEdit.bind(this));
+
+    const gearTable = html.find("table.gear");
+    gearTable.on("click", ".gear-create", this.onGearCreate.bind(this));
+    gearTable.on("click", ".gear-info-btn", this.onGearEdit.bind(this));
+    gearTable.on("click", ".gear-delete", this.onGearDelete.bind(this));
 
     html.find("ul.artifacts").on("click", ".artifact-delete", this.onArtifactDelete.bind(this));
     html.find("ul.cyphers").on("click", ".cypher-delete", this.onCypherDelete.bind(this));

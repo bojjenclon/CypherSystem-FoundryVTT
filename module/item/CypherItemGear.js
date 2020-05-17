@@ -1,6 +1,6 @@
-export class CypherItemEquipment extends Item {
+export class CypherItemGear extends Item {
     get type() {
-        return "equipment";
+        return "gear";
     }
 
     prepareData() {
@@ -8,7 +8,7 @@ export class CypherItemEquipment extends Item {
 
         const itemData = this.data.data;
 
-        itemData.name = this.data.name || "New Equipment";
+        itemData.name = this.data.name || "New Gear";
         itemData.price = itemData.price || 0;
         itemData.notes = itemData.notes || "";
     }

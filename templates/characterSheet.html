@@ -326,6 +326,7 @@
 
         <div class="tab equipment" data-group="primary" data-tab="equipment">
             <div>
+                <h2>Weapons</h2>
                 <table class="weapons">
                     <thead>
                         <td>Name</td>
@@ -390,6 +391,51 @@
                         <tr>
                             <td colspan="6">
                                 No weapons yet. Create one by clicking the <a><i class="fas fa-plus"></i></a> icon on
+                                the top right of the table or pick one from the Items Directory or a Compendium and drag
+                                it here.
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+
+                <h2>Gear</h2>
+                <table class="gear">
+                    <thead>
+                        <td></td>
+                        <td>Name</td>
+                        <td>Price</td>
+                        <td>Notes</td>
+                        <td>Info</td>
+                        <td><a class="gear-create" title="Create"><i class="fas fa-plus"></i></a></td>
+                    </thead>
+                    <tbody>
+                        {{#each data.items.gear as |gear|}}
+                        <tr class="gear" data-item-id="{{gear._id}}" data-prder="{{gear.data.order}}">
+                            <td class="gear-drag">
+                                <a><i class="fas fa-grip-vertical handle"></i></a>
+                            </td>
+                            <td class="gear-name">
+                                <p>{{gear.name}}</p>
+                            </td>
+                            <td class="gear-price">
+                                <p>{{gear.data.price}}</p>
+                            </td>
+                            <td class="gear-notes">
+                                <p>{{gear.data.notes}}</p>
+                            </td>
+                            <td class="gear-info">
+                                <a class="gear-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
+                            </td>
+                            <td class="gear-delete">
+                                <a class="gear-delete" data-action="delete" title="Delete"><i
+                                        class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        {{else}}
+                        <tr>
+                            <td colspan="4">
+                                No gear yet. Create one by clicking the <a><i class="fas fa-plus"></i></a> icon on
                                 the top right of the table or pick one from the Items Directory or a Compendium and drag
                                 it here.
                             </td>

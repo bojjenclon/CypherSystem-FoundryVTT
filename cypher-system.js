@@ -13,7 +13,7 @@ import { CypherItemAbilitySheet } from './module/item/sheets/CypherItemAbilitySh
 import { CypherItemArmorSheet } from './module/item/sheets/CypherItemArmorSheet.js';
 import { CypherItemArtifactSheet } from './module/item/sheets/CypherItemArtifactSheet.js';
 import { CypherItemCypherSheet } from './module/item/sheets/CypherItemCypherSheet.js';
-import { CypherItemEquipmentSheet } from './module/item/sheets/CypherItemEquipmentSheet.js';
+import { CypherItemGearSheet } from './module/item/sheets/CypherItemGearSheet.js';
 import { CypherItemOdditySheet } from './module/item/sheets/CypherItemOdditySheet.js';
 import { CypherItemSkillSheet } from './module/item/sheets/CypherItemSkillSheet.js';
 import { CypherItemWeaponSheet } from './module/item/sheets/CypherItemWeaponSheet.js';
@@ -44,7 +44,7 @@ Hooks.once("init", function() {
     Items.registerSheet("cypher-system", CypherItemArmorSheet, { types: ["armor"], makeDefault: true });
     Items.registerSheet("cypher-system", CypherItemArtifactSheet, { types: ["artifact"], makeDefault: true });
     Items.registerSheet("cypher-system", CypherItemCypherSheet, { types: ["cypher"], makeDefault: true });
-    Items.registerSheet("cypher-system", CypherItemEquipmentSheet, { types: ["equipment"], makeDefault: true });
+    Items.registerSheet("cypher-system", CypherItemGearSheet, { types: ["gear"], makeDefault: true });
     Items.registerSheet("cypher-system", CypherItemOdditySheet, { types: ["oddity"], makeDefault: true });
     Items.registerSheet("cypher-system", CypherItemSkillSheet, { types: ["skill"], makeDefault: true });
     Items.registerSheet("cypher-system", CypherItemWeaponSheet, { types: ["weapon"], makeDefault: true });

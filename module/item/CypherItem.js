@@ -2,7 +2,7 @@ import { CypherItemAbility } from "./CypherItemAbility.js";
 import { CypherItemArtifact } from "./CypherItemArtifact.js";
 import { CypherItemArmor } from "./CypherItemArmor.js";
 import { CypherItemCypher } from "./CypherItemCypher.js";
-import { CypherItemEquipment } from "./CypherItemEquipment.js";
+import { CypherItemGear } from "./CypherItemGear.js";
 import { CypherItemOddity } from "./CypherItemOddity.js";
 import { CypherItemSkill } from "./CypherItemSkill.js";
 import { CypherItemWeapon } from "./CypherItemWeapon.js";
@@ -34,8 +34,8 @@ export const CypherItem = new Proxy(function () {}, {
         return new CypherItemArtifact(...args);
       case "cypher":
         return new CypherItemCypher(...args);
-      case "equipment":
-        return new CypherItemEquipment(...args);
+      case "gear":
+        return new CypherItemGear(...args);
       case "oddity":
         return new CypherItemOddity(...args);
       case "skill":
@@ -59,8 +59,8 @@ export const CypherItem = new Proxy(function () {}, {
               return CypherItemArtifact.create(data, options);
             case "cypher":
               return CypherItemCypher.create(data, options);
-            case "equipment":
-              return CypherItemEquipment.create(data, options);
+            case "gear":
+              return CypherItemGear.create(data, options);
             case "oddity":
               return CypherItemOddity.create(data, options);
             case "skill":
@@ -78,7 +78,7 @@ export const CypherItem = new Proxy(function () {}, {
             instance instanceof CypherItemArmor ||
             instance instanceof CypherItemArtifact ||
             instance instanceof CypherItemCypher ||
-            instance instanceof CypherItemEquipment ||
+            instance instanceof CypherItemGear ||
             instance instanceof CypherItemOddity ||
             instance instanceof CypherItemSkill ||
             instance instanceof CypherItemWeapon

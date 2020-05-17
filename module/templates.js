@@ -17,7 +17,7 @@ export const preloadHandlebarsTemplates = async() => {
         "systems/cypher-system/templates/item/armorSheet.html",
         "systems/cypher-system/templates/item/artifactSheet.html",
         "systems/cypher-system/templates/item/cypherSheet.html",
-        "systems/cypher-system/templates/item/equipmentSheet.html",
+        "systems/cypher-system/templates/item/gearSheet.html",
         "systems/cypher-system/templates/item/odditySheet.html",
         "systems/cypher-system/templates/item/skillSheet.html",
         "systems/cypher-system/templates/item/weaponSheet.html",

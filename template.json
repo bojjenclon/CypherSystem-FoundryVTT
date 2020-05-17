@@ -78,7 +78,7 @@
         }
     },
     "Item": {
-        "types": ["ability", "armor", "artifact", "cypher", "equipment", "oddity", "skill", "weapon"],
+        "types": ["ability", "armor", "artifact", "cypher", "gear", "oddity", "skill", "weapon"],
         "templates": {
             "common": {
                 "notes": "",
@@ -129,7 +129,7 @@
         "cypher": {
             "templates": ["carriable", "common", "cypher"]
         },
-        "equipment": {
+        "gear": {
             "templates": ["common", "sellable"]
         },
         "oddity": {

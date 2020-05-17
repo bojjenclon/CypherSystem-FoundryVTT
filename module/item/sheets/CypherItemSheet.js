@@ -2,7 +2,7 @@ import { CypherItemAbilitySheet } from "./CypherItemAbilitySheet.js";
 import { CypherItemArtifactSheet } from "./CypherItemArtifactSheet.js";
 import { CypherItemArmorSheet } from "./CypherItemArmorSheet.js";
 import { CypherItemCypherSheet } from "./CypherItemCypherSheet.js";
-import { CypherItemEquipmentSheet } from "./CypherItemEquipmentSheet.js";
+import { CypherItemGearSheet } from "./CypherItemGearSheet.js";
 import { CypherItemOdditySheet } from "./CypherItemOdditySheet.js";
 import { CypherItemWeaponSheet } from "./CypherItemWeaponSheet.js";
 
@@ -29,8 +29,8 @@ export class CypherItemSheet extends ItemSheet {
             case "cypher":
                 object = new CypherItemCypherSheet(data, options);
                 break;
-            case "equipment":
-                object = new CypherItemEquipmentSheet(data, options);
+            case "gear":
+                object = new CypherItemGearSheet(data, options);
                 break;
             case "oddity":
                 object = new CypherItemOdditySheet(data, options);

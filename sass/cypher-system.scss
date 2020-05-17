@@ -266,16 +266,58 @@ form.csr {
                 margin: 5px 0;
             }
 
-            input.weapon-name-input {
-                width: auto;
+            .weapon-name {
+                width: 9rem;
             }
 
-            select.weapon-weight {
+            weapon-weight {
                 margin-right: 0.5em
             }
 
-            input.weapon-damage {
+            .weapon-damage {
                 width: 3em;
+            }
+        }
+
+        &.tab.equipment {
+            h2 {
+                margin: 0;
+                flex: 0;
+                font-weight: bold;
+            }
+        }
+        
+        table.gear {
+            td {
+                padding: 5px 10px;
+                margin: 5px 0;
+
+                &.gear-drag {
+                    width: 1px; // hack to shrink cells to the width of their contents
+                    padding: 0;
+                    margin: 0;
+    
+                    .handle {
+                        margin-left: 5px;
+                    }
+                }
+    
+                &.gear-name {
+                    width: 9rem;
+                }
+    
+                &.gear-price {
+                    width: 3em;
+                }
+    
+                &.gear-notes {
+                    width: 100%;
+                }
+    
+                &.gear-info,
+                &.gear-delete {
+                    width: 1px; // hack to shrink cells to the width of their contents
+                }
             }
         }
 
