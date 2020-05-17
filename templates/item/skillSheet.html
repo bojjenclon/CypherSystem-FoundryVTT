@@ -1,33 +1,52 @@
-<form class="{{cssClass}} csr" autocomplete="off">
+<form class="{{cssClass}} csr sheet-container" autocomplete="off">
     <h1><input type="text" name="name" value="{{item.name}}" placeholder="Item Name" /></h1>
 
-    <div class="flexrow item">
-        <div class="img">
-            <img class="profile-img" src="{{item.img}}" title="{{item.name}}" data-edit="img" />
-        </div>
+    <div class="sheet-contents">
+        <div class="row">
+            <div class="col-xs-3">
+                <img class="profile-img" src="{{item.img}}" title="{{item.name}}" data-edit="img" />
+            </div>
+            <div class="col-xs-9">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label>Stat</label>
+                    </div>
+                    <div class="col-xs-9">
+                        <select name="data.stat">
+                            {{#select data.stat}}
+                            {{#each stats}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
 
-        <div class="skill">
-            <label>Stat</label>
-            <select name="data.stat">
-                {{#select data.stat}}
-                {{#each stats}}
-                <option value="{{this}}">{{this}}</option>
-                {{/each}}
-                {{/select}}
-            </select>
+                <div class="row vertical-space">
+                    <div class="col-xs-3">
+                        <label>Training</label>
+                    </div>
+                    <div class="col-xs-9">
+                        <select class="select-skill-level" name="data.skillLevel">
+                            {{#select data.skillLevel}}
+                            {{#each skillLevels}}
+                            <option value="{{@key}}">{{this}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </div>
+                </div>
 
-            <label>Training</label>
-            <select class="select-skill-level" name="data.skillLevel">
-                {{#select data.skillLevel}}
-                {{#each skillLevels}}
-                <option value="{{@key}}">{{this}}</option>
-                {{/each}}
-                {{/select}}
-            </select>
-
-            <div class="description">
-                <label>Description</label>
-                <textarea id="data.notes" name="data.notes">{{data.notes}}</textarea>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Description</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <textarea class="description" name="data.notes">{{data.notes}}</textarea>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
