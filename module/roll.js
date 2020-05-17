@@ -14,7 +14,6 @@ export function rollText(dieRoll) {
   let parts = [];
 
   const tnReached = Math.floor(dieRoll / 3);
-  // TODO: Use better colors
   let tnColor = '#000000';
   if (tnReached < 3) {
     tnColor = '#0a860a';
@@ -58,7 +57,6 @@ export function rollText(dieRoll) {
   return parts;
 }
 
-
 export class CypherRolls {
   static async Roll({ parts = [], data = {}, actor = null, event = null, speaker = null, flavor = null, title = null, item = false } = {}) {
     let rollMode = game.settings.get('core', 'rollMode');
@@ -70,6 +68,11 @@ export class CypherRolls {
     let maxEffort = 1;
     if (!!data['maxEffort']) {
       maxEffort = parseInt(data['maxEffort'], 10) || 1;
+    }
+
+    let assets = 0;
+    if (!!data['assets']) {
+      assets = parseInt(data['assets'], 10) || 1;
     }
 
     const _roll = (form = null) => {

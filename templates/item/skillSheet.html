@@ -1,5 +1,5 @@
 <form class="{{cssClass}} csr" autocomplete="off">
-    <h1><input type="text" name="name" value="{{item.name}}"  placeholder="Item Name" /></h1>
+    <h1><input type="text" name="name" value="{{item.name}}" placeholder="Item Name" /></h1>
 
     <div class="flexrow item">
         <div class="img">
@@ -11,14 +11,24 @@
             <select name="data.stat">
                 {{#select data.stat}}
                 {{#each stats}}
-                    <option value="{{this}}">{{this}}</option>
+                <option value="{{this}}">{{this}}</option>
                 {{/each}}
                 {{/select}}
-                </select>
-            </label>
+            </select>
 
-            <label>Description</label>
-            <textarea name="data.notes">{{data.notes}}</textarea>
+            <label>Training</label>
+            <select class="select-skill-level" name="data.skillLevel">
+                {{#select data.skillLevel}}
+                {{#each skillLevels}}
+                <option value="{{@key}}">{{this}}</option>
+                {{/each}}
+                {{/select}}
+            </select>
+
+            <div class="description">
+                <label>Description</label>
+                <textarea id="data.notes" name="data.notes">{{data.notes}}</textarea>
+            </div>
         </div>
     </div>
 </form>

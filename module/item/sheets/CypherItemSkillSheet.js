@@ -24,10 +24,46 @@ export class CypherItemSkillSheet extends ItemSheet {
         return "systems/cypher-system/templates/item/skillSheet.html";
     }
 
+    activateListeners(html) {
+        super.activateListeners(html);
+
+        const { item } = this;
+        const itemData = item.data.data;
+
+        html.find('.select-skill-level').change(ev => {
+            const elem = $(ev.currentTarget);
+            const selected = elem.val();
+
+            itemData.inability = false;
+            itemData.untrained = false;
+            itemData.trained = false;
+            itemData.specialized = false;
+
+            switch (selected) {
+                case 'i':
+                    itemData.inability = true;
+                    break;
+                
+                case 'u':
+                    itemData.untrained = true;
+                    break;
+
+                case 't':
+                    itemData.trained = true;
+                    break;
+                
+                case 's':
+                    itemData.specialized = true;
+                    break;
+            }
+        });
+    }
+
     getData() {
         const sheetData = super.getData();
 
-        sheetData.stats = [""].concat(CYPHER_SYSTEM.stats);
+        sheetData.stats = CYPHER_SYSTEM.stats;
+        sheetData.skillLevels = CYPHER_SYSTEM.skillLevels;
 
         return sheetData;
     }

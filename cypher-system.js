@@ -67,13 +67,11 @@ Hooks.on('renderActorDirectory', (app, html, options) => {
       })
 });
 
-Hooks.on("renderChatMessage", (app, html, data) => {
-    //Here, "app" is the ChatMessage object
-
+Hooks.on("renderChatMessage", (chatMessage, html, data) => {
     //Don't apply ChatMessage enhancement to recovery rolls
-    if (app.roll && app.roll.dice[0].faces === 20)
+    if (chatMessage.roll && chatMessage.roll.dice[0].faces === 20)
     {
-        const dieRoll = app.roll.dice[0].rolls[0].roll;
+        const dieRoll = chatMessage.roll.dice[0].rolls[0].roll;
         const messages = rollText(dieRoll);
         const numMessages = messages.length;
 

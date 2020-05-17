@@ -143,7 +143,7 @@
                         </div>
                         <div class="col-xs-2 skill-training">
                             <p>
-                                {{#if skill.datainability}}
+                                {{#if skill.data.inability}}
                                 Inability
                                 {{/if}}
 
@@ -162,10 +162,13 @@
                         </div>
                         <div class="col-xs-1 skill-actions">
                             <div class="row">
-                                <div class="col-xs-6">
+                                <div class="col-xs-4 skill-info">
                                     <a class="skill-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
                                 </div>
-                                <div class="col-xs-6">
+                                <div class="col-xs-4 skill-use">
+                                    <a class="skill-use-btn" data-action="use" title="Use"><i class="fas fa-dice-d20"></i></a>
+                                </div>
+                                <div class="col-xs-4 skill-delete">
                                     <a class="skill-delete" data-action="delete" title="Delete"><i
                                         class="fas fa-trash"></i></a>
                                 </div>

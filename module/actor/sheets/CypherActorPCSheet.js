@@ -6,7 +6,7 @@ import { CypherItemGear } from "../../item/CypherItemGear.js";
 
 import { CypherRolls } from '../../roll.js';
 
-import  "../../../lib/dragula/dragula.js";
+import "../../../lib/dragula/dragula.js";
 
 //Common Dragula options
 const dragulaOptions = {
@@ -19,7 +19,7 @@ const dragulaOptions = {
 const sortFunction = (a, b) => a.data.order < b.data.order ? -1 : a.data.order > b.data.order ? 1 : 0;
 
 function onItemCreate(itemName, itemClass) {
-  return function() {
+  return function () {
     event.preventDefault();
 
     const itemData = {
@@ -45,17 +45,57 @@ function onItemEditGenerator(editClass) {
 function onItemDeleteGenerator(deleteClass) {
   return function (event) {
     event.preventDefault();
-  
+
     const elem = event.currentTarget.closest(deleteClass);
     const itemId = elem.dataset.itemId;
     this.actor.deleteOwnedItem(itemId);
   }
 }
 
+function onSkillUse(useClass) {
+  return function (event) {
+    event.preventDefault();
+
+    const elem = event.currentTarget.closest(useClass);
+    const itemId = elem.dataset.itemId;
+
+    const { actor } = this;
+    const item = actor.getOwnedItem(itemId);
+
+    const { stat, name, inability, untrained, trained, specialized } = item.data.data;
+    const statId = stat.toLowerCase();
+    let assets;
+    if (inability) {
+      assets = -1;
+    } else if (untrained) {
+      assets = 0;
+    } else if (trained) {
+      assets = 1;
+    } else if (specialized) {
+      assets = 2;
+    }
+
+    CypherRolls.Roll({
+      event,
+      parts: ['1d20', `+${assets}`],
+      data: {
+        statId,
+        abilityCost: 0,
+        maxEffort: actor.data.data.effort,
+        assets
+      },
+      speaker: ChatMessage.getSpeaker({ actor }),
+      flavor: `${actor.name} used ${name}`,
+      title: 'Use Skill',
+      actor
+    });
+  }
+}
+
 function onAbilityUse(useClass) {
   return function (event) {
     event.preventDefault();
-  
+
     const elem = event.currentTarget.closest(useClass);
     const itemId = elem.dataset.itemId;
 
@@ -147,6 +187,7 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onGearEdit = onItemEditGenerator(".gear");
 
     //Use event handlers
+    this.onSkillUse = onSkillUse(".skill");
     this.onAbilityUse = onAbilityUse(".ability");
 
     //Delete event handlers
@@ -283,6 +324,7 @@ export class CypherActorPCSheet extends ActorSheet {
     const skillsTable = html.find("div.grid.skills");
     skillsTable.on("click", ".skill-create", this.onSkillCreate.bind(this));
     skillsTable.on("click", ".skill-info-btn", this.onSkillEdit.bind(this));
+    skillsTable.on("click", ".skill-use-btn", this.onSkillUse.bind(this));
     skillsTable.on("click", ".skill-delete", this.onSkillDelete.bind(this));
 
     const weaponsTable = html.find("div.grid.weapons");
@@ -302,7 +344,7 @@ export class CypherActorPCSheet extends ActorSheet {
       html.find("ul.artifacts").on("blur", "input", this.onArtifactEdit.bind(this));
       html.find("ul.cyphers").on("blur", "input", this.onCypherEdit.bind(this));
     }
-    
+
     html.find("ul.oddities").on("click", ".oddity-delete", this.onOddityDelete.bind(this));
 
     //Make sure to make a copy of the options object, otherwise only the first call
@@ -329,7 +371,7 @@ export class CypherActorPCSheet extends ActorSheet {
 
       //In case we're dealing with plain objects, they won't have an ID
       if (source.children[i].dataset.itemId)
-        update.push({_id: source.children[i].dataset.itemId, "data.order": i});
+        update.push({ _id: source.children[i].dataset.itemId, "data.order": i });
     }
 
     //updateManyEmbeddedEntities is deprecated now and this function now accepts an array of data
