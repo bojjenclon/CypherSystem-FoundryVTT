@@ -334,7 +334,20 @@ form.csr {
                         text-align: center;
                     }
 
-                    &[class$="-drag-name"],
+                    &[class$="-drag-name"] {
+                        display: flex;
+                        align-items: center;
+                        padding: 0;
+
+                        span[class$="-drag"] {
+                            padding: 0 8px;
+                        }
+
+                        span[class$="-name"] {
+                            flex: 1;
+                        }
+                    }
+
                     &[class$="-actions"] {
                         .row {
                             align-items: center;
@@ -343,17 +356,6 @@ form.csr {
 
                             div[class^="col-"] {
                                 padding: 0;
-
-                                &[class$="-drag"] {
-                                    padding-left: 4px;
-                                }
-                            }
-                        }
-                    }
-
-                    &[class$="-actions"] {
-                        .row {
-                            div[class^="col-"] {
                                 display: flex;
                                 justify-content: flex-end;
                                 padding-right: 4px;
