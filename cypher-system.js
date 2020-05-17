@@ -74,18 +74,22 @@ Hooks.on("renderChatMessage", (app, html, data) => {
     if (app.roll && app.roll.dice[0].faces === 20)
     {
         const dieRoll = app.roll.dice[0].rolls[0].roll;
-        const special = rollText(dieRoll);
+        const messages = rollText(dieRoll);
+        const numMessages = messages.length;
 
-        //"special" refers to special attributes: minor/major effect or GM intrusion text, special background, etc.
-        if (!special)
-            return;
+        const messageContainer = $('<div/>');
+        messageContainer.addClass('special-messages');
 
-        const { text, color } = special;
+        messages.forEach((special, idx) => {
+            const { text, color, cls } = special;
 
-        const newContent = `<span class="cypher-system-message-special">${text}</span>`;
+            const newContent = `<span class="${cls}" style="color: ${color}">${text}</span>${idx < numMessages - 1 ? '<br />' : ''}`;
+
+            messageContainer.append(newContent);
+        });
 
         const dt = html.find("h4.dice-total");
-        $(newContent).insertBefore(dt);
+        messageContainer.insertBefore(dt);
     }
 });
 

@@ -16,7 +16,7 @@
             </label>
 
             <label>Cost
-                <input type="number" name="data.cost.amount" value="{{data.cost.amount}}" min="1" data-dtype="Number" />
+                <input type="number" name="data.cost.amount" value="{{data.cost.amount}}" min="0" data-dtype="Number" />
                 <select name="data.cost.pool" data-dtype="String">
                     {{#select data.cost.pool}}
                     {{#each data.stats}}
@@ -45,8 +45,10 @@
                 </select>
             </label>
 
-            <label>Description</label>
-            <textarea name="data.notes">{{data.notes}}</textarea>
+            <div class="description">
+                <label>Description</label>
+                <textarea class="ability-description" name="data.notes">{{data.notes}}</textarea>
+            </div>
         </div>
     </div>
 </form>

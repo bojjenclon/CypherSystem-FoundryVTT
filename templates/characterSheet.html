@@ -173,9 +173,10 @@
                         <td class="ability-drag"></td>
                         <td class="ability-name">Name</td>
                         <td class="ability-type">Type</td>
+                        <td class="ability-stat">Stat</td>
                         <td class="ability-cost">Cost</td>
                         <td class="ability-range">Range</td>
-                        <td class="ability-edit">Edit</td>
+                        <td class="ability-info">Info</td>
                         <td class="ability-use">Use</td>
                         <td><a class="ability-create" data-action="create" title="Create"><i
                                     class="fas fa-plus"></i></a></td>
@@ -197,16 +198,17 @@
                             <p class="ability-name">Enabler</p>
                             {{/if}}
                         </td>
+                        <td class="ability-stat">
+                            <p>{{ability.data.cost.pool}}</p>
+                        </td>
                         <td class="ability-cost">
-                            <div {{#if ability.nocost}}class="nocost" {{/if}}>
-                                <p>{{ability.data.cost.amount}} {{ability.data.cost.pool}}</p>
-                            </div>
+                            <p>{{ability.data.cost.amount}}</p>
                         </td>
                         <td class="ability-range">
                             <p>{{ability.data.range}}</p>
                         </td>
-                        <td class="ability-edit">
-                            <a class="ability-edit-btn" data-action="edit" title="Edit"><i class="fas fa-edit"></i></a>
+                        <td class="ability-info">
+                            <a class="ability-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
                         </td>
                         <td class="ability-use">
                             <a class="ability-use-btn" data-action="use" title="Use"><i class="fas fa-dice-d20"></i></a>

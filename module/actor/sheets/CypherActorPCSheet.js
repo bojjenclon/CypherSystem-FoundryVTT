@@ -251,7 +251,6 @@ export class CypherActorPCSheet extends ActorSheet {
     });
 
     sheetData.data.items.abilities = sheetData.data.items.abilities.map(ability => {
-      ability.nocost = (ability.data.cost.amount <= 0);
       ability.ranges = CYPHER_SYSTEM.optionalRanges;
       ability.stats = CYPHER_SYSTEM.stats;
       return ability;
@@ -276,7 +275,7 @@ export class CypherActorPCSheet extends ActorSheet {
 
     const abilitiesTable = html.find("table.abilities");
     abilitiesTable.on("click", ".ability-create", this.onAbilityCreate.bind(this));
-    abilitiesTable.on("click", ".ability-edit-btn", this.onAbilityEdit.bind(this));
+    abilitiesTable.on("click", ".ability-info-btn", this.onAbilityEdit.bind(this));
     abilitiesTable.on("click", ".ability-use-btn", this.onAbilityUse.bind(this));
     abilitiesTable.on("click", ".ability-delete-btn", this.onAbilityDelete.bind(this));
 

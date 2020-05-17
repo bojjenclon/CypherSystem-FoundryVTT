@@ -11,28 +11,51 @@ export function cypherRoll(levelModifier = 0) {
 }
 
 export function rollText(dieRoll) {
+  let parts = [];
+
+  const tnReached = Math.floor(dieRoll / 3);
+  // TODO: Use better colors
+  let tnColor = '#000000';
+  if (tnReached < 3) {
+    tnColor = '#0a860a';
+  } else if (tnReached < 7) {
+    tnColor = '#848409';
+  } else {
+    tnColor = '#0a860a';
+  }
+  parts.push({
+    text: `<${tnReached}>`,
+    color: tnColor,
+    cls: 'target-number'
+  })
+
   switch (dieRoll) {
     case 1:
-      return {
+      parts.push({
         text: "GM Intrusion",
-        color: 0x000000,
-      }
+        color: '#000000',
+        cls: 'effect'
+      });
+      break;
 
     case 19:
-      return {
+      parts.push({
         text: "Minor Effect",
-        color: 0x000000,
-      }
+        color: '#000000',
+        cls: 'effect'
+      });
+      break;
 
     case 20:
-      return {
+      parts.push({
         text: "Major Effect",
-        color: 0x000000,
-      }
-
-    default:
-      return null;
+        color: '#000000',
+        cls: 'effect'
+      });
+      break;
   }
+
+  return parts;
 }
 
 
