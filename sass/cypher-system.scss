@@ -40,14 +40,22 @@ form.csr {
     font-family: $font-stack;
 
     #pc-sheet-body {
+        display: flex;
+        flex-direction: column;
+
         flex: 1;
 
         .tab[data-tab].active {
-            height: 100%;
+            flex: 1;
 
-            &.bio > textarea {
-                height: 100%;
-                resize: none;
+            &.bio {
+                display: flex;
+                flex-direction: column;
+
+                & > textarea {
+                    height: 100%;
+                    resize: none;
+                }
             }
         }
     }
@@ -562,6 +570,10 @@ form.csr {
         border-color : $border-color;
         border-width : 0px 1px 1px 0px;
         border-radius: 20px;
+    }
+
+    trix-toolbar .trix-button-group--file-tools {
+        display: none;
     }
 }
 
