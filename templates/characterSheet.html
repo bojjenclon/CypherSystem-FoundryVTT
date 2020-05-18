@@ -135,11 +135,11 @@
                                 <a><i class="fas fa-grip-vertical handle"></i></a>
                             </span>
                             <span class="skill-name">
-                                <p>{{skill.name}}</p>
+                                <p>{{{strOrSpace skill.name}}}</p>
                             </span>
                         </div>
                         <div class="col-xs-1 skill-stat">
-                            <p>{{skill.data.stat}}</p>
+                            <p>{{{strOrSpace skill.data.stat}}}</p>
                         </div>
                         <div class="col-xs-2 skill-training">
                             <p>
@@ -232,7 +232,7 @@
                                 <a><i class="fas fa-grip-vertical handle"></i></a>
                             </span>
                             <span class="ability-name">
-                                <p>{{ability.name}}</p>
+                                <p>{{{strOrSpace ability.name}}}</p>
                             </span>
                         </div>
                         <div class="col-xs-1 ability-type">
@@ -243,16 +243,16 @@
                             {{/if}}
                         </div>
                         <div class="col-xs-1 ability-stat">
-                            <p>{{ability.data.cost.pool}}</p>
+                            <p>{{{strOrSpace ability.data.cost.pool}}}</p>
                         </div>
                         <div class="col-xs-1 ability-cost">
-                            <p>{{ability.data.cost.amount}}</p>
+                            <p>{{{strOrSpace ability.data.cost.amount}}}</p>
                         </div>
                         <div class="col-xs-2 ability-range">
-                            <p>{{ability.data.range}}</p>
+                            <p>{{{strOrSpace ability.data.range}}}</p>
                         </div>
                         <div class="col-xs-4 ability-notes">
-                            <p>{{ability.data.notes}}</p>
+                            <p>{{{strOrSpace ability.data.notes}}}</p>
                         </div>
                         <div class="col-xs-1 ability-actions">
                             <div class="row">
@@ -429,23 +429,23 @@
                                     <a><i class="fas fa-grip-vertical handle"></i></a>
                                 </span>
                                 <span class="weapon-name">
-                                    <p>{{weapon.name}}</p>
+                                    <p>{{{strOrSpace weapon.name}}}</p>
                                 </span>
                             </div>
                             <div class="col-xs-1 weapon-weight">
-                                <p>{{weapon.data.weight}}</p>
+                                <p>{{{strOrSpace weapon.data.weight}}}</p>
                             </div>
                             <div class="col-xs-1 weapon-type">
-                                <p>{{weapon.data.weaponType}}</p>
+                                <p>{{{strOrSpace weapon.data.weaponType}}}</p>
                             </div>
                             <div class="col-xs-1 weapon-damage">
-                                <p>{{weapon.data.damage}}</p>
+                                <p>{{{strOrSpace weapon.data.damage}}}</p>
                             </div>
                             <div class="col-xs-2 weapon-range">
-                                <p>{{weapon.data.range}}</p>
+                                <p>{{{strOrSpace weapon.data.range}}}</p>
                             </div>
                             <div class="col-xs-4 weapon-notes">
-                                <p>{{weapon.data.notes}}</p>
+                                <p>{{{strOrSpace weapon.data.notes}}}</p>
                             </div>
                             <div class="col-xs-1 weapon-actions">
                                 <div class="row">
@@ -512,20 +512,20 @@
                                     <a><i class="fas fa-grip-vertical handle"></i></a>
                                 </span>
                                 <span class="armor-name">
-                                    <p>{{armor.name}}</p>
+                                    <p>{{{strOrSpace armor.name}}}</p>
                                 </span>
                             </div>
                             <div class="col-xs-1 armor-weight">
-                                <p>{{armor.data.weight}}</p>
+                                <p>{{{strOrSpace armor.data.weight}}}</p>
                             </div>
                             <div class="col-xs-1 armor-armor">
-                                <p>{{armor.data.armor}}</p>
+                                <p>{{{strOrSpace armor.data.armor}}}</p>
                             </div>
                             <div class="col-xs-2 armor-speed">
-                                <p>{{armor.data.additionalSpeedEffortCost}}</p>
+                                <p>{{{strOrSpace armor.data.additionalSpeedEffortCost}}}</p>
                             </div>
                             <div class="col-xs-5 armor-notes">
-                                <p>{{armor.data.notes}}</p>
+                                <p>{{{strOrSpace armor.data.notes}}}</p>
                             </div>
                             <div class="col-xs-1 armor-actions">
                                 <div class="row">
@@ -585,14 +585,14 @@
                                     <a><i class="fas fa-grip-vertical handle"></i></a>
                                 </span>
                                 <span class="gear-name">
-                                    <p>{{gear.name}}</p>
+                                    <p>{{{strOrSpace gear.name}}}</p>
                                 </span>
                             </div>
                             <div class="col-xs-1 gear-price">
-                                <p>{{gear.data.price}}</p>
+                                <p>{{{strOrSpace gear.data.price}}}</p>
                             </div>
                             <div class="col-xs-7 gear-notes">
-                                <p>{{gear.data.notes}}</p>
+                                <p>{{{strOrSpace gear.data.notes}}}</p>
                             </div>
                             <div class="col-xs-1 gear-actions">
                                 <div class="row">

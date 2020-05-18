@@ -96,3 +96,7 @@ Hooks.on("renderChatMessage", (chatMessage, html, data) => {
  * Once the entire VTT framework is initialized, check to see if we should perform a data migration
  */
 Hooks.once("ready", migrateWorld);
+
+Handlebars.registerHelper({
+    strOrSpace: (val) => (val && !!val.length) || '&nbsp;'
+});
