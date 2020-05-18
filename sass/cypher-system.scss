@@ -76,7 +76,7 @@ form.csr {
         flex-flow: column nowrap;
     }
 
-    li {
+    li.no-pip {
         list-style-type: none;
     }
 
@@ -231,7 +231,7 @@ form.csr {
             ul {
                 padding: 0 0.75em 0 0.75em;
 
-                &>li {
+                & > li {
                     padding      : 0.15em;
                     border       : 1px solid darkslategrey;
                     border-radius: 0.25em;
@@ -572,8 +572,11 @@ form.csr {
         border-radius: 20px;
     }
 
-    trix-toolbar .trix-button-group--file-tools {
-        display: none;
+    trix-toolbar {
+        .trix-button--icon-link,
+        .trix-button-group--file-tools {
+            display: none;
+        }
     }
 }
 
