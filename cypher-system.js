@@ -98,5 +98,11 @@ Hooks.on("renderChatMessage", (chatMessage, html, data) => {
 Hooks.once("ready", migrateWorld);
 
 Handlebars.registerHelper({
-    strOrSpace: (val) => (val && !!val.length) || '&nbsp;'
+    strOrSpace: (val) => {
+        if (typeof val === 'string') {
+            return (val && !!val.length) ? val : '&nbsp;';
+        }
+        
+        return val;
+    }
 });
