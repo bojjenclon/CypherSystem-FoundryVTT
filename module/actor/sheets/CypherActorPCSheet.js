@@ -8,6 +8,7 @@ import { CypherItemGear } from "../../item/CypherItemGear.js";
 import { CypherRolls } from '../../roll.js';
 
 import "../../../lib/dragula/dragula.js";
+import { CypherItemCypher } from "../../item/CypherItemCypher.js";
 
 //Common Dragula options
 const dragulaOptions = {
@@ -178,6 +179,7 @@ export class CypherActorPCSheet extends ActorSheet {
     //Creation event handlers
     this.onAbilityCreate = onItemCreate("ability", CypherItemAbility);
     this.onSkillCreate = onItemCreate("skill", CypherItemSkill);
+    this.onCypherCreate = onItemCreate("cypher", CypherItemCypher);
     this.onWeaponCreate = onItemCreate("weapon", CypherItemWeapon);
     this.onArmorCreate = onItemCreate("armor", CypherItemArmor);
     this.onGearCreate = onItemCreate("gear", CypherItemGear);
@@ -224,6 +226,8 @@ export class CypherActorPCSheet extends ActorSheet {
    */
   getData() {
     const sheetData = super.getData();
+
+    sheetData.isGM = game.user.isGM;
 
     //Copy labels to be used as is
     sheetData.ranges = CYPHER_SYSTEM.ranges;
@@ -334,6 +338,11 @@ export class CypherActorPCSheet extends ActorSheet {
     skillsTable.on("click", ".skill-use-btn", this.onSkillUse.bind(this));
     skillsTable.on("click", ".skill-delete", this.onSkillDelete.bind(this));
 
+    const cypherTable = html.find("div.grid.cyphers");
+    cypherTable.on("click", ".cypher-create", this.onCypherCreate.bind(this));
+    cypherTable.on("click", ".cypher-info-btn", this.onCypherEdit.bind(this));
+    cypherTable.on("click", ".cypher-delete", this.onCypherDelete.bind(this));
+
     const weaponsTable = html.find("div.grid.weapons");
     weaponsTable.on("click", ".weapon-create", this.onWeaponCreate.bind(this));
     weaponsTable.on("click", ".weapon-info-btn", this.onWeaponEdit.bind(this));
@@ -348,14 +357,6 @@ export class CypherActorPCSheet extends ActorSheet {
     gearTable.on("click", ".gear-create", this.onGearCreate.bind(this));
     gearTable.on("click", ".gear-info-btn", this.onGearEdit.bind(this));
     gearTable.on("click", ".gear-delete", this.onGearDelete.bind(this));
-
-    html.find("ul.artifacts").on("click", ".artifact-delete", this.onArtifactDelete.bind(this));
-    html.find("ul.cyphers").on("click", ".cypher-delete", this.onCypherDelete.bind(this));
-
-    if (game.user.isGM) {
-      html.find("ul.artifacts").on("blur", "input", this.onArtifactEdit.bind(this));
-      html.find("ul.cyphers").on("blur", "input", this.onCypherEdit.bind(this));
-    }
 
     html.find("ul.oddities").on("click", ".oddity-delete", this.onOddityDelete.bind(this));
 
