@@ -25,4 +25,17 @@ export class CypherItemCypherSheet extends ItemSheet {
     get type() {
         return "cypher";
     }
+
+    activateListeners(html) {
+        super.activateListeners(html);
+
+        const cbIdentified = html.find('#cb-identified');
+        cbIdentified.on('change', (ev) => {
+            ev.preventDefault();
+            
+            this.item.update({
+                'data.identified': ev.target.checked
+            });
+        });
+    }
 }

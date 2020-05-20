@@ -1,20 +1,51 @@
-<form class="{{cssClass}} csr" autocomplete="off">
-    <h1><input type="text" name="name" value="{{data.name}}" /></h1>
-    <div class="flexrow item">
-        <div class="img">
-            <img class="profile-img" src="{{item.img}}" title="{{item.name}}" data-edit="img" />
-        </div>
-        <div class="cypher">
-            <label>Level
-                <input type="text" name="data.levelDie" value="{{data.levelDie}}" data-dtype="String" />
-            </label>
+<form class="{{cssClass}} csr sheet-container" autocomplete="off">
+    <h1><input type="text" name="name" value="{{data.name}}" placeholder="Cypher Name" /></h1>
 
-            <label>Form
-                <input type="text" name="data.form" value="{{data.form}}" />
-            </label>
+    <div class="sheet-contents">
+        <div class="row">
+            <div class="col-xs-3">
+                <img class="profile-img" src="{{item.img}}" title="{{item.name}}" data-edit="img" />
+            </div>
+            <div class="col-xs-9">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <label>Identified</label>
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="checkbox" id="cb-identified" name="data.items.cyphers.{{cypher._id}}.data.identified"
+                            data-dtype="Boolean" {{checked cypher.data.identified}} />
+                    </div>
+                </div>
 
-            <label>Effect</label>
-            <textarea name="data.effect">{{data.effect}}</textarea>
+                <div class="row vertical-space">
+                    <div class="col-xs-10">
+                        <label>Level</label>
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="text" name="data.levelDie" value="{{data.levelDie}}" data-dtype="String" />
+                    </div>
+                </div>
+
+                <div class="row vertical-space">
+                    <div class="col-xs-3">
+                        <label>Form</label>
+                    </div>
+                    <div class="col-xs-9">
+                        <input type="text" name="data.form" value="{{data.form}}" data-dtype="String" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Effect</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <textarea name="data.effect">{{data.effect}}</textarea>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </form>

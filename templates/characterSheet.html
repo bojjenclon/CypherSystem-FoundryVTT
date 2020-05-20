@@ -293,18 +293,9 @@
             <div class="grid cyphers">
                 <div class="head">
                     <div class="row">
-                        {{#if isGM}}
-                        <div class="col-xs-5 cypher-name">
-                            <p>Name</p>
-                        </div>
-                        <div class="col-xs-1 cypher-identified">
-                            <p>Identified</p>
-                        </div>
-                        {{else}}
                         <div class="col-xs-6 cypher-name">
                             <p>Name</p>
                         </div>
-                        {{/if}}
                         <div class="col-xs-1 cypher-level">
                             <p>Level</p>
                         </div>
@@ -323,11 +314,7 @@
                 <div class="body">
                     {{#each data.items.cyphers as |cypher|}}
                     <div class="row middle-xs cypher" data-item-id="{{cypher._id}}" data-prder="{{cypher.data.order}}">
-                        {{#if ../isGM}}
-                        <div class="col-xs-5 cypher-drag-name">
-                        {{else}}
                         <div class="col-xs-6 cypher-drag-name">
-                        {{/if}}
                             <span class="cypher-drag">
                                 <a><i class="fas fa-grip-vertical handle"></i></a>
                             </span>
@@ -335,15 +322,9 @@
                                 <p>{{{strOrSpace cypher.name}}}</p>
                             </span>
                         </div>
-                        {{#if ../isGM}}
-                        <div class="col-xs-1 cypher-identified">
-                            <input type="checkbox" name="data.items.cyphers.{{cypher._id}}.data.identified"
-                                data-dtype="Boolean" {{checked cypher.data.identified}} />
-                        </div>
-                        {{/if}}
-                        <div class="col-xs-1 cypher-level">
+                        <div class="col-xs-1 cypher-levelDie">
                             {{#if cypher.data.identified}}
-                            <p>{{{strOrSpace cypher.data.level}}}</p>
+                            <p>{{{strOrSpace cypher.data.levelDie}}}</p>
                             {{else}}
                             <p>?</p>
                             {{/if}}
@@ -357,15 +338,13 @@
                         </div>
                         <div class="col-xs-1 cypher-actions">
                             <div class="row">
-                                {{#if cypher.data.identified}}
+                                {{#if (or ../isGM cypher.data.identified)}}
                                 <div class="col-xs-6">
                                     <a class="cypher-info-btn" data-action="info" title="Info"><i
                                             class="fas fa-info-circle"></i></a>
                                 </div>
-                                <div class="col-xs-6">
-                                {{else}}
-                                <div class="col-xs-12">
                                 {{/if}}
+                                <div class="{{ternary (or ../isGM cypher.data.identified) 'col-xs-6' 'col-xs-12'}}">
                                     <a class="cypher-delete" data-action="delete" title="Delete"><i
                                             class="fas fa-trash"></i></a>
                                 </div>
@@ -386,40 +365,6 @@
                     {{/each}}
                 </div>
             </div>
-
-            <!-- <ul class="cyphers">
-                {{#each data.items.cyphers as |cypher|}}
-                <li class="cypher" data-item-id={{cypher._id}} data-order={{cypher.data.order}}>
-                    <a class="cypher-delete" data-action="delete" title="Delete"><i class="fas fa-trash"></i></a>
-                    <h4>
-                        <a><i class="fas fa-grip-vertical handle"></i></a>
-                        {{cypher.name}}
-                    </h4>
-                    <p>
-                        {{#if cypher.editable}}
-                        <label>Identified?
-                            <input type="checkbox" name="data.items.cyphers.{{cypher._id}}.data.identified"
-                                data-dtype="Boolean" {{checked cypher.data.identified}} />
-                        </label>
-                        <label>Level
-                            <input type="number" name="data.items.cyphers.{{cypher._id}}.data.level"
-                                value="{{cypher.data.level}}" min="1" max="99" data-dtype="Number" />
-                        </label>
-                        {{else}}
-                        <span>Level</span> {{cypher.data.level}}
-                        {{/if}}
-                    </p>
-                    <p>
-                        <span>Form</span> {{cypher.data.form}}
-                    </p>
-                    <p>
-                        <span>Effect</span> {{cypher.data.effect}}
-                    </p>
-                </li>
-                {{else}}
-                No cyphers.
-                {{/each}}
-            </ul> -->
 
             <h2>Artifacts</h2>
             <ul class="artifacts">

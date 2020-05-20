@@ -4,11 +4,11 @@ import { CypherItemSkill } from "../../item/CypherItemSkill.js";
 import { CypherItemWeapon } from "../../item/CypherItemWeapon.js";
 import { CypherItemArmor } from "../../item/CypherItemArmor.js";
 import { CypherItemGear } from "../../item/CypherItemGear.js";
+import { CypherItemCypher } from "../../item/CypherItemCypher.js";
 
 import { CypherRolls } from '../../roll.js';
 
 import "../../../lib/dragula/dragula.js";
-import { CypherItemCypher } from "../../item/CypherItemCypher.js";
 
 //Common Dragula options
 const dragulaOptions = {
@@ -376,23 +376,7 @@ export class CypherActorPCSheet extends ActorSheet {
     //Handle reordering on all these nice draggable elements
     //Assumes they all have a "order" property: should be the case since it's defined in the template.json
     drakes.map(drake => drake.on("drop", this.reorderElements.bind(this)));
-
-    // const { quill } = this;
-    // if (quill) {
-    //   quill.on('text-change', (delta, oldDelta, source) => {
-    //     const contents = quill.getContents();
-    //     actor.data.background = contents;
-
-    //     actor.update({
-    //       "data.background": contents
-    //     });
-    //   });
-    // }
   }
-
-  // async _render(force = false, options = {}) {
-  //   await super._render(force, options);
-  // }
 
   async reorderElements(el, target, source, sibling) {
     const update = [];
