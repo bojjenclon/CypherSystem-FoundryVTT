@@ -774,8 +774,7 @@
         </div>
 
         <div class="tab bio" data-group="primary" data-tab="bio">
-            <input id="trix" value="{{data.background}}" type="hidden" name="data.background">
-            <trix-editor input="trix"></trix-editor>
+            {{editor content=data.background target="data.background" button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>

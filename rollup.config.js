@@ -15,8 +15,6 @@ const toBundle = [
     "lib/dragula/dragula.min.css",
     "lib/dragula/dragula.min.js",
     "lib/flexbox-grid/flexboxgrid.min.css",
-    "lib/trix/trix.css",
-    "lib/trix/trix.js",
     "templates/characterSheet.html",
     "templates/npcSheet.html",
     "templates/item/abilitySheet.html",

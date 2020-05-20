@@ -556,11 +556,9 @@ form.csr {
         font-weight: bold;
     }
 
-    trix-toolbar {
-        .trix-button--icon-link,
-        .trix-button-group--file-tools {
-            display: none;
-        }
+    .editor {
+        flex: 1;
+        margin: 5px;
     }
 }
 
