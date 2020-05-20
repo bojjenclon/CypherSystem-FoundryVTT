@@ -157,8 +157,8 @@ export class CypherActorPCSheet extends ActorSheet {
         "form.csr ul.cyphers",
         "form.csr ul.oddities",
       ],
-      width: 900,
-      height: 1000,
+      width: 850,
+      height: 700,
       tabs: [
         {
           navSelector: ".tabs",
