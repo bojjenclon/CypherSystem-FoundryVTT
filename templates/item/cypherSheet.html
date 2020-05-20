@@ -12,16 +12,15 @@
                         <label>Identified</label>
                     </div>
                     <div class="col-xs-2" style="display: flex; align-items: flex-end">
-                        <input type="checkbox" id="cb-identified" name="data.items.cyphers.{{cypher._id}}.data.identified"
-                            data-dtype="Boolean" {{#if data.identified}}checked{{/if}} />
+                        <input type="checkbox" name="data.identified" data-dtype="Boolean" {{checked data.identified}} />
                     </div>
                 </div>
 
                 <div class="row vertical-space">
-                    <div class="col-xs-10">
+                    <div class="col-xs-9">
                         <label>Level</label>
                     </div>
-                    <div class="col-xs-2">
+                    <div class="col-xs-3">
                         <input type="text" name="data.levelDie" value="{{data.levelDie}}" data-dtype="String" />
                     </div>
                 </div>

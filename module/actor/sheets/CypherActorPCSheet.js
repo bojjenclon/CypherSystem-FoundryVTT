@@ -5,6 +5,8 @@ import { CypherItemWeapon } from "../../item/CypherItemWeapon.js";
 import { CypherItemArmor } from "../../item/CypherItemArmor.js";
 import { CypherItemGear } from "../../item/CypherItemGear.js";
 import { CypherItemCypher } from "../../item/CypherItemCypher.js";
+import { CypherItemArtifact } from "../../item/CypherItemArtifact.js";
+import { CypherItemOddity } from "../../item/CypherItemOddity.js";
 
 import { CypherRolls } from '../../roll.js';
 
@@ -153,9 +155,9 @@ export class CypherActorPCSheet extends ActorSheet {
         "form.csr div.grid.gear",
         "form.csr div.grid.skills",
         "form.csr div.grid.abilities",
-        "form.csr ul.artifacts",
-        "form.csr ul.cyphers",
-        "form.csr ul.oddities",
+        "form.csr div.grid.artifacts",
+        "form.csr div.grid.cyphers",
+        "form.csr div.grid.oddities",
       ],
       width: 850,
       height: 700,
@@ -180,15 +182,18 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onAbilityCreate = onItemCreate("ability", CypherItemAbility);
     this.onSkillCreate = onItemCreate("skill", CypherItemSkill);
     this.onCypherCreate = onItemCreate("cypher", CypherItemCypher);
+    this.onArtifactCreate = onItemCreate("artifact", CypherItemArtifact);
+    this.onOddityCreate = onItemCreate("oddity", CypherItemOddity);
     this.onWeaponCreate = onItemCreate("weapon", CypherItemWeapon);
     this.onArmorCreate = onItemCreate("armor", CypherItemArmor);
     this.onGearCreate = onItemCreate("gear", CypherItemGear);
 
     //Edit event handlers
     this.onAbilityEdit = onItemEditGenerator(".ability");
-    this.onArtifactEdit = onItemEditGenerator(".artifact");
-    this.onCypherEdit = onItemEditGenerator(".cypher");
     this.onSkillEdit = onItemEditGenerator(".skill");
+    this.onCypherEdit = onItemEditGenerator(".cypher");
+    this.onArtifactEdit = onItemEditGenerator(".artifact");
+    this.onOddityEdit = onItemEditGenerator(".oddity");
     this.onWeaponEdit = onItemEditGenerator(".weapon");
     this.onArmorEdit = onItemEditGenerator(".armor");
     this.onGearEdit = onItemEditGenerator(".gear");
@@ -199,10 +204,10 @@ export class CypherActorPCSheet extends ActorSheet {
 
     //Delete event handlers
     this.onAbilityDelete = onItemDeleteGenerator(".ability");
-    this.onArtifactDelete = onItemDeleteGenerator(".artifact");
-    this.onCypherDelete = onItemDeleteGenerator(".cypher");
-    this.onOddityDelete = onItemDeleteGenerator(".oddity");
     this.onSkillDelete = onItemDeleteGenerator(".skill");
+    this.onCypherDelete = onItemDeleteGenerator(".cypher");
+    this.onArtifactDelete = onItemDeleteGenerator(".artifact");
+    this.onOddityDelete = onItemDeleteGenerator(".oddity");
     this.onWeaponDelete = onItemDeleteGenerator(".weapon");
     this.onArmorDelete = onItemDeleteGenerator(".armor");
     this.onGearDelete = onItemDeleteGenerator(".gear");
@@ -342,6 +347,16 @@ export class CypherActorPCSheet extends ActorSheet {
     cypherTable.on("click", ".cypher-create", this.onCypherCreate.bind(this));
     cypherTable.on("click", ".cypher-info-btn", this.onCypherEdit.bind(this));
     cypherTable.on("click", ".cypher-delete", this.onCypherDelete.bind(this));
+
+    const artifactsTable = html.find("div.grid.artifacts");
+    artifactsTable.on("click", ".artifact-create", this.onArtifactCreate.bind(this));
+    artifactsTable.on("click", ".artifact-info-btn", this.onArtifactEdit.bind(this));
+    artifactsTable.on("click", ".artifact-delete", this.onArtifactDelete.bind(this));
+
+    const odditiesTable = html.find("div.grid.oddities");
+    odditiesTable.on("click", ".oddity-create", this.onOddityCreate.bind(this));
+    odditiesTable.on("click", ".oddity-info-btn", this.onOddityEdit.bind(this));
+    odditiesTable.on("click", ".oddity-delete", this.onOddityDelete.bind(this));
 
     const weaponsTable = html.find("div.grid.weapons");
     weaponsTable.on("click", ".weapon-create", this.onWeaponCreate.bind(this));
