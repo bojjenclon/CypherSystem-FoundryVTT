@@ -39,6 +39,25 @@ form.csr {
     overflow   : scroll;
     font-family: $font-stack;
 
+    .character-sentence {
+        font-size: 2rem;
+
+        input {
+            padding: 1.2rem 0.5rem;
+        }
+
+        & > .row {
+            padding-bottom: 8px;
+        }
+
+        .word {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
     #pc-sheet-body {
         display: flex;
         flex-direction: column;

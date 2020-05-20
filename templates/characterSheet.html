@@ -1,14 +1,32 @@
 <form class="{{cssClass}} csr pc" autocomplete="off">
-    <h1 class="character">
-        <input type="text" name="name" value="{{actor.name}}" class="charname" />
-        is a
-        <input type="text" name="data.descriptor" value="{{data.descriptor}}" class="descriptor"
-            placeholder="Descriptor" data-type="String" />
-        <input type="text" name="data.characterType" value="{{data.characterType}}" class="characterType"
-            placeholder="Type" data-type="String" />
-        who <input type="text" name="data.focus" value="{{data.focus}}" class="focus" placeholder="Focus"
-            data-type="String" />
-    </h1>
+    <div class="character-sentence">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <input type="text" name="name" value="{{actor.name}}" class="charname" />
+                    </div>
+                    <div class="col-xs-2 word">is a</div>
+                </div>
+            </div>
+            <div class="col-xs-5">
+                <input type="text" name="data.descriptor" value="{{data.descriptor}}" class="descriptor"
+                    placeholder="Descriptor" data-type="String" />
+            </div>
+            <div class="col-xs-3">
+                <input type="text" name="data.characterType" value="{{data.characterType}}" class="characterType"
+                    placeholder="Type" data-type="String" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1 word">who</div>
+            <div class="col-xs-11">
+                <input type="text" name="data.focus" value="{{data.focus}}" class="focus" placeholder="Focus"
+                    data-type="String" />
+            </div>
+        </div>
+    </div>
+
     <div class="flexcol">
         <div class="flexrow header">
             <div class="picture">
@@ -288,7 +306,7 @@
 
         <div class="tab csr" data-group="primary" data-tab="csr">
             <h3>Cypher Limit <input type="number" name="data.cypherLimit" value="{{data.cypherLimit}}" min="1" max="99"
-                class="cypher-limit" data-dtype="Number" /></h3>
+                    class="cypher-limit" data-dtype="Number" /></h3>
 
             <h2>Cyphers</h2>
             <div class="grid cyphers">
@@ -394,7 +412,8 @@
                 </div>
                 <div class="body">
                     {{#each data.items.artifacts as |artifact|}}
-                    <div class="row middle-xs artifact" data-item-id="{{artifact._id}}" data-prder="{{artifact.data.order}}">
+                    <div class="row middle-xs artifact" data-item-id="{{artifact._id}}"
+                        data-prder="{{artifact.data.order}}">
                         <div class="col-xs-4 artifact-drag-name">
                             <span class="artifact-drag">
                                 <a><i class="fas fa-grip-vertical handle"></i></a>
