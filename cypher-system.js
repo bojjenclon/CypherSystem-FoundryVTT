@@ -110,6 +110,14 @@ Handlebars.registerHelper({
         }
 
         return val;
+    },
+
+    sortIcon: (sortInfo, field) => {
+        if (sortInfo.field !== field) {
+            return '';
+        }
+
+        return `&nbsp;<i class="fas fa-long-arrow-alt-${sortInfo.asc ? 'up' : 'down'}"></i>`;
     }
 });
 

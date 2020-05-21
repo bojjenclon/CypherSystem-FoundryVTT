@@ -128,12 +128,13 @@
                 <div class="head">
                     <div class="row">
                         <div class="col-xs-8 skill-name">
-                            <a class="sort-header"><p data-field="name">Name</p></a>
+                            <a class="sort-header" data-prop="name" data-field="name"><p>Name {{{sortIcon data.sorts.skills 'name'}}}</p></a>
                         </div>
                         <div class="col-xs-1 skill-stat">
-                            <p>Stat</p>
+                            <a class="sort-header" data-prop="data.data.stat" data-field="stats"><p>Stat {{{sortIcon data.sorts.skills 'stats'}}}</p></a>
                         </div>
                         <div class="col-xs-2 skill-training">
+                            <!-- TODO Make training sortable -->
                             <p>Training</p>
                         </div>
                         <div class="col-xs-1 skill-actions">

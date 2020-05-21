@@ -13,25 +13,40 @@ import { CypherRolls } from '../../roll.js';
 //Sort function for order
 const sortFunction = (a, b) => a.data.order < b.data.order ? -1 : a.data.order > b.data.order ? 1 : 0;
 
-function onItemSortGenerator(sortField, sortClass, itemType) {
+const getProp = (obj, path) => {
+  const fields = path.split('.');
+  let inner = obj;
+  fields.forEach(field => {
+    inner = inner[field];
+  });
+  return inner;
+};
+
+function onItemSortGenerator(sortField, itemType) {
   return async function () {
     event.preventDefault();
 
+    let srcElem = event.target;
+    while (srcElem.tagName !== 'A') {
+      srcElem = srcElem.parentElement;
+    }
+
     const { actor } = this;
-    const itemField = event.srcElement.dataset.field;
+    const itemField = srcElem.dataset.field;
+    const itemProp = srcElem.dataset.prop;
     const items = actor.items.filter(item => item.data.type === itemType);
     const sortInfo = this.sorts[sortField];
-    
+
     if (sortInfo.field === itemField) {
       sortInfo.asc = !sortInfo.asc;
     } else {
       sortInfo.field = itemField;
-      sortInfo.asc = false;
+      sortInfo.asc = true;
     }
 
     items.sort((a, b) => {
-      const aField = a[itemField];
-      const bField = b[itemField];
+      const aField = getProp(a, itemProp);
+      const bField = getProp(b, itemProp);
 
       if (sortInfo.asc) {
         return aField < bField ? -1 : aField > bField ? 1 : 0;
@@ -226,14 +241,14 @@ export class CypherActorPCSheet extends ActorSheet {
       for (let key of CYPHER_SYSTEM.itemTypes) {
         sorts[key] = {
           'field': 'name',
-          'asc': false
+          'asc': true
         };
       }
     }
     this.sorts = sorts;
 
     //Sort event handlers
-    this.onSkillSort = onItemSortGenerator('skills', '.skill', 'skill');
+    this.onSkillSort = onItemSortGenerator('skills', 'skill');
 
     //Creation event handlers
     this.onSkillCreate = onItemCreate("skill", CypherItemSkill);
@@ -325,6 +340,7 @@ export class CypherActorPCSheet extends ActorSheet {
     });
 
     sheetData.data.items = sheetData.actor.items || {};
+    sheetData.data.sorts = this.sorts || {};
 
     const items = sheetData.data.items;
     if (!sheetData.data.items.abilities) {
