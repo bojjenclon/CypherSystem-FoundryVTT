@@ -14,5 +14,6 @@ export class CypherItemArmor extends Item {
         itemData.effect = itemData.price || 0;
         itemData.notes = itemData.notes || "";
         itemData.additionalSpeedEffortCost = itemData.additionalSpeedEffortCost || 0;
+        itemData.equipped = itemData.equipped || false;
     }
 }

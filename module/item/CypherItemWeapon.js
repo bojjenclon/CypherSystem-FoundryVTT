@@ -23,7 +23,7 @@ export class CypherItemWeapon extends Item {
         itemData.weaponType = itemData.weaponType || CYPHER_SYSTEM.weaponTypes[0];
         itemData.weight = itemData.weight || CYPHER_SYSTEM.weightClasses[0];
         itemData.notes = itemData.notes || "";
-
+        itemData.equipped = itemData.equipped || false;
         itemData.ranges = CYPHER_SYSTEM.ranges;
 
         itemData.weightClasses = CYPHER_SYSTEM.weightClasses.map(weightClass => {

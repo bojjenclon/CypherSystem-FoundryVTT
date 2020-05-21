@@ -32,7 +32,8 @@ function onItemEditGenerator(editClass) {
     event.preventDefault();
 
     const elem = event.currentTarget.closest(editClass);
-    const item = this.actor.getOwnedItem(elem.dataset.itemId);
+    const { itemId } = elem.dataset;
+    const item = this.actor.getOwnedItem(itemId);
     item.sheet.render(true);
   }
 }
@@ -44,6 +45,21 @@ function onItemDeleteGenerator(deleteClass) {
     const elem = event.currentTarget.closest(deleteClass);
     const itemId = elem.dataset.itemId;
     this.actor.deleteOwnedItem(itemId);
+  }
+}
+
+function onItemEquipGenerator(deleteClass) {
+  return async function (event) {
+    event.preventDefault();
+
+    const elem = event.currentTarget.closest(deleteClass);
+    const itemId = elem.dataset.itemId;
+    const item = this.actor.getOwnedItem(itemId);
+    const { data } = item.data;
+
+    await item.update({
+      "data.equipped": !data.equipped
+    });
   }
 }
 
@@ -202,6 +218,10 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onWeaponDelete = onItemDeleteGenerator(".weapon");
     this.onArmorDelete = onItemDeleteGenerator(".armor");
     this.onGearDelete = onItemDeleteGenerator(".gear");
+
+    //Equip event handler
+    this.onWeaponEquip = onItemEquipGenerator('.weapon');
+    this.onArmorEquip = onItemEquipGenerator('.armor');
   }
 
   /* -------------------------------------------- */
@@ -353,11 +373,13 @@ export class CypherActorPCSheet extends ActorSheet {
     weaponsTable.on("click", ".weapon-create", this.onWeaponCreate.bind(this));
     weaponsTable.on("click", ".weapon-info-btn", this.onWeaponEdit.bind(this));
     weaponsTable.on("click", ".weapon-delete", this.onWeaponDelete.bind(this));
+    weaponsTable.on("click", ".weapon-equip-btn", this.onWeaponEquip.bind(this));
 
     const armorTable = html.find("div.grid.armor");
     armorTable.on("click", ".armor-create", this.onArmorCreate.bind(this));
     armorTable.on("click", ".armor-info-btn", this.onArmorEdit.bind(this));
     armorTable.on("click", ".armor-delete", this.onArmorDelete.bind(this));
+    armorTable.on("click", ".armor-equip-btn", this.onArmorEquip.bind(this));
 
     const gearTable = html.find("div.grid.gear");
     gearTable.on("click", ".gear-create", this.onGearCreate.bind(this));

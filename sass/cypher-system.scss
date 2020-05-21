@@ -80,10 +80,6 @@ form.csr {
         }
     }
 
-    a i.handle {
-        cursor: move;
-    }
-
     /* flexrow and flexcol (ahem) "borrowed" from the D&D 5e LESS files, many thanks to atropos */
     .flewrow {
         display        : flex;
@@ -401,13 +397,21 @@ form.csr {
                         text-align: center;
                     }
 
-                    &[class$="-drag-name"] {
+                    &[class$="-equip-name"] {
                         display    : flex;
                         align-items: center;
-                        padding    : 5px 0;
+                        padding    : 12px 0;
 
-                        span[class$="-drag"] {
+                        span[class$="-equipped"] {
                             padding: 0 8px;
+
+                            .fa-check-circle {
+                                color: #065006;
+                            }
+
+                            .fa-times-circle {
+                                color: #790b0b;
+                            }
                         }
 
                         span[class$="-name"] {

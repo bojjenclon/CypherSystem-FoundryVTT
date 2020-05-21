@@ -104,7 +104,7 @@ Handlebars.registerHelper({
         return cond ? v1 : v2;
     },
 
-    strOrSpace: (val) => {
+    strOrSpace: val => {
         if (typeof val === 'string') {
             return (val && !!val.length) ? val : '&nbsp;';
         }

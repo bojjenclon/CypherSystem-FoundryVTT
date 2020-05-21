@@ -148,13 +148,8 @@
                 <div class="body">
                     {{#each data.items.skills as |skill|}}
                     <div class="row middle-xs skill" data-item-id="{{skill._id}}" data-prder="{{skill.data.order}}">
-                        <div class="col-xs-8 skill-drag-name">
-                            <span class="skill-drag">
-                                <a><i class="fas fa-grip-vertical handle"></i></a>
-                            </span>
-                            <span class="skill-name">
-                                <p>{{{strOrSpace skill.name}}}</p>
-                            </span>
+                        <div class="col-xs-8 skill-name">
+                            <p>{{{strOrSpace skill.name}}}</p>
                         </div>
                         <div class="col-xs-1 skill-stat">
                             <p>{{{strOrSpace skill.data.stat}}}</p>
@@ -245,13 +240,8 @@
                     {{#each data.items.abilities as |ability|}}
                     <div class="row middle-xs ability" data-item-id="{{ability._id}}"
                         data-prder="{{ability.data.order}}">
-                        <div class="col-xs-2 ability-drag-name">
-                            <span class="ability-drag">
-                                <a><i class="fas fa-grip-vertical handle"></i></a>
-                            </span>
-                            <span class="ability-name">
-                                <p>{{{strOrSpace ability.name}}}</p>
-                            </span>
+                        <div class="col-xs-2 ability-name">
+                            <p>{{{strOrSpace ability.name}}}</p>
                         </div>
                         <div class="col-xs-1 ability-type">
                             {{#if ability.data.isAction}}
@@ -333,13 +323,8 @@
                 <div class="body">
                     {{#each data.items.cyphers as |cypher|}}
                     <div class="row middle-xs cypher" data-item-id="{{cypher._id}}" data-prder="{{cypher.data.order}}">
-                        <div class="col-xs-6 cypher-drag-name">
-                            <span class="cypher-drag">
-                                <a><i class="fas fa-grip-vertical handle"></i></a>
-                            </span>
-                            <span class="cypher-name">
-                                <p>{{{strOrSpace cypher.name}}}</p>
-                            </span>
+                        <div class="col-xs-6 cypher-name">
+                            <p>{{{strOrSpace cypher.name}}}</p>
                         </div>
                         <div class="col-xs-1 cypher-levelDie">
                             {{#if cypher.data.identified}}
@@ -414,13 +399,8 @@
                     {{#each data.items.artifacts as |artifact|}}
                     <div class="row middle-xs artifact" data-item-id="{{artifact._id}}"
                         data-prder="{{artifact.data.order}}">
-                        <div class="col-xs-4 artifact-drag-name">
-                            <span class="artifact-drag">
-                                <a><i class="fas fa-grip-vertical handle"></i></a>
-                            </span>
-                            <span class="artifact-name">
-                                <p>{{{strOrSpace artifact.name}}}</p>
-                            </span>
+                        <div class="col-xs-4 artifact-name">
+                            <p>{{{strOrSpace artifact.name}}}</p>
                         </div>
                         <div class="col-xs-1 artifact-levelDie">
                             {{#if artifact.data.identified}}
@@ -496,13 +476,8 @@
                 <div class="body">
                     {{#each data.items.oddities as |oddity|}}
                     <div class="row middle-xs oddity" data-item-id="{{oddity._id}}" data-prder="{{oddity.data.order}}">
-                        <div class="col-xs-3 oddity-drag-name">
-                            <span class="oddity-drag">
-                                <a><i class="fas fa-grip-vertical handle"></i></a>
-                            </span>
-                            <span class="oddity-name">
-                                <p>{{{strOrSpace oddity.name}}}</p>
-                            </span>
+                        <div class="col-xs-3 oddity-name">
+                            <p>{{{strOrSpace oddity.name}}}</p>
                         </div>
                         <div class="col-xs-8 oddity-description">
                             <p>{{{strOrSpace oddity.data.notes}}}</p>
@@ -573,13 +548,14 @@
                         {{#each data.items.weapons as |weapon|}}
                         <div class="row middle-xs weapon" data-item-id="{{weapon._id}}"
                             data-prder="{{weapon.data.order}}">
-                            <div class="col-xs-2 weapon-drag-name">
-                                <span class="weapon-drag">
-                                    <a><i class="fas fa-grip-vertical handle"></i></a>
+                            <div class="col-xs-2 weapon-equip-name">
+                                <span class="weapon-equipped">
+                                    <input type="hidden" name="data.items.weapons.{{weapon._id}}.data.equipped"
+                                        value={{weapon.data.equipped}} data-dtype="Boolean" />
+                                    <a class="weapon-equip-btn" title="{{ternary weapon.data.equipped 'Unequip' 'Equip'}}"><i
+                                            class="far {{ternary weapon.data.equipped 'fa-times-circle' 'fa-check-circle'}}"></i></a>
                                 </span>
-                                <span class="weapon-name">
-                                    <p>{{{strOrSpace weapon.name}}}</p>
-                                </span>
+                                <span class="weapon-name">{{{strOrSpace weapon.name}}}</span>
                             </div>
                             <div class="col-xs-1 weapon-weight">
                                 <p>{{{strOrSpace weapon.data.weight}}}</p>
@@ -656,13 +632,14 @@
                     <div class="body">
                         {{#each data.items.armor as |armor|}}
                         <div class="row middle-xs armor" data-item-id="{{armor._id}}" data-prder="{{armor.data.order}}">
-                            <div class="col-xs-2 armor-drag-name">
-                                <span class="armor-drag">
-                                    <a><i class="fas fa-grip-vertical handle"></i></a>
+                            <div class="col-xs-2 armor-equip-name">
+                                <span class="armor-equipped">
+                                    <input type="hidden" name="data.items.armor.{{armor._id}}.data.equipped"
+                                        value={{armor.data.equipped}} data-dtype="Boolean" />
+                                    <a class="armor-equip-btn" title="{{ternary armor.data.equipped 'Unequip' 'Equip'}}"><i
+                                            class="far {{ternary armor.data.equipped 'fa-times-circle' 'fa-check-circle'}}"></i></a>
                                 </span>
-                                <span class="armor-name">
-                                    <p>{{{strOrSpace armor.name}}}</p>
-                                </span>
+                                <span class="armor-name">{{{strOrSpace armor.name}}}</span>
                             </div>
                             <div class="col-xs-1 armor-weight">
                                 <p>{{{strOrSpace armor.data.weight}}}</p>
@@ -729,13 +706,8 @@
                     <div class="body">
                         {{#each data.items.gear as |gear|}}
                         <div class="row middle-xs gear" data-item-id="{{gear._id}}" data-prder="{{gear.data.order}}">
-                            <div class="col-xs-3 gear-drag-name">
-                                <span class="gear-drag">
-                                    <a><i class="fas fa-grip-vertical handle"></i></a>
-                                </span>
-                                <span class="gear-name">
-                                    <p>{{{strOrSpace gear.name}}}</p>
-                                </span>
+                            <div class="col-xs-3 gear-name">
+                                <p>{{{strOrSpace gear.name}}}</p>
                             </div>
                             <div class="col-xs-1 gear-price">
                                 <p>{{{strOrSpace gear.data.price}}}</p>

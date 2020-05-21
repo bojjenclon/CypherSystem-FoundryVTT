@@ -100,6 +100,9 @@
             },
             "weight": {
                 "weight": "Light"
+            },
+            "equippable": {
+                "equipped": false
             }
         },
         "ability": {
@@ -114,7 +117,7 @@
             "tier": ""
         },
         "armor": {
-            "templates": ["common", "sellable", "weight"],
+            "templates": ["common", "sellable", "weight", "equippable"],
             "armor": 0,
             "additionalSpeedEffortCost": 1
         },
@@ -144,7 +147,7 @@
             "specialization": false
         },
         "weapon": {
-            "templates": ["common", "ranged", "sellable", "weight"],
+            "templates": ["common", "ranged", "sellable", "weight", "equippable"],
             "damage": 0,
             "weaponType": ""
         }
