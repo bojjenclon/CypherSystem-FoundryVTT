@@ -1,5 +1,16 @@
 export const CYPHER_SYSTEM = {};
 
+CYPHER_SYSTEM.itemTypes = [
+  'skills',
+  'abilities',
+  'cyphers',
+  'artifacts',
+  'oddities',
+  'weapons',
+  'armor',
+  'gear'
+];
+
 CYPHER_SYSTEM.weightClasses = [
   'Light',
   'Medium',

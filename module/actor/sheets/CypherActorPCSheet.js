@@ -13,6 +13,41 @@ import { CypherRolls } from '../../roll.js';
 //Sort function for order
 const sortFunction = (a, b) => a.data.order < b.data.order ? -1 : a.data.order > b.data.order ? 1 : 0;
 
+function onItemSortGenerator(sortField, sortClass, itemType) {
+  return async function () {
+    event.preventDefault();
+
+    const { actor } = this;
+    const itemField = event.srcElement.dataset.field;
+    const items = actor.items.filter(item => item.data.type === itemType);
+    const sortInfo = this.sorts[sortField];
+    
+    if (sortInfo.field === itemField) {
+      sortInfo.asc = !sortInfo.asc;
+    } else {
+      sortInfo.field = itemField;
+      sortInfo.asc = false;
+    }
+
+    items.sort((a, b) => {
+      const aField = a[itemField];
+      const bField = b[itemField];
+
+      if (sortInfo.asc) {
+        return aField < bField ? -1 : aField > bField ? 1 : 0;
+      } else {
+        return aField < bField ? 1 : aField > bField ? -1 : 0;
+      }
+    });
+
+    items.forEach((item, idx) => {
+      item.data.data.order = idx;
+    });
+
+    await actor.updateEmbeddedEntity('OwnedItem', items);
+  }
+}
+
 function onItemCreate(itemName, itemClass) {
   return function () {
     event.preventDefault();
@@ -34,7 +69,7 @@ function onItemEditGenerator(editClass) {
     const elem = event.currentTarget.closest(editClass);
     const { itemId } = elem.dataset;
     const item = this.actor.getOwnedItem(itemId);
-    item.sheet.render(true);
+    await item.sheet.render(true);
   }
 }
 
@@ -185,9 +220,24 @@ export class CypherActorPCSheet extends ActorSheet {
   constructor(...args) {
     super(...args);
 
+    const sorts = this.sorts || {};
+    const hasSortData = !!Object.keys(sorts).length;
+    if (!hasSortData) {
+      for (let key of CYPHER_SYSTEM.itemTypes) {
+        sorts[key] = {
+          'field': 'name',
+          'asc': false
+        };
+      }
+    }
+    this.sorts = sorts;
+
+    //Sort event handlers
+    this.onSkillSort = onItemSortGenerator('skills', '.skill', 'skill');
+
     //Creation event handlers
-    this.onAbilityCreate = onItemCreate("ability", CypherItemAbility);
     this.onSkillCreate = onItemCreate("skill", CypherItemSkill);
+    this.onAbilityCreate = onItemCreate("ability", CypherItemAbility);
     this.onCypherCreate = onItemCreate("cypher", CypherItemCypher);
     this.onArtifactCreate = onItemCreate("artifact", CypherItemArtifact);
     this.onOddityCreate = onItemCreate("oddity", CypherItemOddity);
@@ -196,8 +246,8 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onGearCreate = onItemCreate("gear", CypherItemGear);
 
     //Edit event handlers
-    this.onAbilityEdit = onItemEditGenerator(".ability");
     this.onSkillEdit = onItemEditGenerator(".skill");
+    this.onAbilityEdit = onItemEditGenerator(".ability");
     this.onCypherEdit = onItemEditGenerator(".cypher");
     this.onArtifactEdit = onItemEditGenerator(".artifact");
     this.onOddityEdit = onItemEditGenerator(".oddity");
@@ -210,8 +260,8 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onAbilityUse = onAbilityUse(".ability");
 
     //Delete event handlers
-    this.onAbilityDelete = onItemDeleteGenerator(".ability");
     this.onSkillDelete = onItemDeleteGenerator(".skill");
+    this.onAbilityDelete = onItemDeleteGenerator(".ability");
     this.onCypherDelete = onItemDeleteGenerator(".cypher");
     this.onArtifactDelete = onItemDeleteGenerator(".artifact");
     this.onOddityDelete = onItemDeleteGenerator(".oddity");
@@ -277,22 +327,30 @@ export class CypherActorPCSheet extends ActorSheet {
     sheetData.data.items = sheetData.actor.items || {};
 
     const items = sheetData.data.items;
-    if (!sheetData.data.items.abilities)
+    if (!sheetData.data.items.abilities) {
       sheetData.data.items.abilities = items.filter(i => i.type === "ability").sort(sortFunction);
-    if (!sheetData.data.items.artifacts)
+    }
+    if (!sheetData.data.items.artifacts) {
       sheetData.data.items.artifacts = items.filter(i => i.type === "artifact").sort(sortFunction);
-    if (!sheetData.data.items.cyphers)
+    }
+    if (!sheetData.data.items.cyphers) {
       sheetData.data.items.cyphers = items.filter(i => i.type === "cypher").sort(sortFunction);
-    if (!sheetData.data.items.oddities)
+    }
+    if (!sheetData.data.items.oddities) {
       sheetData.data.items.oddities = items.filter(i => i.type === "oddity").sort(sortFunction);
-    if (!sheetData.data.items.skills)
+    }
+    if (!sheetData.data.items.skills) {
       sheetData.data.items.skills = items.filter(i => i.type === "skill").sort(sortFunction);
-    if (!sheetData.data.items.weapons)
+    }
+    if (!sheetData.data.items.weapons) {
       sheetData.data.items.weapons = items.filter(i => i.type === "weapon").sort(sortFunction);
-    if (!sheetData.data.items.armor)
+    }
+    if (!sheetData.data.items.armor) {
       sheetData.data.items.armor = items.filter(i => i.type === "armor").sort(sortFunction);
-    if (!sheetData.data.items.gear)
+    }
+    if (!sheetData.data.items.gear) {
       sheetData.data.items.gear = items.filter(i => i.type === "gear").sort(sortFunction);
+    }
 
     sheetData.data.items.abilities = sheetData.data.items.abilities.map(ability => {
       ability.ranges = CYPHER_SYSTEM.optionalRanges;
@@ -317,17 +375,18 @@ export class CypherActorPCSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
+    const skillsTable = html.find("div.grid.skills");
+    skillsTable.on("click", ".sort-header", this.onSkillSort.bind(this));
+    skillsTable.on("click", ".skill-create", this.onSkillCreate.bind(this));
+    skillsTable.on("click", ".skill-info-btn", this.onSkillEdit.bind(this));
+    skillsTable.on("click", ".skill-use-btn", this.onSkillUse.bind(this));
+    skillsTable.on("click", ".skill-delete", this.onSkillDelete.bind(this));
+
     const abilitiesTable = html.find("div.grid.abilities");
     abilitiesTable.on("click", ".ability-create", this.onAbilityCreate.bind(this));
     abilitiesTable.on("click", ".ability-info-btn", this.onAbilityEdit.bind(this));
     abilitiesTable.on("click", ".ability-use-btn", this.onAbilityUse.bind(this));
     abilitiesTable.on("click", ".ability-delete-btn", this.onAbilityDelete.bind(this));
-
-    const skillsTable = html.find("div.grid.skills");
-    skillsTable.on("click", ".skill-create", this.onSkillCreate.bind(this));
-    skillsTable.on("click", ".skill-info-btn", this.onSkillEdit.bind(this));
-    skillsTable.on("click", ".skill-use-btn", this.onSkillUse.bind(this));
-    skillsTable.on("click", ".skill-delete", this.onSkillDelete.bind(this));
 
     const cypherTable = html.find("div.grid.cyphers");
     cypherTable.on("click", ".cypher-create", this.onCypherCreate.bind(this));
@@ -371,21 +430,5 @@ export class CypherActorPCSheet extends ActorSheet {
       });
 
     }
-  }
-
-  async reorderElements(el, target, source, sibling) {
-    const update = [];
-
-    for (let i = 0; i < source.children.length; i++) {
-      source.children[i].dataset.order = i;
-
-      //In case we're dealing with plain objects, they won't have an ID
-      if (source.children[i].dataset.itemId)
-        update.push({ _id: source.children[i].dataset.itemId, "data.order": i });
-    }
-
-    //updateManyEmbeddedEntities is deprecated now and this function now accepts an array of data
-    if (update.length > 0)
-      await this.object.updateEmbeddedEntity("OwnedItem", update);
   }
 }
