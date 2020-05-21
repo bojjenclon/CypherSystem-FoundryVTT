@@ -324,7 +324,11 @@
                     {{#each data.items.cyphers as |cypher|}}
                     <div class="row middle-xs cypher" data-item-id="{{cypher._id}}" data-prder="{{cypher.data.order}}">
                         <div class="col-xs-6 cypher-name">
+                            {{#if cypher.data.identified}}
                             <p>{{{strOrSpace cypher.name}}}</p>
+                            {{else}}
+                            <p>Unidentified Cypher</p>
+                            {{/if}}
                         </div>
                         <div class="col-xs-1 cypher-levelDie">
                             {{#if cypher.data.identified}}
@@ -400,7 +404,11 @@
                     <div class="row middle-xs artifact" data-item-id="{{artifact._id}}"
                         data-prder="{{artifact.data.order}}">
                         <div class="col-xs-4 artifact-name">
+                            {{#if artifact.data.identified}}
                             <p>{{{strOrSpace artifact.name}}}</p>
+                            {{else}}
+                            <p>Unidentified Artifact</p>
+                            {{/if}}
                         </div>
                         <div class="col-xs-1 artifact-levelDie">
                             {{#if artifact.data.identified}}

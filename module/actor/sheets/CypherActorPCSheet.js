@@ -294,31 +294,6 @@ export class CypherActorPCSheet extends ActorSheet {
     if (!sheetData.data.items.gear)
       sheetData.data.items.gear = items.filter(i => i.type === "gear").sort(sortFunction);
 
-    //Make it so that unidentified artifacts and cyphers appear as blank items
-    //TODO extract this in the Item class if possible (perhaps as a static method?)
-    sheetData.data.items.artifacts = sheetData.data.items.artifacts.map(artifact => {
-      if (game.user.isGM) {
-        artifact.editable = true;
-      } else if (!artifact.data.identified) {
-        artifact.name = "Unidentified Artifact";
-        artifact.data.level = "Unknown";
-        artifact.data.effect = "Unknown";
-        artifact.data.depletion = null;
-      }
-      return artifact;
-    });
-
-    sheetData.data.items.cyphers = sheetData.data.items.cyphers.map(cypher => {
-      if (game.user.isGM) {
-        cypher.editable = true;
-      } else if (!cypher.data.identified) {
-        cypher.name = "Unidentified Cypher";
-        cypher.data.level = "Unknown";
-        cypher.data.effect = "Unknown";
-      }
-      return cypher;
-    });
-
     sheetData.data.items.abilities = sheetData.data.items.abilities.map(ability => {
       ability.ranges = CYPHER_SYSTEM.optionalRanges;
       ability.stats = CYPHER_SYSTEM.stats;
