@@ -20,8 +20,12 @@ import { CypherItemWeaponSheet } from './module/item/sheets/CypherItemWeaponShee
 
 import { migrateWorld } from './module/migrations/migrate.js';
 
-Hooks.once("init", function() {
+Hooks.once("init", function () {
     console.log('Cypher System | Initializing Cypher System FoundryVTT System');
+
+    game.csr = {
+        rollItemMacro
+    };
 
     // Record Configuration Values
     CONFIG.CYPHER_SYSTEM = CYPHER_SYSTEM;
@@ -52,25 +56,24 @@ Hooks.once("init", function() {
     registerSystemSettings();
     preloadHandlebarsTemplates();
 });
-  
+
 /*
 Display an NPC's difficulty between parentheses in the Actors list
 */
 Hooks.on('renderActorDirectory', (app, html, options) => {
-  const found = html.find(".entity-name");
-  
-  app.entities
-      .filter(actor => actor.data.type === 'npc')
-      .forEach(actor => {
-          found.filter((i, elem) => elem.innerText === actor.data.name)
+    const found = html.find(".entity-name");
+
+    app.entities
+        .filter(actor => actor.data.type === 'npc')
+        .forEach(actor => {
+            found.filter((i, elem) => elem.innerText === actor.data.name)
                 .each((i, elem) => elem.innerText += ` (${actor.data.data.level * 3})`);
-      })
+        })
 });
 
 Hooks.on("renderChatMessage", (chatMessage, html, data) => {
     //Don't apply ChatMessage enhancement to recovery rolls
-    if (chatMessage.roll && chatMessage.roll.dice[0].faces === 20)
-    {
+    if (chatMessage.roll && chatMessage.roll.dice[0].faces === 20) {
         const dieRoll = chatMessage.roll.dice[0].rolls[0].roll;
         const rollTotal = chatMessage.roll.total;
         const messages = rollText(dieRoll, rollTotal);
@@ -92,11 +95,6 @@ Hooks.on("renderChatMessage", (chatMessage, html, data) => {
     }
 });
 
-/**
- * Once the entire VTT framework is initialized, check to see if we should perform a data migration
- */
-Hooks.once("ready", migrateWorld);
-
 Handlebars.registerHelper({
     or: (v1, v2) => {
         return v1 || v2;
@@ -110,7 +108,88 @@ Handlebars.registerHelper({
         if (typeof val === 'string') {
             return (val && !!val.length) ? val : '&nbsp;';
         }
-        
+
         return val;
     }
 });
+
+/**
+ * Once the entire VTT framework is initialized, check to see if we should perform a data migration
+ */
+Hooks.once("ready", migrateWorld);
+Hooks.once('ready', async () => {
+    // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
+    Hooks.on("hotbarDrop", (bar, data, slot) => createCypherSystemMacro(data, slot));
+});
+
+/* -------------------------------------------- */
+/*  Hotbar Macros                               */
+/* -------------------------------------------- */
+/**
+ * Create a Macro from an Item drop.
+ * Get an existing item macro if one exists, otherwise create a new one.
+ * 
+ * @param {Object} data     The dropped data
+ * @param {number} slot     The hotbar slot to use
+ * 
+ * @returns {Promise}
+ */
+async function createCypherSystemMacro(data, slot) {
+    if (data.type !== "Item") {
+        return;
+    }
+
+    if (!("data" in data)) {
+        return ui.notifications.warn("You can only create macro buttons for owned Items");
+    }
+
+    const item = data.data;
+
+    if (!CYPHER_SYSTEM.supportsMacros.includes(item.type)) {
+        return ui.notifications.warn("This type of Item doesn't support being macroed");
+    }
+
+    // Create the macro command
+    const command = `game.csr.rollItemMacro("${item.name}");`;
+    let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
+    if (!macro) {
+        macro = await Macro.create({
+            name: item.name,
+            type: "script",
+            img: item.img,
+            command: command,
+            flags: { "csr.itemMacro": true }
+        });
+    }
+
+    game.user.assignHotbarMacro(macro, slot);
+
+    return false;
+}
+
+/**
+ * Create a Macro from an Item drop.
+ * Get an existing item macro if one exists, otherwise create a new one.
+ * @param {string} itemName
+ * @return {Promise}
+ */
+function rollItemMacro(itemName) {
+    const speaker = ChatMessage.getSpeaker();
+
+    let actor;
+    if (speaker.token) {
+        actor = game.actors.tokens[speaker.token];
+    }
+    if (!actor) {
+        actor = game.actors.get(speaker.actor);
+    }
+
+    const item = actor ? actor.items.find(i => i.name === itemName) : null;
+    if (!item) {
+        return ui.notifications.warn(`Your controlled Actor does not have an item named ${itemName}`);
+    }
+
+    // Trigger the item roll
+    return item.roll();
+}
+

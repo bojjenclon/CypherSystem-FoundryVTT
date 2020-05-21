@@ -43,7 +43,7 @@ export class CypherItemSkillSheet extends ItemSheet {
                 case 'i':
                     itemData.inability = true;
                     break;
-                
+
                 case 'u':
                     itemData.untrained = true;
                     break;
@@ -51,7 +51,7 @@ export class CypherItemSkillSheet extends ItemSheet {
                 case 't':
                     itemData.trained = true;
                     break;
-                
+
                 case 's':
                     itemData.specialized = true;
                     break;

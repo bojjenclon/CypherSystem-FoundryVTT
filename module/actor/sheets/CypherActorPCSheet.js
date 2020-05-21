@@ -10,15 +10,6 @@ import { CypherItemOddity } from "../../item/CypherItemOddity.js";
 
 import { CypherRolls } from '../../roll.js';
 
-import "../../../lib/dragula/dragula.js";
-
-//Common Dragula options
-const dragulaOptions = {
-  moves: function (el, container, handle) {
-    return handle.classList.contains('handle');
-  }
-};
-
 //Sort function for order
 const sortFunction = (a, b) => a.data.order < b.data.order ? -1 : a.data.order > b.data.order ? 1 : 0;
 
@@ -373,24 +364,16 @@ export class CypherActorPCSheet extends ActorSheet {
     gearTable.on("click", ".gear-info-btn", this.onGearEdit.bind(this));
     gearTable.on("click", ".gear-delete", this.onGearDelete.bind(this));
 
-    html.find("ul.oddities").on("click", ".oddity-delete", this.onOddityDelete.bind(this));
+    if (this.actor.owner) {
+      let handler = ev => this._onDragItemStart(ev);
+      // Find all items on the character sheet.
+      html.find('.grid .skill').each((i, li) => {
+        // Add draggable attribute and dragstart listener.
+        li.setAttribute("draggable", true);
+        li.addEventListener("dragstart", handler, false);
+      });
 
-    //Make sure to make a copy of the options object, otherwise only the first call
-    //to Dragula seems to work
-    const drakes = [];
-    drakes.push(dragula([document.querySelector("div.grid.abilities > tbody")], Object.assign({}, dragulaOptions)));
-    drakes.push(dragula([document.querySelector("div.grid.skills > tbody")], Object.assign({}, dragulaOptions)));
-    drakes.push(dragula([document.querySelector("div.grid.weapons > .body")], Object.assign({}, dragulaOptions)));
-    drakes.push(dragula([document.querySelector("div.grid.armor > .body")], Object.assign({}, dragulaOptions)));
-    drakes.push(dragula([document.querySelector("div.grid.gear > .body")], Object.assign({}, dragulaOptions)));
-
-    drakes.push(dragula([document.querySelector("ul.artifacts")], Object.assign({}, dragulaOptions)));
-    drakes.push(dragula([document.querySelector("ul.cyphers")], Object.assign({}, dragulaOptions)));
-    drakes.push(dragula([document.querySelector("ul.oddities")], Object.assign({}, dragulaOptions)));
-
-    //Handle reordering on all these nice draggable elements
-    //Assumes they all have a "order" property: should be the case since it's defined in the template.json
-    drakes.map(drake => drake.on("drop", this.reorderElements.bind(this)));
+    }
   }
 
   async reorderElements(el, target, source, sibling) {

@@ -108,3 +108,7 @@ CYPHER_SYSTEM.abilityTypes = [
   'Action',
   'Enabler',
 ];
+
+CYPHER_SYSTEM.supportsMacros = [
+  'skill'
+];

@@ -12,8 +12,6 @@ const toBundle = [
     'cypher-system.css',
     "fonts/ogirema.ttf",
     "fonts/source.txt",
-    "lib/dragula/dragula.min.css",
-    "lib/dragula/dragula.min.js",
     "lib/flexbox-grid/flexboxgrid.min.css",
     "templates/characterSheet.html",
     "templates/npcSheet.html",
