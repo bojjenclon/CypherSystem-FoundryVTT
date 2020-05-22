@@ -121,5 +121,6 @@ CYPHER_SYSTEM.abilityTypes = [
 ];
 
 CYPHER_SYSTEM.supportsMacros = [
-  'skill'
+  'skill',
+  'ability'
 ];
