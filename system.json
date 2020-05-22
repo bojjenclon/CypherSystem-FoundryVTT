@@ -9,7 +9,7 @@
     "styles": ["cypher-system.css", "lib/flexbox-grid/flexboxgrid.min.css"],
     "packs": [],
     "languages": ["en"],
-    "compatibleCoreVersion": "0.5.7",
+    "compatibleCoreVersion": "0.6.0",
     "minimumCoreVersion" : "0.5.5",
     "url": "https://github.com/bojjenclon/CypherSystem-FoundryVTT",
     "manifest": "https://raw.githubusercontent.com/bojjenclon/CypherSystem-FoundryVTT/master/system.json",
