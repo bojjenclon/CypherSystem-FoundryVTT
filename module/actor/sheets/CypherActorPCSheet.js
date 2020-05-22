@@ -249,6 +249,7 @@ export class CypherActorPCSheet extends ActorSheet {
 
     //Sort event handlers
     this.onSkillSort = onItemSortGenerator('skills', 'skill');
+    this.onAbilitySort = onItemSortGenerator('abilities', 'ability');
 
     //Creation event handlers
     this.onSkillCreate = onItemCreate("skill", CypherItemSkill);
@@ -399,6 +400,7 @@ export class CypherActorPCSheet extends ActorSheet {
     skillsTable.on("click", ".skill-delete", this.onSkillDelete.bind(this));
 
     const abilitiesTable = html.find("div.grid.abilities");
+    abilitiesTable.on('click', '.sort-header', this.onAbilitySort.bind(this));
     abilitiesTable.on("click", ".ability-create", this.onAbilityCreate.bind(this));
     abilitiesTable.on("click", ".ability-info-btn", this.onAbilityEdit.bind(this));
     abilitiesTable.on("click", ".ability-use-btn", this.onAbilityUse.bind(this));
