@@ -65,6 +65,18 @@ export class CypherItemSkillSheet extends ItemSheet {
         sheetData.stats = CYPHER_SYSTEM.stats;
         sheetData.skillLevels = CYPHER_SYSTEM.skillLevels;
 
+        const { item } = this;
+        const itemData = item.data.data;
+        if (itemData.inability) {
+            sheetData.training = 'i';
+        } else if (itemData.untrained) {
+            sheetData.training = 'u';
+        } else if (itemData.trained) {
+            sheetData.training = 't';
+        } else if (itemData.specialized) {
+            sheetData.training = 's';
+        }
+
         return sheetData;
     }
 }

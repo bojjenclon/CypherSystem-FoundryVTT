@@ -128,10 +128,14 @@
                 <div class="head">
                     <div class="row">
                         <div class="col-xs-8 skill-name">
-                            <a class="sort-header" data-prop="name" data-field="name"><p>Name {{{sortIcon data.sorts.skills 'name'}}}</p></a>
+                            <a class="sort-header" data-prop="name" data-field="name">
+                                <p>Name {{{sortIcon data.sorts.skills 'name'}}}</p>
+                            </a>
                         </div>
                         <div class="col-xs-1 skill-stat">
-                            <a class="sort-header" data-prop="data.data.stat" data-field="stats"><p>Stat {{{sortIcon data.sorts.skills 'stats'}}}</p></a>
+                            <a class="sort-header" data-prop="data.data.stat" data-field="stats">
+                                <p>Stat {{{sortIcon data.sorts.skills 'stats'}}}</p>
+                            </a>
                         </div>
                         <div class="col-xs-2 skill-training">
                             <!-- TODO Make training sortable -->
@@ -156,23 +160,21 @@
                             <p>{{{strOrSpace skill.data.stat}}}</p>
                         </div>
                         <div class="col-xs-2 skill-training">
-                            <p>
-                                {{#if skill.data.inability}}
-                                Inability
-                                {{/if}}
+                            {{#if skill.data.inability}}
+                            <p>Inability </p>
+                            {{/if}}
 
-                                {{#if skill.data.untrained}}
-                                Untrained
-                                {{/if}}
+                            {{#if skill.data.untrained}}
+                            <p>Untrained</p>
+                            {{/if}}
 
-                                {{#if skill.data.trained}}
-                                Trained
-                                {{/if}}
+                            {{#if skill.data.trained}}
+                            <p>Trained</p>
+                            {{/if}}
 
-                                {{#if skill.data.specialized}}
-                                Specialized
-                                {{/if}}
-                            </p>
+                            {{#if skill.data.specialized}}
+                            <p>Specialized</p>
+                            {{/if}}
                         </div>
                         <div class="col-xs-1 skill-actions">
                             <div class="row">
@@ -211,19 +213,29 @@
                 <div class="head">
                     <div class="row">
                         <div class="col-xs-2 ability-name">
-                            <a class="sort-header" data-prop="name" data-field="name"><p>Name {{{sortIcon data.sorts.abilities 'name'}}}</p></a>
+                            <a class="sort-header" data-prop="name" data-field="name">
+                                <p>Name {{{sortIcon data.sorts.abilities 'name'}}}</p>
+                            </a>
                         </div>
                         <div class="col-xs-1 ability-type">
-                            <a class="sort-header" data-prop="data.data.isAction" data-field="isAction"><p>Type {{{sortIcon data.sorts.abilities 'isAction'}}}</p></a>
+                            <a class="sort-header" data-prop="data.data.isAction" data-field="isAction">
+                                <p>Type {{{sortIcon data.sorts.abilities 'isAction'}}}</p>
+                            </a>
                         </div>
                         <div class="col-xs-1 ability-stat">
-                            <a class="sort-header" data-prop="data.data.cost.pool" data-field="stat"><p>Stat {{{sortIcon data.sorts.abilities 'stat'}}}</p></a>
+                            <a class="sort-header" data-prop="data.data.cost.pool" data-field="stat">
+                                <p>Stat {{{sortIcon data.sorts.abilities 'stat'}}}</p>
+                            </a>
                         </div>
                         <div class="col-xs-1 ability-cost">
-                            <a class="sort-header" data-prop="data.data.cost.amount" data-field="cost"><p>Cost {{{sortIcon data.sorts.abilities 'cost'}}}</p></a>
+                            <a class="sort-header" data-prop="data.data.cost.amount" data-field="cost">
+                                <p>Cost {{{sortIcon data.sorts.abilities 'cost'}}}</p>
+                            </a>
                         </div>
                         <div class="col-xs-2 ability-range">
-                            <a class="sort-header" data-prop="data.data.range" data-field="range"><p>Range {{{sortIcon data.sorts.abilities 'range'}}}</p></a>
+                            <a class="sort-header" data-prop="data.data.range" data-field="range">
+                                <p>Range {{{sortIcon data.sorts.abilities 'range'}}}</p>
+                            </a>
                         </div>
                         <div class="col-xs-4 ability-notes">
                             <p>Notes</p>
@@ -304,10 +316,14 @@
                 <div class="head">
                     <div class="row">
                         <div class="col-xs-6 cypher-name">
-                            <a class="sort-header" data-prop="name" data-field="name"><p>Name {{{sortIcon data.sorts.cyphers 'name'}}}</p></a>
+                            <a class="sort-header" data-prop="name" data-field="name">
+                                <p>Name {{{sortIcon data.sorts.cyphers 'name'}}}</p>
+                            </a>
                         </div>
                         <div class="col-xs-1 cypher-level">
-                            <a class="sort-header" data-prop="data.data.level" data-field="level"><p>Level {{{sortIcon data.sorts.cyphers 'level'}}}</p></a>
+                            <a class="sort-header" data-prop="data.data.level" data-field="level">
+                                <p>Level {{{sortIcon data.sorts.cyphers 'level'}}}</p>
+                            </a>
                         </div>
                         <div class="col-xs-4 cypher-form">
                             <p>Form</p>
@@ -380,10 +396,14 @@
                 <div class="head">
                     <div class="row">
                         <div class="col-xs-4 artifact-name">
-                            <a class="sort-header" data-prop="name" data-field="name"><p>Name {{{sortIcon data.sorts.artifacts 'name'}}}</p></a>
+                            <a class="sort-header" data-prop="name" data-field="name">
+                                <p>Name {{{sortIcon data.sorts.artifacts 'name'}}}</p>
+                            </a>
                         </div>
                         <div class="col-xs-1 artifact-level">
-                            <a class="sort-header" data-prop="data.data.level" data-field="level"><p>Level {{{sortIcon data.sorts.artifacts 'level'}}}</p></a>
+                            <a class="sort-header" data-prop="data.data.level" data-field="level">
+                                <p>Level {{{sortIcon data.sorts.artifacts 'level'}}}</p>
+                            </a>
                         </div>
                         <div class="col-xs-4 artifact-form">
                             <p>Form</p>
@@ -468,7 +488,9 @@
                 <div class="head">
                     <div class="row">
                         <div class="col-xs-3 oddity-name">
-                            <a class="sort-header" data-prop="name" data-field="name"><p>Name {{{sortIcon data.sorts.oddities 'name'}}}</p></a>
+                            <a class="sort-header" data-prop="name" data-field="name">
+                                <p>Name {{{sortIcon data.sorts.oddities 'name'}}}</p>
+                            </a>
                         </div>
                         <div class="col-xs-8 oddity-description">
                             <p>Description</p>
@@ -527,19 +549,29 @@
                     <div class="head">
                         <div class="row">
                             <div class="col-xs-2 weapon-name">
-                                <a class="sort-header" data-prop="name" data-field="name"><p>Name {{{sortIcon data.sorts.weapons 'name'}}}</p></a>
+                                <a class="sort-header" data-prop="name" data-field="name">
+                                    <p>Name {{{sortIcon data.sorts.weapons 'name'}}}</p>
+                                </a>
                             </div>
                             <div class="col-xs-1 weapon-weight">
-                                <a class="sort-header" data-prop="data.data.weight" data-field="weight"><p>Weight {{{sortIcon data.sorts.weapons 'weight'}}}</p></a>
+                                <a class="sort-header" data-prop="data.data.weight" data-field="weight">
+                                    <p>Weight {{{sortIcon data.sorts.weapons 'weight'}}}</p>
+                                </a>
                             </div>
                             <div class="col-xs-1 weapon-type">
-                                <a class="sort-header" data-prop="data.data.type" data-field="type"><p>Type {{{sortIcon data.sorts.weapons 'type'}}}</p></a>
+                                <a class="sort-header" data-prop="data.data.type" data-field="type">
+                                    <p>Type {{{sortIcon data.sorts.weapons 'type'}}}</p>
+                                </a>
                             </div>
                             <div class="col-xs-1 weapon-damage">
-                                <a class="sort-header" data-prop="data.data.damage" data-field="damage"><p>Damage {{{sortIcon data.sorts.weapons 'damage'}}}</p></a>
+                                <a class="sort-header" data-prop="data.data.damage" data-field="damage">
+                                    <p>Damage {{{sortIcon data.sorts.weapons 'damage'}}}</p>
+                                </a>
                             </div>
                             <div class="col-xs-2 weapon-range">
-                                <a class="sort-header" data-prop="data.data.range" data-field="range"><p>Range {{{sortIcon data.sorts.weapons 'range'}}}</p></a>
+                                <a class="sort-header" data-prop="data.data.range" data-field="range">
+                                    <p>Range {{{sortIcon data.sorts.weapons 'range'}}}</p>
+                                </a>
                             </div>
                             <div class="col-xs-4 weapon-notes">
                                 <p>Notes</p>
@@ -561,7 +593,8 @@
                                 <span class="weapon-equipped">
                                     <input type="hidden" name="data.items.weapons.{{weapon._id}}.data.equipped"
                                         value={{weapon.data.equipped}} data-dtype="Boolean" />
-                                    <a class="weapon-equip-btn" title="{{ternary weapon.data.equipped 'Unequip' 'Equip'}}"><i
+                                    <a class="weapon-equip-btn"
+                                        title="{{ternary weapon.data.equipped 'Unequip' 'Equip'}}"><i
                                             class="far {{ternary weapon.data.equipped 'fa-times-circle' 'fa-check-circle'}}"></i></a>
                                 </span>
                                 <span class="weapon-name">{{{strOrSpace weapon.name}}}</span>
@@ -615,16 +648,25 @@
                     <div class="head">
                         <div class="row">
                             <div class="col-xs-2 armor-name">
-                                <a class="sort-header" data-prop="name" data-field="name"><p>Name {{{sortIcon data.sorts.armor 'name'}}}</p></a>
+                                <a class="sort-header" data-prop="name" data-field="name">
+                                    <p>Name {{{sortIcon data.sorts.armor 'name'}}}</p>
+                                </a>
                             </div>
                             <div class="col-xs-1 armor-weight">
-                                <a class="sort-header" data-prop="data.data.weight" data-field="weight"><p>Weight {{{sortIcon data.sorts.armor 'weight'}}}</p></a>
+                                <a class="sort-header" data-prop="data.data.weight" data-field="weight">
+                                    <p>Weight {{{sortIcon data.sorts.armor 'weight'}}}</p>
+                                </a>
                             </div>
                             <div class="col-xs-1 armor-armor">
-                                <a class="sort-header" data-prop="data.data.armor" data-field="armor"><p>Armor {{{sortIcon data.sorts.armor 'armor'}}}</p></a>
+                                <a class="sort-header" data-prop="data.data.armor" data-field="armor">
+                                    <p>Armor {{{sortIcon data.sorts.armor 'armor'}}}</p>
+                                </a>
                             </div>
                             <div class="col-xs-2 armor-speed">
-                                <a class="sort-header" data-prop="data.data.additionalSpeedEffortCost" data-field="additionalSpeedEffortCost"><p>Speed Effort Cost {{{sortIcon data.sorts.armor 'additionalSpeedEffortCost'}}}</p></a>
+                                <a class="sort-header" data-prop="data.data.additionalSpeedEffortCost"
+                                    data-field="additionalSpeedEffortCost">
+                                    <p>Speed Effort Cost {{{sortIcon data.sorts.armor 'additionalSpeedEffortCost'}}}</p>
+                                </a>
                             </div>
                             <div class="col-xs-5 armor-notes">
                                 <p>Notes</p>
@@ -645,7 +687,8 @@
                                 <span class="armor-equipped">
                                     <input type="hidden" name="data.items.armor.{{armor._id}}.data.equipped"
                                         value={{armor.data.equipped}} data-dtype="Boolean" />
-                                    <a class="armor-equip-btn" title="{{ternary armor.data.equipped 'Unequip' 'Equip'}}"><i
+                                    <a class="armor-equip-btn"
+                                        title="{{ternary armor.data.equipped 'Unequip' 'Equip'}}"><i
                                             class="far {{ternary armor.data.equipped 'fa-times-circle' 'fa-check-circle'}}"></i></a>
                                 </span>
                                 <span class="armor-name">{{{strOrSpace armor.name}}}</span>
@@ -695,10 +738,14 @@
                     <div class="head">
                         <div class="row">
                             <div class="col-xs-3 gear-name">
-                                <a class="sort-header" data-prop="name" data-field="name"><p>Name {{{sortIcon data.sorts.gear 'name'}}}</p></a>
+                                <a class="sort-header" data-prop="name" data-field="name">
+                                    <p>Name {{{sortIcon data.sorts.gear 'name'}}}</p>
+                                </a>
                             </div>
                             <div class="col-xs-1 gear-price">
-                                <a class="sort-header" data-prop="data.data.price" data-field="price"><p>Price {{{sortIcon data.sorts.gear 'price'}}}</p></a>
+                                <a class="sort-header" data-prop="data.data.price" data-field="price">
+                                    <p>Price {{{sortIcon data.sorts.gear 'price'}}}</p>
+                                </a>
                             </div>
                             <div class="col-xs-7 gear-notes">
                                 <p>Notes</p>

@@ -13,17 +13,27 @@ export function cypherRoll(levelModifier = 0) {
 export function rollText(dieRoll, rollTotal) {
   let parts = [];
 
-  const tnReached = Math.floor(rollTotal / 3);
+  const taskLevel = Math.floor(rollTotal / 3);
+  const skillLevel = (rollTotal - dieRoll) / 3;
+  const totalAchieved = taskLevel + skillLevel;
+
   let tnColor = '#000000';
-  if (tnReached < 3) {
+  if (totalAchieved < 3) {
     tnColor = '#0a860a';
-  } else if (tnReached < 7) {
+  } else if (totalAchieved < 7) {
     tnColor = '#848409';
   } else {
     tnColor = '#0a860a';
   }
+
+  let successText = `<${totalAchieved}>`;
+  if (skillLevel !== 0) {
+    const sign = skillLevel > 0 ? "+" : "";
+    successText += ` (${taskLevel}${sign}${skillLevel})`;
+  }
+
   parts.push({
-    text: `<${tnReached}>`,
+    text: successText,
     color: tnColor,
     cls: 'target-number'
   })
