@@ -123,33 +123,7 @@ function onSkillUse(useClass) {
     const { actor } = this;
     const item = actor.getOwnedItem(itemId);
 
-    const { stat, name, inability, untrained, trained, specialized } = item.data.data;
-    const statId = stat.toLowerCase();
-    let assets;
-    if (inability) {
-      assets = -1;
-    } else if (untrained) {
-      assets = 0;
-    } else if (trained) {
-      assets = 1;
-    } else if (specialized) {
-      assets = 2;
-    }
-
-    CypherRolls.Roll({
-      event,
-      parts: ['1d20', `+${assets * 3}`],
-      data: {
-        statId,
-        abilityCost: 0,
-        maxEffort: actor.data.data.effort,
-        assets
-      },
-      speaker: ChatMessage.getSpeaker({ actor }),
-      flavor: `${actor.name} used ${name}`,
-      title: 'Use Skill',
-      actor
-    });
+    item.roll();
   }
 }
 
