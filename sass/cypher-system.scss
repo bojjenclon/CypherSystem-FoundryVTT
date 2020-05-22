@@ -316,8 +316,16 @@ form.csr {
             .head,
             .body {
                 & > .row {
-                    & > div[class^="col-"]:not(:last-child) {
-                        border-right: 1px solid black;
+                    & > div[class^="col-"] {
+                        &:not(:last-child) {
+                            border-right: 1px solid black;
+                        }
+
+                        p {
+                            overflow     : hidden;
+                            text-overflow: ellipsis;
+                            white-space  : nowrap;
+                        }
                     }
                 }
             }
@@ -334,6 +342,9 @@ form.csr {
                     display    : flex;
                     align-items: center;
                     padding    : 5px 10px;
+
+                    overflow: hidden;
+                    white-space: nowrap;
 
                     &[class$="-info"],
                     &[class$="-use"],
@@ -384,12 +395,6 @@ form.csr {
 
                     // https://css-tricks.com/flexbox-truncated-text/
                     min-width: 0;
-
-                    p {
-                        overflow     : hidden;
-                        text-overflow: ellipsis;
-                        white-space  : nowrap;
-                    }
 
                     &[class$="-info"],
                     &[class$="-use"],

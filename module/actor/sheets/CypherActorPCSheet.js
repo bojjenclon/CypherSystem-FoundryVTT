@@ -216,7 +216,7 @@ export class CypherActorPCSheet extends ActorSheet {
         "form.csr div.grid.cyphers",
         "form.csr div.grid.oddities",
       ],
-      width: 900,
+      width: 1000,
       height: 700,
       tabs: [
         {
@@ -250,6 +250,12 @@ export class CypherActorPCSheet extends ActorSheet {
     //Sort event handlers
     this.onSkillSort = onItemSortGenerator('skills', 'skill');
     this.onAbilitySort = onItemSortGenerator('abilities', 'ability');
+    this.onCypherSort = onItemSortGenerator('cyphers', 'cypher');
+    this.onArtifactSort = onItemSortGenerator('artifacts', 'artifact');
+    this.onOdditySort = onItemSortGenerator('oddities', 'oddity');
+    this.onWeaponSort = onItemSortGenerator('weapons', 'weapon');
+    this.onArmorSort = onItemSortGenerator('armor', 'armor');
+    this.onGearSort = onItemSortGenerator('gear', 'gear');
 
     //Creation event handlers
     this.onSkillCreate = onItemCreate("skill", CypherItemSkill);
@@ -405,35 +411,41 @@ export class CypherActorPCSheet extends ActorSheet {
     abilitiesTable.on("click", ".ability-info-btn", this.onAbilityEdit.bind(this));
     abilitiesTable.on("click", ".ability-use-btn", this.onAbilityUse.bind(this));
     abilitiesTable.on("click", ".ability-delete-btn", this.onAbilityDelete.bind(this));
-
+    
     const cypherTable = html.find("div.grid.cyphers");
+    cypherTable.on("click", ".sort-header", this.onCypherSort.bind(this));
     cypherTable.on("click", ".cypher-create", this.onCypherCreate.bind(this));
     cypherTable.on("click", ".cypher-info-btn", this.onCypherEdit.bind(this));
     cypherTable.on("click", ".cypher-delete", this.onCypherDelete.bind(this));
 
     const artifactsTable = html.find("div.grid.artifacts");
+    artifactsTable.on("click", ".sort-header", this.onArtifactSort.bind(this));
     artifactsTable.on("click", ".artifact-create", this.onArtifactCreate.bind(this));
     artifactsTable.on("click", ".artifact-info-btn", this.onArtifactEdit.bind(this));
     artifactsTable.on("click", ".artifact-delete", this.onArtifactDelete.bind(this));
 
     const odditiesTable = html.find("div.grid.oddities");
+    odditiesTable.on("click", ".sort-header", this.onOdditySort.bind(this));
     odditiesTable.on("click", ".oddity-create", this.onOddityCreate.bind(this));
     odditiesTable.on("click", ".oddity-info-btn", this.onOddityEdit.bind(this));
     odditiesTable.on("click", ".oddity-delete", this.onOddityDelete.bind(this));
 
     const weaponsTable = html.find("div.grid.weapons");
+    weaponsTable.on("click", ".sort-header", this.onWeaponSort.bind(this));
     weaponsTable.on("click", ".weapon-create", this.onWeaponCreate.bind(this));
     weaponsTable.on("click", ".weapon-info-btn", this.onWeaponEdit.bind(this));
     weaponsTable.on("click", ".weapon-delete", this.onWeaponDelete.bind(this));
     weaponsTable.on("click", ".weapon-equip-btn", this.onWeaponEquip.bind(this));
 
     const armorTable = html.find("div.grid.armor");
+    armorTable.on("click", ".sort-header", this.onArmorSort.bind(this));
     armorTable.on("click", ".armor-create", this.onArmorCreate.bind(this));
     armorTable.on("click", ".armor-info-btn", this.onArmorEdit.bind(this));
     armorTable.on("click", ".armor-delete", this.onArmorDelete.bind(this));
     armorTable.on("click", ".armor-equip-btn", this.onArmorEquip.bind(this));
 
     const gearTable = html.find("div.grid.gear");
+    gearTable.on("click", ".sort-header", this.onGearSort.bind(this));
     gearTable.on("click", ".gear-create", this.onGearCreate.bind(this));
     gearTable.on("click", ".gear-info-btn", this.onGearEdit.bind(this));
     gearTable.on("click", ".gear-delete", this.onGearDelete.bind(this));
