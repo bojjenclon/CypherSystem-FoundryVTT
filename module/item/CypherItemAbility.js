@@ -54,8 +54,14 @@ export class CypherItemAbility extends Item {
           speaker: ChatMessage.getSpeaker({ actor }),
           flavor: 'Ability Failed',
           content: `Not enough points in ${poolName} pool.`
-        }])
+        }]);
       }
+    } else {
+      ChatMessage.create([{
+        speaker: ChatMessage.getSpeaker({ actor }),
+        flavor: 'Invalid Ability',
+        content: `This ability is an Enabler and cannot be rolled for.`
+      }]);
     }
   }
 }

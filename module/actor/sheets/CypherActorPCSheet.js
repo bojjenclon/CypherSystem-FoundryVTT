@@ -384,14 +384,21 @@ export class CypherActorPCSheet extends ActorSheet {
     gearTable.on("click", ".gear-delete", this.onGearDelete.bind(this));
 
     if (this.actor.owner) {
-      let handler = ev => this._onDragItemStart(ev);
-      // Find all items on the character sheet.
+      const handler = ev => this._onDragItemStart(ev);
+
+      // Find all skills on the character sheet.
       html.find('.grid .skill').each((i, li) => {
         // Add draggable attribute and dragstart listener.
         li.setAttribute("draggable", true);
         li.addEventListener("dragstart", handler, false);
       });
 
+      // Find all abilities on the character sheet.
+      html.find('.grid .ability').each((i, li) => {
+        // Add draggable attribute and dragstart listener.
+        li.setAttribute("draggable", true);
+        li.addEventListener("dragstart", handler, false);
+      });
     }
   }
 }
