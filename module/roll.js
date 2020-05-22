@@ -14,7 +14,7 @@ export function rollText(dieRoll, rollTotal) {
   let parts = [];
 
   const taskLevel = Math.floor(rollTotal / 3);
-  const skillLevel = (rollTotal - dieRoll) / 3;
+  const skillLevel = Math.floor((rollTotal - dieRoll) / 3 + 0.5);
   const totalAchieved = taskLevel + skillLevel;
 
   let tnColor = '#000000';
