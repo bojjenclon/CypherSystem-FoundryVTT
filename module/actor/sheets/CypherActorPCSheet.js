@@ -113,7 +113,7 @@ function onItemEquipGenerator(deleteClass) {
   }
 }
 
-function onSkillUse(useClass) {
+function onItemUseGenerator(useClass) {
   return function (event) {
     event.preventDefault();
 
@@ -124,47 +124,6 @@ function onSkillUse(useClass) {
     const item = actor.getOwnedItem(itemId);
 
     item.roll();
-  }
-}
-
-function onAbilityUse(useClass) {
-  return function (event) {
-    event.preventDefault();
-
-    const elem = event.currentTarget.closest(useClass);
-    const itemId = elem.dataset.itemId;
-
-    const { actor } = this;
-    const item = actor.getOwnedItem(itemId);
-
-    const { isAction, cost, name } = item.data.data;
-
-    if (isAction) {
-      const statId = cost.pool.toLowerCase();
-
-      if (actor.canSpendFromPool(statId, parseInt(cost.amount, 10))) {
-        CypherRolls.Roll({
-          event,
-          parts: ['1d20'],
-          data: {
-            statId,
-            abilityCost: cost.amount,
-            maxEffort: actor.data.data.effort
-          },
-          speaker: ChatMessage.getSpeaker({ actor }),
-          flavor: `${actor.name} used ${name}`,
-          title: 'Use Ability',
-          actor
-        });
-      } else {
-        const poolName = statId[0].toUpperCase() + statId.substr(1);
-        ChatMessage.create([{
-          speaker: ChatMessage.getSpeaker({ actor }),
-          flavor: 'Ability Failed',
-          content: `Not enough points in ${poolName} pool.`
-        }])
-      }
-    }
   }
 }
 
@@ -252,8 +211,8 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onGearEdit = onItemEditGenerator(".gear");
 
     //Use event handlers
-    this.onSkillUse = onSkillUse(".skill");
-    this.onAbilityUse = onAbilityUse(".ability");
+    this.onSkillUse = onItemUseGenerator(".skill");
+    this.onAbilityUse = onItemUseGenerator(".ability");
 
     //Delete event handlers
     this.onSkillDelete = onItemDeleteGenerator(".skill");

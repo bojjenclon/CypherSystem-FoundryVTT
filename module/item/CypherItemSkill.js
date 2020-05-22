@@ -1,6 +1,5 @@
 import { CypherRolls } from '../roll.js';
 
-
 export class CypherItemSkill extends Item {
   get type() {
     return "gear";
