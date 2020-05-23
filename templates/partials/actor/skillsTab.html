@@ -1,0 +1,82 @@
+<div class="grid skills">
+  <div class="head">
+      <div class="row">
+          <div class="col-xs-8 skill-name">
+              <a class="sort-header" data-prop="name" data-field="name">
+                  <p>Name {{{sortIcon data.sorts.skills 'name'}}}</p>
+              </a>
+          </div>
+          <div class="col-xs-1 skill-stat">
+              <a class="sort-header" data-prop="data.data.stat" data-field="stats">
+                  <p>Stat {{{sortIcon data.sorts.skills 'stats'}}}</p>
+              </a>
+          </div>
+          <div class="col-xs-2 skill-training">
+              <!-- TODO Make training sortable -->
+              <p>Training</p>
+          </div>
+          <div class="col-xs-1 skill-actions">
+              <div class="row">
+                  <div class="col-xs-offset-6 col-xs-6">
+                      <p><a class="skill-create" title="Create"><i class="fas fa-plus"></i></a></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="body">
+      {{#each data.items.skills as |skill|}}
+      <div class="row middle-xs skill" data-item-id="{{skill._id}}" data-prder="{{skill.data.order}}">
+          <div class="col-xs-8 skill-name">
+              <p>{{{strOrSpace skill.name}}}</p>
+          </div>
+          <div class="col-xs-1 skill-stat">
+              <p>{{{strOrSpace skill.data.stat}}}</p>
+          </div>
+          <div class="col-xs-2 skill-training">
+              {{#if skill.data.inability}}
+              <p>Inability </p>
+              {{/if}}
+
+              {{#if skill.data.untrained}}
+              <p>Untrained</p>
+              {{/if}}
+
+              {{#if skill.data.trained}}
+              <p>Trained</p>
+              {{/if}}
+
+              {{#if skill.data.specialized}}
+              <p>Specialized</p>
+              {{/if}}
+          </div>
+          <div class="col-xs-1 skill-actions">
+              <div class="row">
+                  <div class="col-xs-4 skill-info">
+                      <a class="skill-info-btn" data-action="info" title="Info"><i
+                              class="fas fa-info-circle"></i></a>
+                  </div>
+                  <div class="col-xs-4 skill-use">
+                      <a class="skill-use-btn" data-action="use" title="Use"><i
+                              class="fas fa-dice-d20"></i></a>
+                  </div>
+                  <div class="col-xs-4 skill-delete">
+                      <a class="skill-delete" data-action="delete" title="Delete"><i
+                              class="fas fa-trash"></i></a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      {{else}}
+      <div class="row">
+          <div class="col-xs-12">
+              <p>
+                  No skills yet. Create one by clicking the <i class="fas fa-plus"></i> icon on
+                  the top right of the table or pick one from the Items Directory or a Compendium and drag
+                  it here.
+              </p>
+          </div>
+      </div>
+      {{/each}}
+  </div>
+</div>

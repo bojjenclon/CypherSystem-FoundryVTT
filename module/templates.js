@@ -12,7 +12,16 @@ export const preloadHandlebarsTemplates = async() => {
         "systems/cypher-system/templates/characterSheet.html",
         "systems/cypher-system/templates/npcSheet.html",
 
-        //Item sheets
+        // Actor Partials
+        "systems/cypher-system/templates/partials/actor/characterSentence.html",
+        "systems/cypher-system/templates/partials/actor/header.html",
+        "systems/cypher-system/templates/partials/actor/skillsTab.html",
+        "systems/cypher-system/templates/partials/actor/abilitiesTab.html",
+        "systems/cypher-system/templates/partials/actor/cyphersTab.html",
+        "systems/cypher-system/templates/partials/actor/equipmentTab.html",
+        "systems/cypher-system/templates/partials/actor/bioTab.html",
+
+        //Item Sheets
         "systems/cypher-system/templates/item/abilitySheet.html",
         "systems/cypher-system/templates/item/armorSheet.html",
         "systems/cypher-system/templates/item/artifactSheet.html",

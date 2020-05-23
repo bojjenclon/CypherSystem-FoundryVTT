@@ -55,11 +55,15 @@ function onItemSortGenerator(sortField, itemType) {
       }
     });
 
+    const updates = [];
     items.forEach((item, idx) => {
-      item.data.data.order = idx;
+      updates.push({
+        _id: item._id,
+        'data.order': idx
+      });
     });
 
-    await actor.updateEmbeddedEntity('OwnedItem', items);
+    await actor.updateEmbeddedEntity('OwnedItem', updates);
   }
 }
 

@@ -1,0 +1,225 @@
+<h3>Cypher Limit <input type="number" name="data.cypherLimit" value="{{data.cypherLimit}}" min="1" max="99"
+    class="cypher-limit" data-dtype="Number" /></h3>
+
+<h2>Cyphers</h2>
+<div class="grid cyphers">
+  <div class="head">
+    <div class="row">
+      <div class="col-xs-6 cypher-name">
+        <a class="sort-header" data-prop="name" data-field="name">
+          <p>Name {{{sortIcon data.sorts.cyphers 'name'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-1 cypher-level">
+        <a class="sort-header" data-prop="data.data.level" data-field="level">
+          <p>Level {{{sortIcon data.sorts.cyphers 'level'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-4 cypher-form">
+        <p>Form</p>
+      </div>
+      <div class="col-xs-1 cypher-actions">
+        <div class="row">
+          <div class="col-xs-offset-6 col-xs-6">
+            <p><a class="cypher-create" title="Create"><i class="fas fa-plus"></i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    {{#each data.items.cyphers as |cypher|}}
+    <div class="row middle-xs cypher" data-item-id="{{cypher._id}}" data-prder="{{cypher.data.order}}">
+      <div class="col-xs-6 cypher-name">
+        {{#if cypher.data.identified}}
+        <p>{{{strOrSpace cypher.name}}}</p>
+        {{else}}
+        <p>Unidentified Cypher</p>
+        {{/if}}
+      </div>
+      <div class="col-xs-1 cypher-levelDie">
+        {{#if cypher.data.identified}}
+        <p>{{{strOrSpace cypher.data.levelDie}}}</p>
+        {{else}}
+        <p>?</p>
+        {{/if}}
+      </div>
+      <div class="col-xs-4 cypher-form">
+        {{#if cypher.data.identified}}
+        <p>{{{strOrSpace cypher.data.form}}}</p>
+        {{else}}
+        <p>?</p>
+        {{/if}}
+      </div>
+      <div class="col-xs-1 cypher-actions">
+        <div class="row">
+          {{#if (or ../isGM cypher.data.identified)}}
+          <div class="col-xs-6">
+            <a class="cypher-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
+          </div>
+          {{/if}}
+          <div class="{{ternary (or ../isGM cypher.data.identified) 'col-xs-6' 'col-xs-12'}}">
+            <a class="cypher-delete" data-action="delete" title="Delete"><i class="fas fa-trash"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <div class="row">
+      <div class="col-xs-12">
+        <p>
+          No cyphers yet. Create one by clicking the <i class="fas fa-plus"></i> icon on
+          the top right of the table or pick one from the Items Directory or a Compendium and
+          drag
+          it here.
+        </p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+<h2>Artifacts</h2>
+<div class="grid artifacts">
+  <div class="head">
+    <div class="row">
+      <div class="col-xs-4 artifact-name">
+        <a class="sort-header" data-prop="name" data-field="name">
+          <p>Name {{{sortIcon data.sorts.artifacts 'name'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-1 artifact-level">
+        <a class="sort-header" data-prop="data.data.level" data-field="level">
+          <p>Level {{{sortIcon data.sorts.artifacts 'level'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-4 artifact-form">
+        <p>Form</p>
+      </div>
+      <div class="col-xs-2 artifact-depletion">
+        <p>Depletion</p>
+      </div>
+      <div class="col-xs-1 artifact-actions">
+        <div class="row">
+          <div class="col-xs-offset-6 col-xs-6">
+            <p><a class="artifact-create" title="Create"><i class="fas fa-plus"></i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    {{#each data.items.artifacts as |artifact|}}
+    <div class="row middle-xs artifact" data-item-id="{{artifact._id}}" data-prder="{{artifact.data.order}}">
+      <div class="col-xs-4 artifact-name">
+        {{#if artifact.data.identified}}
+        <p>{{{strOrSpace artifact.name}}}</p>
+        {{else}}
+        <p>Unidentified Artifact</p>
+        {{/if}}
+      </div>
+      <div class="col-xs-1 artifact-levelDie">
+        {{#if artifact.data.identified}}
+        <p>{{{strOrSpace artifact.data.levelDie}}}</p>
+        {{else}}
+        <p>?</p>
+        {{/if}}
+      </div>
+      <div class="col-xs-4 artifact-form">
+        {{#if artifact.data.identified}}
+        <p>{{{strOrSpace artifact.data.form}}}</p>
+        {{else}}
+        <p>?</p>
+        {{/if}}
+      </div>
+      {{#if artifact.data.depletion.isDepleting }}
+      <div class="col-xs-2 artifact-depletion">
+        {{#if artifact.data.identified}}
+        <p>{{artifact.data.depletion.threshold}} in {{artifact.data.depletion.die}}</p>
+        {{else}}
+        <p>?</p>
+        {{/if}}
+      </div>
+      {{/if}}
+      <div class="col-xs-1 artifact-actions">
+        <div class="row">
+          {{#if (or ../isGM artifact.data.identified)}}
+          <div class="col-xs-6">
+            <a class="artifact-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
+          </div>
+          {{/if}}
+          <div class="{{ternary (or ../isGM artifact.data.identified) 'col-xs-6' 'col-xs-12'}}">
+            <a class="artifact-delete" data-action="delete" title="Delete"><i class="fas fa-trash"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <div class="row">
+      <div class="col-xs-12">
+        <p>
+          No artifacts yet. Create one by clicking the <i class="fas fa-plus"></i> icon on
+          the top right of the table or pick one from the Items Directory or a Compendium and
+          drag it here.
+        </p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+<h2>Oddities</h2>
+<div class="grid oddities">
+  <div class="head">
+    <div class="row">
+      <div class="col-xs-3 oddity-name">
+        <a class="sort-header" data-prop="name" data-field="name">
+          <p>Name {{{sortIcon data.sorts.oddities 'name'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-8 oddity-description">
+        <p>Description</p>
+      </div>
+      <div class="col-xs-1 oddity-actions">
+        <div class="row">
+          <div class="col-xs-offset-6 col-xs-6">
+            <p><a class="oddity-create" title="Create"><i class="fas fa-plus"></i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    {{#each data.items.oddities as |oddity|}}
+    <div class="row middle-xs oddity" data-item-id="{{oddity._id}}" data-prder="{{oddity.data.order}}">
+      <div class="col-xs-3 oddity-name">
+        <p>{{{strOrSpace oddity.name}}}</p>
+      </div>
+      <div class="col-xs-8 oddity-description">
+        <p>{{{strOrSpace oddity.data.notes}}}</p>
+      </div>
+      <div class="col-xs-1 oddity-actions">
+        <div class="row">
+          <div class="col-xs-6">
+            <a class="oddity-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
+          </div>
+          <div class="col-xs-6">
+            <a class="oddity-delete" data-action="delete" title="Delete"><i class="fas fa-trash"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <div class="row">
+      <div class="col-xs-12">
+        <p>
+          No oddities yet. Create one by clicking the <i class="fas fa-plus"></i> icon on
+          the top right of the table or pick one from the Items Directory or a Compendium and
+          drag
+          it here.
+        </p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

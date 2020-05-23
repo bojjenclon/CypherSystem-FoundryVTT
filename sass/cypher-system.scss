@@ -33,7 +33,7 @@ span.csr-message-special {
 }
 
 form.csr {
-    display: flex;
+    display       : flex;
     flex-direction: column;
 
     overflow   : scroll;
@@ -46,21 +46,21 @@ form.csr {
             padding: 1.2rem 0.5rem;
         }
 
-        & > .row {
-            margin: 0;
+        &>.row {
+            margin        : 0;
             padding-bottom: 8px;
         }
 
         .word {
-            padding: 0;
-            display: flex;
-            align-items: center;
+            padding        : 0;
+            display        : flex;
+            align-items    : center;
             justify-content: center;
         }
     }
 
     #pc-sheet-body {
-        display: flex;
+        display       : flex;
         flex-direction: column;
 
         flex: 1;
@@ -69,10 +69,10 @@ form.csr {
             flex: 1;
 
             &.bio {
-                display: flex;
+                display       : flex;
                 flex-direction: column;
 
-                & > textarea {
+                &>textarea {
                     height: 100%;
                     resize: none;
                 }
@@ -178,7 +178,9 @@ form.csr {
     }
 
     div.header {
+        margin: 0;
         border: 1px solid $border-color;
+        border-bottom: none;
 
         h2,
         h3 {
@@ -189,21 +191,30 @@ form.csr {
             margin-top: 0.25em;
         }
 
-        div.contents>div>div:not(:last-child) {
-            border-right: 1px solid $border-color;
+        >div[class^="col-"]:not(:last-child),
+        .stats {
+            &:not(:last-child) {
+                border-right: 1px solid $border-color;
+            }
+            
+            border-bottom: 1px solid $border-color;
         }
 
-        div.picture {
-            border-right: 1px solid $border-color;
-            padding     : 0.25em 0.25em 0.25em 0.25em;
-            flex        : 0.4;
+        .picture {
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-            img.profile-img {
-                border       : none;
-                width        : inherit;
-                max-width    : 250px;
-                max-height   : 400px;
-                margin-bottom: 1em;
+            > div {
+                padding     : 0.25em 0.25em 0.25em 0.25em;
+
+                img.profile-img {
+                    border       : none;
+                    width        : 100%;
+                    max-width    : 250px;
+                    max-height   : 400px;
+                    margin-bottom: 1em;
+                }
             }
         }
 
@@ -235,7 +246,7 @@ form.csr {
             border: 0;
         }
 
-        &.csr {
+        &.cyphers {
             h2 {
                 margin     : 0;
                 flex       : 0;
@@ -249,7 +260,7 @@ form.csr {
             ul {
                 padding: 0 0.75em 0 0.75em;
 
-                & > li {
+                &>li {
                     padding      : 0.15em;
                     border       : 1px solid darkslategrey;
                     border-radius: 0.25em;
@@ -317,8 +328,8 @@ form.csr {
 
             .head,
             .body {
-                & > .row {
-                    & > div[class^="col-"] {
+                &>.row {
+                    &>div[class^="col-"] {
                         &:not(:last-child) {
                             border-right: 1px solid black;
                         }
@@ -345,7 +356,7 @@ form.csr {
                     align-items: center;
                     padding    : 5px 10px;
 
-                    overflow: hidden;
+                    overflow   : hidden;
                     white-space: nowrap;
 
                     &[class$="-info"],
@@ -568,12 +579,12 @@ form.csr {
     }
 
     .editor {
-        flex: 1;
+        flex  : 1;
         margin: 5px;
     }
 }
 
 textarea:focus {
-    outline: none;
+    outline   : none;
     box-shadow: none;
 }
