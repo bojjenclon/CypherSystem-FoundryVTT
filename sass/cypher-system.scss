@@ -3,23 +3,26 @@ $font-stack  : Karla;
 
 @font-face {
     font-family: "Karla";
-    src: url("fonts/Karla/Karla-Regular.ttf");
+    src        : url("fonts/Karla/Karla-Regular.ttf");
 }
+
 @font-face {
     font-family: "Karla";
-    src: url("fonts/Karla/Karla-Bold.ttf");
+    src        : url("fonts/Karla/Karla-Bold.ttf");
     font-weight: bold;
 }
+
 @font-face {
     font-family: "Karla";
-    src: url("fonts/Karla/Karla-Italic.ttf");
-    font-style: italic;
+    src        : url("fonts/Karla/Karla-Italic.ttf");
+    font-style : italic;
 }
+
 @font-face {
     font-family: "Karla";
-    src: url("fonts/Karla/Karla-BoldItalic.ttf");
+    src        : url("fonts/Karla/Karla-BoldItalic.ttf");
     font-weight: bold;
-    font-style: italic;
+    font-style : italic;
 }
 
 .special-messages {
@@ -86,16 +89,28 @@ form.csr {
 
         flex: 1;
 
-        .tab[data-tab].active {
-            flex: 1;
+        .tab[data-tab] {
 
-            &.bio {
-                display       : flex;
-                flex-direction: column;
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin-bottom: 6px;
+            }
 
-                &>textarea {
-                    height: 100%;
-                    resize: none;
+            &.active {
+                flex: 1;
+
+                &.bio {
+                    display       : flex;
+                    flex-direction: column;
+
+                    &>textarea {
+                        height: 100%;
+                        resize: none;
+                    }
                 }
             }
         }
@@ -226,7 +241,7 @@ form.csr {
                 align-items    : center;
                 justify-content: center;
 
-                > div[class^="col-"] {
+                >div[class^="col-"] {
                     padding: 0;
                 }
 
@@ -245,7 +260,7 @@ form.csr {
 
             .current {
                 label {
-                    font-size: 1.2rem;
+                    font-size    : 1.2rem;
                     margin-bottom: 4px;
                 }
 
@@ -267,11 +282,11 @@ form.csr {
                 padding: 0.25em 0.25em 0.25em 0.25em;
 
                 img.profile-img {
-                    border       : none;
-                    width        : 100%;
+                    border: none;
+                    width : 100%;
 
                     &:hover {
-                        cursor : pointer;
+                        cursor: pointer;
                     }
                 }
             }
@@ -371,6 +386,9 @@ form.csr {
             padding: 0 8px;
 
             .row {
+                margin-left: -0.3rem;
+                margin-right: -0.3rem;
+
                 border: 1px solid #7a7971;
 
                 &:not(:first-child) {
@@ -553,6 +571,10 @@ form.csr {
                         padding: 5px 0;
                     }
 
+                    &:first-child {
+                        margin-top: 4px;
+                    }
+
                     // Make the last element fill the remaining space
                     &:last-child {
                         flex       : 1;
@@ -571,6 +593,10 @@ form.csr {
 
             label {
                 font-weight: bold;
+            }
+
+            hr {
+                width: 100%;
             }
         }
     }

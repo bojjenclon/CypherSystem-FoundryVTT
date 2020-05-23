@@ -6,7 +6,7 @@ export class CypherItemOdditySheet extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             width: 500,
-            height: 400
+            height: 300
         });
     }
 

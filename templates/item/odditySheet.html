@@ -1,12 +1,23 @@
-<form class="{{cssClass}} csr" autocomplete="off">
-    <h1><input type="text" name="name" value="{{item.name}}" /></h1>
-    <div class="flexrow item">
-        <div class="img">
-            <img class="profile-img" src="{{item.img}}" title="{{item.name}}" data-edit="img" />
-        </div>
-        <div class="description">
-            <label for="data.notes">Description</label>
-            <textarea id="data.notes" name="data.notes">{{data.notes}}</textarea>
+<form class="{{cssClass}} csr sheet-container" autocomplete="off">
+    <h1><input type="text" name="name" value="{{item.name}}" placeholder="Oddity Name" /></h1>
+
+    <div class="sheet-contents">
+        <div class="row">
+            <div class="col-xs-3">
+                <img class="profile-img" src="{{item.img}}" title="{{item.name}}" data-edit="img" />
+            </div>
+            <div class="col-xs-9">
+                <div class="row vertical-space">
+                    <div class="col-xs-12">
+                        <label>Description</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <textarea class="description" name="data.notes">{{data.notes}}</textarea>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </form>
