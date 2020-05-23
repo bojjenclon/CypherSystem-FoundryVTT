@@ -1,17 +1,17 @@
 <div class="grid skills">
   <div class="head">
       <div class="row">
-          <div class="col-xs-8 skill-name">
+          <div class="col-xs-6 skill-name">
               <a class="sort-header" data-prop="name" data-field="name">
                   <p>Name {{{sortIcon data.sorts.skills 'name'}}}</p>
               </a>
           </div>
-          <div class="col-xs-1 skill-stat">
+          <div class="col-xs-2 skill-stat">
               <a class="sort-header" data-prop="data.data.stat" data-field="stats">
                   <p>Stat {{{sortIcon data.sorts.skills 'stats'}}}</p>
               </a>
           </div>
-          <div class="col-xs-2 skill-training">
+          <div class="col-xs-3 skill-training">
               <!-- TODO Make training sortable -->
               <p>Training</p>
           </div>
@@ -27,13 +27,13 @@
   <div class="body">
       {{#each data.items.skills as |skill|}}
       <div class="row middle-xs skill" data-item-id="{{skill._id}}" data-prder="{{skill.data.order}}">
-          <div class="col-xs-8 skill-name">
+          <div class="col-xs-6 skill-name">
               <p>{{{strOrSpace skill.name}}}</p>
           </div>
-          <div class="col-xs-1 skill-stat">
+          <div class="col-xs-2 skill-stat">
               <p>{{{strOrSpace skill.data.stat}}}</p>
           </div>
-          <div class="col-xs-2 skill-training">
+          <div class="col-xs-3 skill-training">
               {{#if skill.data.inability}}
               <p>Inability </p>
               {{/if}}

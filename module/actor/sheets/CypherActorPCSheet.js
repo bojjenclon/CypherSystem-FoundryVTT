@@ -153,7 +153,7 @@ export class CypherActorPCSheet extends ActorSheet {
         "form.csr div.grid.cyphers",
         "form.csr div.grid.oddities",
       ],
-      width: 1000,
+      width: 900,
       height: 700,
       tabs: [
         {

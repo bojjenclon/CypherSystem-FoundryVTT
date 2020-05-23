@@ -78,7 +78,7 @@ export class CypherActorPC extends Actor {
    */
   addSkill(name, stat, level=1, inability=false) {
     if (this.getSkillLevel(name)) {
-      throw new Error("This PC already have the skill " + name);
+      throw new Error("This PC already has the skill " + name);
     }
 
     const id = name.replace(" ", ""); //id will be the skill name, without whitespace

@@ -3,22 +3,22 @@
   <div class="grid weapons">
       <div class="head">
           <div class="row">
-              <div class="col-xs-2 weapon-name">
+              <div class="col-xs-3 weapon-name">
                   <a class="sort-header" data-prop="name" data-field="name">
                       <p>Name {{{sortIcon data.sorts.weapons 'name'}}}</p>
                   </a>
               </div>
-              <div class="col-xs-1 weapon-weight">
+              <div class="col-xs-2 weapon-weight">
                   <a class="sort-header" data-prop="data.data.weight" data-field="weight">
                       <p>Weight {{{sortIcon data.sorts.weapons 'weight'}}}</p>
                   </a>
               </div>
-              <div class="col-xs-1 weapon-type">
+              <div class="col-xs-2 weapon-type">
                   <a class="sort-header" data-prop="data.data.type" data-field="type">
                       <p>Type {{{sortIcon data.sorts.weapons 'type'}}}</p>
                   </a>
               </div>
-              <div class="col-xs-1 weapon-damage">
+              <div class="col-xs-2 weapon-damage">
                   <a class="sort-header" data-prop="data.data.damage" data-field="damage">
                       <p>Damage {{{sortIcon data.sorts.weapons 'damage'}}}</p>
                   </a>
@@ -27,9 +27,6 @@
                   <a class="sort-header" data-prop="data.data.range" data-field="range">
                       <p>Range {{{sortIcon data.sorts.weapons 'range'}}}</p>
                   </a>
-              </div>
-              <div class="col-xs-4 weapon-notes">
-                  <p>Notes</p>
               </div>
               <div class="col-xs-1 weapon-actions">
                   <div class="row">
@@ -44,7 +41,7 @@
           {{#each data.items.weapons as |weapon|}}
           <div class="row middle-xs weapon" data-item-id="{{weapon._id}}"
               data-prder="{{weapon.data.order}}">
-              <div class="col-xs-2 weapon-equip-name">
+              <div class="col-xs-3 weapon-equip-name">
                   <span class="weapon-equipped">
                       <input type="hidden" name="data.items.weapons.{{weapon._id}}.data.equipped"
                           value={{weapon.data.equipped}} data-dtype="Boolean" />
@@ -54,20 +51,17 @@
                   </span>
                   <span class="weapon-name">{{{strOrSpace weapon.name}}}</span>
               </div>
-              <div class="col-xs-1 weapon-weight">
+              <div class="col-xs-2 weapon-weight">
                   <p>{{{strOrSpace weapon.data.weight}}}</p>
               </div>
-              <div class="col-xs-1 weapon-type">
+              <div class="col-xs-2 weapon-type">
                   <p>{{{strOrSpace weapon.data.weaponType}}}</p>
               </div>
-              <div class="col-xs-1 weapon-damage">
+              <div class="col-xs-2 weapon-damage">
                   <p>{{{strOrSpace weapon.data.damage}}}</p>
               </div>
               <div class="col-xs-2 weapon-range">
                   <p>{{{strOrSpace weapon.data.range}}}</p>
-              </div>
-              <div class="col-xs-4 weapon-notes">
-                  <p>{{{strOrSpace weapon.data.notes}}}</p>
               </div>
               <div class="col-xs-1 weapon-actions">
                   <div class="row">
@@ -101,29 +95,26 @@
   <div class="grid armor">
       <div class="head">
           <div class="row">
-              <div class="col-xs-2 armor-name">
+              <div class="col-xs-4 armor-name">
                   <a class="sort-header" data-prop="name" data-field="name">
                       <p>Name {{{sortIcon data.sorts.armor 'name'}}}</p>
                   </a>
               </div>
-              <div class="col-xs-1 armor-weight">
+              <div class="col-xs-2 armor-weight">
                   <a class="sort-header" data-prop="data.data.weight" data-field="weight">
                       <p>Weight {{{sortIcon data.sorts.armor 'weight'}}}</p>
                   </a>
               </div>
-              <div class="col-xs-1 armor-armor">
+              <div class="col-xs-2 armor-armor">
                   <a class="sort-header" data-prop="data.data.armor" data-field="armor">
                       <p>Armor {{{sortIcon data.sorts.armor 'armor'}}}</p>
                   </a>
               </div>
-              <div class="col-xs-2 armor-speed">
+              <div class="col-xs-3 armor-speed">
                   <a class="sort-header" data-prop="data.data.additionalSpeedEffortCost"
                       data-field="additionalSpeedEffortCost">
                       <p>Speed Effort Cost {{{sortIcon data.sorts.armor 'additionalSpeedEffortCost'}}}</p>
                   </a>
-              </div>
-              <div class="col-xs-5 armor-notes">
-                  <p>Notes</p>
               </div>
               <div class="col-xs-1 armor-actions">
                   <div class="row">
@@ -137,7 +128,7 @@
       <div class="body">
           {{#each data.items.armor as |armor|}}
           <div class="row middle-xs armor" data-item-id="{{armor._id}}" data-prder="{{armor.data.order}}">
-              <div class="col-xs-2 armor-equip-name">
+              <div class="col-xs-4 armor-equip-name">
                   <span class="armor-equipped">
                       <input type="hidden" name="data.items.armor.{{armor._id}}.data.equipped"
                           value={{armor.data.equipped}} data-dtype="Boolean" />
@@ -147,17 +138,14 @@
                   </span>
                   <span class="armor-name">{{{strOrSpace armor.name}}}</span>
               </div>
-              <div class="col-xs-1 armor-weight">
+              <div class="col-xs-2 armor-weight">
                   <p>{{{strOrSpace armor.data.weight}}}</p>
               </div>
-              <div class="col-xs-1 armor-armor">
+              <div class="col-xs-2 armor-armor">
                   <p>{{{strOrSpace armor.data.armor}}}</p>
               </div>
-              <div class="col-xs-2 armor-speed">
+              <div class="col-xs-3 armor-speed">
                   <p>{{{strOrSpace armor.data.additionalSpeedEffortCost}}}</p>
-              </div>
-              <div class="col-xs-5 armor-notes">
-                  <p>{{{strOrSpace armor.data.notes}}}</p>
               </div>
               <div class="col-xs-1 armor-actions">
                   <div class="row">
@@ -191,18 +179,15 @@
   <div class="grid gear">
       <div class="head">
           <div class="row">
-              <div class="col-xs-3 gear-name">
+              <div class="col-xs-8 gear-name">
                   <a class="sort-header" data-prop="name" data-field="name">
                       <p>Name {{{sortIcon data.sorts.gear 'name'}}}</p>
                   </a>
               </div>
-              <div class="col-xs-1 gear-price">
+              <div class="col-xs-3 gear-price">
                   <a class="sort-header" data-prop="data.data.price" data-field="price">
                       <p>Price {{{sortIcon data.sorts.gear 'price'}}}</p>
                   </a>
-              </div>
-              <div class="col-xs-7 gear-notes">
-                  <p>Notes</p>
               </div>
               <div class="col-xs-1 gear-actions">
                   <div class="row">
@@ -216,14 +201,11 @@
       <div class="body">
           {{#each data.items.gear as |gear|}}
           <div class="row middle-xs gear" data-item-id="{{gear._id}}" data-prder="{{gear.data.order}}">
-              <div class="col-xs-3 gear-name">
+              <div class="col-xs-8 gear-name">
                   <p>{{{strOrSpace gear.name}}}</p>
               </div>
-              <div class="col-xs-1 gear-price">
+              <div class="col-xs-3 gear-price">
                   <p>{{{strOrSpace gear.data.price}}}</p>
-              </div>
-              <div class="col-xs-7 gear-notes">
-                  <p>{{{strOrSpace gear.data.notes}}}</p>
               </div>
               <div class="col-xs-1 gear-actions">
                   <div class="row">
