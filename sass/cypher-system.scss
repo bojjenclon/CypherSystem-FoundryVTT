@@ -1,5 +1,26 @@
 $border-color: #325d6d;
-$font-stack  : Ogirema;
+$font-stack  : Karla;
+
+@font-face {
+    font-family: "Karla";
+    src: url("fonts/Karla/Karla-Regular.ttf");
+}
+@font-face {
+    font-family: "Karla";
+    src: url("fonts/Karla/Karla-Bold.ttf");
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Karla";
+    src: url("fonts/Karla/Karla-Italic.ttf");
+    font-style: italic;
+}
+@font-face {
+    font-family: "Karla";
+    src: url("fonts/Karla/Karla-BoldItalic.ttf");
+    font-weight: bold;
+    font-style: italic;
+}
 
 .special-messages {
     margin     : 4px;
@@ -40,7 +61,7 @@ form.csr {
     font-family: $font-stack;
 
     .character-sentence {
-        font-size: 2rem;
+        font-size: 1.9em;
 
         input {
             padding: 1.2rem 0.5rem;
@@ -178,8 +199,8 @@ form.csr {
     }
 
     div.header {
-        margin: 0;
-        border: 1px solid $border-color;
+        margin       : 0;
+        border       : 1px solid $border-color;
         border-bottom: none;
 
         h2,
@@ -196,28 +217,61 @@ form.csr {
             &:not(:last-child) {
                 border-right: 1px solid $border-color;
             }
-            
+
             border-bottom: 1px solid $border-color;
+
+            .row {
+                margin: 0;
+
+                align-items    : center;
+                justify-content: center;
+
+                > div[class^="col-"] {
+                    padding: 0;
+                }
+
+                .row:first-child {
+                    div[class^="col-"] {
+                        margin-bottom: 6px;
+                    }
+                }
+            }
+
+            label {
+                display      : block;
+                margin-bottom: 2px;
+                font-weight  : bold;
+            }
+
+            .current {
+                label {
+                    font-size: 1.2rem;
+                    margin-bottom: 4px;
+                }
+
+                input {
+                    font-size: 2.8rem;
+
+                    height: 60px;
+                    width : 100px;
+                }
+            }
         }
 
         .picture {
-            display: flex;
-            align-items: center;
+            display        : flex;
+            align-items    : center;
             justify-content: center;
 
-            > div {
-                padding     : 0.25em 0.25em 0.25em 0.25em;
+            >div {
+                padding: 0.25em 0.25em 0.25em 0.25em;
 
                 img.profile-img {
                     border       : none;
                     width        : 100%;
-                    max-width    : 250px;
-                    max-height   : 400px;
-                    margin-bottom: 1em;
 
                     &:hover {
-                        outline: 1px solid rgba(0, 234, 255, 0.5);
-                        cursor: pointer;
+                        cursor : pointer;
                     }
                 }
             }

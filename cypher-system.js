@@ -104,6 +104,8 @@ Handlebars.registerHelper({
         return cond ? v1 : v2;
     },
 
+    allCaps: (text) => text.toUpperCase(),
+
     strOrSpace: val => {
         if (typeof val === 'string') {
             return (val && !!val.length) ? val : '&nbsp;';

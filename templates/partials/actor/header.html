@@ -1,29 +1,41 @@
 <div class="row header">
-    <div class="col-xs-3 picture">
+    <div class="col-xs-4 picture">
         <div>
             <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
         </div>
     </div>
-    <div class="col-xs-9">
+    <div class="col-xs-8">
         <div class="row">
             {{#each data.stats as |stat id|}}
             <div class="col-xs-4 stats" data-stat="{{id}}">
-                <h2 class="stat">{{id}}</h2>
-                <h3>
-                    Current <input name="data.stats.{{id}}.pool.current" type="number" value="{{stat.pool.current}}"
-                        class="stats" data-dtype="Number" min="0" max="{{stat.pool.maximum}}" placeholder="0" />
-                    /
-                    Pool <input name="data.stats.{{id}}.pool.maximum" type="number" value="{{stat.pool.maximum}}"
-                        class="stats" data-dtype="Number" min="0" max="99" placeholder="0" />
-                </h3>
-
-                <h3>Edge <input name="data.stats.{{id}}.edge" type="number" value="{{stat.edge}}" class="stats"
-                        data-dtype="Number" min="0" max="99" placeholder="0" /></h3>
+                <div class="row">
+                    <div class="col-xs-8 current">
+                        <label for="data.stats.{{id}}.pool.current">{{allCaps id}}</label>
+                        <input name="data.stats.{{id}}.pool.current" type="number" value="{{stat.pool.current}}"
+                            data-dtype="Number" min="0" max="{{stat.pool.maximum}}" placeholder="0" />
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <label for="data.stats.{{id}}.pool.maximum">Max</label>
+                            <div class="col-xs-12">
+                                <input name="data.stats.{{id}}.pool.maximum" type="number" value="{{stat.pool.maximum}}"
+                                    class="stats" data-dtype="Number" min="0" max="99" placeholder="0" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="data.stats.{{id}}.edge">Edge</label>
+                            <div class="col-xs-12">
+                                <input name="data.stats.{{id}}.edge" type="number" value="{{stat.edge}}" class="stats"
+                                    data-dtype="Number" min="0" max="99" placeholder="0" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             {{/each}}
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-xs-4 stats">
                 <h2>Tier <input type="number" name="data.tier" value="{{data.tier}}" placeholder="1" min="1" max="6"
                         data-dtype="Number" class="tier" />
@@ -78,6 +90,6 @@
                         max="99" data-dtype="Number" />
                 </h2>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
