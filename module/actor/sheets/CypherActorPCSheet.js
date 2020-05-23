@@ -8,8 +8,6 @@ import { CypherItemCypher } from "../../item/CypherItemCypher.js";
 import { CypherItemArtifact } from "../../item/CypherItemArtifact.js";
 import { CypherItemOddity } from "../../item/CypherItemOddity.js";
 
-import { CypherRolls } from '../../roll.js';
-
 //Sort function for order
 const sortFunction = (a, b) => a.data.order < b.data.order ? -1 : a.data.order > b.data.order ? 1 : 0;
 
@@ -243,6 +241,18 @@ export class CypherActorPCSheet extends ActorSheet {
    */
   get template() {
     return "systems/cypher-system/templates/characterSheet.html";
+  }
+
+  setPosition(options) {
+    // Restrict the window to a minimum size
+    if (options.width && options.width < 850) {
+      options.width = 850;
+    }
+    if (options.height && options.height < 460) {
+      options.height = 460;
+    }
+
+    super.setPosition(options);
   }
 
   /**
