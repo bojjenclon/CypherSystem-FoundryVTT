@@ -158,6 +158,8 @@ form.csr {
         user-select  : text;
         text-align   : center;
 
+        -moz-appearance: textfield;
+
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -568,13 +570,6 @@ form.csr {
     .editor {
         flex: 1;
         margin: 5px;
-    }
-}
-
-.gu-mirror {
-    // Makes the DnD operation look smoother
-    div[class$="-drag"] {
-        align-self: center;
     }
 }
 

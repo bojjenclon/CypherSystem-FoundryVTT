@@ -8,7 +8,11 @@
     "esmodules": ["cypher-system.js"],
     "styles": ["cypher-system.css", "lib/flexbox-grid/flexboxgrid.min.css"],
     "packs": [],
-    "languages": ["en"],
+    "languages": [{
+        "lang": "en",
+        "name": "English",
+        "path": "lang/en.json"
+    }],
     "compatibleCoreVersion": "0.6.0",
     "minimumCoreVersion" : "0.5.5",
     "url": "https://github.com/bojjenclon/CypherSystem-FoundryVTT",

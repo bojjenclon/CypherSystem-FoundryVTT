@@ -102,13 +102,13 @@ export class CypherRolls {
       return roll;
     }
 
-    const template = 'systems/cypher-system/templates/dialogs/roll-dialog.html';
+    const template = 'systems/cypher-system/templates/dialogs/rollDialog.html';
     let dialogData = {
       formula: filtered.join(' '),
       maxEffort: maxEffort,
       data: data,
       rollMode: rollMode,
-      rollModes: CONFIG.rollModes
+      rollModes: CONFIG.Dice.rollModes
     };
 
     const html = await renderTemplate(template, dialogData);
