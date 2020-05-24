@@ -139,6 +139,10 @@ form.csr {
     }
 }
 
+input:disabled {
+    padding: 8px;
+}
+
 textarea:focus {
     outline   : none;
     box-shadow: none;

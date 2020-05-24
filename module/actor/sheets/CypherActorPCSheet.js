@@ -46,7 +46,7 @@ function onRollPoolGenerator() {
 
     const pool = srcElem.dataset.pool;
     const poolName = pool[0].toUpperCase() + pool.substr(1);
-    
+
     CypherRolls.Roll({
       event,
       parts: ['1d20'],
@@ -150,9 +150,31 @@ function onItemDeleteGenerator(deleteClass) {
   return function (event) {
     event.preventDefault();
 
-    const elem = event.currentTarget.closest(deleteClass);
-    const itemId = elem.dataset.itemId;
-    this.actor.deleteOwnedItem(itemId);
+    const confirmationDialog = new Dialog({
+      title: game.i18n.localize("CSR.deleteDialogTitle"),
+      content: `<p>${game.i18n.localize("CSR.deleteDialogContent")}</p><hr />`,
+      buttons: {
+        confirm: {
+          icon: '<i class="fas fa-check"></i>',
+          label: game.i18n.localize("CSR.deleteButton"),
+          callback: () => {
+            const elem = event.currentTarget.closest(deleteClass);
+            const itemId = elem.dataset.itemId;
+            this.actor.deleteOwnedItem(itemId);
+          }
+        },
+        cancel: {
+          icon: '<i class="fas fa-times"></i>',
+          label: game.i18n.localize("CSR.cancelButton"),
+          callback: () => { }
+        }
+      },
+      default: "cancel"
+    });
+    confirmationDialog.render(true);
+
+
+    
   }
 }
 
@@ -445,7 +467,7 @@ export class CypherActorPCSheet extends ActorSheet {
     abilitiesTable.on("click", ".ability-info-btn", this.onAbilityEdit.bind(this));
     abilitiesTable.on("click", ".ability-use-btn", this.onAbilityUse.bind(this));
     abilitiesTable.on("click", ".ability-delete-btn", this.onAbilityDelete.bind(this));
-    
+
     const cypherTable = html.find("div.grid.cyphers");
     cypherTable.on("click", ".sort-header", this.onCypherSort.bind(this));
     cypherTable.on("click", ".cypher-create", this.onCypherCreate.bind(this));
