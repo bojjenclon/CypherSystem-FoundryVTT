@@ -13,7 +13,7 @@ export class PlayerChoiceDialog extends Dialog {
       template: "templates/hud/dialog.html",
       classes: ["csr", "dialog", "player-choice"],
       width: 300,
-      height: 170
+      height: 175
     });
   }
 
