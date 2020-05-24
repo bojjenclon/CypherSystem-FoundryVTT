@@ -8,6 +8,8 @@ import { rollText } from './module/Roll.js';
 import { preloadHandlebarsTemplates } from './module/Templates.js';
 import { registerSystemSettings } from './module/Settings.js';
 import { csrSocketListeners } from './module/Socket.js';
+import { createCypherSystemMacro, rollItemMacro } from './module/Macros.js';
+import { handlebarsHelpers } from './module/HandlebarsHelpers.js';
 
 import { CypherItem } from './module/item/CypherItem.js';
 import { CypherItemAbilitySheet } from './module/item/sheets/CypherItemAbilitySheet.js';
@@ -139,30 +141,7 @@ Hooks.on("getActorDirectoryEntryContext", (html, entryOptions) => {
     });
 });
 
-Handlebars.registerHelper({
-    eq: (v1, v2) => v1 === v2,
-    neq: (v1, v2) => v1 !== v2,
-    or: (v1, v2) => v1 || v2,
-    ternary: (cond, v1, v2) => cond ? v1 : v2,
-
-    allCaps: (text) => text.toUpperCase(),
-
-    strOrSpace: val => {
-        if (typeof val === 'string') {
-            return (val && !!val.length) ? val : '&nbsp;';
-        }
-
-        return val;
-    },
-
-    sortIcon: (sortInfo, field) => {
-        if (sortInfo.field !== field) {
-            return '';
-        }
-
-        return `&nbsp;<i class="fas fa-long-arrow-alt-${sortInfo.asc ? 'up' : 'down'}"></i>`;
-    }
-});
+Handlebars.registerHelper(handlebarsHelpers());
 
 /* -------------------------------------------- */
 /*  Ready Hooks                                 */
@@ -173,75 +152,3 @@ Hooks.once('ready', async () => {
     // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
     Hooks.on("hotbarDrop", (bar, data, slot) => createCypherSystemMacro(data, slot));
 });
-
-/* -------------------------------------------- */
-/*  Hotbar Macros                               */
-/* -------------------------------------------- */
-/**
- * Create a Macro from an Item drop.
- * Get an existing item macro if one exists, otherwise create a new one.
- * 
- * @param {Object} data     The dropped data
- * @param {number} slot     The hotbar slot to use
- * 
- * @returns {Promise}
- */
-async function createCypherSystemMacro(data, slot) {
-    if (data.type !== "Item") {
-        return;
-    }
-
-    if (!("data" in data)) {
-        return ui.notifications.warn("You can only create macro buttons for owned Items");
-    }
-
-    const item = data.data;
-
-    if (!CYPHER_SYSTEM.supportsMacros.includes(item.type)) {
-        return ui.notifications.warn("This type of Item doesn't support being macroed");
-    }
-
-    // Create the macro command
-    const command = `game.csr.rollItemMacro("${item._id}");`;
-    let macro = game.macros.entities.find(m => (m._id === item._id) && (m.command === command));
-    if (!macro) {
-        macro = await Macro.create({
-            name: item.name,
-            type: "script",
-            img: item.img,
-            command: command,
-            flags: { "csr.itemMacro": true }
-        });
-    }
-
-    game.user.assignHotbarMacro(macro, slot);
-
-    return false;
-}
-
-/**
- * Create a Macro from an Item drop.
- * Get an existing item macro if one exists, otherwise create a new one.
- * @param {string} itemId
- * @return {Promise}
- */
-function rollItemMacro(itemId) {
-    const speaker = ChatMessage.getSpeaker();
-
-    let actor;
-    if (speaker.token) {
-        actor = game.actors.tokens[speaker.token];
-    }
-    if (!actor) {
-        actor = game.actors.get(speaker.actor);
-    }
-
-    const item = actor ? actor.items.find(i => i._id === itemId) : null;
-    if (!item) {
-        return ui.notifications.warn(`Your controlled Actor does not have an item with the id ${itemId}`);
-    }
-
-    // Trigger the item roll
-    return item.roll();
-}
-
