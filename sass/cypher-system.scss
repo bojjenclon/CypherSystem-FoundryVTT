@@ -25,6 +25,7 @@ $font-stack  : Karla;
     font-style : italic;
 }
 
+@import 'checkbox';
 @import 'dataGrid';
 @import 'pcSheet';
 @import 'npcSheet';
@@ -90,7 +91,7 @@ form.csr {
         margin: 0 0.5em 0 0.5em;
     }
 
-    input[data-dtype="Number"] {
+    input[type="number"] {
         height       : 24px;
         background   : rgba(0, 0, 0, 0.05);
         padding      : 1px 3px;

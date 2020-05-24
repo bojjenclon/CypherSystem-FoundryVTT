@@ -1,4 +1,7 @@
 form.csr.pc {
+  padding: 0.5em;
+  overflow: auto;
+
   .character-sentence {
     font-size: 1.9em;
 
@@ -6,7 +9,7 @@ form.csr.pc {
       padding: 1.2rem 0.5rem;
     }
 
-    input[data-dtype="Number"] {
+    input[type="number"] {
       width: 2rem;
     }
 
@@ -23,161 +26,14 @@ form.csr.pc {
     }
   }
 
-  #pc-sheet-body {
-    display       : flex;
-    flex-direction: column;
-
-    flex: 1;
-
-    .tab[data-tab] {
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        margin-bottom: 6px;
-      }
-
-      &.active {
-        flex: 1;
-
-        &.bio {
-          display       : flex;
-          flex-direction: column;
-
-          &>textarea {
-            height: 100%;
-            resize: none;
-          }
-        }
-      }
-    }
-
-    div.item {
-      height: 80%;
-
-      label {
-        font-weight: bold;
-      }
-
-      input[type="number"] {
-        width: 4em;
-      }
-
-      div {
-        display       : inline-block;
-        display       : flex;
-        flex-direction: column;
-
-        textarea {
-          flex: 1;
-        }
-
-        &.img {
-          flex        : 0.5;
-          margin-right: 0.5em;
-        }
-
-        &.description {
-          height        : 95%;
-          vertical-align: top;
-        }
-      }
-
-      textarea {
-        width     : auto;
-        height    : 100%;
-        box-sizing: border-box;
-        margin    : 0 0.5em 0 0.5em;
-      }
-
-      label {
-        clear  : both;
-        display: block;
-        margin : 0.25em 0.5em 0 0.5em;
-      }
-    }
-
-    div {
-
-      &.cyphers {
-        h2 {
-          margin     : 0;
-          flex       : 0;
-          font-weight: bold;
-        }
-
-        textarea {
-          overflow: scroll;
-        }
-
-        ul {
-          padding: 0 0.75em 0 0.75em;
-
-          &>li {
-            padding      : 0.15em;
-            border       : 1px solid darkslategrey;
-            border-radius: 0.25em;
-
-            &>h4 {
-              font-size  : large;
-              font-weight: bold;
-            }
-
-            &>p>span,
-            label {
-              font-weight: bold;
-            }
-
-            &>a {
-              float: right;
-            }
-
-            & input[type="number"] {
-              width: 3em;
-            }
-          }
-        }
-      }
-
-      div.advances,
-      div.recovery {
-        input[type="checkbox"] {
-          display: inline-block;
-        }
-      }
-
-      div.stats {
-        padding   : 0.3em 0 0.3em 0;
-        text-align: center;
-
-        h2 {
-          text-transform: capitalize;
-          padding-top   : 0;
-
-          button.roll {
-            margin-left     : 1em;
-            background-image: url("/icons/svg/d20-grey.svg"); //!important
-          }
-        }
-      }
-
-      &.tab.equipment {
-        h2 {
-          margin     : 0;
-          flex       : 0;
-          font-weight: bold;
-        }
-      }
-    }
-  }
-
   .header {
     margin       : 0;
     border       : 1px solid $border-color;
     border-bottom: none;
+
+    input[type="number"] {
+      width: 100%;
+    }
 
     h2,
     h3 {
@@ -340,6 +196,10 @@ form.csr.pc {
             padding-top   : 1em;
             padding-bottom: 4px;
           }
+
+          input[type="number"] {
+            width: 3em;
+          }
         }
 
         .damage-track {
@@ -357,7 +217,7 @@ form.csr.pc {
 
           p {
             margin   : 0 8px;
-            font-size: 1.5em;
+            font-size: 1.3em;
           }
         }
 
@@ -384,6 +244,10 @@ form.csr.pc {
               }
             }
           }
+
+          input[type="number"] {
+            width: 3em;
+          }
         }
       }
 
@@ -408,7 +272,7 @@ form.csr.pc {
 
           label {
             margin   : 0;
-            font-size: 1.3em;
+            font-size: 1.2em;
           }
         }
       }
@@ -421,7 +285,8 @@ form.csr.pc {
       }
 
       input[type="checkbox"] {
-        height: 16px;
+        // height: 16px;
+        transform: scale(0.9);
       }
     }
 
@@ -443,6 +308,157 @@ form.csr.pc {
 
       li input {
         height: 12px;
+      }
+    }
+  }
+
+  #pc-sheet-body {
+    display       : flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    .tab[data-tab] {
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-bottom: 6px;
+      }
+
+      &.active {
+        flex: 1;
+
+        &.bio {
+          display       : flex;
+          flex-direction: column;
+
+          &>textarea {
+            height: 100%;
+            resize: none;
+          }
+        }
+      }
+    }
+
+    div.item {
+      height: 80%;
+
+      label {
+        font-weight: bold;
+      }
+
+      input[type="number"] {
+        width: 4em;
+      }
+
+      div {
+        display       : inline-block;
+        display       : flex;
+        flex-direction: column;
+
+        textarea {
+          flex: 1;
+        }
+
+        &.img {
+          flex        : 0.5;
+          margin-right: 0.5em;
+        }
+
+        &.description {
+          height        : 95%;
+          vertical-align: top;
+        }
+      }
+
+      textarea {
+        width     : auto;
+        height    : 100%;
+        box-sizing: border-box;
+        margin    : 0 0.5em 0 0.5em;
+      }
+
+      label {
+        clear  : both;
+        display: block;
+        margin : 0.25em 0.5em 0 0.5em;
+      }
+    }
+
+    div {
+
+      &.cyphers {
+        h2 {
+          margin     : 0;
+          flex       : 0;
+          font-weight: bold;
+        }
+
+        textarea {
+          overflow: scroll;
+        }
+
+        ul {
+          padding: 0 0.75em 0 0.75em;
+
+          &>li {
+            padding      : 0.15em;
+            border       : 1px solid darkslategrey;
+            border-radius: 0.25em;
+
+            &>h4 {
+              font-size  : large;
+              font-weight: bold;
+            }
+
+            &>p>span,
+            label {
+              font-weight: bold;
+            }
+
+            &>a {
+              float: right;
+            }
+
+            & input[type="number"] {
+              width: 3em;
+            }
+          }
+        }
+      }
+
+      div.advances,
+      div.recovery {
+        input[type="checkbox"] {
+          display: inline-block;
+        }
+      }
+
+      div.stats {
+        padding   : 0.3em 0 0.3em 0;
+        text-align: center;
+
+        h2 {
+          text-transform: capitalize;
+          padding-top   : 0;
+
+          button.roll {
+            margin-left     : 1em;
+            background-image: url("/icons/svg/d20-grey.svg"); //!important
+          }
+        }
+      }
+
+      &.tab.equipment {
+        h2 {
+          margin     : 0;
+          flex       : 0;
+          font-weight: bold;
+        }
       }
     }
   }

@@ -88,10 +88,12 @@
                     <ul>
                         {{#each advances as |advance|}}
                         <li class="no-pip">
-                            <input type="checkbox" name="data.advances.{{advance.name}}"
-                                id="data.advances.{{advance.name}}" data-dtype="Boolean"
-                                {{checked advance.isChecked}} />
-                            <label for="data.advances.{{advance.name}}">{{advance.label}}</label>
+                            <div class="checkbox">
+                                <input type="checkbox" name="data.advances.{{advance.name}}"
+                                    id="data.advances.{{advance.name}}" data-dtype="Boolean"
+                                    {{checked advance.isChecked}} />
+                                <label for="data.advances.{{advance.name}}">{{advance.label}}</label>
+                            </div>
                         </li>
                         {{/each}}
                     </ul>
@@ -141,10 +143,12 @@
                     <ul>
                         {{#each recoveriesData as |recovery|}}
                         <li class="no-pip">
-                            <input type="checkbox" name="data.recoveries.{{recovery.key}}"
-                                id="data.recoveries.{{recovery.key}}" data-dtype="Boolean"
-                                {{checked recovery.checked}} />
-                            <label for="data.recoveries.{{recovery.key}}">{{recovery.label}}</label>
+                            <div class="checkbox">
+                                <input type="checkbox" name="data.recoveries.{{recovery.key}}"
+                                    id="data.recoveries.{{recovery.key}}" data-dtype="Boolean"
+                                    {{checked recovery.checked}} />
+                                <label for="data.recoveries.{{recovery.key}}">{{recovery.label}}</label>
+                            </div>
                         </li>
                         {{/each}}
                     </ul>
