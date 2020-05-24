@@ -30,6 +30,20 @@ function onSubMenuGenerator(sheetMenu) {
   };
 };
 
+function onRecoveryRollGenerator() {
+  return async function () {
+    event.preventDefault();
+
+    const { actor } = this;
+    const roll = new Roll(`1d6+${actor.data.data.recovery}`);
+    roll.toMessage({
+      title: 'Recovery Roll',
+      speaker: ChatMessage.getSpeaker({ actor }),
+      flavor: `${actor.name} used a recovery`
+    });
+  };
+}
+
 function onItemSortGenerator(sortField, itemType) {
   return async function () {
     event.preventDefault();
@@ -193,9 +207,11 @@ export class CypherActorPCSheet extends ActorSheet {
     this.sorts = sorts;
 
     //Sub-menu event handlers
-    this.onAdvancementkSubMenu = onSubMenuGenerator('advancement');
+    this.onAdvancementSubMenu = onSubMenuGenerator('advancement');
     this.onDamageTrackSubMenu = onSubMenuGenerator('damage-track');
     this.onRecoverySubMenu = onSubMenuGenerator('recovery');
+
+    this.onRecoveryRoll = onRecoveryRollGenerator();
 
     //Sort event handlers
     this.onSkillSort = onItemSortGenerator('skills', 'skill');
@@ -364,8 +380,11 @@ export class CypherActorPCSheet extends ActorSheet {
 
     const headerSubMenu = html.find('div.sub-menu .selector');
     headerSubMenu.on("click", ".damage-track", this.onDamageTrackSubMenu.bind(this));
-    headerSubMenu.on("click", ".advancement", this.onAdvancementkSubMenu.bind(this));
+    headerSubMenu.on("click", ".advancement", this.onAdvancementSubMenu.bind(this));
     headerSubMenu.on("click", ".recovery", this.onRecoverySubMenu.bind(this));
+
+    const headerRecovery = html.find('div.sub-menu .panels .recovery');
+    headerRecovery.on('click', '.recovery-roll', this.onRecoveryRoll.bind(this));
 
     const skillsTable = html.find("div.grid.skills");
     skillsTable.on("click", ".sort-header", this.onSkillSort.bind(this));
