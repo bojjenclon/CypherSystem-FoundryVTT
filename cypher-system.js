@@ -157,8 +157,8 @@ async function createCypherSystemMacro(data, slot) {
     }
 
     // Create the macro command
-    const command = `game.csr.rollItemMacro("${item.name}");`;
-    let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
+    const command = `game.csr.rollItemMacro("${item._id}");`;
+    let macro = game.macros.entities.find(m => (m._id === item._id) && (m.command === command));
     if (!macro) {
         macro = await Macro.create({
             name: item.name,
@@ -177,10 +177,10 @@ async function createCypherSystemMacro(data, slot) {
 /**
  * Create a Macro from an Item drop.
  * Get an existing item macro if one exists, otherwise create a new one.
- * @param {string} itemName
+ * @param {string} itemId
  * @return {Promise}
  */
-function rollItemMacro(itemName) {
+function rollItemMacro(itemId) {
     const speaker = ChatMessage.getSpeaker();
 
     let actor;
@@ -191,9 +191,9 @@ function rollItemMacro(itemName) {
         actor = game.actors.get(speaker.actor);
     }
 
-    const item = actor ? actor.items.find(i => i.name === itemName) : null;
+    const item = actor ? actor.items.find(i => i._id === itemId) : null;
     if (!item) {
-        return ui.notifications.warn(`Your controlled Actor does not have an item named ${itemName}`);
+        return ui.notifications.warn(`Your controlled Actor does not have an item with the id ${itemId}`);
     }
 
     // Trigger the item roll

@@ -10,7 +10,11 @@
             <div class="col-xs-4 stats" data-stat="{{id}}">
                 <div class="row">
                     <div class="col-xs-8 current">
-                        <label for="data.stats.{{id}}.pool.current">{{allCaps id}}</label>
+                        <div class="pool-action">
+                            <label for="data.stats.{{id}}.pool.current">{{allCaps id}}</label>
+                            <a class="roll-pool" data-pool="{{id}}"><i class="fas fa-dice-d20"></i></a>
+                        </div>
+
                         <input name="data.stats.{{id}}.pool.current" type="number" value="{{stat.pool.current}}"
                             data-dtype="Number" min="0" max="{{stat.pool.maximum}}" placeholder="0" />
                     </div>

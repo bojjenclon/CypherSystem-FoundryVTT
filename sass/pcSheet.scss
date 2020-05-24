@@ -245,7 +245,8 @@ form.csr.pc {
     .primary-data {
       > .stats {
         > .row {
-          padding: 4px 0;
+          padding-top: 4px;
+          padding-bottom: 8px;
         }
       }
 
@@ -258,8 +259,26 @@ form.csr.pc {
       .current {
         text-align: center;
 
+        .pool-action {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+
+          margin-bottom: 2px;
+    
+          label {
+            display: inline-block;
+            margin: 0;
+          }
+    
+          i {
+            margin-left: 4px;
+          }
+        }
+
         label {
-          font-size    : 1.2rem;
+          font-size    : 1em;
           margin-bottom: 4px;
         }
 

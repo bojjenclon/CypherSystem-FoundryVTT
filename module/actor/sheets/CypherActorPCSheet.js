@@ -8,6 +8,9 @@ import { CypherItemCypher } from "../../item/CypherItemCypher.js";
 import { CypherItemArtifact } from "../../item/CypherItemArtifact.js";
 import { CypherItemOddity } from "../../item/CypherItemOddity.js";
 
+import { CypherRolls } from '../../roll.js';
+
+
 //Sort function for order
 const sortFunction = (a, b) => a.data.order < b.data.order ? -1 : a.data.order > b.data.order ? 1 : 0;
 
@@ -29,6 +32,36 @@ function onSubMenuGenerator(sheetMenu) {
     });
   };
 };
+
+function onRollPoolGenerator() {
+  return async function () {
+    event.preventDefault();
+
+    const { actor } = this;
+    const actorData = actor.data.data;
+
+    let srcElem = event.target;
+    while (srcElem.tagName !== 'A') {
+      srcElem = srcElem.parentElement;
+    }
+
+    const pool = srcElem.dataset.pool;
+    const poolName = pool[0].toUpperCase() + pool.substr(1);
+    
+    CypherRolls.Roll({
+      event,
+      parts: ['1d20'],
+      data: {
+        statId: pool,
+        maxEffort: actorData.effort,
+      },
+      speaker: ChatMessage.getSpeaker({ actor }),
+      flavor: `${actor.name} used ${poolName}`,
+      title: 'Use Pool',
+      actor
+    });
+  }
+}
 
 function onRecoveryRollGenerator() {
   return async function () {
@@ -211,6 +244,8 @@ export class CypherActorPCSheet extends ActorSheet {
     this.onDamageTrackSubMenu = onSubMenuGenerator('damage-track');
     this.onRecoverySubMenu = onSubMenuGenerator('recovery');
 
+    this.onRollPool = onRollPoolGenerator();
+
     this.onRecoveryRoll = onRecoveryRollGenerator();
 
     //Sort event handlers
@@ -382,6 +417,9 @@ export class CypherActorPCSheet extends ActorSheet {
     headerSubMenu.on("click", ".damage-track", this.onDamageTrackSubMenu.bind(this));
     headerSubMenu.on("click", ".advancement", this.onAdvancementSubMenu.bind(this));
     headerSubMenu.on("click", ".recovery", this.onRecoverySubMenu.bind(this));
+
+    const headerPrimaryData = html.find('div.header .primary-data');
+    headerPrimaryData.on("click", ".roll-pool", this.onRollPool.bind(this));
 
     const headerRecovery = html.find('div.sub-menu .panels .recovery');
     headerRecovery.on('click', '.recovery-roll', this.onRecoveryRoll.bind(this));

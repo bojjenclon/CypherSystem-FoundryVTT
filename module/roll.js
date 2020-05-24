@@ -91,6 +91,8 @@ export class CypherRolls {
         data['effort'] = parseInt(form.effort.value, 10);
       }
       if (!!data['effort']) {
+        filtered.push(`+${data['effort'] * 3}`);
+
         flavor += ` with ${data['effort']} Effort`
       }
 
@@ -130,9 +132,9 @@ export class CypherRolls {
               const { statId } = data;
               const amountOfEffort = parseInt(data['effort'] || 0, 10);
               const effortCost = actor.getEffortCostFromStat(statId, amountOfEffort);
-              const totalCost = parseInt(data['abilityCost'], 10) + parseInt(effortCost.cost, 10);
+              const totalCost = parseInt(data['abilityCost'] || 0, 10) + parseInt(effortCost.cost, 10);
 
-              if (actor.canSpendFromPool(statId, totalCost)) {
+              if (actor.canSpendFromPool(statId, totalCost) && !effortCost.warning) {
                 roll.toMessage({
                   speaker: speaker,
                   flavor: flavor
