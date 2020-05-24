@@ -1,5 +1,5 @@
 form.csr.pc {
-  padding: 0.5em;
+  padding : 0.5em;
   overflow: auto;
 
   .character-sentence {
@@ -99,9 +99,9 @@ form.csr.pc {
     }
 
     .primary-data {
-      > .stats {
-        > .row {
-          padding-top: 4px;
+      >.stats {
+        >.row {
+          padding-top   : 4px;
           padding-bottom: 8px;
         }
       }
@@ -116,18 +116,18 @@ form.csr.pc {
         text-align: center;
 
         .pool-action {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
+          display        : flex;
+          flex-direction : row;
+          align-items    : center;
           justify-content: center;
 
           margin-bottom: 2px;
 
           label {
             display: inline-block;
-            margin: 0;
+            margin : 0;
           }
-    
+
           i {
             margin-left: 4px;
           }
@@ -396,6 +396,12 @@ form.csr.pc {
           margin     : 0;
           flex       : 0;
           font-weight: bold;
+        }
+
+        .cypher-limit-warning {
+          color: rgb(122, 12, 12);
+          font-weight: bold;
+          padding-top: 2px;
         }
 
         textarea {

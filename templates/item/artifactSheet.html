@@ -12,7 +12,10 @@
                         <label>Identified</label>
                     </div>
                     <div class="col-xs-2" style="display: flex; align-items: flex-end">
-                        <input type="checkbox" name="data.identified" data-dtype="Boolean" {{checked data.identified}} />
+                        <div class="checkbox no-label">
+                            <input type="checkbox" name="data.identified" id="data.identified" data-dtype="Boolean" {{checked data.identified}} />
+                            <label for="data.identified">&nbsp;</label>
+                        </div>
                     </div>
                 </div>
 
@@ -45,7 +48,10 @@
                         <label>Depletion</label>
                     </div>
                     <div class="col-xs-2">
-                        <input type="checkbox" id="data.depletion.isDepleting" name="data.depletion.isDepleting" data-dtype="Boolean" {{checked data.depletion.isDepleting}} />
+                        <div class="checkbox no-label">
+                            <input type="checkbox" name="data.depletion.isDepleting" id="data.depletion.isDepleting" data-dtype="Boolean" {{checked data.depletion.isDepleting}} />
+                            <label for="data.depletion.isDepleting">&nbsp;</label>
+                        </div>
                     </div>
                 </div>
                 {{#if data.depletion.isDepleting}}
@@ -78,40 +84,3 @@
         </div>
     </div>
 </form>
-
-<!-- <div class="sheet-contents">
-        <div class="img">
-            <img class="profile-img" src="{{item.img}}" title="{{item.name}}" data-edit="img" />
-        </div>
-        <div class="artifact">
-            <label>Level
-                <input type="text" id="data.levelDie" name="data.levelDie" value="{{data.levelDie}}" data-dtype="String" />
-            </label>
-
-            <label>Form
-                <input type="text" id="data.form" name="data.form" value="{{data.form}}" data-dtype="String" />
-            </label>
-
-            <label for="data.depletion.isDepleting">Depletion
-                <input type="checkbox" id="data.depletion.isDepleting" name="data.depletion.isDepleting" data-dtype="Boolean" {{checked data.depletion.isDepleting}} />
-            </label>
-            
-            {{#if data.depletion.isDepleting}}
-            <fieldset>
-                <label for="data.depletion.die">Die
-                    <input type="text" id="data.depletion.die" name="data.depletion.die" value="{{data.depletion.die}}" data-dtype="String" />
-                </label>
-
-                <label>Threshold
-                    <input type="number" name="data.depletion.threshold" value="{{data.depletion.threshold}}" data-dtype="Number" />
-                </label>
-            </fieldset>
-            {{/if}}
-
-            <label>Effect
-                
-            </label>
-            <textarea name="data.effect" data-dtype="String">{{data.effect}}</textarea>
-        </div>
-    </div>
-</form> -->

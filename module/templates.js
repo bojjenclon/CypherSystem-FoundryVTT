@@ -9,27 +9,27 @@ export const preloadHandlebarsTemplates = async() => {
     const templatePaths = [
 
         // Actor Sheets
-        "systems/cyphersystem/templates/characterSheet.html",
-        "systems/cyphersystem/templates/npcSheet.html",
+        "systems/cyphersystem/templates/PCSheet.html",
+        "systems/cyphersystem/templates/NPCSheet.html",
 
         // Actor Partials
-        "systems/cyphersystem/templates/partials/actor/characterSentence.html",
-        "systems/cyphersystem/templates/partials/actor/header.html",
-        "systems/cyphersystem/templates/partials/actor/skillsTab.html",
-        "systems/cyphersystem/templates/partials/actor/abilitiesTab.html",
-        "systems/cyphersystem/templates/partials/actor/cyphersTab.html",
-        "systems/cyphersystem/templates/partials/actor/equipmentTab.html",
-        "systems/cyphersystem/templates/partials/actor/bioTab.html",
+        "systems/cyphersystem/templates/partials/actor/CharacterSentence.html",
+        "systems/cyphersystem/templates/partials/actor/Header.html",
+        "systems/cyphersystem/templates/partials/actor/SkillsTab.html",
+        "systems/cyphersystem/templates/partials/actor/AbilitiesTab.html",
+        "systems/cyphersystem/templates/partials/actor/CyphersTab.html",
+        "systems/cyphersystem/templates/partials/actor/EquipmentTab.html",
+        "systems/cyphersystem/templates/partials/actor/BioTab.html",
 
         //Item Sheets
-        "systems/cyphersystem/templates/item/abilitySheet.html",
-        "systems/cyphersystem/templates/item/armorSheet.html",
-        "systems/cyphersystem/templates/item/artifactSheet.html",
-        "systems/cyphersystem/templates/item/cypherSheet.html",
-        "systems/cyphersystem/templates/item/gearSheet.html",
-        "systems/cyphersystem/templates/item/odditySheet.html",
-        "systems/cyphersystem/templates/item/skillSheet.html",
-        "systems/cyphersystem/templates/item/weaponSheet.html",
+        "systems/cyphersystem/templates/item/AbilitySheet.html",
+        "systems/cyphersystem/templates/item/ArmorSheet.html",
+        "systems/cyphersystem/templates/item/ArtifactSheet.html",
+        "systems/cyphersystem/templates/item/CypherSheet.html",
+        "systems/cyphersystem/templates/item/GearSheet.html",
+        "systems/cyphersystem/templates/item/OdditySheet.html",
+        "systems/cyphersystem/templates/item/SkillSheet.html",
+        "systems/cyphersystem/templates/item/WeaponSheet.html",
     ];
 
     // Load the template parts

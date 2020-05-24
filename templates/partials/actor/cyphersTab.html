@@ -1,5 +1,8 @@
 <h3>Cypher Limit <input type="number" name="data.cypherLimit" value="{{data.cypherLimit}}" min="1" max="99"
     class="cypher-limit" data-dtype="Number" /></h3>
+{{#if displayCypherLimitWarning}}
+<h3 class="cypher-limit-warning">You are over your cypher limit!</h3>
+{{/if}}
 
 <h2>Cyphers</h2>
 <div class="grid cyphers">

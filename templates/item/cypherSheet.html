@@ -12,7 +12,10 @@
                         <label>Identified</label>
                     </div>
                     <div class="col-xs-2" style="display: flex; align-items: flex-end">
-                        <input type="checkbox" name="data.identified" data-dtype="Boolean" {{checked data.identified}} />
+                        <div class="checkbox no-label">
+                            <input type="checkbox" name="data.identified" id="data.identified" data-dtype="Boolean" {{checked data.identified}} />
+                            <label for="data.identified">&nbsp;</label>
+                        </div>
                     </div>
                 </div>
 

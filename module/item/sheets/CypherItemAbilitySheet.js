@@ -21,7 +21,7 @@ export class CypherItemAbilitySheet extends ItemSheet {
      * @type {String}
      */
     get template() {
-        return "systems/cyphersystem/templates/item/abilitySheet.html";
+        return "systems/cyphersystem/templates/item/AbilitySheet.html";
     }
 
     getData() {

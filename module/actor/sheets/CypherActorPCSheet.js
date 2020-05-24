@@ -305,7 +305,7 @@ export class CypherActorPCSheet extends ActorSheet {
    * @type {String}
    */
   get template() {
-    return "systems/cyphersystem/templates/characterSheet.html";
+    return "systems/cyphersystem/templates/PCSheet.html";
   }
 
   setPosition(options) {
@@ -388,6 +388,8 @@ export class CypherActorPCSheet extends ActorSheet {
     if (!sheetData.data.items.gear) {
       sheetData.data.items.gear = items.filter(i => i.type === "gear").sort(sortFunction);
     }
+
+    sheetData.displayCypherLimitWarning = this.actor.isOverCypherLimit();
 
     sheetData.data.items.abilities = sheetData.data.items.abilities.map(ability => {
       ability.ranges = CYPHER_SYSTEM.optionalRanges;

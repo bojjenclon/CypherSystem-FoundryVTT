@@ -29,7 +29,7 @@ export class CypherActorNPCSheet extends ActorSheet {
    * @type {String}
    */
   get template() {
-    return "systems/cyphersystem/templates/npcSheet.html";
+    return "systems/cyphersystem/templates/NPCSheet.html";
   }
 
   setPosition(options) {
