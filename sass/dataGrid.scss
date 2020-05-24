@@ -1,0 +1,149 @@
+.grid {
+  padding: 0 8px;
+
+  .row {
+    margin-left : -0.3rem;
+    margin-right: -0.3rem;
+
+    border: 1px solid #7a7971;
+
+    &:not(:first-child) {
+      border-top: none;
+    }
+
+    div[class^="col-"] {
+      &.center {
+        text-align     : center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .head,
+  .body {
+    &>.row {
+      &>div[class^="col-"] {
+        &:not(:last-child) {
+          border-right: 1px solid black;
+        }
+
+        p {
+          overflow     : hidden;
+          text-overflow: ellipsis;
+          white-space  : nowrap;
+        }
+      }
+    }
+  }
+
+  .head {
+    color      : #f0f0e0;
+    text-shadow: 1px 1px #000;
+
+    .row {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    div[class^="col-"] {
+      display    : flex;
+      align-items: center;
+      padding    : 5px 10px;
+
+      overflow   : hidden;
+      white-space: nowrap;
+
+      &[class$="-info"],
+      &[class$="-use"],
+      &[class$="-delete"] {
+        justify-content: center;
+      }
+
+      &[class$="-actions"] {
+        padding: 0;
+
+        .row {
+          margin: 0;
+          width : 100%;
+
+          background: none;
+          border    : none;
+
+          div[class^="col-"] {
+            justify-content: flex-end;
+            padding        : 0;
+            padding-right  : 6px;
+          }
+        }
+      }
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin : 0;
+      padding: 0;
+    }
+  }
+
+  .body {
+    color: #191813;
+
+    .row {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    div[class^="col-"] {
+      padding: 5px 10px;
+
+      // https://css-tricks.com/flexbox-truncated-text/
+      min-width: 0;
+
+      &[class$="-info"],
+      &[class$="-use"],
+      &[class$="-delete"] {
+        text-align: center;
+      }
+
+      &[class$="-equip-name"] {
+        display    : flex;
+        align-items: center;
+        padding    : 12px 0;
+
+        span[class$="-equipped"] {
+          padding: 0 8px;
+
+          .fa-check-circle {
+            color: #065006;
+          }
+
+          .fa-times-circle {
+            color: #790b0b;
+          }
+        }
+
+        span[class$="-name"] {
+          flex: 1;
+        }
+      }
+
+      &[class$="-actions"] {
+        .row {
+          align-items: center;
+          background : none;
+          border     : none;
+
+          div[class^="col-"] {
+            padding        : 0;
+            display        : flex;
+            justify-content: flex-end;
+            padding-right  : 4px;
+          }
+        }
+      }
+    }
+  }
+}

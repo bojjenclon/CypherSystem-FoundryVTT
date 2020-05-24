@@ -1,0 +1,430 @@
+form.csr.pc {
+  .character-sentence {
+    font-size: 1.9em;
+
+    input {
+      padding: 1.2rem 0.5rem;
+    }
+
+    input[data-dtype="Number"] {
+      width: 2rem;
+    }
+
+    &>.row {
+      margin        : 0;
+      padding-bottom: 8px;
+    }
+
+    .word {
+      padding        : 0;
+      display        : flex;
+      align-items    : center;
+      justify-content: center;
+    }
+  }
+
+  #pc-sheet-body {
+    display       : flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    .tab[data-tab] {
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-bottom: 6px;
+      }
+
+      &.active {
+        flex: 1;
+
+        &.bio {
+          display       : flex;
+          flex-direction: column;
+
+          &>textarea {
+            height: 100%;
+            resize: none;
+          }
+        }
+      }
+    }
+
+    div.item {
+      height: 80%;
+
+      label {
+        font-weight: bold;
+      }
+
+      input[type="number"] {
+        width: 4em;
+      }
+
+      div {
+        display       : inline-block;
+        display       : flex;
+        flex-direction: column;
+
+        textarea {
+          flex: 1;
+        }
+
+        &.img {
+          flex        : 0.5;
+          margin-right: 0.5em;
+        }
+
+        &.description {
+          height        : 95%;
+          vertical-align: top;
+        }
+      }
+
+      textarea {
+        width     : auto;
+        height    : 100%;
+        box-sizing: border-box;
+        margin    : 0 0.5em 0 0.5em;
+      }
+
+      label {
+        clear  : both;
+        display: block;
+        margin : 0.25em 0.5em 0 0.5em;
+      }
+    }
+
+    div {
+
+      &.cyphers {
+        h2 {
+          margin     : 0;
+          flex       : 0;
+          font-weight: bold;
+        }
+
+        textarea {
+          overflow: scroll;
+        }
+
+        ul {
+          padding: 0 0.75em 0 0.75em;
+
+          &>li {
+            padding      : 0.15em;
+            border       : 1px solid darkslategrey;
+            border-radius: 0.25em;
+
+            &>h4 {
+              font-size  : large;
+              font-weight: bold;
+            }
+
+            &>p>span,
+            label {
+              font-weight: bold;
+            }
+
+            &>a {
+              float: right;
+            }
+
+            & input[type="number"] {
+              width: 3em;
+            }
+          }
+        }
+      }
+
+      div.advances,
+      div.recovery {
+        input[type="checkbox"] {
+          display: inline-block;
+        }
+      }
+
+      div.stats {
+        padding   : 0.3em 0 0.3em 0;
+        text-align: center;
+
+        h2 {
+          text-transform: capitalize;
+          padding-top   : 0;
+
+          button.roll {
+            margin-left     : 1em;
+            background-image: url("/icons/svg/d20-grey.svg"); //!important
+          }
+        }
+      }
+
+      &.tab.equipment {
+        h2 {
+          margin     : 0;
+          flex       : 0;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .header {
+    margin       : 0;
+    border       : 1px solid $border-color;
+    border-bottom: none;
+
+    h2,
+    h3 {
+      font-weight: bold;
+    }
+
+    h3 {
+      margin-top: 0.25em;
+    }
+
+    p.description {
+      font-style: italic;
+    }
+
+    >div[class^="col-"]:last-child {
+      display       : flex;
+      flex-direction: column;
+    }
+
+    >div[class^="col-"]:not(:last-child),
+    .stats {
+      &:not(:last-child) {
+        border-right: 1px solid $border-color;
+      }
+
+      border-bottom: 1px solid $border-color;
+
+      .row {
+        margin: 0;
+
+        align-items    : center;
+        justify-content: center;
+
+        >div[class^="col-"] {
+          padding: 0;
+        }
+
+        .row:first-child {
+          div[class^="col-"] {
+            margin-bottom: 6px;
+          }
+        }
+      }
+    }
+
+    .picture {
+      display        : flex;
+      align-items    : center;
+      justify-content: center;
+
+      >div {
+        padding: 0.25em 0.25em 0.25em 0.25em;
+
+        img.profile-img {
+          border: none;
+          width : 100%;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .primary-data {
+      > .stats {
+        > .row {
+          padding: 4px 0;
+        }
+      }
+
+      label {
+        display      : block;
+        margin-bottom: 2px;
+        font-weight  : bold;
+      }
+
+      .current {
+        text-align: center;
+
+        label {
+          font-size    : 1.2rem;
+          margin-bottom: 4px;
+        }
+
+        input {
+          font-size: 2.8rem;
+
+          height: 60px;
+          width : 100px;
+        }
+      }
+    }
+
+    .sub-menu {
+      flex: 1;
+
+      .inline {
+        display: inline-block;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+      }
+
+      .input-group {
+        display       : flex;
+        flex-direction: row;
+
+        label {
+          font-weight: bold;
+          font-size  : 1.5em;
+        }
+      }
+
+      .stats {
+        text-align: left;
+
+        &:first-child {
+          display        : flex;
+          flex-direction : column;
+          justify-content: space-around;
+          padding        : 1em;
+        }
+      }
+
+      .panels {
+        padding: 0;
+
+        .hidden {
+          display: none;
+        }
+
+        .advancement {
+          .row:first-child {
+            padding-top   : 1em;
+            padding-bottom: 4px;
+          }
+        }
+
+        .damage-track {
+          .row {
+            padding: 8px 4px;
+
+            &:first-child {
+              padding-top: 1em;
+            }
+
+            &:not(:last-child) {
+              text-align: center;
+            }
+          }
+
+          p {
+            margin   : 0;
+            font-size: 1.5em;
+          }
+        }
+
+        .recovery {
+          >.row {
+            padding: 8px 4px;
+
+            &:first-child {
+              padding-top: 1em;
+            }
+          }
+
+          .roll {
+            .input-group {
+              align-items: center;
+
+              label,
+              input {
+                flex-grow: 0;
+              }
+
+              i {
+                margin-left: 0.5em;
+              }
+            }
+          }
+        }
+      }
+
+      div[class^="col-"] {
+        .center {
+          display        : flex;
+          flex-direction : column;
+          align-items    : center;
+          justify-content: center;
+        }
+      }
+
+      ul {
+        padding: 0;
+
+        li {
+          display       : flex;
+          flex-direction: row;
+          align-items   : center;
+
+          margin-bottom: 2px;
+
+          label {
+            margin   : 0;
+            font-size: 1.3em;
+          }
+        }
+      }
+
+      a.active,
+      a:hover {
+        color: #9c0b0b;
+
+        text-shadow: none; // Override the default behavior
+      }
+
+      input[type="checkbox"] {
+        height: 16px;
+      }
+    }
+
+    div>div.npc-info {
+      flex: 0.25;
+
+      input.levelDie {
+        width        : 2ch;
+        align-content: center;
+      }
+    }
+
+    div>div.npc-stats {
+      flex: 0.5;
+    }
+
+    ul {
+      text-align: left;
+
+      li input {
+        height: 12px;
+      }
+    }
+  }
+}
