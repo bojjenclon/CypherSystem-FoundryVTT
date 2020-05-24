@@ -21,19 +21,19 @@
             <hr />
 
             <div class="row">
-                <div class="col-xs-3">
+                <div class="col-xs-3 flex-center">
                     <label for="data.health.max">Health</label>
-                    <input type="number" name="data.health.max" value="{{data.health.max}}" data-dtype="Number" min="0" max="999" /></p>
+                    <input type="number" name="data.health.max" value="{{data.health.max}}" data-dtype="Number" min="0" max="999" />
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-2 flex-center">
                     <label for="data.armor">Armor</label>      
-                    <input type="number" name="data.armor" value="{{data.armor}}" data-dtype="Number" min="0" max="99" /></p>
+                    <input type="number" name="data.armor" value="{{data.armor}}" data-dtype="Number" min="0" max="99" />
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-2 flex-center">
                     <label for="data.damage">Damage</label>
-                    <input type="number" name="data.damage" value="{{data.damage}}" data-dtype="Number" min="0" max="99"  />
+                    <input type="number" name="data.damage" value="{{data.damage}}" data-dtype="Number" min="0" max="99" />
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-5 flex-center">
                     <label for="data.movement">Movement</label>
                     <select name="data.movement">
                         {{#select data.movement}}

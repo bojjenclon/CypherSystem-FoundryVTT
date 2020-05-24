@@ -31,4 +31,13 @@ export class CypherItemArmorSheet extends ItemSheet {
         
         return data;
     }
+
+    activateListeners(html) {
+        super.activateListeners(html);
+
+        $('select[name="data.weight"]').select2({
+            width: '100px',
+            minimumResultsForSearch: Infinity
+        });
+    }
 }

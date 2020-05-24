@@ -10,7 +10,6 @@ import { CypherItemOddity } from "../../item/CypherItemOddity.js";
 
 import { CypherRolls } from '../../roll.js';
 
-
 //Sort function for order
 const sortFunction = (a, b) => a.data.order < b.data.order ? -1 : a.data.order > b.data.order ? 1 : 0;
 
@@ -412,6 +411,12 @@ export class CypherActorPCSheet extends ActorSheet {
    */
   activateListeners(html) {
     super.activateListeners(html);
+
+    // Setup select elements
+    $('select[name="data.damageTrack"]').select2({
+      width: '120px',
+      minimumResultsForSearch: Infinity
+    });
 
     const headerSubMenu = html.find('div.sub-menu .selector');
     headerSubMenu.on("click", ".damage-track", this.onDamageTrackSubMenu.bind(this));

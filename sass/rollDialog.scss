@@ -1,0 +1,26 @@
+form.roll-dialog {
+  &.csr {
+    overflow: auto;
+  }
+
+  hr {
+    width: 100%;
+  }
+
+  .row {
+    margin: 0;
+
+    &:last-child {
+      padding-bottom: 4px;
+    }
+
+    div[class^="col-"] {
+      display    : flex;
+      align-items: center;
+    }
+
+    >div[class^="col-"]:last-child {
+      justify-content: flex-end;
+    }
+  }
+}

@@ -55,4 +55,13 @@ export class CypherActorNPCSheet extends ActorSheet {
 
     return sheetData;
   }
+
+  activateListeners(html) {
+    super.activateListeners(html);
+
+    $('select[name="data.movement"]').select2({
+      width: '120px',
+      minimumResultsForSearch: Infinity
+    });
+  }
 }

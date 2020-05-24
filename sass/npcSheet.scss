@@ -46,8 +46,14 @@ form.csr.npc {
     .row {
       text-align: center;
 
+      .flex-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
       &:not(:last-child) {
-        padding-bottom: 6px;
+        padding-bottom: 4px;
       }
 
       input[type="number"] {

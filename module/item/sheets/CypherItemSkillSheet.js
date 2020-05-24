@@ -79,4 +79,18 @@ export class CypherItemSkillSheet extends ItemSheet {
 
         return sheetData;
     }
+
+    activateListeners(html) {
+        super.activateListeners(html);
+
+        $('select[name="data.stat"]').select2({
+            width: '110px',
+            minimumResultsForSearch: Infinity
+        });
+
+        $('select[name="data.training"]').select2({
+            width: '110px',
+            minimumResultsForSearch: Infinity
+        });
+    }
 }

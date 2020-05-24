@@ -33,4 +33,23 @@ export class CypherItemWeaponSheet extends ItemSheet {
 
         return sheetData;
     }
+
+    activateListeners(html) {
+        super.activateListeners(html);
+
+        $('select[name="data.weight"]').select2({
+            width: '110px',
+            minimumResultsForSearch: Infinity
+        });
+
+        $('select[name="data.weaponType"]').select2({
+            width: '110px',
+            minimumResultsForSearch: Infinity
+        });
+
+        $('select[name="data.range"]').select2({
+            width: '110px',
+            minimumResultsForSearch: Infinity
+        });
+    }
 }

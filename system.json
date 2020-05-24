@@ -4,9 +4,9 @@
     "description": "Simple support for the Cypher System for the Fountry Virtual TableTop.",
     "version": "0.0.1",
     "author": "bojjenclon",
-    "scripts": [],
+    "scripts": ["lib/select2/select2.min.js"],
     "esmodules": ["cypher-system.js"],
-    "styles": ["cypher-system.css", "lib/flexbox-grid/flexboxgrid.min.css"],
+    "styles": ["cypher-system.css", "lib/flexbox-grid/flexboxgrid.min.css", "lib/select2/select2.min.css"],
     "packs": [],
     "languages": [{
         "lang": "en",

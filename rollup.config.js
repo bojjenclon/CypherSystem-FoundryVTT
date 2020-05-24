@@ -16,6 +16,8 @@ const toBundle = [
     "fonts/Karla/Karla-BoldItalic.ttf",
     "fonts/Karla/OFL.txt",
     "lib/flexbox-grid/flexboxgrid.min.css",
+    "lib/select2/select2.min.css",
+    "lib/select2/select2.min.js",
     "templates/characterSheet.html",
     "templates/npcSheet.html",
     "templates/item/abilitySheet.html",

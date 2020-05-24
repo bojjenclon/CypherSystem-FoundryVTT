@@ -36,6 +36,21 @@ export class CypherItemAbilitySheet extends ItemSheet {
     activateListeners(html) {
         super.activateListeners(html);
 
+        $('select[name="data.isAction"]').select2({
+            width: '220px',
+            minimumResultsForSearch: Infinity
+        });
+
+        $('select[name="data.cost.pool"]').select2({
+            width: '85px',
+            minimumResultsForSearch: Infinity
+        });
+
+        $('select[name="data.range"]').select2({
+            width: '120px',
+            minimumResultsForSearch: Infinity
+        });
+
         const cbIdentified = html.find('#cb-identified');
         cbIdentified.on('change', (ev) => {
             ev.preventDefault();

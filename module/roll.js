@@ -1,7 +1,9 @@
-/* Dice roll for CypherSystem
+import { RollDialog } from './rollDialog.js';
 
-Rolls a d20 and then determines your success level. Handles 1s, 19s and 20s too.
-*/
+/**
+ * Dice roll for CypherSystem
+ * Rolls a d20 and then determines your success level. Handles 1s, 19s and 20s too.
+ */
 export function cypherRoll(levelModifier = 0) {
   const d20 = new Roll("d20").roll();
 
@@ -117,7 +119,7 @@ export class CypherRolls {
     //Create Dialog window
     let roll;
     return new Promise(resolve => {
-      new Dialog({
+      new RollDialog({
         title: title,
         content: html,
         buttons: {
