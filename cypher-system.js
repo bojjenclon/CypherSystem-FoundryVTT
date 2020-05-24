@@ -96,13 +96,10 @@ Hooks.on("renderChatMessage", (chatMessage, html, data) => {
 });
 
 Handlebars.registerHelper({
-    or: (v1, v2) => {
-        return v1 || v2;
-    },
-
-    ternary: (cond, v1, v2) => {
-        return cond ? v1 : v2;
-    },
+    eq: (v1, v2) => v1 === v2,
+    neq: (v1, v2) => v1 !== v2,
+    or: (v1, v2) => v1 || v2,
+    ternary: (cond, v1, v2) => cond ? v1 : v2,
 
     allCaps: (text) => text.toUpperCase(),
 

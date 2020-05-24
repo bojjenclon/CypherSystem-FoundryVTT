@@ -20,6 +20,16 @@ const getProp = (obj, path) => {
   return inner;
 };
 
+function onSubMenuGenerator(sheetMenu) {
+  return async function () {
+    event.preventDefault();
+
+    this.actor.update({
+      'data.sheetMenu': sheetMenu
+    });
+  };
+};
+
 function onItemSortGenerator(sortField, itemType) {
   return async function () {
     event.preventDefault();
@@ -182,6 +192,11 @@ export class CypherActorPCSheet extends ActorSheet {
     }
     this.sorts = sorts;
 
+    //Sub-menu event handlers
+    this.onAdvancementkSubMenu = onSubMenuGenerator('advancement');
+    this.onDamageTrackSubMenu = onSubMenuGenerator('damage-track');
+    this.onRecoverySubMenu = onSubMenuGenerator('recovery');
+
     //Sort event handlers
     this.onSkillSort = onItemSortGenerator('skills', 'skill');
     this.onAbilitySort = onItemSortGenerator('abilities', 'ability');
@@ -270,6 +285,8 @@ export class CypherActorPCSheet extends ActorSheet {
     sheetData.weaponTypes = CYPHER_SYSTEM.weaponTypes;
     sheetData.weights = CYPHER_SYSTEM.weightClasses;
 
+    sheetData.subMenu = sheetData.actor.data.sheetMenu;
+
     sheetData.advances = Object.entries(sheetData.actor.data.advances).map(
       ([key, value]) => {
         return {
@@ -345,6 +362,11 @@ export class CypherActorPCSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
+    const headerSubMenu = html.find('div.sub-menu .selector');
+    headerSubMenu.on("click", ".damage-track", this.onDamageTrackSubMenu.bind(this));
+    headerSubMenu.on("click", ".advancement", this.onAdvancementkSubMenu.bind(this));
+    headerSubMenu.on("click", ".recovery", this.onRecoverySubMenu.bind(this));
+
     const skillsTable = html.find("div.grid.skills");
     skillsTable.on("click", ".sort-header", this.onSkillSort.bind(this));
     skillsTable.on("click", ".skill-create", this.onSkillCreate.bind(this));
@@ -401,17 +423,17 @@ export class CypherActorPCSheet extends ActorSheet {
       const handler = ev => this._onDragItemStart(ev);
 
       // Find all skills on the character sheet.
-      html.find('.grid .skill').each((i, li) => {
+      html.find('.grid .skill').each((i, skill) => {
         // Add draggable attribute and dragstart listener.
-        li.setAttribute("draggable", true);
-        li.addEventListener("dragstart", handler, false);
+        skill.setAttribute("draggable", true);
+        skill.addEventListener("dragstart", handler, false);
       });
 
       // Find all abilities on the character sheet.
-      html.find('.grid .ability').each((i, li) => {
+      html.find('.grid .ability').each((i, ability) => {
         // Add draggable attribute and dragstart listener.
-        li.setAttribute("draggable", true);
-        li.addEventListener("dragstart", handler, false);
+        ability.setAttribute("draggable", true);
+        ability.addEventListener("dragstart", handler, false);
       });
     }
   }

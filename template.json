@@ -52,7 +52,8 @@
             "shins": 0,
             "tier": 1,
             "version": 4,
-            "xp": 0
+            "xp": 0,
+            "sheetMenu": "advancement"
         },
         "npc": {
             "level": 1,

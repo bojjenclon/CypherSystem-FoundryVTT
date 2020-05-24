@@ -213,7 +213,7 @@ form.csr {
         }
     }
 
-    div.header {
+    .header {
         margin       : 0;
         border       : 1px solid $border-color;
         border-bottom: none;
@@ -225,6 +225,11 @@ form.csr {
 
         h3 {
             margin-top: 0.25em;
+        }
+
+        >div[class^="col-"]:last-child {
+            display       : flex;
+            flex-direction: column;
         }
 
         >div[class^="col-"]:not(:last-child),
@@ -251,7 +256,28 @@ form.csr {
                     }
                 }
             }
+        }
 
+        .picture {
+            display        : flex;
+            align-items    : center;
+            justify-content: center;
+
+            >div {
+                padding: 0.25em 0.25em 0.25em 0.25em;
+
+                img.profile-img {
+                    border: none;
+                    width : 100%;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .primary-data {
             label {
                 display      : block;
                 margin-bottom: 2px;
@@ -273,22 +299,122 @@ form.csr {
             }
         }
 
-        .picture {
-            display        : flex;
-            align-items    : center;
-            justify-content: center;
+        .sub-menu {
+            flex: 1;
 
-            >div {
-                padding: 0.25em 0.25em 0.25em 0.25em;
+            .inline {
+                display: inline-block;
+            }
 
-                img.profile-img {
-                    border: none;
-                    width : 100%;
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin: 0;
+            }
 
-                    &:hover {
-                        cursor: pointer;
+            .form-group {
+                display       : flex;
+                flex-direction: row;
+
+                label {
+                    font-weight: bold;
+                    font-size  : 1.5em;
+                }
+            }
+
+            .stats {
+                text-align: left;
+
+                &:first-child {
+                    display        : flex;
+                    flex-direction : column;
+                    justify-content: space-around;
+                    padding        : 1em;
+                }
+            }
+
+            .panels {
+                padding: 0;
+
+                .hidden {
+                    display: none;
+                }
+
+                .advancement {
+                    .row:first-child {
+                        padding-top: 8px;
+                        padding-bottom: 4px;
                     }
                 }
+
+                .damage-track {
+                    .row {
+                        padding: 8px 4px;
+
+                        &:first-child {
+                            padding-top: 1em;
+                        }
+
+                        &:not(:last-child) {
+                            text-align: center;
+                        }
+                    }
+
+                    p {
+                        margin: 0;
+                        font-size: 1.5em;
+                    }
+                }
+
+                .recovery {
+                    .row {
+                        padding: 8px 4px;
+
+                        &:first-child {
+                            padding-top: 1em;
+                        }
+                    }
+                }
+            }
+
+            div[class^="col-"] {
+                .center {
+                    display        : flex;
+                    flex-direction : column;
+                    align-items    : center;
+                    justify-content: center;
+                }
+            }
+
+            ul {
+                padding: 0;
+
+                li {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    margin-bottom: 2px;
+
+                    label {
+                        margin   : 0;
+                        font-size: 1.3em;
+                    }
+                }
+            }
+
+            a.active,
+            a:hover {
+                color: #9c0b0b;
+
+                text-shadow: none; // Override the default behavior
+            }
+
+            input[type="checkbox"] {
+                height: 16px;
             }
         }
 
@@ -386,7 +512,7 @@ form.csr {
             padding: 0 8px;
 
             .row {
-                margin-left: -0.3rem;
+                margin-left : -0.3rem;
                 margin-right: -0.3rem;
 
                 border: 1px solid #7a7971;
