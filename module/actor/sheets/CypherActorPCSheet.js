@@ -1,4 +1,4 @@
-import { CYPHER_SYSTEM } from "../../config.js";
+import { CYPHER_SYSTEM } from "../../Config.js";
 import { CypherItemAbility } from "../../item/CypherItemAbility.js";
 import { CypherItemSkill } from "../../item/CypherItemSkill.js";
 import { CypherItemWeapon } from "../../item/CypherItemWeapon.js";
@@ -8,7 +8,7 @@ import { CypherItemCypher } from "../../item/CypherItemCypher.js";
 import { CypherItemArtifact } from "../../item/CypherItemArtifact.js";
 import { CypherItemOddity } from "../../item/CypherItemOddity.js";
 
-import { CypherRolls } from '../../roll.js';
+import { CypherRolls } from '../../Roll.js';
 
 //Sort function for order
 const sortFunction = (a, b) => a.data.order < b.data.order ? -1 : a.data.order > b.data.order ? 1 : 0;
@@ -305,7 +305,7 @@ export class CypherActorPCSheet extends ActorSheet {
    * @type {String}
    */
   get template() {
-    return "systems/cypher-system/templates/characterSheet.html";
+    return "systems/cyphersystem/templates/characterSheet.html";
   }
 
   setPosition(options) {

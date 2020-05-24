@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 
 const css = gulp.series(() => {
-  return gulp.src("sass/**/cypher-system.scss")
+  return gulp.src("sass/**/CypherSystem.scss")
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest("./"))
 });

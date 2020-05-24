@@ -18,7 +18,7 @@
     "rollup-plugin-zip": "^0.7.0",
     "terser": "^4.6.13"
   },
-  "main": "cypher-system.js",
+  "main": "CypherSystem.js",
   "scripts": {
     "_css": "gulp css",
     "_clear": "rimraf dist/** *.zip",

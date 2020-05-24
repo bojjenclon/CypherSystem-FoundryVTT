@@ -1,4 +1,4 @@
-import { CYPHER_SYSTEM } from "../../config.js";
+import { CYPHER_SYSTEM } from "../../Config.js";
 
 /**
  * Extend the basic ActorSheet class to do all the Cypher System things!
@@ -29,7 +29,7 @@ export class CypherActorNPCSheet extends ActorSheet {
    * @type {String}
    */
   get template() {
-    return "systems/cypher-system/templates/npcSheet.html";
+    return "systems/cyphersystem/templates/npcSheet.html";
   }
 
   setPosition(options) {

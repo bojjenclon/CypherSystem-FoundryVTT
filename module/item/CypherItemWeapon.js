@@ -1,4 +1,4 @@
-import { CYPHER_SYSTEM } from '../config.js';
+import { CYPHER_SYSTEM } from '../Config.js';
 
 export class CypherItemWeapon extends Item {
 

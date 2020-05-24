@@ -1,18 +1,19 @@
 {
-    "name": "cypher-system",
+    "name": "cyphersystem",
     "title": "Cypher System",
     "description": "Simple support for the Cypher System for the Fountry Virtual TableTop.",
     "version": "0.0.1",
     "author": "bojjenclon",
     "scripts": ["lib/select2/select2.min.js"],
-    "esmodules": ["cypher-system.js"],
-    "styles": ["cypher-system.css", "lib/flexbox-grid/flexboxgrid.min.css", "lib/select2/select2.min.css"],
+    "esmodules": ["CypherSystem.js"],
+    "styles": ["CypherSystem.css", "lib/flexbox-grid/flexboxgrid.min.css", "lib/select2/select2.min.css"],
     "packs": [],
     "languages": [{
         "lang": "en",
         "name": "English",
         "path": "lang/en.json"
     }],
+    "socket": true,
     "compatibleCoreVersion": "0.6.0",
     "minimumCoreVersion" : "0.5.5",
     "url": "https://github.com/bojjenclon/CypherSystem-FoundryVTT",

@@ -26,12 +26,12 @@ $font-stack  : Karla;
 }
 
 @import 'select2';
-@import 'checkbox';
-@import 'dataGrid';
-@import 'rollDialog';
-@import 'pcSheet';
-@import 'npcSheet';
-@import 'itemSheets';
+@import 'Checkbox';
+@import 'DataGrid';
+@import 'RollDialog';
+@import 'PCSheet';
+@import 'NPCSheet';
+@import 'ItemSheets';
 
 .special-messages {
     margin     : 4px;

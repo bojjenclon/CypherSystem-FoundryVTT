@@ -1,4 +1,4 @@
-import { CYPHER_SYSTEM } from "../../config.js";
+import { CYPHER_SYSTEM } from "../../Config.js";
 
 export class CypherItemAbilitySheet extends ItemSheet {
     /**
@@ -21,7 +21,7 @@ export class CypherItemAbilitySheet extends ItemSheet {
      * @type {String}
      */
     get template() {
-        return "systems/cypher-system/templates/item/abilitySheet.html";
+        return "systems/cyphersystem/templates/item/abilitySheet.html";
     }
 
     getData() {

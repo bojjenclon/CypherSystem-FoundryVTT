@@ -19,6 +19,6 @@ export class CypherItemArtifactSheet extends ItemSheet {
      * @type {String}
      */
     get template() {
-        return "systems/cypher-system/templates/item/artifactSheet.html";
+        return "systems/cyphersystem/templates/item/artifactSheet.html";
     }
 }

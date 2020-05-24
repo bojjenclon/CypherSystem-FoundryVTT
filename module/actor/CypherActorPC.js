@@ -1,4 +1,4 @@
-import { CYPHER_SYSTEM } from '../config.js';
+import { CYPHER_SYSTEM } from '../Config.js';
 
 const effortObject = {
   cost: 0,
@@ -14,7 +14,7 @@ export class CypherActorPC extends Actor {
   getInitiativeFormula() {
     //Check for an initiative skill
     const initSkill = 3 * this.getSkillLevel("Initiative");
-    
+
     //TODO possible assets, effort on init roll
     let formula = "1d20"
     if (initSkill !== 0) {
@@ -43,7 +43,7 @@ export class CypherActorPC extends Actor {
       return stat.pool.current === 0;
     }).length;
   }
-  
+
   /**
    * Given a skill ID, return this skill's level as a a numeric value.
    *
@@ -55,7 +55,7 @@ export class CypherActorPC extends Actor {
     const skill = this.data.data.skills[skillId];
 
     let level = 0;
-    
+
     if (skill) {
       if (skill.inability) level--;
 
@@ -76,7 +76,7 @@ export class CypherActorPC extends Actor {
    * @returns The new skill object
    * @memberof CypherActorPC
    */
-  addSkill(name, stat, level=1, inability=false) {
+  addSkill(name, stat, level = 1, inability = false) {
     if (this.getSkillLevel(name)) {
       throw new Error("This PC already has the skill " + name);
     }
@@ -127,12 +127,12 @@ export class CypherActorPC extends Actor {
 
   getEffortCostFromStat(statId, effortLevel) {
     //Return value, copy from template object
-    const value = {...effortObject};
+    const value = { ...effortObject };
 
     if (effortLevel === 0) {
       return value;
     }
-        
+
     const actorData = this.data.data;
     const stat = actorData.stats[statId];
 
@@ -181,6 +181,28 @@ export class CypherActorPC extends Actor {
     return true;
   }
 
+  async onGMIntrusion(accepted) {
+    let xp = this.data.data.xp;
+    let choiceVerb;
+
+    if (accepted) {
+      xp++;
+      choiceVerb = "accepts";
+    } else {
+      xp--;
+      choiceVerb = "refuses";
+    }
+
+    this.update({
+      _id: this._id,
+      "data.xp": xp,
+    });
+
+    ChatMessage.create({
+      content: `<h2>GM Intrusion</h2><br/>${this.data.name} ${choiceVerb} the intrusion`,
+    });
+  }
+
   /**
    * BASE CLASS OVERRIDES
    */
@@ -195,25 +217,25 @@ export class CypherActorPC extends Actor {
     if (data.data && ['artifact', 'cypher'].indexOf(data.type) !== -1) {
       const itemData = data.data;
 
-      if (!itemData.level && itemData.levelDie) {  
+      if (!itemData.level && itemData.levelDie) {
         try {
-            //Try the formula as is first
-            itemData.level = new Roll(itemData.levelDie).roll().total;
-            await this.update({
-                _id: this._id,
-                "data.level": itemData.level,
-            });
+          //Try the formula as is first
+          itemData.level = new Roll(itemData.levelDie).roll().total;
+          await this.update({
+            _id: this._id,
+            "data.level": itemData.level,
+          });
         }
         catch (Error) {
-            try {
-                itemData.level = parseInt(itemData.level)
-            }
-            catch (Error) {
-                //Leave it as it is
-            }
+          try {
+            itemData.level = parseInt(itemData.level)
+          }
+          catch (Error) {
+            //Leave it as it is
+          }
         }
       } else {
-          itemData.level = itemData.level || null;
+        itemData.level = itemData.level || null;
       }
     }
 

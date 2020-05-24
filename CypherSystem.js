@@ -2,11 +2,12 @@ import { CypherActor } from './module/actor/CypherActor.js';
 import { CypherActorNPCSheet } from './module/actor/sheets/CypherActorNPCSheet.js';
 import { CypherActorPCSheet } from './module/actor/sheets/CypherActorPCSheet.js';
 
-import { CYPHER_SYSTEM } from './module/config.js';
-import { getInitiativeFormula, rollInitiative } from './module/combat.js';
-import { rollText } from './module/roll.js';
-import { preloadHandlebarsTemplates } from './module/templates.js';
-import { registerSystemSettings } from './module/settings.js';
+import { CYPHER_SYSTEM } from './module/Config.js';
+import { getInitiativeFormula, rollInitiative } from './module/Combat.js';
+import { rollText } from './module/Roll.js';
+import { preloadHandlebarsTemplates } from './module/Templates.js';
+import { registerSystemSettings } from './module/Settings.js';
+import { csrSocketListeners } from './module/Socket.js';
 
 import { CypherItem } from './module/item/CypherItem.js';
 import { CypherItemAbilitySheet } from './module/item/sheets/CypherItemAbilitySheet.js';
@@ -18,7 +19,7 @@ import { CypherItemOdditySheet } from './module/item/sheets/CypherItemOddityShee
 import { CypherItemSkillSheet } from './module/item/sheets/CypherItemSkillSheet.js';
 import { CypherItemWeaponSheet } from './module/item/sheets/CypherItemWeaponSheet.js';
 
-import { migrateWorld } from './module/migrations/migrate.js';
+import { migrateWorld } from './module/migrations/Migrate.js';
 
 Hooks.once("init", function () {
     console.log('Cypher System | Initializing Cypher System FoundryVTT System');
@@ -40,18 +41,18 @@ Hooks.once("init", function () {
 
     // Register sheet application classes
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("cypher-system", CypherActorNPCSheet, { types: ["npc"], makeDefault: true });
-    Actors.registerSheet("cypher-system", CypherActorPCSheet, { types: ["pc"], makeDefault: true });
+    Actors.registerSheet("cyphersystem", CypherActorNPCSheet, { types: ["npc"], makeDefault: true });
+    Actors.registerSheet("cyphersystem", CypherActorPCSheet, { types: ["pc"], makeDefault: true });
 
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("cypher-system", CypherItemAbilitySheet, { types: ["ability"], makeDefault: true });
-    Items.registerSheet("cypher-system", CypherItemArmorSheet, { types: ["armor"], makeDefault: true });
-    Items.registerSheet("cypher-system", CypherItemArtifactSheet, { types: ["artifact"], makeDefault: true });
-    Items.registerSheet("cypher-system", CypherItemCypherSheet, { types: ["cypher"], makeDefault: true });
-    Items.registerSheet("cypher-system", CypherItemGearSheet, { types: ["gear"], makeDefault: true });
-    Items.registerSheet("cypher-system", CypherItemOdditySheet, { types: ["oddity"], makeDefault: true });
-    Items.registerSheet("cypher-system", CypherItemSkillSheet, { types: ["skill"], makeDefault: true });
-    Items.registerSheet("cypher-system", CypherItemWeaponSheet, { types: ["weapon"], makeDefault: true });
+    Items.registerSheet("cyphersystem", CypherItemAbilitySheet, { types: ["ability"], makeDefault: true });
+    Items.registerSheet("cyphersystem", CypherItemArmorSheet, { types: ["armor"], makeDefault: true });
+    Items.registerSheet("cyphersystem", CypherItemArtifactSheet, { types: ["artifact"], makeDefault: true });
+    Items.registerSheet("cyphersystem", CypherItemCypherSheet, { types: ["cypher"], makeDefault: true });
+    Items.registerSheet("cyphersystem", CypherItemGearSheet, { types: ["gear"], makeDefault: true });
+    Items.registerSheet("cyphersystem", CypherItemOdditySheet, { types: ["oddity"], makeDefault: true });
+    Items.registerSheet("cyphersystem", CypherItemSkillSheet, { types: ["skill"], makeDefault: true });
+    Items.registerSheet("cyphersystem", CypherItemWeaponSheet, { types: ["weapon"], makeDefault: true });
 
     registerSystemSettings();
     preloadHandlebarsTemplates();
@@ -95,6 +96,49 @@ Hooks.on("renderChatMessage", (chatMessage, html, data) => {
     }
 });
 
+/**
+ * Add additional system-specific sidebar directory context menu options for CSR Actor entities
+ * 
+ * @param {jQuery} html         The sidebar HTML
+ * @param {Array} entryOptions  The default array of context menu options
+ */
+Hooks.on("getActorDirectoryEntryContext", (html, entryOptions) => {
+    entryOptions.push({
+        name: "GM Intrusion",
+        icon: '<i class="fas fa-exclamation-circle"></i>',
+        callback: li => {
+            const actor = game.actors.get(li.data("entityId"));
+            const ownerIds = Object.entries(actor.data.permission)
+                .filter(entry => {
+                    const [id, permissionLevel] = entry;
+                    return permissionLevel >= ENTITY_PERMISSIONS.OWNER
+                        && id !== game.user.id
+                })
+                .map(usersPermissions => usersPermissions[0]);
+
+            game.socket.emit("system.cyphersystem", {
+                type: "gmIntrusion",
+                data: {
+                    userIds: ownerIds,
+                    actorId: actor.data._id,
+                }
+            });
+
+            ChatMessage.create({
+                content: `<h2>GM Intrusion</h2><br/>The GM offers an intrusion to ${actor.data.name}`,
+            });
+        },
+        condition: li => {
+            if (!game.user.isGM) {
+                return false;
+            }
+
+            const actor = game.actors.get(li.data("entityId"));
+            return actor && actor.data.type === "pc";
+        }
+    });
+});
+
 Handlebars.registerHelper({
     eq: (v1, v2) => v1 === v2,
     neq: (v1, v2) => v1 !== v2,
@@ -120,10 +164,11 @@ Handlebars.registerHelper({
     }
 });
 
-/**
- * Once the entire VTT framework is initialized, check to see if we should perform a data migration
- */
+/* -------------------------------------------- */
+/*  Ready Hooks                                 */
+/* -------------------------------------------- */
 Hooks.once("ready", migrateWorld);
+Hooks.once("ready", csrSocketListeners);
 Hooks.once('ready', async () => {
     // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
     Hooks.on("hotbarDrop", (bar, data, slot) => createCypherSystemMacro(data, slot));

@@ -1,4 +1,4 @@
-import { CYPHER_SYSTEM } from "../../config.js";
+import { CYPHER_SYSTEM } from "../../Config.js";
 
 export class CypherItemSkillSheet extends ItemSheet {
     /**
@@ -21,7 +21,7 @@ export class CypherItemSkillSheet extends ItemSheet {
      * @type {String}
      */
     get template() {
-        return "systems/cypher-system/templates/item/skillSheet.html";
+        return "systems/cyphersystem/templates/item/skillSheet.html";
     }
 
     activateListeners(html) {

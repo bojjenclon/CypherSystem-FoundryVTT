@@ -9,7 +9,7 @@ const destinationDir = 'dist';
 const toBundle = [
     'template.json',
     'system.json',
-    'cypher-system.css',
+    'CypherSystem.css',
     "fonts/Karla/Karla-Regular.ttf",
     "fonts/Karla/Karla-Bold.ttf",
     "fonts/Karla/Karla-Italic.ttf",
@@ -32,7 +32,7 @@ const toBundle = [
 ];
 
 export default [{
-    input: 'cypher-system.js',
+    input: 'CypherSystem.js',
     output: {
         dir: destinationDir,
         format: 'umd',

@@ -1,4 +1,4 @@
-import { CypherRolls } from '../roll.js';
+import { CypherRolls } from '../Roll.js';
 
 export class CypherItemAbility extends Item {
   get type() {

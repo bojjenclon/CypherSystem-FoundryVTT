@@ -19,7 +19,7 @@ export class CypherItemGearSheet extends ItemSheet {
      * @type {String}
      */
     get template() {
-        return "systems/cypher-system/templates/item/gearSheet.html";
+        return "systems/cyphersystem/templates/item/gearSheet.html";
     }
 
     get type() {
