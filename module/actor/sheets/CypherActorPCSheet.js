@@ -310,8 +310,8 @@ export class CypherActorPCSheet extends ActorSheet {
 
   setPosition(options) {
     // Restrict the window to a minimum size
-    if (options && options.width && options.width < 850) {
-      options.width = 850;
+    if (options && options.width && options.width < 900) {
+      options.width = 900;
     }
     if (options && options.height && options.height < 460) {
       options.height = 460;
