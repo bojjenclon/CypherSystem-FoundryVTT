@@ -113,14 +113,18 @@
                 <div class="recovery {{#if (neq subMenu 'recovery')}}hidden{{/if}}">
                     <div class="row">
                         <div class="col-xs-6 center">
-                            <div class="form-group">
-                                <label for="data.recovery">1d6&nbsp;+</label>
-                                <input type="number" name="data.recovery" value="{{data.recovery}}" min="0" max="99"
-                                    data-dtype="Number" />
+                            <div class="roll">
+                                <div class="input-group">
+                                    <label for="data.recovery">1d6&nbsp;+</label>
+                                    <input type="number" name="data.recovery" value="{{data.recovery}}" min="0" max="99"
+                                        data-dtype="Number" />
+
+                                    <a class="recovery-roll"><i class="fas fa-dice-d20"></i></a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-xs-6 center">
-                            <div class="form-group">
+                            <div class="input-group">
                                 <label for="data.armor">Armor</label>
                                 <input type="number" name="data.armor" value="{{data.armor}}" class="armor" min="0"
                                     max="99" data-dtype="Number" />

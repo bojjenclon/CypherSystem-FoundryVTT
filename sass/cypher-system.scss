@@ -315,7 +315,7 @@ form.csr {
                 margin: 0;
             }
 
-            .form-group {
+            .input-group {
                 display       : flex;
                 flex-direction: row;
 
@@ -370,11 +370,26 @@ form.csr {
                 }
 
                 .recovery {
-                    .row {
+                    > .row {
                         padding: 8px 4px;
 
                         &:first-child {
                             padding-top: 1em;
+                        }
+                    }
+
+                    .roll {
+                        .input-group {
+                            align-items: center;
+
+                            label,
+                            input {
+                                flex-grow: 0;
+                            }
+
+                            i {
+                                margin-left: 0.5em;
+                            }
                         }
                     }
                 }
