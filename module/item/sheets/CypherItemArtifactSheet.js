@@ -21,4 +21,16 @@ export class CypherItemArtifactSheet extends ItemSheet {
     get template() {
         return "systems/cyphersystem/templates/item/ArtifactSheet.html";
     }
+
+    get type() {
+        return "artifact";
+    }
+    
+    getData() {
+        const sheetData = super.getData();
+
+        sheetData.isGM = game.user.isGM;
+
+        return sheetData;
+    }
 }

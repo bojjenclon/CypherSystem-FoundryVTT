@@ -21,4 +21,8 @@ export class CypherItemOdditySheet extends ItemSheet {
     get template() {
         return "systems/cyphersystem/templates/item/OdditySheet.html";
     }
+
+    get type() {
+        return 'oddity';
+    }
 }

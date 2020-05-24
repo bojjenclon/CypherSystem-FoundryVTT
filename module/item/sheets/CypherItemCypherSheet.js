@@ -25,4 +25,12 @@ export class CypherItemCypherSheet extends ItemSheet {
     get type() {
         return "cypher";
     }
+
+    getData() {
+        const sheetData = super.getData();
+
+        sheetData.isGM = game.user.isGM;
+
+        return sheetData;
+    }
 }
