@@ -59,18 +59,19 @@ export class CypherActorPC extends Actor {
    * @memberof CypherActorPC
    */
   getSkillLevel(skillId) {
-    const skill = this.data.data.skills[skillId];
+    if (!skill)
+      throw new Error("No skill provided");
 
-    let level = 0;
+    if (!skill.data.data)
+      return 0; //skills are untrained by default
 
-    if (skill) {
-      if (skill.inability) level--;
+    skill = skill.data.data;
+    let level = -Number(skill.inability); //Inability subtracts 1 from overall level
 
-      if (skill.specialized) level += 2;
-      else if (skill.trained) level += 1;
-    }
+    if (skill.specialized) level += 2;
+    else if (skill.trained) level += 1;
 
-    return level; //defauklt skill level, aka unskilled
+    return level;
   }
 
   /**
@@ -186,6 +187,17 @@ export class CypherActorPC extends Actor {
     this.update(data);
 
     return true;
+  }
+
+  getTotalArmor() {
+    return this.getEmbeddedCollection("OwnedItem").filter(i => i.type === "armor")
+      .reduce((acc, armor) => acc + Number(armor.data.armor), 0);
+  }
+
+  isOverCypherLimit() {
+    const cyphers = this.getEmbeddedCollection("OwnedItem").filter(i => i.type === "cypher");
+
+    return this.data.data.cypherLimit < cyphers.length;
   }
 
   async onGMIntrusion(accepted) {
