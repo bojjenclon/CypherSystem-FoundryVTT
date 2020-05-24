@@ -38,16 +38,19 @@ export class CypherItemWeaponSheet extends ItemSheet {
         super.activateListeners(html);
 
         $('select[name="data.weight"]').select2({
+            theme: 'numenera',
             width: '110px',
             minimumResultsForSearch: Infinity
         });
 
         $('select[name="data.weaponType"]').select2({
+            theme: 'numenera',
             width: '110px',
             minimumResultsForSearch: Infinity
         });
 
         $('select[name="data.range"]').select2({
+            theme: 'numenera',
             width: '110px',
             minimumResultsForSearch: Infinity
         });

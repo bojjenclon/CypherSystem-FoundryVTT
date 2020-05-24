@@ -60,6 +60,7 @@ export class CypherActorNPCSheet extends ActorSheet {
     super.activateListeners(html);
 
     $('select[name="data.movement"]').select2({
+      theme: 'numenera',
       width: '120px',
       minimumResultsForSearch: Infinity
     });

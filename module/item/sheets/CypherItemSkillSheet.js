@@ -84,11 +84,13 @@ export class CypherItemSkillSheet extends ItemSheet {
         super.activateListeners(html);
 
         $('select[name="data.stat"]').select2({
+            theme: 'numenera',
             width: '110px',
             minimumResultsForSearch: Infinity
         });
 
         $('select[name="data.training"]').select2({
+            theme: 'numenera',
             width: '110px',
             minimumResultsForSearch: Infinity
         });

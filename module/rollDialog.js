@@ -7,6 +7,8 @@ export class RollDialog extends Dialog {
     super.activateListeners(html);
 
     $('select[name="rollMode"]').select2({
+      theme: 'numenera',
+      width: '135px',
       minimumResultsForSearch: Infinity
     });
   }

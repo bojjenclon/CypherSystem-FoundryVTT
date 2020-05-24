@@ -414,6 +414,7 @@ export class CypherActorPCSheet extends ActorSheet {
 
     // Setup select elements
     $('select[name="data.damageTrack"]').select2({
+      theme: 'numenera',
       width: '120px',
       minimumResultsForSearch: Infinity
     });

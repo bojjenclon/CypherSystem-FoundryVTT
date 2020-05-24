@@ -36,6 +36,7 @@ export class CypherItemArmorSheet extends ItemSheet {
         super.activateListeners(html);
 
         $('select[name="data.weight"]').select2({
+            theme: 'numenera',
             width: '100px',
             minimumResultsForSearch: Infinity
         });
