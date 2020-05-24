@@ -1,4 +1,5 @@
 import { CYPHER_SYSTEM } from '../Config.js';
+import { PlayerChoiceDialog } from '../dialogs/PlayerChoiceDialog.js';
 
 const effortObject = {
   cost: 0,
@@ -28,6 +29,12 @@ export class CypherActorPC extends Actor {
     const data = this.data.data;
 
     return data.tier + (data.advances.effort ? 1 : 0);
+  }
+
+  get canRefuseIntrusion() {
+    const { data } = this.data;
+
+    return data.xp > 0;
   }
 
   /**
@@ -201,6 +208,21 @@ export class CypherActorPC extends Actor {
     ChatMessage.create({
       content: `<h2>GM Intrusion</h2><br/>${this.data.name} ${choiceVerb} the intrusion`,
     });
+
+    if (accepted) {
+      const otherActors = game.actors.filter(actor => actor._id !== this._id && actor.data.type === 'pc');
+
+      const dialog = new PlayerChoiceDialog(otherActors, (chosenActorId) => {
+        game.socket.emit('system.cyphersystem', {
+          type: 'awardXP',
+          data: {
+            actorId: chosenActorId,
+            xpAmount: 1
+          }
+        })
+      });
+      dialog.render(true);
+    }
   }
 
   /**

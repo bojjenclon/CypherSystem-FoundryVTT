@@ -1,21 +1,45 @@
-import { GMIntrusionDialog } from "./apps/GMIntrusionDialog.js";
+import { GMIntrusionDialog } from "./dialogs/GMIntrusionDialog.js";
 
 export function csrSocketListeners() {
-  game.socket.on("system.cyphersystem", handleGMIntrusion);
+  game.socket.on("system.cyphersystem", handleMessage);
+}
+
+function handleMessage(args) {
+  const { type } = args;
+
+  switch (type) {
+    case 'gmIntrusion':
+      handleGMIntrusion(args);
+      break;
+    case 'awardXP':
+      handleAwardXP(args);
+      break;
+  }
 }
 
 function handleGMIntrusion(args) {
-  //TODO handle types
-  const { type, data } = args;
+  const { data } = args;
   const { actorId, userIds } = data;
 
   if (!game.ready || game.user.isGM || !userIds.find(id => id === game.userId)) {
     return;
   }
 
-  //TODO disable or don't show Refuse button if PC has 0 XP
-  //TODO display message for everyone about 1) intrusion and 2) choice
   const actor = game.actors.entities.find(a => a.data._id === actorId);
   const dialog = new GMIntrusionDialog(actor);
   dialog.render(true);
+}
+
+function handleAwardXP(args) {
+  const { data } = args;
+  const { actorId, xpAmount } = data;
+
+  if (!game.ready || !game.user.isGM) {
+    return;
+  }
+
+  const actor = game.actors.get(actorId);
+  actor.update({
+    'data.xp': actor.data.data.xp + xpAmount
+  });
 }

@@ -1,4 +1,4 @@
-import { RollDialog } from './RollDialog.js';
+import { RollDialog } from './dialogs/RollDialog.js';
 
 /**
  * Dice roll for CypherSystem
@@ -106,7 +106,7 @@ export class CypherRolls {
       return roll;
     }
 
-    const template = 'systems/cyphersystem/templates/dialogs/rollDialog.html';
+    const template = 'systems/cyphersystem/templates/dialogs/RollDialog.html';
     let dialogData = {
       formula: filtered.join(' '),
       maxEffort: maxEffort,
