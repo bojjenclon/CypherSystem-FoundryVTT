@@ -149,6 +149,7 @@ function onItemEditGenerator(editClass) {
 function onItemDeleteGenerator(deleteClass) {
   return function (event) {
     event.preventDefault();
+    event.stopPropagation();
 
     const confirmationDialog = new Dialog({
       title: game.i18n.localize("CSR.deleteDialogTitle"),
@@ -172,9 +173,6 @@ function onItemDeleteGenerator(deleteClass) {
       default: "cancel"
     });
     confirmationDialog.render(true);
-
-
-    
   }
 }
 

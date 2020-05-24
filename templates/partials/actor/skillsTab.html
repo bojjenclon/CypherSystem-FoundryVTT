@@ -34,21 +34,7 @@
               <p>{{{strOrSpace skill.data.stat}}}</p>
           </div>
           <div class="col-xs-3 skill-training">
-              {{#if skill.data.inability}}
-              <p>Inability </p>
-              {{/if}}
-
-              {{#if skill.data.untrained}}
-              <p>Untrained</p>
-              {{/if}}
-
-              {{#if skill.data.trained}}
-              <p>Trained</p>
-              {{/if}}
-
-              {{#if skill.data.specialized}}
-              <p>Specialized</p>
-              {{/if}}
+              <p>{{localize (concat 'CSR.skillAbbrev.' skill.data.training)}}</p>
           </div>
           <div class="col-xs-1 skill-actions">
               <div class="row">

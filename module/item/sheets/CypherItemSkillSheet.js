@@ -24,58 +24,23 @@ export class CypherItemSkillSheet extends ItemSheet {
         return "systems/cyphersystem/templates/item/SkillSheet.html";
     }
 
-    activateListeners(html) {
-        super.activateListeners(html);
-
-        const { item } = this;
-        const itemData = item.data.data;
-
-        html.find('.select-skill-level').change(ev => {
-            const elem = $(ev.currentTarget);
-            const selected = elem.val();
-
-            itemData.inability = false;
-            itemData.untrained = false;
-            itemData.trained = false;
-            itemData.specialized = false;
-
-            switch (selected) {
-                case 'i':
-                    itemData.inability = true;
-                    break;
-
-                case 'u':
-                    itemData.untrained = true;
-                    break;
-
-                case 't':
-                    itemData.trained = true;
-                    break;
-
-                case 's':
-                    itemData.specialized = true;
-                    break;
-            }
-        });
-    }
-
     getData() {
         const sheetData = super.getData();
 
         sheetData.stats = CYPHER_SYSTEM.stats;
         sheetData.skillLevels = CYPHER_SYSTEM.skillLevels;
 
-        const { item } = this;
-        const itemData = item.data.data;
-        if (itemData.inability) {
-            sheetData.training = 'i';
-        } else if (itemData.untrained) {
-            sheetData.training = 'u';
-        } else if (itemData.trained) {
-            sheetData.training = 't';
-        } else if (itemData.specialized) {
-            sheetData.training = 's';
-        }
+        // const { item } = this;
+        // const itemData = item.data.data;
+        // if (itemData.inability) {
+        //     sheetData.training = 'i';
+        // } else if (itemData.untrained) {
+        //     sheetData.training = 'u';
+        // } else if (itemData.trained) {
+        //     sheetData.training = 't';
+        // } else if (itemData.specialized) {
+        //     sheetData.training = 's';
+        // }
 
         return sheetData;
     }
@@ -83,16 +48,66 @@ export class CypherItemSkillSheet extends ItemSheet {
     activateListeners(html) {
         super.activateListeners(html);
 
+        const { item } = this;
+
         $('select[name="data.stat"]').select2({
             theme: 'numenera',
             width: '110px',
             minimumResultsForSearch: Infinity
         });
 
-        $('select[name="data.training"]').select2({
+        const trainingSelect = $('select[name="data.training"]').select2({
             theme: 'numenera',
             width: '110px',
             minimumResultsForSearch: Infinity
         });
+        // trainingSelect.on('change', ev => {
+        //     ev.preventDefault();
+
+        //     const elem = $(ev.currentTarget);
+        //     const selected = elem.val();
+
+        //     switch (selected) {
+        //         case 'i':
+        //             item.update({
+        //                 'data.inability': true,
+        //                 'data.untrained': false,
+        //                 'data.trained': false,
+        //                 'data.specialized': false
+        //             });
+                    
+        //             break;
+
+        //         case 'u':
+        //             item.update({
+        //                 'data.inability': false,
+        //                 'data.untrained': true,
+        //                 'data.trained': false,
+        //                 'data.specialized': false
+        //             });
+
+        //             break;
+
+        //         case 't':
+        //             item.update({
+        //                 'data.inability': false,
+        //                 'data.untrained': false,
+        //                 'data.trained': true,
+        //                 'data.specialized': false
+        //             });
+
+        //             break;
+
+        //         case 's':
+        //             item.update({
+        //                 'data.inability': false,
+        //                 'data.untrained': false,
+        //                 'data.trained': false,
+        //                 'data.specialized': true
+        //             });
+
+        //             break;
+        //     }
+        // });
     }
 }

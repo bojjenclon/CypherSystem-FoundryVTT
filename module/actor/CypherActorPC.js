@@ -66,10 +66,22 @@ export class CypherActorPC extends Actor {
       return 0; //skills are untrained by default
 
     skill = skill.data.data;
-    let level = -Number(skill.inability); //Inability subtracts 1 from overall level
 
-    if (skill.specialized) level += 2;
-    else if (skill.trained) level += 1;
+    let level = 0;
+    switch (skill.training) {
+      case 'i':
+        level = -1;
+        break;
+      case 'u':
+        level = 0;
+        break;
+      case 't':
+        level = 1;
+        break;
+      case 's':
+        level = 2;
+        break;
+    }
 
     return level;
   }

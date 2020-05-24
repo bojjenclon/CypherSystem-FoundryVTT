@@ -13,9 +13,7 @@ export class CypherItemSkill extends Item {
     itemData.name = this.data ? this.data.name : "New Skill";
     itemData.notes = itemData.notes || "";
     itemData.stat = itemData.stat || "";
-    itemData.inability = itemData.inability || false;
-    itemData.trained = itemData.trained || false;
-    itemData.specialized = itemData.specialized || false;
+    itemData.training = itemData.training || "u";
   }
 
   /**

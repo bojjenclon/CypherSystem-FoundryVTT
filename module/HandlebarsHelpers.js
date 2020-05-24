@@ -4,6 +4,7 @@ export function handlebarsHelpers() {
     neq: (v1, v2) => v1 !== v2,
     or: (v1, v2) => v1 || v2,
     ternary: (cond, v1, v2) => cond ? v1 : v2,
+    concat: (v1, v2) => `${v1}${v2}`,
 
     allCaps: (text) => text.toUpperCase(),
 
