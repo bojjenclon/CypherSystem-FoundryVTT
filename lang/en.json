@@ -5,10 +5,19 @@
   "CSR.deleteDialogTitle": "Confirm Delete",
   "CSR.deleteDialogContent": "Are you sure you want to delete this item? This action cannot be undone, and some items may not be recoverable.",
 
-  "CSR.skillAbbrev.i": "Inability",
-  "CSR.skillAbbrev.u": "Untrained",
-  "CSR.skillAbbrev.t": "Trained",
-  "CSR.skillAbbrev.s": "Specialized",
+  "CSR.statMight": "Might",
+  "CSR.statSpeed": "Speed",
+  "CSR.statIntellect": "Intellect",
+
+  "CSR.trainingInability": "Inability",
+  "CSR.trainingUntrained": "Untrained",
+  "CSR.trainingTrained": "Trained",
+  "CSR.trainingSpecialized": "Specialized",
+
+  "CSR.trainingAbbrev.i": "Inability",
+  "CSR.trainingAbbrev.u": "Untrained",
+  "CSR.trainingAbbrev.t": "Trained",
+  "CSR.trainingAbbrev.s": "Specialized",
 
   "CSR.tabSkills": "Skills",
   "CSR.tabAbilities": "Abilities",
@@ -19,10 +28,13 @@
   "CSR.headerName": "Name",
   "CSR.headerStat": "Stat",
   "CSR.headerTraining": "Training",
+  "CSR.headerDescription": "Description",
 
   "CSR.hoverInfo": "Info",
   "CSR.hoverUse": "Use",
   "CSR.hoverDelete": "Delete",
+
+  "CSR.placeholderSkillName": "Skill Name",
 
   "CSR.emptySkillsGrid": "No skills yet. Create one by clicking the <i class=\"fas fa-plus\"></i> icon on the top right of the table or pick one from the Items Directory or a Compendium and drag it here."
 }
