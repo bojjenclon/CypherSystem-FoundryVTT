@@ -62,7 +62,7 @@ export class CypherActorPC extends Actor {
     if (!skill)
       throw new Error("No skill provided");
 
-    if (!skill.data.data)
+    if (!(skill.data && skill.data.data))
       return 0; //skills are untrained by default
 
     skill = skill.data.data;
@@ -179,11 +179,12 @@ export class CypherActorPC extends Actor {
     return value;
   }
 
-  canSpendFromPool(statId, amount) {
+  canSpendFromPool(statId, amount, applyEdge=true) {
     const actorData = this.data.data;
     const stat = actorData.stats[statId];
+    const poolAmount = stat.pool.current;
 
-    return amount <= stat.pool.current;
+    return (applyEdge ? amount - stat.edge : amount) <= poolAmount;
   }
 
   spendFromPool(statId, amount) {

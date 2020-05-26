@@ -82,11 +82,6 @@ export class CypherRolls {
       maxEffort = parseInt(data['maxEffort'], 10) || 1;
     }
 
-    let assets = 0;
-    if (!!data['assets']) {
-      assets = parseInt(data['assets'], 10) || 1;
-    }
-
     const _roll = (form = null) => {
       // Optionally include effort
       if (form !== null) {

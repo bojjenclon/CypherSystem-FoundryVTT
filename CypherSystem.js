@@ -24,7 +24,7 @@ import { CypherItemWeaponSheet } from './module/item/sheets/CypherItemWeaponShee
 import { migrateWorld } from './module/migrations/Migrate.js';
 
 Hooks.once("init", function () {
-    console.log('Cypher System | Initializing Cypher System FoundryVTT System');
+    console.log('Cypher System | Initializing Cypher System');
 
     game.csr = {
         rollItemMacro
@@ -72,6 +72,21 @@ Hooks.on('renderActorDirectory', (app, html, options) => {
             found.filter((i, elem) => elem.innerText === actor.data.name)
                 .each((i, elem) => elem.innerText += ` (${actor.data.data.level * 3})`);
         })
+});
+
+
+Hooks.on('renderCompendium', async (app, html, options) => {
+    const npcs = game.actors.entities.filter(e => e.constructor === NumeneraNPCActor);
+
+    html.find(".entry-name")
+        .each((i, el) => {
+        const actor = npcs.find(npc => el.innerText.indexOf(npc.data.name) !== -1);
+        if (!actor)
+            return;
+
+        //Display the NPC's target between parentheses
+        el.innerHTML += ` (${actor.data.data.level * 3})`;
+    });
 });
 
 Hooks.on("renderChatMessage", (chatMessage, html, data) => {
