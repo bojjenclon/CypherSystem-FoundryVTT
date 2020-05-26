@@ -27,7 +27,7 @@
           border-right: 1px solid black;
         }
 
-        p {
+        p:not(.empty-grid) {
           overflow     : hidden;
           text-overflow: ellipsis;
           white-space  : nowrap;

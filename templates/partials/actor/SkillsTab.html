@@ -1,68 +1,65 @@
 <div class="grid skills">
-  <div class="head">
-      <div class="row">
-          <div class="col-xs-6 skill-name">
-              <a class="sort-header" data-prop="name" data-field="name">
-                  <p>Name {{{sortIcon data.sorts.skills 'name'}}}</p>
-              </a>
-          </div>
-          <div class="col-xs-2 skill-stat">
-              <a class="sort-header" data-prop="data.data.stat" data-field="stats">
-                  <p>Stat {{{sortIcon data.sorts.skills 'stats'}}}</p>
-              </a>
-          </div>
-          <div class="col-xs-3 skill-training">
-              <!-- TODO Make training sortable -->
-              <p>Training</p>
-          </div>
-          <div class="col-xs-1 skill-actions">
-              <div class="row">
-                  <div class="col-xs-offset-6 col-xs-6">
-                      <p><a class="skill-create" title="Create"><i class="fas fa-plus"></i></a></p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="body">
-      {{#each data.items.skills as |skill|}}
-      <div class="row middle-xs skill" data-item-id="{{skill._id}}" data-prder="{{skill.data.order}}">
-          <div class="col-xs-6 skill-name">
-              <p>{{{strOrSpace skill.name}}}</p>
-          </div>
-          <div class="col-xs-2 skill-stat">
-              <p>{{{strOrSpace skill.data.stat}}}</p>
-          </div>
-          <div class="col-xs-3 skill-training">
-              <p>{{localize (concat 'CSR.skillAbbrev.' skill.data.training)}}</p>
-          </div>
-          <div class="col-xs-1 skill-actions">
-              <div class="row">
-                  <div class="col-xs-4 skill-info">
-                      <a class="skill-info-btn" data-action="info" title="Info"><i
-                              class="fas fa-info-circle"></i></a>
-                  </div>
-                  <div class="col-xs-4 skill-use">
-                      <a class="skill-use-btn" data-action="use" title="Use"><i
-                              class="fas fa-dice-d20"></i></a>
-                  </div>
-                  <div class="col-xs-4 skill-delete">
-                      <a class="skill-delete" data-action="delete" title="Delete"><i
-                              class="fas fa-trash"></i></a>
-                  </div>
-              </div>
-          </div>
-      </div>
-      {{else}}
-      <div class="row">
-          <div class="col-xs-12">
-              <p>
-                  No skills yet. Create one by clicking the <i class="fas fa-plus"></i> icon on
-                  the top right of the table or pick one from the Items Directory or a Compendium and drag
-                  it here.
-              </p>
-          </div>
-      </div>
-      {{/each}}
-  </div>
+    <div class="head">
+        <div class="row">
+            <div class="col-xs-6 skill-name">
+                <a class="sort-header" data-prop="name" data-field="name">
+                    <p>{{localize "CSR.headerName"}} {{{sortIcon data.sorts.skills 'name'}}}</p>
+                </a>
+            </div>
+            <div class="col-xs-2 skill-stat">
+                <a class="sort-header" data-prop="data.data.stat" data-field="stats">
+                    <p>{{localize "CSR.headerStat"}} {{{sortIcon data.sorts.skills 'stats'}}}</p>
+                </a>
+            </div>
+            <div class="col-xs-3 skill-training">
+                <!-- Improve training sort; make it sort by actual level not alphabetic (e.g. Inability, Untrained, Trained, Specialized) -->
+                <a class="sort-header" data-prop="data.data.training" data-field="training">
+                    <p>{{localize "CSR.headerTraining"}} {{{sortIcon data.sorts.skills 'training'}}}</p>
+                </a>
+            </div>
+            <div class="col-xs-1 skill-actions">
+                <div class="row">
+                    <div class="col-xs-offset-6 col-xs-6">
+                        <p><a class="skill-create" title="Create"><i class="fas fa-plus"></i></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        {{#each data.items.skills as |skill|}}
+        <div class="row middle-xs skill" data-item-id="{{skill._id}}" data-prder="{{skill.data.order}}">
+            <div class="col-xs-6 skill-name">
+                <p>{{{strOrSpace skill.name}}}</p>
+            </div>
+            <div class="col-xs-2 skill-stat">
+                <p>{{{strOrSpace skill.data.stat}}}</p>
+            </div>
+            <div class="col-xs-3 skill-training">
+                <p>{{localize (concat 'CSR.skillAbbrev.' skill.data.training)}}</p>
+            </div>
+            <div class="col-xs-1 skill-actions">
+                <div class="row">
+                    <div class="col-xs-4 skill-info">
+                        <a class="skill-info-btn" data-action="info" title="{{localize 'CSR.hoverInfo'}}"><i class="fas fa-info-circle"></i></a>
+                    </div>
+                    <div class="col-xs-4 skill-use">
+                        <a class="skill-use-btn" data-action="use" title="{{localize 'CSR.hoverUs'}}"><i class="fas fa-dice-d20"></i></a>
+                    </div>
+                    <div class="col-xs-4 skill-delete">
+                        <a class="skill-delete" data-action="delete" title="{{localize 'CSR.hoverDelete'}}"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="empty-grid">
+                    {{{localize "CSR.emptySkillsGrid"}}}
+                </p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </div>

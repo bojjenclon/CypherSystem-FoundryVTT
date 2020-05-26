@@ -8,5 +8,21 @@
   "CSR.skillAbbrev.i": "Inability",
   "CSR.skillAbbrev.u": "Untrained",
   "CSR.skillAbbrev.t": "Trained",
-  "CSR.skillAbbrev.s": "Specialized"
+  "CSR.skillAbbrev.s": "Specialized",
+
+  "CSR.tabSkills": "Skills",
+  "CSR.tabAbilities": "Abilities",
+  "CSR.tabCyphers": "Cyphers",
+  "CSR.tabEquipment": "Equipment",
+  "CSR.tabBio": "Bio",
+
+  "CSR.headerName": "Name",
+  "CSR.headerStat": "Stat",
+  "CSR.headerTraining": "Training",
+
+  "CSR.hoverInfo": "Info",
+  "CSR.hoverUse": "Use",
+  "CSR.hoverDelete": "Delete",
+
+  "CSR.emptySkillsGrid": "No skills yet. Create one by clicking the <i class=\"fas fa-plus\"></i> icon on the top right of the table or pick one from the Items Directory or a Compendium and drag it here."
 }
