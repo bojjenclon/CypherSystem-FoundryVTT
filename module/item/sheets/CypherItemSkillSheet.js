@@ -56,58 +56,10 @@ export class CypherItemSkillSheet extends ItemSheet {
             minimumResultsForSearch: Infinity
         });
 
-        const trainingSelect = $('select[name="data.training"]').select2({
+        $('select[name="data.training"]').select2({
             theme: 'numenera',
             width: '110px',
             minimumResultsForSearch: Infinity
         });
-        // trainingSelect.on('change', ev => {
-        //     ev.preventDefault();
-
-        //     const elem = $(ev.currentTarget);
-        //     const selected = elem.val();
-
-        //     switch (selected) {
-        //         case 'i':
-        //             item.update({
-        //                 'data.inability': true,
-        //                 'data.untrained': false,
-        //                 'data.trained': false,
-        //                 'data.specialized': false
-        //             });
-                    
-        //             break;
-
-        //         case 'u':
-        //             item.update({
-        //                 'data.inability': false,
-        //                 'data.untrained': true,
-        //                 'data.trained': false,
-        //                 'data.specialized': false
-        //             });
-
-        //             break;
-
-        //         case 't':
-        //             item.update({
-        //                 'data.inability': false,
-        //                 'data.untrained': false,
-        //                 'data.trained': true,
-        //                 'data.specialized': false
-        //             });
-
-        //             break;
-
-        //         case 's':
-        //             item.update({
-        //                 'data.inability': false,
-        //                 'data.untrained': false,
-        //                 'data.trained': false,
-        //                 'data.specialized': true
-        //             });
-
-        //             break;
-        //     }
-        // });
     }
 }

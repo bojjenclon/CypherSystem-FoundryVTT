@@ -59,12 +59,10 @@
       </div>
       <div class="col-xs-1 cypher-actions">
         <div class="row">
-          {{#if (or ../isGM cypher.data.identified)}}
           <div class="col-xs-6">
             <a class="cypher-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
           </div>
-          {{/if}}
-          <div class="{{ternary (or ../isGM cypher.data.identified) 'col-xs-6' 'col-xs-12'}}">
+          <div class="col-xs-6">
             <a class="cypher-delete" data-action="delete" title="Delete"><i class="fas fa-trash"></i></a>
           </div>
         </div>
@@ -125,9 +123,9 @@
         <p>Unidentified Artifact</p>
         {{/if}}
       </div>
-      <div class="col-xs-1 artifact-levelDie">
+      <div class="col-xs-1 artifact-level">
         {{#if artifact.data.identified}}
-        <p>{{{strOrSpace artifact.data.levelDie}}}</p>
+        <p>{{{strOrSpace artifact.data.level}}}</p>
         {{else}}
         <p>?</p>
         {{/if}}
@@ -150,12 +148,10 @@
       {{/if}}
       <div class="col-xs-1 artifact-actions">
         <div class="row">
-          {{#if (or ../isGM artifact.data.identified)}}
           <div class="col-xs-6">
             <a class="artifact-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
           </div>
-          {{/if}}
-          <div class="{{ternary (or ../isGM artifact.data.identified) 'col-xs-6' 'col-xs-12'}}">
+          <div class="col-xs-6">
             <a class="artifact-delete" data-action="delete" title="Delete"><i class="fas fa-trash"></i></a>
           </div>
         </div>

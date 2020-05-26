@@ -1,6 +1,9 @@
 form.csr.sheet-container {
   display       : flex;
   flex-direction: column;
+  
+  padding: 4px;
+  overflow: auto;
 
   .sheet-contents {
     flex: 1;
@@ -40,6 +43,10 @@ form.csr.sheet-container {
               height: 100%;
             }
           }
+        }
+
+        .flex-right {
+          align-items: flex-end;
         }
       }
     }
