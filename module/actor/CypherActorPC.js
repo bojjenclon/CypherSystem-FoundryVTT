@@ -52,13 +52,13 @@ export class CypherActorPC extends Actor {
   }
 
   /**
-   * Given a skill ID, return this skill's level as a a numeric value.
+   * Given a skill, return this skill's level as a a numeric value.
    *
-   * @param {string} skillId
+   * @param {object} skill
    * @returns {Number}
    * @memberof CypherActorPC
    */
-  getSkillLevel(skillId) {
+  getSkillLevel(skill) {
     if (!skill)
       throw new Error("No skill provided");
 

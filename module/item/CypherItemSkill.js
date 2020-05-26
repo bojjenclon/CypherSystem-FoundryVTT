@@ -26,19 +26,9 @@ export class CypherItemSkill extends Item {
     const actorData = actor.data.data;
 
     const item = this.data;
-    const { stat, name, inability, untrained, trained, specialized } = item.data;
+    const { stat, name, training } = item.data;
     const statId = stat.toLowerCase();
-    let assets;
-    if (inability) {
-      assets = -1;
-    } else if (untrained) {
-      assets = 0;
-    } else if (trained) {
-      assets = 1;
-    } else if (specialized) {
-      assets = 2;
-    }
-
+    const assets = actor.getSkillLevel(this);
     
     const parts = ['1d20'];
     if (assets !== 0) {
