@@ -336,16 +336,6 @@ form.csr.pc {
 
       &.active {
         flex: 1;
-
-        &.bio {
-          display       : flex;
-          flex-direction: column;
-
-          &>textarea {
-            height: 100%;
-            resize: none;
-          }
-        }
       }
     }
 
@@ -401,6 +391,11 @@ form.csr.pc {
           margin     : 0;
           flex       : 0;
           font-weight: bold;
+        }
+
+        .cypher-limit-container {
+          margin-top: 1em;
+          padding-bottom: 2px;
         }
 
         .cypher-limit-warning {
