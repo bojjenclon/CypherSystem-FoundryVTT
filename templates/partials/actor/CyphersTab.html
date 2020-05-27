@@ -1,10 +1,3 @@
-<!-- <div class="cypher-limit-container">
-  <h3>Cypher Limit <input type="number" name="data.cypherLimit" value="{{data.cypherLimit}}" min="1" max="99"
-      class="cypher-limit" data-dtype="Number" /></h3>
-  {{#if displayCypherLimitWarning}}
-  <h3 class="cypher-limit-warning">You are over your cypher limit!</h3>
-  {{/if}}
-</div> -->
 
 <div class="row cypher-limit-container">
   <div class="col-xs-2">
@@ -87,7 +80,7 @@
     {{else}}
     <div class="row">
       <div class="col-xs-12">
-        <p>
+        <p class="empty-grid">
           No cyphers yet. Create one by clicking the <i class="fas fa-plus"></i> icon on
           the top right of the table or pick one from the Items Directory or a Compendium and
           drag
@@ -176,7 +169,7 @@
     {{else}}
     <div class="row">
       <div class="col-xs-12">
-        <p>
+        <p class="empty-grid">
           No artifacts yet. Create one by clicking the <i class="fas fa-plus"></i> icon on
           the top right of the table or pick one from the Items Directory or a Compendium and
           drag it here.
@@ -232,7 +225,7 @@
     {{else}}
     <div class="row">
       <div class="col-xs-12">
-        <p>
+        <p class="empty-grid">
           No oddities yet. Create one by clicking the <i class="fas fa-plus"></i> icon on
           the top right of the table or pick one from the Items Directory or a Compendium and
           drag
