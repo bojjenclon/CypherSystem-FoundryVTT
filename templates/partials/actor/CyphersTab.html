@@ -1,8 +1,24 @@
-<div class="cypher-limit-container">
+<!-- <div class="cypher-limit-container">
   <h3>Cypher Limit <input type="number" name="data.cypherLimit" value="{{data.cypherLimit}}" min="1" max="99"
       class="cypher-limit" data-dtype="Number" /></h3>
   {{#if displayCypherLimitWarning}}
   <h3 class="cypher-limit-warning">You are over your cypher limit!</h3>
+  {{/if}}
+</div> -->
+
+<div class="row cypher-limit-container">
+  <div class="col-xs-2">
+    <h3>Cypher Limit</h3>
+  </div>
+  <div class="col-xs-1">
+    <input type="number" name="data.cypherLimit" value="{{data.cypherLimit}}" min="1" max="99"
+      class="cypher-limit" data-dtype="Number" />
+  </div>
+  
+  {{#if displayCypherLimitWarning}}
+  <div class="col-xs-9">
+    <h3 class="cypher-limit-warning">You are over your cypher limit!</h3>
+  </div>
   {{/if}}
 </div>
 
