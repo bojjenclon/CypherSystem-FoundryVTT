@@ -5,6 +5,9 @@ export class ImprovedActorSheet extends ActorSheet {
 		this.focusedInputPath = null;
 		this.inputPosStart = 0;
 		this.inputPosEnd = 0;
+
+		this.prevScrollY = -1;
+		this.scrollWatcher = null;
 	}
 
 	activateListeners(html) {
@@ -25,6 +28,11 @@ export class ImprovedActorSheet extends ActorSheet {
 
 			self.focusedInputPath = null;
 			self.inputPosStart = self.inputPosEnd = 0;
+		}
+
+		const { prevScrollY } = this;
+		if (prevScrollY > -1) {
+			html.scrollTop(prevScrollY);
 		}
 
 		// Auto-submit the form after input
@@ -52,5 +60,14 @@ export class ImprovedActorSheet extends ActorSheet {
 
 		$('input[type="text"]').keyup(getKeyUpFn(100));
 		// For now, type="number" isn't supported as it doesn't have the setSelectionRange method
+
+		// Track the current scroll position in case of page refresh
+		if (this.scrollWatcher) {
+			clearInterval(this.scrollWatcher);
+		}
+
+		this.scrollWatcher = setInterval(() => {
+			this.prevScrollY = html.scrollTop();
+		}, 100);
 	}
 }
