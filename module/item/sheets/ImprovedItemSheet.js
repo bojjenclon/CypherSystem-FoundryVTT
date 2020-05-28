@@ -46,6 +46,10 @@ export class ImprovedItemSheet extends ItemSheet {
 				keyUpTimeout = setTimeout(() => {
 					const focusedInput = ev.currentTarget;
 
+					if (focusedInput.value === '') {
+						return;
+					}
+
 					self.inputPosStart = focusedInput.selectionStart;
 					self.inputPosEnd = focusedInput.selectionEnd;
 
@@ -58,8 +62,8 @@ export class ImprovedItemSheet extends ItemSheet {
 			};
 		};
 
-		$('input[type="text"]').keyup(getKeyUpFn(200));
-		$('input[type="text"]').keyup(ev => {
+		$('input[type="text"]').keyup(getKeyUpFn(100));
+		$('input[type="text"]').keydown(ev => {
 			if (keyUpTimeout) {
 				clearTimeout(keyUpTimeout);
 			}
