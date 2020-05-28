@@ -7,8 +7,8 @@ export class CypherItemCypherSheet extends ImprovedItemSheet {
      */
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            width: 500,
-            height: 400
+            width: 600,
+            height: 500
         });
     }
 
