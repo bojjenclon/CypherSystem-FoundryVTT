@@ -47,21 +47,21 @@
     <div class="row middle-xs cypher" data-item-id="{{cypher._id}}" data-prder="{{cypher.data.order}}">
       <div class="col-xs-6 cypher-name">
         {{#if cypher.data.identified}}
-        <p>{{{strOrSpace cypher.name}}}</p>
+        <p title="{{cypher.name}}">{{{strOrSpace cypher.name}}}</p>
         {{else}}
         <p>Unidentified Cypher</p>
         {{/if}}
       </div>
       <div class="col-xs-1 cypher-level">
         {{#if cypher.data.identified}}
-        <p>{{{strOrSpace cypher.data.level}}}</p>
+        <p title="{{cypher.data.level}}">{{{strOrSpace cypher.data.level}}}</p>
         {{else}}
         <p>?</p>
         {{/if}}
       </div>
       <div class="col-xs-4 cypher-form">
         {{#if cypher.data.identified}}
-        <p>{{{strOrSpace cypher.data.form}}}</p>
+        <p title="{{cypher.data.form}}">{{{strOrSpace cypher.data.form}}}</p>
         {{else}}
         <p>?</p>
         {{/if}}
@@ -127,21 +127,21 @@
     <div class="row middle-xs artifact" data-item-id="{{artifact._id}}" data-prder="{{artifact.data.order}}">
       <div class="col-xs-4 artifact-name">
         {{#if artifact.data.identified}}
-        <p>{{{strOrSpace artifact.name}}}</p>
+        <p title="{{artifact.name}}">{{{strOrSpace artifact.name}}}</p>
         {{else}}
         <p>Unidentified Artifact</p>
         {{/if}}
       </div>
       <div class="col-xs-1 artifact-level">
         {{#if artifact.data.identified}}
-        <p>{{{strOrSpace artifact.data.level}}}</p>
+        <p title="{{artifact.data.level}}">{{{strOrSpace artifact.data.level}}}</p>
         {{else}}
         <p>?</p>
         {{/if}}
       </div>
       <div class="col-xs-4 artifact-form">
         {{#if artifact.data.identified}}
-        <p>{{{strOrSpace artifact.data.form}}}</p>
+        <p title="{{artifact.data.form}}">{{{strOrSpace artifact.data.form}}}</p>
         {{else}}
         <p>?</p>
         {{/if}}
@@ -149,7 +149,7 @@
       {{#if artifact.data.depletion.isDepleting }}
       <div class="col-xs-2 artifact-depletion">
         {{#if artifact.data.identified}}
-        <p>{{artifact.data.depletion.threshold}} in {{artifact.data.depletion.die}}</p>
+        <p title="{{artifact.data.depletion.threshold}} in {{artifact.data.depletion.die}}">{{artifact.data.depletion.threshold}} in {{artifact.data.depletion.die}}</p>
         {{else}}
         <p>?</p>
         {{/if}}
@@ -206,10 +206,10 @@
     {{#each data.items.oddities as |oddity|}}
     <div class="row middle-xs oddity" data-item-id="{{oddity._id}}" data-prder="{{oddity.data.order}}">
       <div class="col-xs-3 oddity-name">
-        <p>{{{strOrSpace oddity.name}}}</p>
+        <p title="{{oddity.name}}">{{{strOrSpace oddity.name}}}</p>
       </div>
       <div class="col-xs-8 oddity-description">
-        <p>{{{strOrSpace oddity.data.notes}}}</p>
+        <p title="{{oddity.data.notes}}">{{{strOrSpace oddity.data.notes}}}</p>
       </div>
       <div class="col-xs-1 oddity-actions">
         <div class="row">

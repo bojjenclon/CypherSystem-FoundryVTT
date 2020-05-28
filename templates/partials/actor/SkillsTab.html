@@ -30,13 +30,13 @@
         {{#each data.items.skills as |skill|}}
         <div class="row middle-xs skill" data-item-id="{{skill._id}}" data-prder="{{skill.data.order}}">
             <div class="col-xs-6 skill-name">
-                <p>{{{strOrSpace skill.name}}}</p>
+                <p title="{{skill.name}}">{{{strOrSpace skill.name}}}</p>
             </div>
             <div class="col-xs-2 skill-stat">
-                <p>{{{strOrSpace skill.data.stat}}}</p>
+                <p title="{{skill.data.stat}}">{{{strOrSpace skill.data.stat}}}</p>
             </div>
             <div class="col-xs-3 skill-training">
-                <p>{{localize (concat 'CSR.trainingAbbrev.' skill.data.training)}}</p>
+                <p title="{{localize (concat 'CSR.trainingAbbrev.' skill.data.training)}}">{{localize (concat 'CSR.trainingAbbrev.' skill.data.training)}}</p>
             </div>
             <div class="col-xs-1 skill-actions">
                 <div class="row">

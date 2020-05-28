@@ -40,23 +40,23 @@
       <div class="row middle-xs ability" data-item-id="{{ability._id}}"
           data-prder="{{ability.data.order}}">
           <div class="col-xs-3 ability-name">
-              <p>{{{strOrSpace ability.name}}}</p>
+              <p title="{{ability.name}}">{{{strOrSpace ability.name}}}</p>
           </div>
           <div class="col-xs-2 ability-type">
               {{#if ability.data.isAction}}
-              <p class="ability-type">Action</p>
+              <p class="ability-type" title="Action">Action</p>
               {{else}}
-              <p class="ability-type">Enabler</p>
+              <p class="ability-type" title="Enabler">Enabler</p>
               {{/if}}
           </div>
           <div class="col-xs-2 ability-stat">
-              <p>{{{strOrSpace ability.data.cost.pool}}}</p>
+              <p title="{{ability.data.cost.pool}}">{{{strOrSpace ability.data.cost.pool}}}</p>
           </div>
           <div class="col-xs-2 ability-cost">
-              <p>{{{strOrSpace ability.data.cost.amount}}}</p>
+              <p title="{{ability.data.cost.amount}}">{{{strOrSpace ability.data.cost.amount}}}</p>
           </div>
           <div class="col-xs-2 ability-range">
-              <p>{{{strOrSpace ability.data.range}}}</p>
+              <p title="{{ability.data.range}}">{{{strOrSpace ability.data.range}}}</p>
           </div>
           <div class="col-xs-1 ability-actions">
               <div class="row">
