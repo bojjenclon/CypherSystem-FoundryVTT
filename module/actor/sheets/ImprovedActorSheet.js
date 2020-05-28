@@ -58,7 +58,12 @@ export class ImprovedActorSheet extends ActorSheet {
 			};
 		};
 
-		$('input[type="text"]').keyup(getKeyUpFn(100));
+		$('input[type="text"]').keyup(getKeyUpFn(200));
+		$('input[type="text"]').keyup(ev => {
+			if (keyUpTimeout) {
+				clearTimeout(keyUpTimeout);
+			}
+		});
 		// For now, type="number" isn't supported as it doesn't have the setSelectionRange method
 
 		// Track the current scroll position in case of page refresh
