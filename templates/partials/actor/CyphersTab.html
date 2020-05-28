@@ -20,7 +20,7 @@
 <div class="grid cyphers">
   <div class="head">
     <div class="row">
-      <div class="col-xs-6 cypher-name">
+      <div class="col-xs-5 cypher-name">
         <a class="sort-header" data-prop="name" data-field="name">
           <p>Name {{{sortIcon data.sorts.cyphers 'name'}}}</p>
         </a>
@@ -30,7 +30,7 @@
           <p>Level {{{sortIcon data.sorts.cyphers 'level'}}}</p>
         </a>
       </div>
-      <div class="col-xs-4 cypher-form">
+      <div class="col-xs-5 cypher-form">
         <p>Form</p>
       </div>
       <div class="col-xs-1 cypher-actions">
@@ -45,7 +45,7 @@
   <div class="body">
     {{#each data.items.cyphers as |cypher|}}
     <div class="row middle-xs cypher" data-item-id="{{cypher._id}}" data-prder="{{cypher.data.order}}">
-      <div class="col-xs-6 cypher-name">
+      <div class="col-xs-5 cypher-name">
         {{#if cypher.data.identified}}
         <p title="{{cypher.name}}">{{{strOrSpace cypher.name}}}</p>
         {{else}}
@@ -59,7 +59,7 @@
         <p>?</p>
         {{/if}}
       </div>
-      <div class="col-xs-4 cypher-form">
+      <div class="col-xs-5 cypher-form">
         {{#if cypher.data.identified}}
         <p title="{{cypher.data.form}}">{{{strOrSpace cypher.data.form}}}</p>
         {{else}}
