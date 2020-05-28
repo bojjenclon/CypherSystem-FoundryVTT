@@ -246,6 +246,10 @@ export class CypherActorPCSheet extends ActorSheet {
   constructor(...args) {
     super(...args);
 
+    this.wasInputFocused = null;
+    this.inputPosStart = 0;
+    this.inputPosEnd = 0;
+
     const sorts = this.sorts || {};
     const hasSortData = !!Object.keys(sorts).length;
     if (!hasSortData) {
@@ -521,5 +525,38 @@ export class CypherActorPCSheet extends ActorSheet {
         ability.addEventListener("dragstart", handler, false);
       });
     }
+
+    const self = this;
+
+    const { wasInputFocused } = this;
+    if (wasInputFocused) {
+      const { inputPosStart, inputPosEnd } = this;
+
+      setTimeout(() => {
+        const focusedInput = $(':focus')[0];
+        if (focusedInput) {
+          focusedInput.setSelectionRange(inputPosStart, inputPosEnd);
+        }
+        
+        self.wasInputFocused = false;
+        self.inputPosStart = self.inputPosEnd = 0;
+      }, 0);
+    }
+
+    let keyUpTimeout;
+    $('input').keyup(ev => {
+      if (keyUpTimeout) {
+        clearTimeout(keyUpTimeout);
+      }
+
+      keyUpTimeout = setTimeout(() => {
+        const focusedInput = $(':focus')[0];
+        self.inputPosStart = focusedInput.selectionStart;
+        self.inputPosEnd = focusedInput.selectionEnd;
+        self.wasInputFocused = true;
+
+        $('form.csr.pc').submit();
+      }, 250);
+    });
   }
 }
