@@ -141,8 +141,10 @@ form.csr {
     }
 }
 
-input:disabled {
-    padding: 8px;
+input:disabled,
+input:disabled:hover {
+    border: 1px solid #7a7971;
+    color: #6b6969;
 }
 
 textarea:focus {
