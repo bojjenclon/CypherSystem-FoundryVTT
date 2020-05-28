@@ -2,6 +2,7 @@ export class ImprovedItemSheet extends ItemSheet {
 	constructor(...args) {
 		super(...args);
 
+		this.originalFocusValue = '';
 		this.autoSubmitTimeout = null;
 
 		this.focusedInputPath = null;
@@ -31,6 +32,7 @@ export class ImprovedItemSheet extends ItemSheet {
 			const focusedInput = $(focusedInputPath);
 			if (focusedInput) {
 				const inputEl = focusedInput[0];
+				focusedInput.prop('disabled', false);
 				inputEl.setSelectionRange(inputPosStart, inputPosEnd);
 			}
 
@@ -52,25 +54,33 @@ export class ImprovedItemSheet extends ItemSheet {
 				}
 
 				this.autoSubmitTimeout = setTimeout(() => {
-					const focusedInput = ev.currentTarget;
+					const focusedInputEl = ev.currentTarget;
+					const focusedInput = $(focusedInputEl);
+					const value = focusedInput.val();
 
-					if (focusedInput.value === '') {
+					if (value === '' || self.originalFocusValue === value) {
 						return;
 					}
 
-					self.inputPosStart = focusedInput.selectionStart;
-					self.inputPosEnd = focusedInput.selectionEnd;
+					self.originalFocusValue = value;
+					self.inputPosStart = focusedInputEl.selectionStart;
+					self.inputPosEnd = focusedInputEl.selectionEnd;
 
-					const form = $(focusedInput).parents('form:first');
+					const form = focusedInput.parents('form:first');
 
-					self.focusedInputPath = `#${form.attr('id')} input[name="${$(focusedInput).attr('name')}"]`;
+					self.focusedInputPath = `#${form.attr('id')} input[name="${focusedInput.attr('name')}"]`;
 
 					form.submit();
+
+					focusedInput.prop('disabled', true);
 				}, delay);
 			};
 		};
 
-		$('input[type="text"]').keyup(getKeyUpFn(100));
+		$('input[type="text"').focus(ev => {
+			this.originalFocusValue = ev.currentTarget.value;
+		});
+		$('input[type="text"]').keyup(getKeyUpFn(500));
 		$('input[type="text"]').keydown(ev => {
 			if (this.autoSubmitTimeout) {
 				clearTimeout(this.autoSubmitTimeout);
