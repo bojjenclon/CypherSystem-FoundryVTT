@@ -32,6 +32,10 @@
           text-overflow: ellipsis;
           white-space  : nowrap;
         }
+
+        p.empty-grid {
+          line-height: 1.5em;
+        }
       }
     }
   }
