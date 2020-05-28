@@ -2,6 +2,8 @@ export class ImprovedActorSheet extends ActorSheet {
   constructor(...args) {
 		super(...args);
 
+		this.autoSubmitTimeout = null;
+
 		this.focusedInputPath = null;
 		this.inputPosStart = 0;
 		this.inputPosEnd = 0;
@@ -14,6 +16,12 @@ export class ImprovedActorSheet extends ActorSheet {
 		super.activateListeners(html);
 
 		const self = this;
+
+		// Ensure there isn't a pending auto-submit timeout on refresh
+		if (this.autoSubmitTimeout) {
+			clearTimeout(this.autoSubmitTimeout);
+			this.autoSubmitTimeout = null;
+		}
 
 		// If returning from an auto-submit, restore the focused input's caret position
 		const { focusedInputPath } = this;
@@ -36,14 +44,14 @@ export class ImprovedActorSheet extends ActorSheet {
 		}
 
 		// Auto-submit the form after input
-		let keyUpTimeout;
 		const getKeyUpFn = (delay) => {
 			return ev => {
-				if (keyUpTimeout) {
-					clearTimeout(keyUpTimeout);
+				if (this.autoSubmitTimeout) {
+					clearTimeout(this.autoSubmitTimeout);
+					this.autoSubmitTimeout = null;
 				}
 
-				keyUpTimeout = setTimeout(() => {
+				this.autoSubmitTimeout = setTimeout(() => {
 					const focusedInput = ev.currentTarget;
 
 					if (focusedInput.value === '') {
@@ -62,14 +70,15 @@ export class ImprovedActorSheet extends ActorSheet {
 			};
 		};
 
-		$('input[type="text"]').keyup(getKeyUpFn(200));
+		$('input[type="text"]').keyup(getKeyUpFn(100));
 		$('input[type="text"]').keydown(ev => {
-			if (keyUpTimeout) {
-				clearTimeout(keyUpTimeout);
+			if (this.autoSubmitTimeout) {
+				clearTimeout(this.autoSubmitTimeout);
+				this.autoSubmitTimeout = null;
 			}
 		});
 		// For now, type="number" isn't supported as it doesn't have the setSelectionRange method
-
+		
 		// Track the current scroll position in case of page refresh
 		if (this.scrollWatcher) {
 			clearInterval(this.scrollWatcher);
