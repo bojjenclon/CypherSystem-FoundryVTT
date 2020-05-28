@@ -1,6 +1,8 @@
 import { CYPHER_SYSTEM } from "../../Config.js";
 
-export class CypherItemArmorSheet extends ItemSheet {
+import { ImprovedItemSheet } from './ImprovedItemSheet.js';
+
+export class CypherItemArmorSheet extends ImprovedItemSheet {
     /**
      * Define default rendering options for the weapon sheet
      * @return {Object}

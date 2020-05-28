@@ -1,4 +1,6 @@
-export class CypherItemGearSheet extends ItemSheet {
+import { ImprovedItemSheet } from './ImprovedItemSheet.js';
+
+export class CypherItemGearSheet extends ImprovedItemSheet {
     /**
      * Define default rendering options for the weapon sheet
      * @return {Object}

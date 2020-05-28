@@ -1,11 +1,13 @@
 import { CYPHER_SYSTEM } from "../../Config.js";
 
+import { ImprovedActorSheet } from './ImprovedActorSheet.js';
+
 /**
  * Extend the basic ActorSheet class to do all the Cypher System things!
  *
  * @type {ActorSheet}
  */
-export class CypherActorNPCSheet extends ActorSheet {
+export class CypherActorNPCSheet extends ImprovedActorSheet {
   /**
    * Define default rendering options for the NPC sheet
    * @return {Object}

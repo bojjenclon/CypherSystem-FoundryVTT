@@ -1,6 +1,8 @@
 import { CYPHER_SYSTEM } from "../../Config.js";
 
-export class CypherItemSkillSheet extends ItemSheet {
+import { ImprovedItemSheet } from './ImprovedItemSheet.js';
+
+export class CypherItemSkillSheet extends ImprovedItemSheet {
     /**
      * Define default rendering options for the weapon sheet
      * @return {Object}
@@ -30,25 +32,11 @@ export class CypherItemSkillSheet extends ItemSheet {
         sheetData.stats = CYPHER_SYSTEM.stats;
         sheetData.skillLevels = CYPHER_SYSTEM.skillLevels;
 
-        // const { item } = this;
-        // const itemData = item.data.data;
-        // if (itemData.inability) {
-        //     sheetData.training = 'i';
-        // } else if (itemData.untrained) {
-        //     sheetData.training = 'u';
-        // } else if (itemData.trained) {
-        //     sheetData.training = 't';
-        // } else if (itemData.specialized) {
-        //     sheetData.training = 's';
-        // }
-
         return sheetData;
     }
 
     activateListeners(html) {
         super.activateListeners(html);
-
-        const { item } = this;
 
         $('select[name="data.stat"]').select2({
             theme: 'numenera',
