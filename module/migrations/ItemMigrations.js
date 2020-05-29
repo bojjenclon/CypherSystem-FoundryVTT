@@ -16,10 +16,7 @@ Itemv1ToV2Migrator.migrationFunction = async function(item, obj = {}) {
   const hasQuantity = [
     'weapon',
     'armor',
-    'gear',
-    'cypher',
-    'artifact',
-    'oddity'
+    'gear'
   ];
   if (hasQuantity.indexOf(item.type) > -1) {
     if (!item.data.data.hasOwnProperty('quantity')) {

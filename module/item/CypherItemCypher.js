@@ -10,7 +10,6 @@ export class CypherItemCypher extends Item {
 
         itemData.name = this.data.name || "New Cypher";
         itemData.level = itemData.level || null;
-        itemData.quantity = itemData.quantity || 1;
         itemData.levelDie = itemData.levelDie || "";
         itemData.form = itemData.form || "";
         itemData.range = itemData.range || "Immediate";
