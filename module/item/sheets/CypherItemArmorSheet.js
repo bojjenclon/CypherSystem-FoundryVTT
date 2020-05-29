@@ -10,7 +10,7 @@ export class CypherItemArmorSheet extends ImprovedItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             width: 600,
-            height: 450
+            height: 475
         });
     }
 
@@ -30,7 +30,7 @@ export class CypherItemArmorSheet extends ImprovedItemSheet {
         const data = super.getData();
 
         data.weightClasses = CYPHER_SYSTEM.weightClasses;
-        
+
         return data;
     }
 

@@ -83,7 +83,7 @@
             "common": {
                 "notes": "",
                 "order": -1,
-                "version": 3
+                "version": 2
             },
             "cypher": {
                 "identified": false,
@@ -103,6 +103,9 @@
             },
             "equippable": {
                 "equipped": false
+            },
+            "quantity": {
+                "quantity": 1
             }
         },
         "ability": {
@@ -117,12 +120,12 @@
             "tier": ""
         },
         "armor": {
-            "templates": ["common", "sellable", "weight", "equippable"],
+            "templates": ["common", "sellable", "weight", "equippable", "quantity"],
             "armor": 0,
             "additionalSpeedEffortCost": 1
         },
         "artifact": {
-            "templates": ["carriable", "common", "cypher"],
+            "templates": ["carriable", "common", "cypher", "quantity"],
             "depletion": {
                 "isDepleting": true,
                 "die": "d6",
@@ -130,13 +133,13 @@
             }
         },
         "cypher": {
-            "templates": ["carriable", "common", "cypher"]
+            "templates": ["carriable", "common", "cypher", "quantity"]
         },
         "gear": {
-            "templates": ["common", "sellable"]
+            "templates": ["common", "sellable", "quantity"]
         },
         "oddity": {
-            "templates": ["carriable", "common"]
+            "templates": ["carriable", "common", "quantity"]
         },
         "skill": {
             "templates": ["common"],
@@ -144,7 +147,7 @@
             "training": "u"
         },
         "weapon": {
-            "templates": ["common", "ranged", "sellable", "weight", "equippable"],
+            "templates": ["common", "ranged", "sellable", "weight", "equippable", "quantity"],
             "damage": 0,
             "weaponType": ""
         }

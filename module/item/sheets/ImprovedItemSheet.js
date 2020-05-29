@@ -13,6 +13,14 @@ export class ImprovedItemSheet extends ItemSheet {
 		this.scrollWatcher = null;
 	}
 
+	getData() {
+		const data = super.getData();
+
+		data.data.isOwned = this.item.isOwned;
+
+		return data;
+	}
+
 	activateListeners(html) {
 		super.activateListeners(html);
 

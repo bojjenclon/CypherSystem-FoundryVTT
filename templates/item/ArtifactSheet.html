@@ -42,19 +42,32 @@
                 <hr />
 
                 <div class="row">
+                    <div class="col-xs-9">
+                        <label>Quantity</label>
+                    </div>
                     <div class="col-xs-3">
+                        <input type="number" name="data.quantity" value="{{data.quantity}}" class="quantity" data-dtype="Number" />
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-xs-12">
                         <label>Form</label>
                     </div>
-                    <div class="col-xs-9">
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
                         {{#if (or data.identified isGM)}}
-                        <input type="text" name="data.form" value="{{data.form}}" data-dtype="String" />
+                        <textarea name="data.form" rows="4">{{data.form}}</textarea>
                         {{else}}
                         <input type="hidden" name="data.form" value="{{data.form}}" data-dtype="String" />
                         <input type="text" value="?" data-dtype="String" disabled />
                         {{/if}}
                     </div>
                 </div>
-                
+
                 <hr />
 
                 <div class="row">

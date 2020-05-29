@@ -33,8 +33,8 @@ export const Migrator = {
     //Sanity checks
     if (!this.forVersion)
       throw new Error("No forVersion specified");
-    else if (!this.forType)
-      throw new Error("No forType specified");
+    else if (!(this.forType || this.forObject))
+      throw new Error("No forType or forObject specified");
     else if (!this.migrationFunction)
       throw new Error("No migrationFunction specified");
 
@@ -48,8 +48,11 @@ export const Migrator = {
         throw new Error("Previous migrator has the wrong type");
     }
 
-    if (obj.data.type !== this.forType) 
+    if (!!this.forType && obj.data.type !== this.forType) 
       throw new Error("Wrong migrator type for object");
+    
+    if (!!this.forObject && !(obj instanceof this.forObject)) 
+      throw new Error("Wrong migrator class for object");
     
     //Migration already performed?
     if (obj.data.data.version >= this.forVersion)

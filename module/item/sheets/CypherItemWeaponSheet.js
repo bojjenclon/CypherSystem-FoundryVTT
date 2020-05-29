@@ -10,7 +10,7 @@ export class CypherItemWeaponSheet extends ImprovedItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             width: 500,
-            height: 500
+            height: 525
         });
     }
 

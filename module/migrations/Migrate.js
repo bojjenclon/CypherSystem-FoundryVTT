@@ -1,6 +1,6 @@
 // import { PCActorMigrator } from "./PCActorMigrations.js";
 // import { NPCActorMigrator } from "./NPCActorMigrations.js";
-// import { ItemMigrator } from "./ItemMigrations.js";
+import { ItemMigrator } from "./ItemMigrations.js";
 
 import { CypherActorPC } from "../actor/CypherActorPC.js";
 import { CypherItem } from "../item/CypherItem.js";
@@ -11,11 +11,18 @@ export async function migrateWorld() {
   
   const currentPCActorVersion = 1; //PCActorMigrator.forVersion;
   const currentNPCActorVersion = 1; //NPCActorMigrator.forVersion;
-  const currentItemVersion = 1; //Item.forVersion;
+  const currentItemVersion = 2; //Item.forVersion;
 
   let pcActors = game.actors.entities.filter(actor => actor.data.type === 'pc' && actor.data.data.version < currentPCActorVersion);
   let npcActors = game.actors.entities.filter(actor => actor.data.type === 'npc' && actor.data.data.version < currentNPCActorVersion);
   let items = game.items.entities.filter(item => item.data.data.version < currentItemVersion);
+
+  // Check embedded items
+  game.actors.entities.forEach(actor => {
+    items = items.concat(
+      actor.items.entries.filter(item => item.data.data.version < currentItemVersion)
+    );
+  });
 
   if (pcActors && pcActors.length > 0 || npcActors && npcActors.length > 0 || items && items.length > 0) {
     ui.notifications.info(`Applying Cypher System system migrations. Please be patient and do not close your game or shut down your server.`, {permanent: true});
@@ -49,20 +56,20 @@ export async function migrateWorld() {
     //   console.error("Error in NPC migrations", e);
     // }
     
-    //No separate Item migrations yet
-    // try {
-    //   if (items && items.length > 0) {
-    //     const updatedItems = await Promise.all(items.map(async item => await ItemMigrator.migrate(item)));
+    // Standalone Item Migrations
+    try {
+      if (items && items.length > 0) {
+        const updatedItems = await Promise.all(items.map(async item => await ItemMigrator.migrate(item)));
 
-    //     for (let i = 0; i < pcActors.length; i++) {
-    //       await item[i].update(updatedItems[i]);
-    //     }
+        for (let i = 0; i < items.length; i++) {
+          await items[i].update(updatedItems[i]);
+        }
 
-    //     console.log("Item migration succeeded!");
-    //   }
-    // } catch (e) {
-    //   console.error("Error in item migrations", e);
-    // }
+        console.log("Item migration succeeded!");
+      }
+    } catch (e) {
+      console.error("Error in item migrations", e);
+    }
 
     ui.notifications.info(`Cypher System system migration completed!`, {permanent: true});
   }
