@@ -18,6 +18,7 @@ export class CypherItemWeapon extends Item {
         if (desc && desc.writable)
             itemData.name = this.data.name || "New Weapon";
 
+        itemData.quantity = itemData.quantity || 1;
         itemData.damage = itemData.damage || 1;
         itemData.range = itemData.range || CYPHER_SYSTEM.ranges[0];
         itemData.weaponType = itemData.weaponType || CYPHER_SYSTEM.weaponTypes[0];
