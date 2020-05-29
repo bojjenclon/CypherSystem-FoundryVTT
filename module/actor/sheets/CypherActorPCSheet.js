@@ -125,7 +125,7 @@ function onItemSortGenerator(sortField, itemType) {
 }
 
 function onItemCreate(itemName, itemClass) {
-  return function () {
+  return async function () {
     event.preventDefault();
 
     const itemData = {
@@ -134,7 +134,7 @@ function onItemCreate(itemName, itemClass) {
       data: new itemClass({}),
     };
 
-    return this.actor.createOwnedItem(itemData);
+    await this.actor.createOwnedItem(itemData, { renderSheet: true });
   }
 }
 
