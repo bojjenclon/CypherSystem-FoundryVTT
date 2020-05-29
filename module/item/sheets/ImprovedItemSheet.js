@@ -38,7 +38,7 @@ export class ImprovedItemSheet extends ItemSheet {
 			const { inputPosStart, inputPosEnd } = this;
 
 			const focusedInput = $(focusedInputPath);
-			if (focusedInput) {
+			if (focusedInput.length) {
 				const inputEl = focusedInput[0];
 				focusedInput.prop('disabled', false);
 				inputEl.setSelectionRange(inputPosStart, inputPosEnd);
