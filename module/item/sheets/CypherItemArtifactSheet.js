@@ -8,7 +8,7 @@ export class CypherItemArtifactSheet extends ImprovedItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             width: 500,
-            height: 575
+            height: 550
         });
     }
 
