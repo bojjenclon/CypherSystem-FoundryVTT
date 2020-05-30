@@ -1,261 +1,262 @@
-<div>
-    <h2>Weapons</h2>
-    <hr />
-    <div class="grid weapons">
-        <div class="head">
-            <div class="row">
-                <div class="col-xs-3 weapon-name">
-                    <a class="sort-header" data-prop="name" data-field="name">
-                        <p>Name {{{sortIcon data.sorts.weapons 'name'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-1 weapon-quantity">
-                    <a class="sort-header" data-prop="data.data.quantity" data-field="quantity">
-                        <p># {{{sortIcon data.sorts.weapons 'quantity'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-2 weapon-weight">
-                    <a class="sort-header" data-prop="data.data.weight" data-field="weight">
-                        <p>Weight {{{sortIcon data.sorts.weapons 'weight'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-2 weapon-type">
-                    <a class="sort-header" data-prop="data.data.type" data-field="type">
-                        <p>Type {{{sortIcon data.sorts.weapons 'type'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-1 weapon-damage">
-                    <a class="sort-header" data-prop="data.data.damage" data-field="damage">
-                        <p>Dmg {{{sortIcon data.sorts.weapons 'damage'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-2 weapon-range">
-                    <a class="sort-header" data-prop="data.data.range" data-field="range">
-                        <p>Range {{{sortIcon data.sorts.weapons 'range'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-1 weapon-actions">
-                    <div class="row">
-                        <div class="col-xs-offset-6 col-xs-6">
-                            <p><a class="weapon-create" title="Create"><i class="fas fa-plus"></i></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="body">
-            {{#each data.items.weapons as |weapon|}}
-            <div class="row middle-xs weapon" data-item-id="{{weapon._id}}" data-prder="{{weapon.data.order}}">
-                <div class="col-xs-3 weapon-equip-name">
-                    <span class="weapon-equipped">
-                        <input type="hidden" name="data.items.weapons.{{weapon._id}}.data.equipped"
-                            value={{weapon.data.equipped}} data-dtype="Boolean" />
-                        <a class="weapon-equip-btn" title="{{ternary weapon.data.equipped 'Unequip' 'Equip'}}"><i
-                                class="far {{ternary weapon.data.equipped 'fa-check-circle' 'fa-times-circle'}}"></i></a>
-                    </span>
-                    <span class="weapon-name" title="{{weapon.name}}">{{{strOrSpace weapon.name}}}</span>
-                </div>
-                <div class="col-xs-1 weapon-quantity">
-                    <p title="{{weapon.data.quantity}}">{{{strOrSpace weapon.data.quantity}}}</p>
-                </div>
-                <div class="col-xs-2 weapon-weight">
-                    <p title="{{weapon.data.weight}}">{{{strOrSpace weapon.data.weight}}}</p>
-                </div>
-                <div class="col-xs-2 weapon-type">
-                    <p title="{{weapon.data.weaponType}}">{{{strOrSpace weapon.data.weaponType}}}</p>
-                </div>
-                <div class="col-xs-1 weapon-damage">
-                    <p title="{{weapon.data.damage}}">{{{strOrSpace weapon.data.damage}}}</p>
-                </div>
-                <div class="col-xs-2 weapon-range">
-                    <p title="{{weapon.data.range}}">{{{strOrSpace weapon.data.range}}}</p>
-                </div>
-                <div class="col-xs-1 weapon-actions">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a class="weapon-info-btn" data-action="info" title="Info"><i
-                                    class="fas fa-info-circle"></i></a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a class="weapon-delete-btn" data-action="delete" title="Delete"><i
-                                    class="fas fa-trash"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{else}}
-            <div class="row">
-                <div class="col-xs-12">
-                    <p class="empty-grid">
-                        No weapons yet. Create one by clicking the <i class="fas fa-plus"></i> icon
-                        on the top right of the table or pick one from the Items Directory or a Compendium
-                        and
-                        drag it here.
-                    </p>
-                </div>
-            </div>
-            {{/each}}
-        </div>
-    </div>
+<div class="row money-container">
+  <div class="col-xs-2">
+    <h3>Money</h3>
+  </div>
+  <div class="col-xs-3">
+    <input type="number" name="data.money" value="{{data.money}}" min="0" max="999999" class="money" data-dtype="Number" />
+  </div>
+</div>
 
-    <h2>Armor</h2>
-    <hr />
-    <div class="grid armor">
-        <div class="head">
-            <div class="row">
-                <div class="col-xs-4 armor-name">
-                    <a class="sort-header" data-prop="name" data-field="name">
-                        <p>Name {{{sortIcon data.sorts.armor 'name'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-1 armor-quantity">
-                    <a class="sort-header" data-prop="data.data.quantity" data-field="quantity">
-                        <p># {{{sortIcon data.sorts.armor 'quantity'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-2 armor-weight">
-                    <a class="sort-header" data-prop="data.data.weight" data-field="weight">
-                        <p>Weight {{{sortIcon data.sorts.armor 'weight'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-2 armor-armor">
-                    <a class="sort-header" data-prop="data.data.armor" data-field="armor">
-                        <p>Armor {{{sortIcon data.sorts.armor 'armor'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-2 armor-speed">
-                    <a class="sort-header" data-prop="data.data.additionalSpeedEffortCost"
-                        data-field="additionalSpeedEffortCost">
-                        <p title="Speed Effort Cost">SEF {{{sortIcon data.sorts.armor 'additionalSpeedEffortCost'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-1 armor-actions">
-                    <div class="row">
-                        <div class="col-xs-offset-6 col-xs-6">
-                            <p><a class="armor-create" title="Create"><i class="fas fa-plus"></i></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<h2>Weapons</h2>
+<hr />
+<div class="grid weapons">
+  <div class="head">
+    <div class="row">
+      <div class="col-xs-3 weapon-name">
+        <a class="sort-header" data-prop="name" data-field="name">
+          <p>Name {{{sortIcon data.sorts.weapons 'name'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-1 weapon-quantity">
+        <a class="sort-header" data-prop="data.data.quantity" data-field="quantity">
+          <p># {{{sortIcon data.sorts.weapons 'quantity'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-2 weapon-weight">
+        <a class="sort-header" data-prop="data.data.weight" data-field="weight">
+          <p>Weight {{{sortIcon data.sorts.weapons 'weight'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-2 weapon-type">
+        <a class="sort-header" data-prop="data.data.type" data-field="type">
+          <p>Type {{{sortIcon data.sorts.weapons 'type'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-1 weapon-damage">
+        <a class="sort-header" data-prop="data.data.damage" data-field="damage">
+          <p>Dmg {{{sortIcon data.sorts.weapons 'damage'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-2 weapon-range">
+        <a class="sort-header" data-prop="data.data.range" data-field="range">
+          <p>Range {{{sortIcon data.sorts.weapons 'range'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-1 weapon-actions">
+        <div class="row">
+          <div class="col-xs-offset-6 col-xs-6">
+            <p><a class="weapon-create" title="Create"><i class="fas fa-plus"></i></a></p>
+          </div>
         </div>
-        <div class="body">
-            {{#each data.items.armor as |armor|}}
-            <div class="row middle-xs armor" data-item-id="{{armor._id}}" data-prder="{{armor.data.order}}">
-                <div class="col-xs-4 armor-equip-name">
-                    <span class="armor-equipped">
-                        <input type="hidden" name="data.items.armor.{{armor._id}}.data.equipped"
-                            value={{armor.data.equipped}} data-dtype="Boolean" />
-                        <a class="armor-equip-btn" title="{{ternary armor.data.equipped 'Unequip' 'Equip'}}"><i
-                                class="far {{ternary armor.data.equipped 'fa-check-circle' 'fa-times-circle'}}"></i></a>
-                    </span>
-                    <span class="armor-name" title="{{armor.name}}">{{{strOrSpace armor.name}}}</span>
-                </div>
-                <div class="col-xs-1 armor-quantity">
-                    <p title="{{armor.data.quantity}}">{{{strOrSpace armor.data.quantity}}}</p>
-                </div>
-                <div class="col-xs-2 armor-weight">
-                    <p title="{{armor.data.weight}}">{{{strOrSpace armor.data.weight}}}</p>
-                </div>
-                <div class="col-xs-2 armor-armor">
-                    <p title="{{armor.data.armor}}">{{{strOrSpace armor.data.armor}}}</p>
-                </div>
-                <div class="col-xs-2 armor-speed">
-                    <p title="{{armor.data.additionalSpeedEffortCost}}">
-                        {{{strOrSpace armor.data.additionalSpeedEffortCost}}}</p>
-                </div>
-                <div class="col-xs-1 armor-actions">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a class="armor-info-btn" data-action="info" title="Info"><i
-                                    class="fas fa-info-circle"></i></a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a class="armor-delete-btn" data-action="delete" title="Delete"><i
-                                    class="fas fa-trash"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{else}}
-            <div class="row">
-                <div class="col-xs-12">
-                    <p class="empty-grid">
-                        No armor yet. Create one by clicking the <i class="fas fa-plus"></i> icon on
-                        the top right of the table or pick one from the Items Directory or a Compendium and
-                        drag
-                        it here.
-                    </p>
-                </div>
-            </div>
-            {{/each}}
-        </div>
+      </div>
     </div>
+  </div>
+  <div class="body">
+    {{#each data.items.weapons as |weapon|}}
+    <div class="row middle-xs weapon" data-item-id="{{weapon._id}}" data-prder="{{weapon.data.order}}">
+      <div class="col-xs-3 weapon-equip-name">
+        <span class="weapon-equipped">
+          <input type="hidden" name="data.items.weapons.{{weapon._id}}.data.equipped" value={{weapon.data.equipped}}
+            data-dtype="Boolean" />
+          <a class="weapon-equip-btn" title="{{ternary weapon.data.equipped 'Unequip' 'Equip'}}"><i
+              class="far {{ternary weapon.data.equipped 'fa-check-circle' 'fa-times-circle'}}"></i></a>
+        </span>
+        <span class="weapon-name" title="{{weapon.name}}">{{{strOrSpace weapon.name}}}</span>
+      </div>
+      <div class="col-xs-1 weapon-quantity">
+        <p title="{{weapon.data.quantity}}">{{{strOrSpace weapon.data.quantity}}}</p>
+      </div>
+      <div class="col-xs-2 weapon-weight">
+        <p title="{{weapon.data.weight}}">{{{strOrSpace weapon.data.weight}}}</p>
+      </div>
+      <div class="col-xs-2 weapon-type">
+        <p title="{{weapon.data.weaponType}}">{{{strOrSpace weapon.data.weaponType}}}</p>
+      </div>
+      <div class="col-xs-1 weapon-damage">
+        <p title="{{weapon.data.damage}}">{{{strOrSpace weapon.data.damage}}}</p>
+      </div>
+      <div class="col-xs-2 weapon-range">
+        <p title="{{weapon.data.range}}">{{{strOrSpace weapon.data.range}}}</p>
+      </div>
+      <div class="col-xs-1 weapon-actions">
+        <div class="row">
+          <div class="col-xs-6">
+            <a class="weapon-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
+          </div>
+          <div class="col-xs-6">
+            <a class="weapon-delete-btn" data-action="delete" title="Delete"><i class="fas fa-trash"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="empty-grid">
+          No weapons yet. Create one by clicking the <i class="fas fa-plus"></i> icon
+          on the top right of the table or pick one from the Items Directory or a Compendium
+          and
+          drag it here.
+        </p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
 
-    <h2>Gear</h2>
-    <hr />
-    <div class="grid gear">
-        <div class="head">
-            <div class="row">
-                <div class="col-xs-7 gear-name">
-                    <a class="sort-header" data-prop="name" data-field="name">
-                        <p>Name {{{sortIcon data.sorts.gear 'name'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-1 gear-quantity">
-                    <a class="sort-header" data-prop="data.data.quantity" data-field="quantity">
-                        <p># {{{sortIcon data.sorts.gear 'quantity'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-3 gear-price">
-                    <a class="sort-header" data-prop="data.data.price" data-field="price">
-                        <p>Price {{{sortIcon data.sorts.gear 'price'}}}</p>
-                    </a>
-                </div>
-                <div class="col-xs-1 gear-actions">
-                    <div class="row">
-                        <div class="col-xs-offset-6 col-xs-6">
-                            <p><a class="gear-create" title="Create"><i class="fas fa-plus"></i></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<h2>Armor</h2>
+<hr />
+<div class="grid armor">
+  <div class="head">
+    <div class="row">
+      <div class="col-xs-4 armor-name">
+        <a class="sort-header" data-prop="name" data-field="name">
+          <p>Name {{{sortIcon data.sorts.armor 'name'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-1 armor-quantity">
+        <a class="sort-header" data-prop="data.data.quantity" data-field="quantity">
+          <p># {{{sortIcon data.sorts.armor 'quantity'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-2 armor-weight">
+        <a class="sort-header" data-prop="data.data.weight" data-field="weight">
+          <p>Weight {{{sortIcon data.sorts.armor 'weight'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-2 armor-armor">
+        <a class="sort-header" data-prop="data.data.armor" data-field="armor">
+          <p>Armor {{{sortIcon data.sorts.armor 'armor'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-2 armor-speed">
+        <a class="sort-header" data-prop="data.data.additionalSpeedEffortCost" data-field="additionalSpeedEffortCost">
+          <p title="Speed Effort Cost">SEF {{{sortIcon data.sorts.armor 'additionalSpeedEffortCost'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-1 armor-actions">
+        <div class="row">
+          <div class="col-xs-offset-6 col-xs-6">
+            <p><a class="armor-create" title="Create"><i class="fas fa-plus"></i></a></p>
+          </div>
         </div>
-        <div class="body">
-            {{#each data.items.gear as |gear|}}
-            <div class="row middle-xs gear" data-item-id="{{gear._id}}" data-prder="{{gear.data.order}}">
-                <div class="col-xs-7 gear-name">
-                    <p>{{{strOrSpace gear.name}}}</p>
-                </div>
-                <div class="col-xs-1 gear-quantity">
-                    <p>{{{strOrSpace gear.data.quantity}}}</p>
-                </div>
-                <div class="col-xs-3 gear-price">
-                    <p>{{{strOrSpace gear.data.price}}}</p>
-                </div>
-                <div class="col-xs-1 gear-actions">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a class="gear-info-btn" data-action="info" title="Info"><i
-                                    class="fas fa-info-circle"></i></a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a class="gear-delete" data-action="delete" title="Delete"><i class="fas fa-trash"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{else}}
-            <div class="row">
-                <div class="col-xs-12">
-                    <p class="empty-grid">
-                        No gear yet. Create one by clicking the <i class="fas fa-plus"></i> icon on
-                        the top right of the table or pick one from the Items Directory or a Compendium and
-                        drag
-                        it here.
-                    </p>
-                </div>
-            </div>
-            {{/each}}
-        </div>
+      </div>
     </div>
+  </div>
+  <div class="body">
+    {{#each data.items.armor as |armor|}}
+    <div class="row middle-xs armor" data-item-id="{{armor._id}}" data-prder="{{armor.data.order}}">
+      <div class="col-xs-4 armor-equip-name">
+        <span class="armor-equipped">
+          <input type="hidden" name="data.items.armor.{{armor._id}}.data.equipped" value={{armor.data.equipped}}
+            data-dtype="Boolean" />
+          <a class="armor-equip-btn" title="{{ternary armor.data.equipped 'Unequip' 'Equip'}}"><i
+              class="far {{ternary armor.data.equipped 'fa-check-circle' 'fa-times-circle'}}"></i></a>
+        </span>
+        <span class="armor-name" title="{{armor.name}}">{{{strOrSpace armor.name}}}</span>
+      </div>
+      <div class="col-xs-1 armor-quantity">
+        <p title="{{armor.data.quantity}}">{{{strOrSpace armor.data.quantity}}}</p>
+      </div>
+      <div class="col-xs-2 armor-weight">
+        <p title="{{armor.data.weight}}">{{{strOrSpace armor.data.weight}}}</p>
+      </div>
+      <div class="col-xs-2 armor-armor">
+        <p title="{{armor.data.armor}}">{{{strOrSpace armor.data.armor}}}</p>
+      </div>
+      <div class="col-xs-2 armor-speed">
+        <p title="{{armor.data.additionalSpeedEffortCost}}">
+          {{{strOrSpace armor.data.additionalSpeedEffortCost}}}</p>
+      </div>
+      <div class="col-xs-1 armor-actions">
+        <div class="row">
+          <div class="col-xs-6">
+            <a class="armor-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
+          </div>
+          <div class="col-xs-6">
+            <a class="armor-delete-btn" data-action="delete" title="Delete"><i class="fas fa-trash"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="empty-grid">
+          No armor yet. Create one by clicking the <i class="fas fa-plus"></i> icon on
+          the top right of the table or pick one from the Items Directory or a Compendium and
+          drag
+          it here.
+        </p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+<h2>Gear</h2>
+<hr />
+<div class="grid gear">
+  <div class="head">
+    <div class="row">
+      <div class="col-xs-7 gear-name">
+        <a class="sort-header" data-prop="name" data-field="name">
+          <p>Name {{{sortIcon data.sorts.gear 'name'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-1 gear-quantity">
+        <a class="sort-header" data-prop="data.data.quantity" data-field="quantity">
+          <p># {{{sortIcon data.sorts.gear 'quantity'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-3 gear-price">
+        <a class="sort-header" data-prop="data.data.price" data-field="price">
+          <p>Price {{{sortIcon data.sorts.gear 'price'}}}</p>
+        </a>
+      </div>
+      <div class="col-xs-1 gear-actions">
+        <div class="row">
+          <div class="col-xs-offset-6 col-xs-6">
+            <p><a class="gear-create" title="Create"><i class="fas fa-plus"></i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    {{#each data.items.gear as |gear|}}
+    <div class="row middle-xs gear" data-item-id="{{gear._id}}" data-prder="{{gear.data.order}}">
+      <div class="col-xs-7 gear-name">
+        <p>{{{strOrSpace gear.name}}}</p>
+      </div>
+      <div class="col-xs-1 gear-quantity">
+        <p>{{{strOrSpace gear.data.quantity}}}</p>
+      </div>
+      <div class="col-xs-3 gear-price">
+        <p>{{{strOrSpace gear.data.price}}}</p>
+      </div>
+      <div class="col-xs-1 gear-actions">
+        <div class="row">
+          <div class="col-xs-6">
+            <a class="gear-info-btn" data-action="info" title="Info"><i class="fas fa-info-circle"></i></a>
+          </div>
+          <div class="col-xs-6">
+            <a class="gear-delete" data-action="delete" title="Delete"><i class="fas fa-trash"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="empty-grid">
+          No gear yet. Create one by clicking the <i class="fas fa-plus"></i> icon on
+          the top right of the table or pick one from the Items Directory or a Compendium and
+          drag
+          it here.
+        </p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
 </div>

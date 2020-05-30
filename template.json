@@ -49,9 +49,9 @@
                 "tenHours": false
             },
             "skills": {},
-            "shins": 0,
+            "money": 0,
             "tier": 1,
-            "version": 4,
+            "version": 2,
             "xp": 0,
             "sheetMenu": "advancement"
         },
