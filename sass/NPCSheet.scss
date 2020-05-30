@@ -1,9 +1,13 @@
 form.csr.npc {
   padding: 1em;
 
+  overflow-y: auto;
+  overflow-x: hidden;
+
   .picture {
     img.profile-img {
       border: none;
+      max-height: 225px;
 
       &:hover {
         cursor: pointer;
