@@ -67,7 +67,7 @@
             "combat": null,
             "damage": 0,
             "armor": 0,
-            "movement": "short",
+            "movement": "Short",
             "modifications": null,
             "interaction": null,
             "use": null,
